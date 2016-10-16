@@ -1,16 +1,50 @@
 
-/* Header */
+/*
+    Document   : index
+    Created on : 04.10.2016
+    Author     : Leon
+*/
+
 @media screen and (max-width: 1050px) 
 {
 	header
 	{
 		min-width: 1050px;
 	}
+	body
+	{
+		min-width: 1050px;
+	}
 }
+
+@media screen and (max-device-width: 1000px)
+{
+	div.categories
+	{
+		display: none;
+	}
+	div.content2
+	{
+		float: left;
+	}
+	body
+	{
+		min-width: 1000px;
+		max-width: 1000px;
+	}
+	header
+	{
+		min-width: 1000px;
+		max-width: 1000px;
+	}
+}
+
+
+/* Header */
 header
 {
 	height: 100px;
-	background-color: bisque;
+	background-color: Bisque;
 	margin: -8px -8px 0px -8px;
 	padding: 5px;
 	display: flex;
@@ -23,13 +57,11 @@ div.header-logo
 	height: 90px;
 	float: left;
 	margin-right: 10px;
-	width: 200px;
+	width: 180px;
 }
 
 div.searchbar 
 {
-	position: sticky;
-	left: 210px;
 	height: 30px;
 	width: 60%;
 	min-width: 300px;
@@ -46,7 +78,7 @@ div.searchlogo
 {
 	position: relative;
 	left: 0;
-	height: 20px;
+	height: 25px;
 	width: 37px;
 	padding: 5px;
 	float: left;
@@ -61,20 +93,20 @@ div.searchlogo
 /* Buttons rechts im Header */
 div.headerlist
 {
-	width: 400px;
+	width: 20%;
 	margin-left: auto;
+	min-width: 270px;
+	margin-top: 35px;
 
 }
 ul.header {
-	width: 400px;
+	width: 100%;
     	list-style-type: none;
-	min-width: 200px;
-	margin-left: 30px;
-    	margin-top: 35px;
+	margin-left: 0px;
+    	margin-top: 0px;
     	margin-right: 0px;
     	padding: 0;
     	overflow: hidden;
-   	background-color: bisque;
 }	
 
 li.header {
@@ -85,7 +117,7 @@ li.header a {
     	display: block;
     	color: black;
     	text-align: center;
-    	padding: 14px 16px;
+    	padding: 15px 15px;
     	text-decoration: none;
 }
 li.header a:hover:not(.active) {
@@ -98,9 +130,10 @@ li.header a:hover:not(.active) {
 
 img.logo
 {
-	width: 220px;
+	width: 150px;
 	height: auto;
-	margin-right: 15px;
+	margin-top: -5px;
+	margin-left: 5px;
 }
 
 input.searchlogo
@@ -125,27 +158,29 @@ input.searchbar
 
 div.content
 {
-	width: 1200px;
+	max-width: 1500px;
+	min-width: 1000px;
+	width: auto;
 	margin: auto;
-	display: block-inline;
+	display: block;
 }
 
 /* Kategorie Leiste */
 div.categories
 {
-	width: 14%;
+	width: 15%;
 	float: left;
 }
-ul.content 
+ul.categories 
 {
+	width: 100%;
     list-style-type: none;
     margin: 0px;
     padding: 0;
-    width: 100%;
     background-color: #f1f1f1;
 }
 
-li.content a 
+li.categories a 
 {
     	display: block;
     	color: #000;
@@ -153,13 +188,13 @@ li.content a
     	text-decoration: none;
 }
 
-li.content a.title 
+li.categories a.title 
 {
     font-size: 20px;
     color: black;
 }
 
-li.content a:hover:not(.active) {
+li.categories a:hover:not(.active) {
     background-color: #555;
     color: white;
 }
@@ -167,28 +202,34 @@ li.content a:hover:not(.active) {
 /* Artikel auf der Startseite */
 div.content2
 {
-	width: 1200px;
+	position: relative;
+	width: 80%;
+	height: 100%;
 	margin: auto;
-	display: inline;
+	display: block;
+	margin-bottom: 30px;
+	max-width: 900px;
+	float: left;
+	
 }
 div.articles
 {
-	width: 80%;
+	width: 100%;
 	background-color: white;
-	float: right;
 	height: 380px;
+	max-width: 800px;
+	float: right;
 }
 div.article1 
 {
-	float: left;
+		float: left;
     	margin-right: 5px;
-	margin-bottom: 10px;
+    	margin-bottom: 10px;
 }
 
 div.article1:hover 
 {
-    	border-top: 1px solid #777;
-	border-bottom: 1px solid #777;
+    
 }
 
 div.article1 img 
