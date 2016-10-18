@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import classes.Adresse;
 import classes.SqlConnection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.UUID;
 
 /**
  * Servlet implementation class LoginServlet
@@ -27,12 +29,15 @@ public class RegistrationServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         String mail = request.getParameter("mail").toLowerCase();
-        String vname = request.getParameter("vname");
-        String nname = request.getParameter("nname");
-        String adr = request.getParameter("adr");
-        String pass1 = request.getParameter("pw1");
+        String vname = request.getParameter("vn");
+        String nname = request.getParameter("nn");
+        String pass1 = request.getParameter("pw");
         String pass2 = request.getParameter("pw2");
         String rolle = "kunde";
+        String strasse = request.getParameter("str");;
+        String hausnummer = request.getParameter("hn");;
+        String plz = request.getParameter("plz");
+        String ort = request.getParameter("ort");;
 
         String act = request.getParameter("act");
         if (act == null) {
@@ -40,25 +45,9 @@ public class RegistrationServlet extends HttpServlet {
         } else if (act.equals("registrieren")) {
 
             try {
-                boolean mailFrei = true;
-
-                SqlConnection sql = new SqlConnection();
-                Connection connection = sql.getJDBCConnection();
-
-                Statement stmt = connection.createStatement();
-                ResultSet rs = stmt.executeQuery("Select user.mail, user.passwort from user");
-
-                while (rs.next()) {
-                    if (rs.getString("mail").equals(mail)) {
-                     mailFrei=false;
-                    }
-                }
-                
-                if(mailFrei && pass1.equals(pass2))
-                {
-             
-                    stmt.executeUpdate("INSERT INTO user " + "VALUES (0, '"+mail+"', '"+vname+"', '"+nname+"', '"+pass1+"', '"+rolle+"')");
-                }
+            
+             int adrId= UUID.randomUUID().hashCode();
+             Adresse kundenAdresse = new Adresse(adrId, strasse, hausnummer, plz, ort);
 
             } catch (Exception ex) {
 ex.printStackTrace();

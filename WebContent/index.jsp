@@ -33,9 +33,9 @@
 
 		<div class="headerlist">
 			<ul class="header">
-				<li class="header"><a class="active" href="">Anmelden</a></li>
+				<li class="header"><a href="login.jsp">Anmelden</a></li>
+				<li class="header"><a href="registrieren.jsp">neu hier?</a></li>
 				<li class="header"><a href="">Warenkorb</a></li>
-				<li class="header"><a href="">Dies</a></li>
 			</ul>
 		</div>
 
