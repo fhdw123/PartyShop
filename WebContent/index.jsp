@@ -132,7 +132,7 @@
 					<div class="desc">beschreibung</div>
 				</div>
 			</div>
-
+			
 		</div>
 	</div>
 

@@ -30,7 +30,10 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        PrintWriter out = response.getWriter();
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	PrintWriter out = response.getWriter();
         String mail = request.getParameter("mail").toLowerCase();
         String vname = request.getParameter("vn");
         String nname = request.getParameter("nn");
@@ -70,10 +73,6 @@ public class RegistrationServlet extends HttpServlet {
 
         }
 
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	request.setAttribute("statusLabel", request.getParameter("hallo"));
     }
 
 }
