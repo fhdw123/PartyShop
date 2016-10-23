@@ -15,31 +15,40 @@
 </head>
 <body>
 
-	<header>
+
+	<header class="standard">
 		<div class="header-logo">
 			<a href=""> <img class="logo" src="resources/images/logo.png">
 			</a>
 		</div>
-
-		<div class="searchbar">
-			<input class="searchbar" placeholder="Suchen" type="text"
-				name="search">
+		<div class="header-logo-mobile">
+			<a href=""> <img class="logo" src="resources/images/mlogo.png">
+			</a>
 		</div>
 
-		<div class="searchlogo">
-			<input class="searchlogo" type="image"
-				src="resources/images/lupe.png" alt="Submit">
+		<div class="headerlogos">
+			<div class="headerlogo">
+				<img src="resources/images/user.png">
+			</div>
+			<div class="headerlogo">
+				<img src="resources/images/cart.png">
+			</div>
+		</div>
+		<div class="search">
+			<div class="searchbar">
+				<input class="searchbar" placeholder="Suchen" type="text"
+					name="search">
+			</div>
+
+			<div class="searchlogo">
+				<input class="searchlogo" type="image"
+					src="resources/images/lupe.png" alt="Submit">
+			</div>
 		</div>
 
-		<div class="headerlist">
-			<ul class="header">
-				<li class="header"><a href="login.jsp">Anmelden</a></li>
-				<li class="header"><a href="registrieren.jsp">neu hier?</a></li>
-				<li class="header"><a href="">Warenkorb</a></li>
-			</ul>
-		</div>
 
 	</header>
+
 
 	<div class="content">
 
@@ -132,7 +141,7 @@
 					<div class="desc">beschreibung</div>
 				</div>
 			</div>
-			
+
 		</div>
 	</div>
 
