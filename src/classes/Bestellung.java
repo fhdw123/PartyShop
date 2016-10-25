@@ -1,76 +1,124 @@
 package classes;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class Bestellung {
 
-	
-	
-	private int bestellungid;
-	private User user;
-	private String preis;
-	private String menge;
-	private Position[] positionen;
-	
-	
-	public Bestellung(int bestellungid, User user, String preis, String menge, Position[] positionen) {
+	private SqlConnection jdbc;
+	private String bestellungid;
+	private String user;
+	private double preis;
+	private int menge;
+	private ArrayList<Position> positionen;
+
+	/**
+	 * 
+	 * @param bestellungid
+	 * @param user
+	 * @param preis
+	 * @param menge
+	 * @param positionen
+	 * @throws Exception
+	 */
+	public Bestellung(String bestellungid, String user, double preis, int menge, ArrayList<Position> positionen)
+			throws Exception {
 		super();
-		this.bestellungid = bestellungid;
+		this.bestellungid = UUID.randomUUID().toString();
 		this.user = user;
 		this.preis = preis;
 		this.menge = menge;
 		this.positionen = positionen;
+
+		jdbc = new SqlConnection();
 	}
 
-
-	public int getBestellungid() {
+	/**
+	 * 
+	 * @return
+	 */
+	public String getBestellungid() {
 		return bestellungid;
 	}
 
-
-	public void setBestellungid(int bestellungid) {
+	/**
+	 * 
+	 * @param bestellungid
+	 */
+	public void setBestellungid(String bestellungid) {
 		this.bestellungid = bestellungid;
 	}
 
-
-	public User getUser() {
+	/**
+	 * 
+	 * @return
+	 */
+	public String getUser() {
 		return user;
 	}
 
-
-	public void setUser(User user) {
+	/**
+	 * 
+	 * @param user
+	 */
+	public void setUser(String user) {
 		this.user = user;
 	}
 
-
-	public String getPreis() {
+	/**
+	 * 
+	 * @return
+	 */
+	public double getPreis() {
 		return preis;
 	}
 
-
-	public void setPreis(String preis) {
+	/**
+	 * 
+	 * @param preis
+	 */
+	public void setPreis(double preis) {
 		this.preis = preis;
 	}
 
-
-	public String getMenge() {
+	/**
+	 * 
+	 * @return
+	 */
+	public int getMenge() {
 		return menge;
 	}
 
-
-	public void setMenge(String menge) {
+	/**
+	 * 
+	 * @param menge
+	 */
+	public void setMenge(int menge) {
 		this.menge = menge;
 	}
 
-
-	public Position[] getPositionen() {
+	/**
+	 * 
+	 * @return
+	 */
+	public ArrayList<Position> getPositionen() {
 		return positionen;
 	}
 
-
-	public void setPositionen(Position[] positionen) {
+	/**
+	 * 
+	 * @param positionen
+	 */
+	public void setPositionen(ArrayList<Position> positionen) {
 		this.positionen = positionen;
 	}
-	
-	
-	
-	
+
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	public void createBestellungAndPositionsInDB() throws Exception {
+		jdbc.createBestellungAndPositions(bestellungid, user, preis, menge, positionen);
+	}
+
 }

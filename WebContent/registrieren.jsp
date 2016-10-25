@@ -11,14 +11,16 @@
 
 <form action="ServletRegistration" method="post">
 
+<input type="hidden" name="userdata" />
+
 			E-Mail:	
 			<input type="text" name="mail"/><br>		
 		
 			Passwort:
-			<input type="text" name="pw"/><br>		
+			<input type="password" name="pw"/><br>		
 			
 			Passwort wiederholen:
-			<input type="text" name="pw2"/><br>		
+			<input type="password" name="pw2"/><br>		
 			
 			Vorname:
 			<input type="text" name="vn"/><br>		

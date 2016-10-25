@@ -1,5 +1,6 @@
 package servlets;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -10,8 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import classes.Adresse;
 import classes.SqlConnection;
 import classes.User;
 
@@ -55,12 +56,18 @@ public class RegistrationServlet extends HttpServlet {
 
              try {
             
-            User user = new User(0, mail, vname, nname, pass1, rolle, 0, strasse, hausnummer, plz ,ort);
+            User user = new User(mail, vname, nname, pass1, rolle, 0, strasse, hausnummer, plz ,ort);
             user.createUserInDB();
+            
+            HttpSession session=request.getSession(false);  
+ 		    session.setAttribute("user",user);
+
             
             String nextJSP = "/index.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
+            
+           
 
              } catch (Exception ex) {
             	ex.printStackTrace();
