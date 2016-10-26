@@ -11,6 +11,7 @@ public class Artikel {
 	private double preis;
 	private String kategorie;
 
+	
 	/**
 	 * 
 	 * @param bezeichnung
@@ -29,7 +30,42 @@ public class Artikel {
 
 		jdbc = new SqlConnection();
 	}
+	
+	
+	/**
+	 * 
+	 * @param artikelid
+	 * @param bezeichnung
+	 * @param beschreibung
+	 * @param preis
+	 * @param kategorie
+	 * @throws Exception
+	 */
+	public Artikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie) throws Exception {
+		super();
+		this.artikelid = artikelid;
+		this.bezeichnung = bezeichnung;
+		this.beschreibung = beschreibung;
+		this.preis = preis;
+		this.kategorie = kategorie;
 
+		jdbc = new SqlConnection();
+	}
+	
+	
+	/**
+	 * 
+	 * @param artikelid
+	 * @throws Exception
+	 */
+	public Artikel(String artikelid) throws Exception {
+		super();
+		this.artikelid = artikelid;
+
+		jdbc = new SqlConnection();
+	}
+
+	
 	/**
 	 * 
 	 * @return
@@ -38,6 +74,7 @@ public class Artikel {
 		return artikelid;
 	}
 
+	
 	/**
 	 * 
 	 * @param artikelid
@@ -46,6 +83,7 @@ public class Artikel {
 		this.artikelid = artikelid;
 	}
 
+	
 	/**
 	 * 
 	 * @return
@@ -54,6 +92,7 @@ public class Artikel {
 		return bezeichnung;
 	}
 
+	
 	/**
 	 * 
 	 * @param bezeichnung
@@ -69,6 +108,7 @@ public class Artikel {
 	public String getBeschreibung() {
 		return beschreibung;
 	}
+	
 
 	/**
 	 * 
@@ -78,6 +118,7 @@ public class Artikel {
 		this.beschreibung = beschreibung;
 	}
 
+	
 	/**
 	 * 
 	 * @return
@@ -86,6 +127,7 @@ public class Artikel {
 		return preis;
 	}
 
+	
 	/**
 	 * 
 	 * @param preis
@@ -94,6 +136,7 @@ public class Artikel {
 		this.preis = preis;
 	}
 
+	
 	/**
 	 * 
 	 * @return
@@ -102,6 +145,7 @@ public class Artikel {
 		return kategorie;
 	}
 
+	
 	/**
 	 * 
 	 * @param kategorie
@@ -110,12 +154,37 @@ public class Artikel {
 		this.kategorie = kategorie;
 	}
 
+	
 	/**
 	 * 
 	 * @throws Exception
 	 */
 	public void createArtikelInDB() throws Exception {
 		jdbc.createArtikel(artikelid, bezeichnung, beschreibung, preis, kategorie);
+	}
+	
+	
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	public void deleteArtikel() throws Exception
+	{
+		jdbc.deleteArtikel(artikelid);
+	}
+	
+	
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	public void showArtikelData() throws Exception
+	{
+	 Artikel tempArtikel = jdbc.showArtikelData(artikelid);
+	 this.bezeichnung = tempArtikel.getBezeichnung();
+	 this.beschreibung = tempArtikel.getBeschreibung();
+	 this.preis = tempArtikel.getPreis();
+	 this.kategorie = tempArtikel.getKategorie();
 	}
 
 }

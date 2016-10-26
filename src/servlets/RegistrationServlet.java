@@ -56,7 +56,7 @@ public class RegistrationServlet extends HttpServlet {
 
              try {
             
-            User user = new User(mail, vname, nname, pass1, rolle, 0, strasse, hausnummer, plz ,ort);
+            User user = new User(mail, vname, nname, pass1, rolle, 0, strasse, hausnummer, Integer.parseInt(plz) ,ort);
             user.createUserInDB();
             
             HttpSession session=request.getSession(false);  

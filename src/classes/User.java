@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class User {
@@ -32,7 +33,7 @@ public class User {
 	 * @throws Exception
 	 */
 	public User(String mail, String vorname, String nachname, String passwort, String rolle, int gesperrt,
-			String strasse, String hausnummer, String postleitzahl, String ort) throws Exception {
+			String strasse, String hausnummer, int postleitzahl, String ort) throws Exception {
 		super();
 		this.userid = UUID.randomUUID().toString();
 		this.mail = mail;
@@ -43,12 +44,55 @@ public class User {
 		this.gesperrt = gesperrt;
 		this.strasse = strasse;
 		this.hausnummer = hausnummer;
-		try {
-			this.postleitzahl = Integer.parseInt(postleitzahl);
-		} catch (Exception ex) {
-			throw new Exception("Keine gültige Postleitzahl!");
-		}
+		this.postleitzahl = postleitzahl;
 		this.ort = ort;
+
+		jdbc = new SqlConnection();
+	}
+	
+	
+/**
+ * 
+ * @param userid
+ * @param mail
+ * @param vorname
+ * @param nachname
+ * @param passwort
+ * @param rolle
+ * @param gesperrt
+ * @param strasse
+ * @param hausnummer
+ * @param postleitzahl
+ * @param ort
+ * @throws Exception
+ */
+	public User(String userid, String mail, String vorname, String nachname, String passwort, String rolle, int gesperrt,
+			String strasse, String hausnummer, int postleitzahl, String ort) throws Exception {
+		super();
+		this.userid = userid;
+		this.mail = mail;
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.passwort = passwort;
+		this.rolle = rolle;
+		this.gesperrt = gesperrt;
+		this.strasse = strasse;
+		this.hausnummer = hausnummer;
+		this.postleitzahl = postleitzahl;
+		this.ort = ort;
+
+		jdbc = new SqlConnection();
+	}
+	
+	
+	/**
+	 * 
+	 * @param userid
+	 * @throws Exception
+	 */
+	public User(String userid) throws Exception {
+		super();
+		this.userid = userid;
 
 		jdbc = new SqlConnection();
 	}
@@ -229,6 +273,7 @@ public class User {
 		this.ort = ort;
 	}
 
+	
 	/**
 	 * 
 	 * @throws Exception
@@ -239,5 +284,70 @@ public class User {
 				ort);
 
 	}
+	
+	
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	public void updateUserInDB() throws Exception {
+
+		jdbc.updateUser(userid, mail, vorname, nachname, passwort, strasse, hausnummer, postleitzahl, ort);
+
+	}
+	
+	
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	public void lockUser() throws Exception
+	{
+		this.gesperrt = 1;
+		jdbc.lockUser(userid);
+	}
+	
+	
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	public void unlockUser() throws Exception
+	{
+		this.gesperrt = 0;
+		jdbc.unlockUser(userid);
+	}
+	
+	
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	public void showUserData() throws Exception
+	{
+	 User tempUser = jdbc.showUserData(userid);
+	 this.mail = tempUser.getMail();
+	 this.vorname = tempUser.getVorname();
+	 this.nachname = tempUser.getNachname();
+	 this.passwort = tempUser.getPasswort();
+	 this.strasse = tempUser.getStrasse();
+	 this.hausnummer = tempUser.getHausnummer();
+	 this.postleitzahl = tempUser.getPostleitzahl();
+	 this.ort = tempUser.getOrt();
+	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public ArrayList<Bestellung> getUserBestellungen() throws Exception
+	{
+		ArrayList<Bestellung> bestellungen = jdbc.showUserBestellungen(userid);
+		
+		return bestellungen;
+	}
+	
 
 }

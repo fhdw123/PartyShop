@@ -66,6 +66,84 @@ public class SqlConnection {
 
 	/**
 	 * 
+	 * @param userid
+	 * @param mail
+	 * @param vorname
+	 * @param nachname
+	 * @param passwort
+	 * @param strasse
+	 * @param hausnummer
+	 * @param postleitzahl
+	 * @param ort
+	 * @throws Exception
+	 */
+	public void updateUser(String userid, String mail, String vorname, String nachname, String passwort, String strasse,
+			String hausnummer, int postleitzahl, String ort) throws Exception {
+
+		try {
+			Statement stmt = conn.createStatement();
+
+			stmt.executeUpdate("Update User Set mail = '" + mail + "', vorname = '" + vorname + "', nachname = '"
+					+ nachname + "', '" + passwort + "''" + strasse + "', '" + hausnummer + "', '" + postleitzahl
+					+ "', '" + ort + "' where userid = '" + userid + "'");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 
+	 * @param userid
+	 * @throws Exception
+	 */
+	public void lockUser(String userid) throws Exception {
+		try {
+			Statement stmt = conn.createStatement();
+
+			stmt.executeUpdate("Update User Set gesperrt = 1 where userid = '" + userid + "'");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * 
+	 * @param userid
+	 * @throws Exception
+	 */
+	public void unlockUser(String userid) throws Exception {
+		try {
+			Statement stmt = conn.createStatement();
+
+			stmt.executeUpdate("Update User Set gesperrt = 0 where userid = '" + userid + "'");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * 
+	 * @param userid
+	 * @return
+	 * @throws Exception
+	 */
+	public User showUserData(String userid) throws Exception {
+
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt.executeQuery("Select * from user where userid = '" + userid + "'");
+
+		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
+				Integer.parseInt(rs.getString(10)), rs.getString(11));
+		return user;
+
+	}
+
+	/**
+	 * 
 	 * @param artikelid
 	 * @param bezeichnung
 	 * @param beschreibung
@@ -81,6 +159,159 @@ public class SqlConnection {
 
 			stmt.executeUpdate("INSERT INTO artikel " + "VALUES ('" + artikelid + "', '" + bezeichnung + "', '"
 					+ beschreibung + "', '" + preis + "', '" + kategorie + "')");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 
+	 * @param artikelid
+	 * @param bezeichnung
+	 * @param beschreibung
+	 * @param preis
+	 * @param kategorie
+	 * @throws Exception
+	 */
+	public void updateArtikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie)
+			throws Exception {
+		try {
+			Statement stmt = conn.createStatement();
+
+			stmt.executeUpdate("Update Artikel Set bezeichnung = '" + bezeichnung + "', beschreibung = '" + beschreibung
+					+ "', preis = " + preis + ", kategorie = '" + kategorie + "' where artikelid = '" + artikelid
+					+ "'");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * 
+	 * @param artikelid
+	 * @throws Exception
+	 */
+	public void deleteArtikel(String artikelid) throws Exception {
+		try {
+			Statement stmt = conn.createStatement();
+
+			stmt.executeUpdate("Delete from artikel where artikelid = '" + artikelid + "'");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * 
+	 * @param artikelid
+	 * @return
+	 * @throws Exception
+	 */
+	public Artikel showArtikelData(String artikelid) throws Exception {
+
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt.executeQuery("Select * from artikel where artikelid = '" + artikelid + "'");
+
+		Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), Double.parseDouble(rs.getString(3)),
+				rs.getString(4));
+		return artikel;
+
+	}
+
+	
+	/**
+	 * 
+	 * @param kategorieid
+	 * @return
+	 * @throws Exception
+	 */
+	public ArrayList<Artikel> showArtikelsInKategorie(String kategorieid) throws Exception {
+
+		ArrayList<Artikel> artikels = new ArrayList<Artikel>();
+
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt.executeQuery("Select * from artikel where kategorie = '" + kategorieid + "'");
+
+		while (rs.next()) {
+
+			Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
+					Double.parseDouble(rs.getString(4)), rs.getString(5));
+
+			artikels.add(artikel);
+		}
+		return artikels;
+	}
+	
+	
+	public ArrayList<Artikel> showAllArtikels() throws Exception {
+
+		ArrayList<Artikel> artikels = new ArrayList<Artikel>();
+
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt.executeQuery("Select * from artikel");
+
+		while (rs.next()) {
+
+			Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
+					Double.parseDouble(rs.getString(4)), rs.getString(5));
+
+			artikels.add(artikel);
+		}
+		return artikels;
+
+	}
+
+	/**
+	 * 
+	 * @param kategorieid
+	 * @param bezeichnung
+	 * @throws Exception
+	 */
+	public void createKategorie(String kategorieid, String bezeichnung) throws Exception {
+
+		try {
+			Statement stmt = conn.createStatement();
+
+			stmt.executeUpdate("INSERT INTO kategorie " + "VALUES ('" + kategorieid + "', '" + bezeichnung + "')");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 
+	 * @param kategorieid
+	 * @throws Exception
+	 */
+	public void deleteKategorie(String kategorieid) throws Exception {
+
+		try {
+			Statement stmt = conn.createStatement();
+
+			stmt.executeUpdate("Delete from kategorie where kategorieid = '" + kategorieid + "'");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 
+	 * @param kategorieid
+	 * @param bezeichnung
+	 * @throws Exception
+	 */
+	public void updateKategorie(String kategorieid, String bezeichnung) throws Exception {
+
+		try {
+			Statement stmt = conn.createStatement();
+
+			stmt.executeUpdate("Update kategorie set bezeichnung = '" + bezeichnung + "'where kategorieid = '"
+					+ kategorieid + "'");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -120,7 +351,6 @@ public class SqlConnection {
 		}
 	}
 
-	
 	/**
 	 * 
 	 * @param user
@@ -128,20 +358,20 @@ public class SqlConnection {
 	 * @throws NumberFormatException
 	 * @throws Exception
 	 */
-	public ArrayList<Bestellung> getUserBestellungen(User user) throws NumberFormatException, Exception {
-		
+	public ArrayList<Bestellung> showUserBestellungen(String userid) throws NumberFormatException, Exception {
+
 		ArrayList<Bestellung> bestellungen = new ArrayList<Bestellung>();
 
 		Statement stmtBes = conn.createStatement();
 
-		ResultSet rsBes = stmtBes.executeQuery("Select * from bestellung where user = '" + user.getUserid() + "'");
+		ResultSet rsBes = stmtBes.executeQuery("Select * from bestellung where user = '" + userid + "'");
 
 		while (rsBes.next()) {
 			ArrayList<Position> positionen = new ArrayList<Position>();
 
 			Statement stmtPos = conn.createStatement();
 
-			ResultSet rsPos = stmtPos.executeQuery("Select * from bestellung where user = '" + user.getUserid() + "'");
+			ResultSet rsPos = stmtPos.executeQuery("Select * from bestellung where user = '" + userid + "'");
 
 			while (rsPos.next()) {
 				Position pos = new Position(rsPos.getString(1), rsPos.getString(2),

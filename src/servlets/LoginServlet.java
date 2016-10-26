@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
                         
                         
                         Statement stmt = connection.createStatement();
-                        ResultSet rs = stmt.executeQuery("Select user.mail, user.passwort from user");
+                        ResultSet rs = stmt.executeQuery("Select user.mail, user.passwort, user.rolle, user.gesperrt from user");
                         
                         
                         while(rs.next())
