@@ -129,7 +129,7 @@ public class SqlConnection {
 	 * @return
 	 * @throws Exception
 	 */
-	public User showUserData(String userid) throws Exception {
+	public User showUserDataById(String userid) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -138,6 +138,22 @@ public class SqlConnection {
 		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
 				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
 				Integer.parseInt(rs.getString(10)), rs.getString(11));
+
+		return user;
+
+	}
+	
+	
+	public User showUserDataByMail(String mail) throws Exception {
+
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt.executeQuery("Select * from user where mail = '" + mail + "'");
+
+		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
+				Integer.parseInt(rs.getString(10)), rs.getString(11));
+
 		return user;
 
 	}
@@ -221,7 +237,6 @@ public class SqlConnection {
 
 	}
 
-	
 	/**
 	 * 
 	 * @param kategorieid
@@ -245,8 +260,7 @@ public class SqlConnection {
 		}
 		return artikels;
 	}
-	
-	
+
 	public ArrayList<Artikel> showAllArtikels() throws Exception {
 
 		ArrayList<Artikel> artikels = new ArrayList<Artikel>();
@@ -283,21 +297,6 @@ public class SqlConnection {
 		}
 	}
 
-	/**
-	 * 
-	 * @param kategorieid
-	 * @throws Exception
-	 */
-	public void deleteKategorie(String kategorieid) throws Exception {
-
-		try {
-			Statement stmt = conn.createStatement();
-
-			stmt.executeUpdate("Delete from kategorie where kategorieid = '" + kategorieid + "'");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * 
@@ -315,6 +314,29 @@ public class SqlConnection {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public ArrayList<Kategorie> showKategorien() throws Exception {
+
+		ArrayList<Kategorie> kategorien = new ArrayList<Kategorie>();
+
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt.executeQuery("Select * from artikel");
+
+		while (rs.next()) {
+
+			Kategorie kategorie = new Kategorie(rs.getString(1), rs.getString(2));
+
+			kategorien.add(kategorie);
+		}
+		return kategorien;
+
 	}
 
 	/**

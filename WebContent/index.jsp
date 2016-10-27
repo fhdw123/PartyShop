@@ -27,6 +27,7 @@
 			</div>
 			<div>
 				<a href="registrieren.jsp"> registrieren</a>
+				<a href="login.jsp"> registrieren</a>
 			</div>
 
 			<div class="headerlogos">

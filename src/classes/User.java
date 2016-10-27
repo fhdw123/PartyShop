@@ -96,6 +96,17 @@ public class User {
 
 		jdbc = new SqlConnection();
 	}
+	
+	
+	public User(String mail, String passwort) throws Exception  {
+		super();
+		this.mail = mail;
+		this.passwort = passwort;
+
+		jdbc = new SqlConnection();
+	}
+	
+	
 
 	/**
 	 * 
@@ -323,9 +334,26 @@ public class User {
 	 * 
 	 * @throws Exception
 	 */
-	public void showUserData() throws Exception
+	public void showUserDataById() throws Exception
 	{
-	 User tempUser = jdbc.showUserData(userid);
+	 User tempUser = jdbc.showUserDataById(userid);
+	 this.mail = tempUser.getMail();
+	 this.vorname = tempUser.getVorname();
+	 this.nachname = tempUser.getNachname();
+	 this.passwort = tempUser.getPasswort();
+	 this.strasse = tempUser.getStrasse();
+	 this.hausnummer = tempUser.getHausnummer();
+	 this.postleitzahl = tempUser.getPostleitzahl();
+	 this.ort = tempUser.getOrt();
+	}
+	
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	public void showUserDataByMail() throws Exception
+	{
+	 User tempUser = jdbc.showUserDataByMail(mail);
 	 this.mail = tempUser.getMail();
 	 this.vorname = tempUser.getVorname();
 	 this.nachname = tempUser.getNachname();
