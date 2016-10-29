@@ -22,6 +22,17 @@
 	{
 		display: none;
 	}
+	nav 
+	{
+		display: none;
+	}
+	h1.article 
+	{
+		font-size: 30px;
+		font-weight: bold;
+	}
+
+	
 }
 @media screen and (max-device-width: 800px) 
 {
@@ -69,13 +80,56 @@
 	div.search 
 	{
 		min-width: 95%;
-		margin-left: 2.5%;
+		margin-left: 1%;
 		min-height: 40px;
 		margin-top: 5px;
 	}
+	/* Mobile Categories */
+	nav
+	{
+		width: 5%;
+		float: left;	
+		margin-top: -16px;
+		margin-right: 35px;
+	}	
+	img.threelines
+	{
+		margin-left: -20px;
+		height: 60px;
+		width: 120px;
+	}
+	
+	nav ul, nav:active ul 
+	{ 
+		position: absolute;
+		left: 0;
+		z-index: 10;
+		top: 250px;
+		display: none;
+		overflow: visible;
+		background: #fff;
+		width: 105%;
+		height: auto;
+		list-style-type: none;
+		margin-left: -35px;
+	}
+
+	nav li 
+	{
+		margin-bottom: 40px;
+		width: 100%;
+		font-size: 50px;
+		border-bottom: solid #ccc;
+	}
+	nav:hover ul 
+	{
+		display: block;
+	}
+	
+	
 	div.searchbar
 	{
-		min-width: 90%;
+		max-width: 85%;
 		margin-right: auto;
 		min-height: 100%;
 		margin-top: -15px;
@@ -102,10 +156,15 @@
 	{
 		display: none;
 	}
-	/* Haupt Content über ganzen Bildschirm*/
+	/* Haupt Content Über ganzen Bildschirm*/
 	div.content2 
 	{
 		min-width: 100%;
+	}
+	h1.article 
+	{
+		font-size: 45px;
+		font-weight: bold;
 	}
 	div.articles 
 	{
@@ -122,180 +181,177 @@
 	}
 }
 
+/*Desktop Version */
+/* Header */
+header.standard 
+{
+	height: 100px;
+	background-color: Bisque;
+	margin: -8px -8px 0px -8px;
+	display: block;
+}
+div.header-logo 
+{
+	height: 90px;
+	float: left;
+	margin-right: 10px;
+	width: 180px;
+}
+div.search
+{
+	width: 63%;
+	float: left;
+	margin-top: 45px;
+}
+div.searchbar 
+{
+	position: relative;
+	height: 30px;
+	width: 90%;
+	float: left;
+	border-style: solid;
+	border-width: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+div.searchlogo 
+{
+	float: left;
+	height: 25px;
+	width: 37px;
+	padding: 5px;
+	background: blue;
+	border-style: solid;
+	border-width: 0px;
+	border-radius: 0px 5px 5px 0px;
+}
 
-	/* Header */
-	header.standard 
-	{
-		height: 100px;
-		background-color: Bisque;
-		margin: -8px -8px 0px -8px;
-		display: block;
-	}
-	div.header-logo 
-	{
-		height: 90px;
-		float: left;
-		margin-right: 10px;
-		width: 180px;
-	}
-	div.search
-	{
-		width: 63%;
-		float: left;
-		margin-top: 45px;
-	}
-	div.searchbar 
-	{
-		position: relative;
-		height: 30px;
-		width: 90%;
-		float: left;
-		border-style: solid;
-		border-width: 0px;
-		border-radius: 5px 0px 0px 5px;
-	}
-	div.searchlogo 
-	{
-		float: left;
-		height: 25px;
-		width: 37px;
-		padding: 5px;
-		background: blue;
-		border-style: solid;
-		border-width: 0px;
-		border-radius: 0px 5px 5px 0px;
-	}
+/* Buttons rechts im Header */
+div.headerlogos 
+{
+	width: 150px;
+	margin-top: 35px;
+	float: right;
+}
+div.headerlogo 
+{
+	float: left;
+	width: 40px;
+	margin-left: 10px;
+}
+div.headerlogo img 
+{
+	width: 100%;
+	height: 45px;
+}
+img.logo 
+{
+	width: 150px;
+	height: auto;
+	margin-top: -5px;
+	margin-left: 5px;
+}
+input.searchlogo 
+{
+	height: 20px;
+	margin-left: 8px;
+}
+form.searchbar 
+{
+	margin-top: -60px;
+}
+input.searchbar 
+{
+	width: 100%;
+	height: 30px;
+	border-radius: 5px 0px 0px 5px;
+	outline: 0;	
+}
+/* Header end */
 
-	/* Buttons rechts im Header */
-	div.headerlogos 
-	{
-		width: 150px;
-		margin-top: 35px;
-		float: right;
-	}
-	div.headerlogo 
-	{
-		float: left;
-		width: 40px;
-		margin-left: 10px;
-	}
-	div.headerlogo img 
-	{
-		width: 100%;
-		height: 45px;
-	}
-	img.logo {
-		width: 150px;
-		height: auto;
-		margin-top: -5px;
-		margin-left: 5px;
-	}
-	input.searchlogo 
-	{
-		height: 20px;
-		margin-left: 8px;
-	}
-	form.searchbar 
-	{
-		margin-top: -60px;
-	}
-	input.searchbar 
-	{
-		width: 100%;
-		height: 30px;
-		border-radius: 5px 0px 0px 5px;
-		outline: 0;
-	}
-	/* Header end */
+/* Content */
+div.content 
+{
+	max-width: 1500px;
+	min-width: 1000px;
+	width: auto;
+	margin: auto;
+	display: block;
+}
 
-	/* Content */
-	div.content 
-	{
-		max-width: 1500px;
-		min-width: 1000px;
-		width: auto;
-		margin: auto;
-		display: block;
-	}
+/* Kategorie Leiste */
+div.categories 
+{
+	width: 15%;
+	float: left;
+}
+ul.categories 
+{
+	width: 100%;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0;
+	background-color: #f1f1f1;	
+}
+li.categories a 
+{
+	display: block;
+	color: #000;
+	padding: 8px 16px;
+	text-decoration: none;	
+}
+li.categories a.title 
+{
+	font-size: 20px;
+	color: black;
+}
+li.categories a:hover
+{
+	background-color: #555;
+	color: white;
+}
 
-	/* Kategorie Leiste */
-	div.categories 
-	{
-		width: 15%;
-		float: left;
-	}
-	ul.categories 
-	{
-		width: 100%;
-		list-style-type: none;
-		margin: 0px;
-		padding: 0;
-		background-color: #f1f1f1;
-	}
-	li.categories a 
-	{
-		display: block;
-		color: #000;
-		padding: 8px 16px;
-		text-decoration: none;
-	}
-	li.categories a.title 
-	{
-		font-size: 20px;
-		color: black;
-	}
-	li.categories a:hover:not (.active ) 
-	{
-		background-color: #555;
-		color: white;
-	}
-
-	/* Artikel auf der Startseite */
-	div.content2 
-	{
-		position: relative;
-		width: 80%;
-		height: 100%;
-		margin: auto;
-		display: block;
-		margin-bottom: 30px;
-		max-width: 900px;
-		float: left;
-	}
-	div.articles 
-	{
-		width: 100%;
-		background-color: white;
-		/*height: 380px;*/
-		max-width: 800px;
-		float: right;
-		display: block;
-	}
-	div.article1 
-	{
-		float: left;
-		margin-right: 5px;
-		margin-bottom: 10px;
-	}
-	div.article1:hover 
-	{
+/* Artikel auf der Startseite */
+div.content2 
+{
+	position: relative;
+	width: 80%;
+	height: 100%;
+	margin: auto;
+	display: block;
+	margin-bottom: 30px;
+	max-width: 900px;
+	float: left;
+}
+div.articles 
+{
+	width: 100%;
+	background-color: white;
+	/*height: 380px;*/
+	max-width: 800px;
+	float: right;
+	display: block;
+}
+div.article1
+{
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+div.article1:hover
+{
 		
-	}
-	div.article1 img 
-	{
-		height: 250px;
-		width: 250px;
-	}
-	div.desc 
-	{
-		padding: 15px;
-		text-align: center;
-	}
-	h1.article 
-	{
-		font-size: 30px;
-		font-weight: bold;
-	}
+}
+div.article1 img 
+{
+	height: 250px;
+	width: 250px;
+}
+div.desc 
+{
+	padding: 15px;
+	text-align: center;
+}
+
 /* Artikel Ende */
 
-/* Footer */
+
