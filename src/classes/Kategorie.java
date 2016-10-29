@@ -1,5 +1,7 @@
 package classes;
 
+
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Kategorie {
@@ -17,8 +19,6 @@ public class Kategorie {
 		super();
 		this.kategorieid = UUID.randomUUID().toString();
 		this.bezeichnung = bezeichnung;
-		
-		jdbc = new SqlConnection();
 	}
 	
 	
@@ -32,8 +32,6 @@ public class Kategorie {
 		super();
 		this.kategorieid = kategorieid;
 		this.bezeichnung = bezeichnung;
-		
-		jdbc = new SqlConnection();
 	}
 
 
@@ -80,7 +78,9 @@ public class Kategorie {
 	 */
 	public void createKategorie() throws Exception
 	{
+		jdbc = new SqlConnection();
 		jdbc.createKategorie(kategorieid, bezeichnung);
+		jdbc.closeConnection();
 	}
 	
 	
@@ -90,7 +90,9 @@ public class Kategorie {
 	 */
 	public void updateKategorie() throws Exception
 	{
+		jdbc = new SqlConnection();
 		jdbc.updateKategorie(kategorieid, bezeichnung);
+		jdbc.closeConnection();
 	}
 	
 	
