@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="classes.Kategorie"%>
 <%@ page import="classes.Artikel" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="java.text.DecimalFormat;" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,11 +15,11 @@
 <body>
 	<header class="standard">
 	<div class="header-logo">
-		<a href=""> <img class="logo" src="resources/images/logo.png">
+		<a href="/Partyshop"> <img class="logo" src="resources/images/logo.png">
 		</a>
 	</div>
 	<div class="header-logo-mobile">
-		<a href=""> <img class="logo" src="resources/images/mlogo.png">
+		<a href="/Partyshop"> <img class="logo" src="resources/images/mlogo.png">
 		</a>
 	</div>
 
@@ -83,9 +84,11 @@
 		
 		
 		<%
+			
 			ArrayList<Artikel> artikel = (ArrayList<Artikel>) request.getAttribute("artikel");
 			for(Artikel art: artikel)
 			{
+				DecimalFormat df = new DecimalFormat("#.00");
 				out.println("<div class=\"articles\">");
 				out.println("<div class=\"single-article\">");
 				out.println("<img src=\"resources/images/beispiel2.jpg\">");
@@ -93,7 +96,7 @@
 				out.println("<span class=\"articlename\">" + art.getBezeichnung() + "</span>");
 				out.println("</div>");
 				out.println("<div class=\"price\">");
-				out.println("<span class=\"price\">" + art.getPreis() +"</span>");
+				out.println("<span class=\"price\">" + df.format(art.getPreis()) +"€</span>");
 				out.println("</div></div></div>");
 			}
 		
