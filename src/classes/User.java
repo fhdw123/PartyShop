@@ -46,8 +46,6 @@ public class User {
 		this.hausnummer = hausnummer;
 		this.postleitzahl = postleitzahl;
 		this.ort = ort;
-
-		jdbc = new SqlConnection();
 	}
 	
 	
@@ -80,8 +78,6 @@ public class User {
 		this.hausnummer = hausnummer;
 		this.postleitzahl = postleitzahl;
 		this.ort = ort;
-
-		jdbc = new SqlConnection();
 	}
 	
 	
@@ -93,8 +89,6 @@ public class User {
 	public User(String userid) throws Exception {
 		super();
 		this.userid = userid;
-
-		jdbc = new SqlConnection();
 	}
 	
 	
@@ -102,8 +96,6 @@ public class User {
 		super();
 		this.mail = mail;
 		this.passwort = passwort;
-
-		jdbc = new SqlConnection();
 	}
 	
 	
@@ -290,10 +282,10 @@ public class User {
 	 * @throws Exception
 	 */
 	public void createUserInDB() throws Exception {
-
+		jdbc = new SqlConnection();
 		jdbc.createUser(userid, mail, vorname, nachname, passwort, rolle, gesperrt, strasse, hausnummer, postleitzahl,
 				ort);
-
+		jdbc.closeConnection();
 	}
 	
 	
@@ -302,9 +294,9 @@ public class User {
 	 * @throws Exception
 	 */
 	public void updateUserInDB() throws Exception {
-
+		jdbc = new SqlConnection();
 		jdbc.updateUser(userid, mail, vorname, nachname, passwort, strasse, hausnummer, postleitzahl, ort);
-
+		jdbc.closeConnection();
 	}
 	
 	
@@ -314,8 +306,10 @@ public class User {
 	 */
 	public void lockUser() throws Exception
 	{
+		jdbc = new SqlConnection();
 		this.gesperrt = 1;
 		jdbc.lockUser(userid);
+		jdbc.closeConnection();
 	}
 	
 	
@@ -325,8 +319,10 @@ public class User {
 	 */
 	public void unlockUser() throws Exception
 	{
+		jdbc = new SqlConnection();
 		this.gesperrt = 0;
 		jdbc.unlockUser(userid);
+		jdbc.closeConnection();
 	}
 	
 	
@@ -336,15 +332,17 @@ public class User {
 	 */
 	public void showUserDataById() throws Exception
 	{
-	 User tempUser = jdbc.showUserDataById(userid);
-	 this.mail = tempUser.getMail();
-	 this.vorname = tempUser.getVorname();
-	 this.nachname = tempUser.getNachname();
-	 this.passwort = tempUser.getPasswort();
-	 this.strasse = tempUser.getStrasse();
-	 this.hausnummer = tempUser.getHausnummer();
-	 this.postleitzahl = tempUser.getPostleitzahl();
-	 this.ort = tempUser.getOrt();
+		jdbc = new SqlConnection();
+		User tempUser = jdbc.showUserDataById(userid);
+		this.mail = tempUser.getMail();
+		this.vorname = tempUser.getVorname();
+		this.nachname = tempUser.getNachname();
+		this.passwort = tempUser.getPasswort();
+		this.strasse = tempUser.getStrasse();
+		this.hausnummer = tempUser.getHausnummer();
+		this.postleitzahl = tempUser.getPostleitzahl();
+		this.ort = tempUser.getOrt();
+		jdbc.closeConnection();
 	}
 	
 	/**
@@ -353,15 +351,17 @@ public class User {
 	 */
 	public void showUserDataByMail() throws Exception
 	{
-	 User tempUser = jdbc.showUserDataByMail(mail);
-	 this.mail = tempUser.getMail();
-	 this.vorname = tempUser.getVorname();
-	 this.nachname = tempUser.getNachname();
-	 this.passwort = tempUser.getPasswort();
-	 this.strasse = tempUser.getStrasse();
-	 this.hausnummer = tempUser.getHausnummer();
-	 this.postleitzahl = tempUser.getPostleitzahl();
-	 this.ort = tempUser.getOrt();
+		jdbc = new SqlConnection();
+		User tempUser = jdbc.showUserDataByMail(mail);
+		this.mail = tempUser.getMail();
+		this.vorname = tempUser.getVorname();
+		this.nachname = tempUser.getNachname();
+		this.passwort = tempUser.getPasswort();
+		this.strasse = tempUser.getStrasse();
+		this.hausnummer = tempUser.getHausnummer();
+		this.postleitzahl = tempUser.getPostleitzahl();
+		this.ort = tempUser.getOrt();
+		jdbc.closeConnection();
 	}
 	
 	
@@ -372,8 +372,9 @@ public class User {
 	 */
 	public ArrayList<Bestellung> getUserBestellungen() throws Exception
 	{
+		jdbc = new SqlConnection();
 		ArrayList<Bestellung> bestellungen = jdbc.showUserBestellungen(userid);
-		
+		jdbc.closeConnection();
 		return bestellungen;
 	}
 	
