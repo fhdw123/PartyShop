@@ -1,66 +1,56 @@
- package servlets;
+package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import classes.Artikel;
 import classes.Kategorie;
 import classes.SqlConnection;
-import classes.User;
 
 /**
- * Servlet implementation class MainServlet
+ * Servlet implementation class CategoryServlet
  */
-@WebServlet("/index")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/Kategorie")
+public class CategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexServlet() {
+    public CategoryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try
+		{
 
-		HttpSession session=request.getSession(false);  
-        if(session!=null) 
-        {
-        	User user=(User)session.getAttribute("user");  
-        }
-        try
-        {
-        	
-        	SqlConnection conn = new SqlConnection();
-        	ArrayList<Kategorie> kategorien = conn.showKategorien();
-        	request.setAttribute("kategorien", kategorien);
-        	String nextJSP = "/index.jsp";
-
-        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-        	dispatcher.forward(request,response);  
-        	
-        }
-        catch(Exception e)
-        {
-        	e.printStackTrace();        
-        }
-        
-          
-
+			SqlConnection conn = new SqlConnection();
+			ArrayList<Kategorie> kategorien = conn.showKategorien();
+			request.setAttribute("kategorien", kategorien);
+			ArrayList<Artikel> artikel = conn.showArtikelsInKategorie(request.getParameter("id"));
+			request.setAttribute("artikel", artikel);
+			conn.closeConnection();
+			String nextJSP = "/kategorie.jsp";
+            		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+            		dispatcher.forward(request,response);
+		}
+		catch(Exception e)
+		{
+			String error = e.getMessage();
+			
+		}
 		
 	}
 
@@ -68,7 +58,8 @@ public class IndexServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
