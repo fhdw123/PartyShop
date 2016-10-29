@@ -4,7 +4,11 @@
     Author     : Leon
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="servlets.IndexServlet"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="classes.Kategorie" %>
 <!DOCTYPE html>
 <html>
 
@@ -14,141 +18,169 @@
 <title>Partyshop</title>
 </head>
 <body>
-	<form action="ServletIndex" method="doGet">
+	<header class="standard">
+		<div class="header-logo">
+			<a href=""> <img class="logo" src="resources/images/logo.png">
+			</a>
+		</div>
+		<div class="header-logo-mobile">
+			<a href=""> <img class="logo" src="resources/images/mlogo.png">
+			</a>
+		</div>
 
-		<header class="standard">
-			<div class="header-logo">
-				<a href=""> <img class="logo" src="resources/images/logo.png">
-				</a>
+		<div class="headerlogos">
+			<div class="headerlogo">
+				<img src="resources/images/user.png">
 			</div>
-			<div class="header-logo-mobile">
-				<a href=""> <img class="logo" src="resources/images/mlogo.png">
-				</a>
+			<div class="headerlogo">
+				<img src="resources/images/cart.png">
 			</div>
-			<div>
-				<a href="registrieren.jsp"> registrieren</a>
-				<a href="login.jsp"> registrieren</a>
-			</div>
-
-			<div class="headerlogos">
-				<div class="headerlogo">
-					<img src="resources/images/user.png">
-				</div>
-				<div class="headerlogo">
-					<img src="resources/images/cart.png">
-				</div>
-			</div>
+		</div>
+		<form action="SearchServlet">
 			<div class="search">
+				<nav>
+
+					<a href="#" id="menu-icon"><img class="threelines"
+						src="resources/images/threelines.png"></a>
+
+					<ul>
+						<% 
+							ArrayList<Kategorie> kats =(ArrayList<Kategorie>) request.getAttribute("kategorien");
+							for(Kategorie kat: kats)
+							{
+								out.println("<li class=\"categories\"><a href=\"/Partyshop/Kategorie?id=" + kat.getKategorieid() 
+								+ "\">" + kat.getBezeichnung() + "</a></li>");
+							}
+						
+						
+						
+						%>
+						
+						<!--  <li class="categories"><a href="">Geburtstag</a></li>
+						<li class="categories"><a href="">Hochzeit</a></li>
+						<li class="categories"><a href="">Weihnachten</a></li>
+						<li class="categories"><a href="">Einfach so</a></li>
+						<li class="categories"><a href="">Mottoparty</a></li>
+						<li class="categories"><a href="">Ostern</a></li>
+						<li class="categories"><a href="">Beerdigung</a></li>
+						-->
+					</ul>
+
+				</nav>
+
 				<div class="searchbar">
 					<input class="searchbar" placeholder="Suchen" type="text"
-						name="search">
+						name="searchtext">
 				</div>
 
 				<div class="searchlogo">
-					<input class="searchlogo" type="image" name="searchButton"
+					<input class="searchlogo" type="image"
 						src="resources/images/lupe.png" alt="Submit">
 				</div>
 			</div>
+		</form>
 
 
-		</header>
+	</header>
 
 
-		<div class="content">
+	<div class="content">
 
-			<div class="categories">
-				<ul class="categories">
-					<li class="categories"><a class="title">Kategorien</a></li>
-					<li class="categories"><a href="">Geburtstag</a></li>
-					<li class="categories"><a href="">Hochzeit</a></li>
-					<li class="categories"><a href="">Weihnachten</a></li>
-					<li class="categories"><a href="">Einfach so</a></li>
-					<li class="categories"><a href="">Mottoparty</a></li>
-					<li class="categories"><a href="">Ostern</a></li>
-					<li class="categories"><a href="">Beerdigung</a></li>
-				</ul>
-			</div>
-
-
-			<div class="content2">
-				<div class="articles">
-					<h1 class="article">Aktuelle Angebote</h1>
-
-					<div class="article1">
-						<a target="_blank" href=""> <img
-							src="resources/images/beispiel1.jpg" alt="">
-						</a>
-						<div class="desc">beschreibung</div>
-					</div>
-
-					<div class="article1">
-						<a target="_blank" href=""> <img
-							src="resources/images/beispiel2.jpg" alt="">
-						</a>
-						<div class="desc">beschreibung</div>
-					</div>
-
-
-					<div class="article1">
-						<a target="_blank" href=""> <img
-							src="resources/images/beispiel3.jpg" alt="">
-						</a>
-						<div class="desc">beschreibung</div>
-					</div>
-
-				</div>
-				<div class="articles">
-					<h1 class="article">Bestseller</h1>
-
-					<div class="article1">
-						<a target="_blank" href=""> <img
-							src="resources/images/beispiel4.jpg" alt="">
-						</a>
-						<div class="desc">beschreibung</div>
-					</div>
-
-					<div class="article1">
-						<a target="_blank" href=""> <img
-							src="resources/images/beispiel1.jpg" alt="">
-						</a>
-						<div class="desc">beschreibung</div>
-					</div>
-
-					<div class="article1">
-						<a target="_blank" href=""> <img
-							src="resources/images/beispiel3.jpg" alt="">
-						</a>
-						<div class="desc">beschreibung</div>
-					</div>
-				</div>
-				<div class="articles">
-					<h1 class="article">Bestseller</h1>
-
-					<div class="article1">
-						<a target="_blank" href=""> <img
-							src="resources/images/beispiel4.jpg" alt="">
-						</a>
-						<div class="desc">beschreibung</div>
-					</div>
-
-					<div class="article1">
-						<a target="_blank" href=""> <img
-							src="resources/images/beispiel1.jpg" alt="">
-						</a>
-						<div class="desc">beschreibung</div>
-					</div>
-
-					<div class="article1">
-						<a target="_blank" href=""> <img
-							src="resources/images/beispiel3.jpg" alt="">
-						</a>
-						<div class="desc">beschreibung</div>
-					</div>
-				</div>
-
-			</div>
+		<div class="categories">
+			<ul class="categories">
+			<li class="categories"><a class="title">Kategorien</a></li>
+				<% 
+							for(Kategorie kat: kats)
+							{
+								out.println("<li class=\"categories\"><a href=\"/Partyshop/Kategorie?id=" + kat.getKategorieid() 
+								+ "\">" + kat.getBezeichnung() + "</a></li>");
+							}
+						
+						
+						
+						%>
+			</ul>
 		</div>
 
-	</form>
+
+		<div class="content2">
+			<div class="articles">
+				<h1 class="article">Aktuelle Angebote</h1>
+
+				<div class="article1">
+					<a target="_blank" href=""> <img
+						src="resources/images/beispiel1.jpg" alt="">
+					</a>
+					<div class="desc">beschreibung</div>
+				</div>
+
+				<div class="article1">
+					<a target="_blank" href=""> <img
+						src="resources/images/beispiel2.jpg" alt="">
+					</a>
+					<div class="desc">beschreibung</div>
+				</div>
+
+
+				<div class="article1">
+					<a target="_blank" href=""> <img
+						src="resources/images/beispiel3.jpg" alt="">
+					</a>
+					<div class="desc">beschreibung</div>
+				</div>
+
+			</div>
+			<div class="articles">
+				<h1 class="article">Bestseller</h1>
+
+				<div class="article1">
+					<a target="_blank" href=""> <img
+						src="resources/images/beispiel4.jpg" alt="">
+					</a>
+					<div class="desc">beschreibung</div>
+				</div>
+
+				<div class="article1">
+					<a target="_blank" href=""> <img
+						src="resources/images/beispiel1.jpg" alt="">
+					</a>
+					<div class="desc">beschreibung</div>
+				</div>
+
+				<div class="article1">
+					<a target="_blank" href=""> <img
+						src="resources/images/beispiel3.jpg" alt="">
+					</a>
+					<div class="desc">beschreibung</div>
+				</div>
+			</div>
+			<div class="articles">
+				<h1 class="article">Bestseller</h1>
+
+				<div class="article1">
+					<a target="_blank" href=""> <img
+						src="resources/images/beispiel4.jpg" alt="">
+					</a>
+					<div class="desc">beschreibung</div>
+				</div>
+
+				<div class="article1">
+					<a target="_blank" href=""> <img
+						src="resources/images/beispiel1.jpg" alt="">
+					</a>
+					<div class="desc">beschreibung</div>
+				</div>
+
+				<div class="article1">
+					<a target="_blank" href=""> <img
+						src="resources/images/beispiel3.jpg" alt="">
+					</a>
+					<div class="desc">beschreibung</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 </body>
 </html>
