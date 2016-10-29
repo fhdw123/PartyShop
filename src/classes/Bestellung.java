@@ -29,8 +29,6 @@ public class Bestellung {
 		this.preis = preis;
 		this.menge = menge;
 		this.positionen = positionen;
-
-		jdbc = new SqlConnection();
 	}
 
 	/**
@@ -118,7 +116,9 @@ public class Bestellung {
 	 * @throws Exception
 	 */
 	public void createBestellungAndPositionsInDB() throws Exception {
+		jdbc = new SqlConnection();
 		jdbc.createBestellungAndPositions(bestellungid, user, preis, menge, positionen);
+		jdbc.closeConnection();
 	}
 
 }
