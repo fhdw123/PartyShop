@@ -27,8 +27,6 @@ public class Artikel {
 		this.beschreibung = beschreibung;
 		this.preis = preis;
 		this.kategorie = kategorie;
-
-		jdbc = new SqlConnection();
 	}
 	
 	
@@ -48,8 +46,6 @@ public class Artikel {
 		this.beschreibung = beschreibung;
 		this.preis = preis;
 		this.kategorie = kategorie;
-
-		jdbc = new SqlConnection();
 	}
 	
 	
@@ -61,8 +57,6 @@ public class Artikel {
 	public Artikel(String artikelid) throws Exception {
 		super();
 		this.artikelid = artikelid;
-
-		jdbc = new SqlConnection();
 	}
 
 	
@@ -160,7 +154,9 @@ public class Artikel {
 	 * @throws Exception
 	 */
 	public void createArtikelInDB() throws Exception {
+		jdbc = new SqlConnection();
 		jdbc.createArtikel(artikelid, bezeichnung, beschreibung, preis, kategorie);
+		jdbc.closeConnection();
 	}
 	
 	
@@ -170,7 +166,9 @@ public class Artikel {
 	 */
 	public void deleteArtikel() throws Exception
 	{
+		jdbc = new SqlConnection();
 		jdbc.deleteArtikel(artikelid);
+		jdbc.closeConnection();
 	}
 	
 	
@@ -180,11 +178,13 @@ public class Artikel {
 	 */
 	public void showArtikelData() throws Exception
 	{
-	 Artikel tempArtikel = jdbc.showArtikelData(artikelid);
-	 this.bezeichnung = tempArtikel.getBezeichnung();
-	 this.beschreibung = tempArtikel.getBeschreibung();
-	 this.preis = tempArtikel.getPreis();
-	 this.kategorie = tempArtikel.getKategorie();
+		jdbc = new SqlConnection();
+		Artikel tempArtikel = jdbc.showArtikelData(artikelid);
+		this.bezeichnung = tempArtikel.getBezeichnung();
+		this.beschreibung = tempArtikel.getBeschreibung();
+		this.preis = tempArtikel.getPreis();
+		this.kategorie = tempArtikel.getKategorie();
+		jdbc.closeConnection();
 	}
 
 }
