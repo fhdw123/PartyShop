@@ -1,5 +1,5 @@
 /*
-    Document   : index
+    Document   : kategorie.css
     Created on : 28.10.2016
     Author     : Leon
 */
@@ -62,7 +62,7 @@ div.searchlogo
 	border-radius: 0px 5px 5px 0px;
 }
 
-/* Logos rechts im Header für Login und Warenkorb */
+/* Logos rechts im Header fÃ¼r Login und Warenkorb */
 div.headerlogos 
 {
 	width: 150px;
@@ -170,7 +170,7 @@ div.single-article
 }
 div.single-article:hover
 {
-		
+	
 }
 div.single-article img 
 {
@@ -242,9 +242,11 @@ div.desc
 		min-width: 1000px;
 	}
 
-	/* Größerer Header für mobile Version */
+	/* GrÃ¶ÃŸerer Header fÃ¼r mobile Version */
 	header.standard 
 	{
+		min-width: 1010px;
+		max-width: 1010px;
 		min-height: 250px;
 	}
 	div.header-logo
@@ -306,9 +308,10 @@ div.desc
 		display: none;
 		overflow: visible;
 		background: #fff;
-		width: 98%;
+		width: 105%;
 		height: auto;
 		list-style-type: none;
+		margin-left: -35px;
 	}
 
 	nav li 
@@ -352,7 +355,7 @@ div.desc
 	{
 		display: none;
 	}
-	/* Haupt Content Über ganzen Bildschirm*/
+	/* Haupt Content Ãœber ganzen Bildschirm*/
 	div.content2 
 	{
 		position: relative;
@@ -367,7 +370,7 @@ div.desc
 	div.articles 
 	{
 		min-width: 100%;
-		min-height: 600px;
+		min-height: 500px;
 	}
 	div.single-article
 	{
