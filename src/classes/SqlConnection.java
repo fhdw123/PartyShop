@@ -30,11 +30,24 @@ public class SqlConnection {
 		Connection connection = null;
 
 		Class.forName("com.mysql.jdbc.Driver");
-		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/partyshop", "root", "1234");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/partyshop?useSSL=false", "root", "1234");
 
 		return connection;
 	}
-
+	public void closeConnection()
+	{
+		try
+		{
+			if(!conn.isClosed())
+			{
+				conn.close();
+			}
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 
 	 * @param userid
@@ -59,6 +72,7 @@ public class SqlConnection {
 			stmt.executeUpdate("INSERT INTO User " + "VALUES ('" + userid + "', '" + mail + "', '" + vorname + "', '"
 					+ nachname + "', '" + passwort + "', '" + rolle + "', '" + gesperrt + "', '" + strasse + "', '"
 					+ hausnummer + "', " + postleitzahl + ", '" + ort + "')");
+			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -86,6 +100,7 @@ public class SqlConnection {
 			stmt.executeUpdate("Update User Set mail = '" + mail + "', vorname = '" + vorname + "', nachname = '"
 					+ nachname + "', '" + passwort + "''" + strasse + "', '" + hausnummer + "', '" + postleitzahl
 					+ "', '" + ort + "' where userid = '" + userid + "'");
+			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -101,6 +116,7 @@ public class SqlConnection {
 			Statement stmt = conn.createStatement();
 
 			stmt.executeUpdate("Update User Set gesperrt = 1 where userid = '" + userid + "'");
+			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -117,6 +133,7 @@ public class SqlConnection {
 			Statement stmt = conn.createStatement();
 
 			stmt.executeUpdate("Update User Set gesperrt = 0 where userid = '" + userid + "'");
+			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -138,7 +155,7 @@ public class SqlConnection {
 		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
 				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
 				Integer.parseInt(rs.getString(10)), rs.getString(11));
-
+		stmt.close();
 		return user;
 
 	}
@@ -153,7 +170,7 @@ public class SqlConnection {
 		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
 				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
 				Integer.parseInt(rs.getString(10)), rs.getString(11));
-
+		stmt.close();
 		return user;
 
 	}
@@ -172,9 +189,9 @@ public class SqlConnection {
 
 		try {
 			Statement stmt = conn.createStatement();
-
 			stmt.executeUpdate("INSERT INTO artikel " + "VALUES ('" + artikelid + "', '" + bezeichnung + "', '"
 					+ beschreibung + "', '" + preis + "', '" + kategorie + "')");
+			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -197,6 +214,7 @@ public class SqlConnection {
 			stmt.executeUpdate("Update Artikel Set bezeichnung = '" + bezeichnung + "', beschreibung = '" + beschreibung
 					+ "', preis = " + preis + ", kategorie = '" + kategorie + "' where artikelid = '" + artikelid
 					+ "'");
+			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -213,6 +231,7 @@ public class SqlConnection {
 			Statement stmt = conn.createStatement();
 
 			stmt.executeUpdate("Delete from artikel where artikelid = '" + artikelid + "'");
+			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -233,6 +252,7 @@ public class SqlConnection {
 
 		Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), Double.parseDouble(rs.getString(3)),
 				rs.getString(4));
+		stmt.close();
 		return artikel;
 
 	}
@@ -250,6 +270,7 @@ public class SqlConnection {
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery("Select * from artikel where kategorie = '" + kategorieid + "'");
+		
 
 		while (rs.next()) {
 
@@ -258,6 +279,7 @@ public class SqlConnection {
 
 			artikels.add(artikel);
 		}
+		stmt.close();
 		return artikels;
 	}
 
@@ -268,7 +290,7 @@ public class SqlConnection {
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery("Select * from artikel");
-
+		
 		while (rs.next()) {
 
 			Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
@@ -276,6 +298,7 @@ public class SqlConnection {
 
 			artikels.add(artikel);
 		}
+		stmt.close();
 		return artikels;
 
 	}
@@ -292,6 +315,7 @@ public class SqlConnection {
 			Statement stmt = conn.createStatement();
 
 			stmt.executeUpdate("INSERT INTO kategorie " + "VALUES ('" + kategorieid + "', '" + bezeichnung + "')");
+			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -311,6 +335,7 @@ public class SqlConnection {
 
 			stmt.executeUpdate("Update kategorie set bezeichnung = '" + bezeichnung + "'where kategorieid = '"
 					+ kategorieid + "'");
+			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -327,17 +352,19 @@ public class SqlConnection {
 
 		Statement stmt = conn.createStatement();
 
-		ResultSet rs = stmt.executeQuery("Select * from artikel");
-
+		ResultSet rs = stmt.executeQuery("Select * from kategorie");
+		
 		while (rs.next()) {
 
 			Kategorie kategorie = new Kategorie(rs.getString(1), rs.getString(2));
 
 			kategorien.add(kategorie);
 		}
+		stmt.close();
 		return kategorien;
 
 	}
+
 
 	/**
 	 * 
@@ -356,6 +383,7 @@ public class SqlConnection {
 
 			stmt.executeUpdate("INSERT INTO bestellung " + "VALUES ('" + bestellungid + "', '" + user + "', '" + preis
 					+ "', '" + menge + "')");
+			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -367,6 +395,7 @@ public class SqlConnection {
 				stmt.executeUpdate("INSERT INTO position " + "VALUES ('" + pos.getPositionid() + "', '"
 						+ pos.getArtikelbezeichnung() + "', '" + pos.getMenge() + "', '" + bestellungid + "', '"
 						+ pos.getPreis() + "')");
+				stmt.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -387,7 +416,7 @@ public class SqlConnection {
 		Statement stmtBes = conn.createStatement();
 
 		ResultSet rsBes = stmtBes.executeQuery("Select * from bestellung where user = '" + userid + "'");
-
+		
 		while (rsBes.next()) {
 			ArrayList<Position> positionen = new ArrayList<Position>();
 
@@ -401,8 +430,11 @@ public class SqlConnection {
 				positionen.add(pos);
 			}
 			Bestellung b = new Bestellung(rsBes.getString(1), rsBes.getString(2),
-					Double.parseDouble(rsBes.getString(3)), Integer.parseInt(rsBes.getString(4)), positionen);
+			Double.parseDouble(rsBes.getString(3)), Integer.parseInt(rsBes.getString(4)), positionen);
+			stmtPos.close();
 		}
+		stmtBes.close();
+		
 		return bestellungen;
 	}
 
