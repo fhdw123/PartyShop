@@ -41,9 +41,10 @@ public class CategoryServlet extends HttpServlet {
 			request.setAttribute("kategorien", kategorien);
 			ArrayList<Artikel> artikel = conn.showArtikelsInKategorie(request.getParameter("id"));
 			request.setAttribute("artikel", artikel);
+			conn.closeConnection();
 			String nextJSP = "/kategorie.jsp";
-            		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-            		dispatcher.forward(request,response);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+            dispatcher.forward(request,response);
 		}
 		catch(Exception e)
 		{
