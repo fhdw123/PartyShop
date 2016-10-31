@@ -4,9 +4,8 @@
     Author     : Leon
 --%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page import="servlets.IndexServlet"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="classes.Kategorie" %>
 <!DOCTYPE html>
@@ -20,11 +19,11 @@
 <body>
 	<header class="standard">
 		<div class="header-logo">
-			<a href=""> <img class="logo" src="resources/images/logo.png">
+			<a href="/Partyshop"> <img class="logo" src="resources/images/logo.png">
 			</a>
 		</div>
 		<div class="header-logo-mobile">
-			<a href=""> <img class="logo" src="resources/images/mlogo.png">
+			<a href="/Partyshop"> <img class="logo" src="resources/images/mlogo.png">
 			</a>
 		</div>
 
@@ -44,16 +43,15 @@
 						src="resources/images/threelines.png"></a>
 
 					<ul>
-						
-						
-						<!--  <li class="categories"><a href="">Geburtstag</a></li>
-						<li class="categories"><a href="">Hochzeit</a></li>
-						<li class="categories"><a href="">Weihnachten</a></li>
-						<li class="categories"><a href="">Einfach so</a></li>
-						<li class="categories"><a href="">Mottoparty</a></li>
-						<li class="categories"><a href="">Ostern</a></li>
-						<li class="categories"><a href="">Beerdigung</a></li>
-						-->
+						<% 
+							ArrayList<Kategorie> kats =(ArrayList<Kategorie>) request.getAttribute("kategorien");
+							for(Kategorie kat: kats) 
+							{
+								out.println("<li class=\"categories\"><a href=\"/Partyshop/Kategorie?id=" + kat.getKategorieid() 
+								+ "\">" + kat.getBezeichnung() + "</a></li>");
+							}
+						%>
+
 					</ul>
 
 				</nav>
