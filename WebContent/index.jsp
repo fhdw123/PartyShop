@@ -44,17 +44,7 @@
 						src="resources/images/threelines.png"></a>
 
 					<ul>
-						<% 
-							ArrayList<Kategorie> kats =(ArrayList<Kategorie>) request.getAttribute("kategorien");
-							for(Kategorie kat: kats)
-							{
-								out.println("<li class=\"categories\"><a href=\"/Partyshop/Kategorie?id=" + kat.getKategorieid() 
-								+ "\">" + kat.getBezeichnung() + "</a></li>");
-							}
 						
-						
-						
-						%>
 						
 						<!--  <li class="categories"><a href="">Geburtstag</a></li>
 						<li class="categories"><a href="">Hochzeit</a></li>

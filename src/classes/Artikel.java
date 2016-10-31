@@ -176,11 +176,27 @@ public class Artikel {
 	 * 
 	 * @throws Exception
 	 */
-	public void showArtikelData() throws Exception
+	public void showArtikelDataById() throws Exception
 	{
 		jdbc = new SqlConnection();
-		Artikel tempArtikel = jdbc.showArtikelData(artikelid);
+		Artikel tempArtikel = jdbc.showArtikelDataById(artikelid);
 		this.bezeichnung = tempArtikel.getBezeichnung();
+		this.beschreibung = tempArtikel.getBeschreibung();
+		this.preis = tempArtikel.getPreis();
+		this.kategorie = tempArtikel.getKategorie();
+		jdbc.closeConnection();
+	}
+	
+	
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	public void showArtikelDataByName() throws Exception
+	{
+		jdbc = new SqlConnection();
+		Artikel tempArtikel = jdbc.showArtikelDataById(bezeichnung);
+		this.artikelid = tempArtikel.getArtikelid();
 		this.beschreibung = tempArtikel.getBeschreibung();
 		this.preis = tempArtikel.getPreis();
 		this.kategorie = tempArtikel.getKategorie();
