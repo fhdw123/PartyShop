@@ -283,7 +283,7 @@ public class User {
 	 */
 	public void createUserInDB() throws Exception {
 		jdbc = new SqlConnection();
-		jdbc.createUser(userid, mail, vorname, nachname, passwort, rolle, gesperrt, strasse, hausnummer, postleitzahl,
+		jdbc.createUser(userid, mail, vorname, nachname, passwort.hashCode()+"", rolle, gesperrt, strasse, hausnummer, postleitzahl,
 				ort);
 		jdbc.closeConnection();
 	}

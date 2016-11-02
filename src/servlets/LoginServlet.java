@@ -52,7 +52,8 @@ public class LoginServlet extends HttpServlet {
 				if (rs.getString("gesperrt").equals(0)) {
 
 					while (rs.next()) {
-						if (rs.getString("passwort").equals(pass)) {
+						String hashPasswort = rs.getString("passwort").hashCode()+"";
+						if (hashPasswort.equals(pass)) {
 
 							if (rs.getString("rolle").equals("kunde")) {
 
