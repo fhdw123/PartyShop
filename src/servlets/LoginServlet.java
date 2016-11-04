@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import classes.EncryptPassword;
 import classes.SqlConnection;
 import classes.User;
 
@@ -50,9 +51,10 @@ public class LoginServlet extends HttpServlet {
 								+ "'");
 
 				if (rs.getString("gesperrt").equals(0)) {
+					EncryptPassword ep = new EncryptPassword();
 
 					while (rs.next()) {
-						String hashPasswort = rs.getString("passwort").hashCode()+"";
+						String hashPasswort = ep.SHA512(rs.getString("passwort"));
 						if (hashPasswort.equals(pass)) {
 
 							if (rs.getString("rolle").equals("kunde")) {
@@ -63,13 +65,15 @@ public class LoginServlet extends HttpServlet {
 								HttpSession session = request.getSession(false);
 								session.setAttribute("user", user);
 
-								String nextJSP = "/index.jsp";
-								RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-								dispatcher.forward(request, response);
+								response.sendRedirect("/Partyshop");
 
 							} else if (rs.getString("rolle").equals("mitarbeiter")) {
 
 							} else if (rs.getString("rolle").equals("administrator")) {
+								
+								String nextJSP = "/adminArea.jsp";
+								RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+								dispatcher.forward(request, response);
 
 							}
 

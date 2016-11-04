@@ -3,7 +3,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="classes.Kategorie"%>
 <%@ page import="classes.Artikel" %>
-<%@ page import="java.text.DecimalFormat;" %>
+<%@ page import="java.text.DecimalFormat" %>
 <!DOCTYPE html>
 <html>
 <head>

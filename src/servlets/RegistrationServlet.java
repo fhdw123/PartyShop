@@ -12,13 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import classes.EncryptPassword;
 import classes.SqlConnection;
 import classes.User;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.UUID;
-
+import java.security.NoSuchAlgorithmException;
 /**
  * Servlet implementation class LoginServlet
  */
@@ -67,7 +68,8 @@ public class RegistrationServlet extends HttpServlet {
 
 							try {
 
-								User user = new User(mail, vname, nname, pass1, rolle, 0, strasse, hausnummer,
+								EncryptPassword ep = new EncryptPassword();
+								User user = new User(mail, vname, nname, ep.SHA512(pass1), rolle, 0, strasse, hausnummer,
 										Integer.parseInt(plz), ort);
 								user.createUserInDB();
 

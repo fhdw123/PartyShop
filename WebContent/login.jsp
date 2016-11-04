@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index
+    Document   : login
     Created on : 04.10.2016
-    Author     : Leon
+    Author     : jannik
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,158 +18,26 @@
 <title>Partyshop</title>
 </head>
 <body>
-	<header class="standard">
-		<div class="header-logo">
-			<a href="/Partyshop"> <img class="logo" src="resources/images/logo.png">
-			</a>
-		</div>
-		<div class="header-logo-mobile">
-			<a href="/Partyshop"> <img class="logo" src="resources/images/mlogo.png">
-			</a>
-		</div>
+	<form action="ServletLogin" method="post">
 
-		<div class="headerlogos">
-			<div class="headerlogo">
-				<img src="resources/images/user.png">
-			</div>
-			<div class="headerlogo">
-				<img src="resources/images/cart.png">
-			</div>
-		</div>
-		<form action="SearchServlet">
-			<div class="search">
-				<nav>
-
-					<a href="#" id="menu-icon"><img class="threelines"
-						src="resources/images/threelines.png"></a>
-
-					<ul>
-						<% 
-							ArrayList<Kategorie> kats =(ArrayList<Kategorie>) request.getAttribute("kategorien");
-							for(Kategorie kat: kats)
-							{
-								out.println("<li class=\"categories\"><a href=\"/Partyshop/Kategorie?id=" + kat.getKategorieid() 
-								+ "\">" + kat.getBezeichnung() + "</a></li>");
-							}
-						%>
-
-					</ul>
-
-				</nav>
-
-				<div class="searchbar">
-					<input class="searchbar" placeholder="Suchen" type="text"
-						name="searchtext">
-				</div>
-
-				<div class="searchlogo">
-					<input class="searchlogo" type="image"
-						src="resources/images/lupe.png" alt="Submit">
-				</div>
-			</div>
+			E-Mail:	
+			<input type="text" name="mail"/><br>		
+		
+			Passwort:
+			<input type="password" name="pw"/><br>		
+			
+			
+			
+			<input type="submit" name="act" value="login"><br>		
+		
+		
+		
 		</form>
 
 
-	</header>
+	
 
 
-	<div class="content">
-
-		<div class="categories">
-			<ul class="categories">
-			<li class="categories"><a class="title">Kategorien</a></li>
-				<% 
-							for(Kategorie kat: kats)
-							{
-								out.println("<li class=\"categories\"><a href=\"/Partyshop/Kategorie?id=" + kat.getKategorieid() 
-								+ "\">" + kat.getBezeichnung() + "</a></li>");
-							}
-						
-						
-						
-						%>
-			</ul>
-		</div>
-
-
-		<div class="content2">
-			<div class="articles">
-				<h1 class="article">Aktuelle Angebote</h1>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel1.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel2.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel3.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-			</div>
-			<div class="articles">
-				<h1 class="article">Bestseller</h1>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel4.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel1.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel3.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-			</div>
-			<div class="articles">
-				<h1 class="article">Bestseller</h1>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel4.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel1.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel3.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
+	
 </body>
 </html>

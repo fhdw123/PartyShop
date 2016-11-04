@@ -1,5 +1,6 @@
 package classes;
 
+import java.io.File;
 import java.util.UUID;
 
 public class Artikel {
@@ -10,8 +11,35 @@ public class Artikel {
 	private String beschreibung;
 	private double preis;
 	private String kategorie;
+	private File bild;
 
 	
+	/**
+	 * 
+	 * @return
+	 */
+	public File getBild() {
+		return bild;
+	}
+
+    
+	/**
+	 * 
+	 * @param bild
+	 */
+	public void setBild(File bild) {
+		this.bild = bild;
+	}
+
+    /**
+     * 
+     * @param preis
+     */
+	public void setPreis(double preis) {
+		this.preis = preis;
+	}
+
+
 	/**
 	 * 
 	 * @param bezeichnung
@@ -32,6 +60,26 @@ public class Artikel {
 	
 	/**
 	 * 
+	 * @param bezeichnung
+	 * @param beschreibung
+	 * @param preis
+	 * @param kategorie
+	 * @param bild
+	 * @throws Exception
+	 */
+	public Artikel(String bezeichnung, String beschreibung, double preis, String kategorie, File bild) throws Exception {
+		super();
+		this.artikelid = UUID.randomUUID().toString();
+		this.bezeichnung = bezeichnung;
+		this.beschreibung = beschreibung;
+		this.preis = preis;
+		this.kategorie = kategorie;
+		this.bild = bild;
+	}
+	
+	
+	/**
+	 * 
 	 * @param artikelid
 	 * @param bezeichnung
 	 * @param beschreibung
@@ -46,6 +94,28 @@ public class Artikel {
 		this.beschreibung = beschreibung;
 		this.preis = preis;
 		this.kategorie = kategorie;
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @param artikelid
+	 * @param bezeichnung
+	 * @param beschreibung
+	 * @param preis
+	 * @param kategorie
+	 * @param bild
+	 * @throws Exception
+	 */
+	public Artikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie, File bild) throws Exception {
+		super();
+		this.artikelid = artikelid;
+		this.bezeichnung = bezeichnung;
+		this.beschreibung = beschreibung;
+		this.preis = preis;
+		this.kategorie = kategorie;
+		this.bild = bild;
 	}
 	
 	
@@ -155,7 +225,7 @@ public class Artikel {
 	 */
 	public void createArtikelInDB() throws Exception {
 		jdbc = new SqlConnection();
-		jdbc.createArtikel(artikelid, bezeichnung, beschreibung, preis, kategorie);
+		jdbc.createArtikel(artikelid, bezeichnung, beschreibung, preis, kategorie, bild);
 		jdbc.closeConnection();
 	}
 	
@@ -202,5 +272,7 @@ public class Artikel {
 		this.kategorie = tempArtikel.getKategorie();
 		jdbc.closeConnection();
 	}
+	
+	
 
 }

@@ -40,4 +40,14 @@
     <servlet-name>ArticleServlet</servlet-name>
     <servlet-class>servlets.ArticleServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>AdminAreaServlet</display-name>
+    <servlet-name>AdminAreaServlet</servlet-name>
+    <servlet-class>servlets.AdminAreaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAreaServlet</servlet-name>
+    <url-pattern>/AdminAreaServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

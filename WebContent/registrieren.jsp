@@ -11,8 +11,6 @@
 
 <form action="ServletRegistration" method="post">
 
-<input type="hidden" name="userdata" />
-
 			E-Mail:	
 			<input type="text" name="mail"/><br>		
 		

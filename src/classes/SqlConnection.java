@@ -1,12 +1,26 @@
 package classes;
 
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.UUID;
+
+
+
+
+
 
 public class SqlConnection {
 
@@ -166,13 +180,31 @@ public class SqlConnection {
 	 * @param kategorie
 	 * @throws Exception
 	 */
-	public void createArtikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie)
+	public void createArtikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie, File bild)
 			throws Exception {
 
 		Statement stmt = conn.createStatement();
-		stmt.executeUpdate("INSERT INTO artikel " + "VALUES ('" + artikelid + "', '" + bezeichnung + "', '"
-				+ beschreibung + "', '" + preis + "', '" + kategorie + "')");
-		stmt.close();
+		
+		
+		FileInputStream fis = null;
+	    PreparedStatement ps = null;
+	    
+		String INSERT_ARTICLE = "insert into artikel(artikelid, bezeichnung, beschreibung, preis, kategorie, bild) values ('"+artikelid+"', '"+bezeichnung+"', '"+beschreibung+"', '"+preis+"', '"+kategorie+"', ?)";
+		
+		
+		
+	    try {
+	      conn.setAutoCommit(false);
+	      fis = new FileInputStream(bild);
+	      ps = conn.prepareStatement(INSERT_ARTICLE);
+	      ps.setBinaryStream(6, fis, (int) bild.length());
+	      ps.executeUpdate();
+	      conn.commit();
+	    } finally {
+	      ps.close();
+	      fis.close();
+	      stmt.close();
+	    }
 
 	}
 
@@ -185,14 +217,31 @@ public class SqlConnection {
 	 * @param kategorie
 	 * @throws Exception
 	 */
-	public void updateArtikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie)
+	public void updateArtikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie, File bild)
 			throws Exception {
 
 		Statement stmt = conn.createStatement();
-
-		stmt.executeUpdate("Update Artikel Set bezeichnung = '" + bezeichnung + "', beschreibung = '" + beschreibung
-				+ "', preis = " + preis + ", kategorie = '" + kategorie + "' where artikelid = '" + artikelid + "'");
-		stmt.close();
+		
+		
+		FileInputStream fis = null;
+	    PreparedStatement ps = null;
+	    
+		String UPDATE_ARTICLE = "update artikel set bezeichnung = '"+bezeichnung+"', beschreibung = '"+beschreibung+"', preis = '"+preis+"', kategorie = '"+kategorie+"', bild = ?)";
+		
+		
+		
+	    try {
+	      conn.setAutoCommit(false);
+	      fis = new FileInputStream(bild);
+	      ps = conn.prepareStatement(UPDATE_ARTICLE);
+	      ps.setBinaryStream(5, fis, (int) bild.length());
+	      ps.executeUpdate();
+	      conn.commit();
+	    } finally {
+	      ps.close();
+	      fis.close();
+	      stmt.close();
+	    }
 
 	}
 
@@ -221,9 +270,20 @@ public class SqlConnection {
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery("Select * from artikel where artikelid = '" + artikelid + "'");
+		
+		File file = new File("C:/Users/Jannik/Desktop/bild.jpg");
+		FileOutputStream output = new FileOutputStream(file);
+		 
+		    InputStream input = rs.getBinaryStream("bild");
+		    byte[] buffer = new byte[1024];
+		    while (input.read(buffer) > 0) {
+		        output.write(buffer);
+		    
+		}
+		
 
-		Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), Double.parseDouble(rs.getString(3)),
-				rs.getString(4));
+		Artikel artikel = new Artikel(rs.getString(2), rs.getString(3), Double.parseDouble(rs.getString(4)),
+				rs.getString(5), file);
 		stmt.close();
 		return artikel;
 
@@ -240,9 +300,19 @@ public class SqlConnection {
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery("Select * from artikel where bezeichnung = '" + bezeichnung + "'");
+		
+		File file = new File("C:/Users/Jannik/Desktop/bild.jpg");
+		FileOutputStream output = new FileOutputStream(file);
+		 
+		    InputStream input = rs.getBinaryStream("bild");
+		    byte[] buffer = new byte[1024];
+		    while (input.read(buffer) > 0) {
+		        output.write(buffer);
+		    
+		}
 
-		Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), Double.parseDouble(rs.getString(3)),
-				rs.getString(4));
+		Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3), Double.parseDouble(rs.getString(4)),
+				rs.getString(5), file);
 		stmt.close();
 		return artikel;
 
@@ -413,5 +483,7 @@ public class SqlConnection {
 
 		return bestellungen;
 	}
+	
+	
 
 }
