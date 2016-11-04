@@ -310,6 +310,30 @@ public class SqlConnection {
 		        output.write(buffer);
 		    
 		}
+		    
+		    
+		    
+		    /**
+			 * 
+			 * @param bezeichnung
+			 * @return
+			 * @throws Exception
+			 */
+			public Artikel searchArtikel(String bezeichnungSub) throws Exception {
+
+				Statement stmt = conn.createStatement();
+
+				ResultSet rs = stmt.executeQuery("Select * from artikel where upper(bezeichnung) like upper('" + bezeichnungSub + "%')");
+				
+				File file = new File("C:/Users/Jannik/Desktop/bild.jpg");
+				FileOutputStream output = new FileOutputStream(file);
+				 
+				    InputStream input = rs.getBinaryStream("bild");
+				    byte[] buffer = new byte[1024];
+				    while (input.read(buffer) > 0) {
+				        output.write(buffer);
+				    
+				}
 
 		Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3), Double.parseDouble(rs.getString(4)),
 				rs.getString(5), file);
@@ -483,6 +507,10 @@ public class SqlConnection {
 
 		return bestellungen;
 	}
+	
+	
+	
+	
 	
 	
 
