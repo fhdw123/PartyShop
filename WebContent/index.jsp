@@ -6,8 +6,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="classes.Kategorie" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="classes.Kategorie"%>
 <!DOCTYPE html>
 <html>
 
@@ -19,11 +19,13 @@
 <body>
 	<header class="standard">
 		<div class="header-logo">
-			<a href="/Partyshop"> <img class="logo" src="resources/images/logo.png">
+			<a href="/Partyshop"> <img class="logo"
+				src="resources/images/logo.png">
 			</a>
 		</div>
 		<div class="header-logo-mobile">
-			<a href="/Partyshop"> <img class="logo" src="resources/images/mlogo.png">
+			<a href="/Partyshop"> <img class="logo"
+				src="resources/images/mlogo.png">
 			</a>
 		</div>
 
@@ -35,7 +37,7 @@
 				<img src="resources/images/cart.png">
 			</div>
 		</div>
-		<form action="SearchServlet">
+		<form action="Suche">
 			<div class="search">
 				<nav>
 
@@ -43,12 +45,11 @@
 						src="resources/images/threelines.png"></a>
 
 					<ul>
-						<% 
-							ArrayList<Kategorie> kats =(ArrayList<Kategorie>) request.getAttribute("kategorien");
-							for(Kategorie kat: kats) 
-							{
-								out.println("<li class=\"categories\"><a href=\"/Partyshop/Kategorie?id=" + kat.getKategorieid() 
-								+ "\">" + kat.getBezeichnung() + "</a></li>");
+						<%
+							ArrayList<Kategorie> kats = (ArrayList<Kategorie>) request.getAttribute("kategorien");
+							for (Kategorie kat : kats) {
+								out.println("<li class=\"categories\"><a href=\"/Partyshop/Kategorie?id=" + kat.getKategorieid() + "\">"
+										+ kat.getBezeichnung() + "</a></li>");
 							}
 						%>
 
@@ -62,8 +63,7 @@
 				</div>
 
 				<div class="searchlogo">
-					<input class="searchlogo" type="image"
-						src="resources/images/lupe.png" alt="Submit">
+					<input class="searchlogo" type="submit" value="">
 				</div>
 			</div>
 		</form>
@@ -76,17 +76,13 @@
 
 		<div class="categories">
 			<ul class="categories">
-			<li class="categories"><a class="title">Kategorien</a></li>
-				<% 
-							for(Kategorie kat: kats)
-							{
-								out.println("<li class=\"categories\"><a href=\"/Partyshop/Kategorie?id=" + kat.getKategorieid() 
-								+ "\">" + kat.getBezeichnung() + "</a></li>");
-							}
-						
-						
-						
-						%>
+				<li class="categories"><a class="title">Kategorien</a></li>
+				<%
+					for (Kategorie kat : kats) {
+						out.println("<li class=\"categories\"><a href=\"/Partyshop/Kategorie?id=" + kat.getKategorieid() + "\">"
+								+ kat.getBezeichnung() + "</a></li>");
+					}
+				%>
 			</ul>
 		</div>
 
