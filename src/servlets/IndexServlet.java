@@ -40,7 +40,7 @@ public class IndexServlet extends HttpServlet {
 		HttpSession session=request.getSession(false);  
         if(session!=null) 
         {
-        	User user=(User)session.getAttribute("user");  
+        	User user=(User)session.getAttribute("user");
         }
         try
         {
