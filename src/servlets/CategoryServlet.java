@@ -42,6 +42,15 @@ public class CategoryServlet extends HttpServlet {
 			ArrayList<Artikel> artikel = conn.showArtikelsInKategorie(request.getParameter("id"));
 			request.setAttribute("artikel", artikel);
 			conn.closeConnection();
+			for(Kategorie kat: kategorien)
+			{
+				if(request.getParameter("id").equals(kat.getKategorieid()))
+				{
+					request.setAttribute("kategoriename", kat.getBezeichnung());
+				}
+					
+			}
+			
 			String nextJSP = "/kategorie.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
