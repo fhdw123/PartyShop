@@ -42,12 +42,8 @@
   </servlet>
   <servlet>
     <description></description>
-    <display-name>AdminAreaServlet</display-name>
-    <servlet-name>AdminAreaServlet</servlet-name>
-    <servlet-class>servlets.AdminAreaServlet</servlet-class>
+    <display-name>AddToCartServlet</display-name>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <servlet-class>servlets.AddToCartServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminAreaServlet</servlet-name>
-    <url-pattern>/AdminAreaServlet</url-pattern>
-  </servlet-mapping>
 </web-app>
