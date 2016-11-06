@@ -265,51 +265,34 @@ public class SqlConnection {
 	 * @return
 	 * @throws Exception
 	 */
-	public Artikel showArtikelDataById(String artikelid) throws Exception {
+	public User showUserDataById(String userid) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
-		ResultSet rs = stmt.executeQuery("Select * from artikel where artikelid = '" + artikelid + "'");
-		
-		File file = new File("C:/Users/Jannik/Desktop/bild.jpg");
-		FileOutputStream output = new FileOutputStream(file);
-		 
-		    InputStream input = rs.getBinaryStream("bild");
-		    byte[] buffer = new byte[1024];
-		    while (input.read(buffer) > 0) {
-		        output.write(buffer);
-		    
-		}
-		
+		ResultSet rs = stmt.executeQuery("Select * from user where userid = '" + userid + "'");
 
-		Artikel artikel = new Artikel(rs.getString(2), rs.getString(3), Double.parseDouble(rs.getString(4)),
-				rs.getString(5), file);
+		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
+				Integer.parseInt(rs.getString(10)), rs.getString(11));
 		stmt.close();
-		return artikel;
+		return user;
 
 	}
-
-	/**
-	 * 
-	 * @param bezeichnung
-	 * @return
-	 * @throws Exception
-	 */
-	public Artikel showArtikelDataByName(String bezeichnung) throws Exception {
+	
+	
+	public User showUserDataByMail(String mail) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
-		ResultSet rs = stmt.executeQuery("Select * from artikel where bezeichnung = '" + bezeichnung + "'");
-		
-		File file = new File("C:/Users/Jannik/Desktop/bild.jpg");
-		FileOutputStream output = new FileOutputStream(file);
-		 
-		    InputStream input = rs.getBinaryStream("bild");
-		    byte[] buffer = new byte[1024];
-		    while (input.read(buffer) > 0) {
-		        output.write(buffer);
-		    
-		}
+		ResultSet rs = stmt.executeQuery("Select * from user where mail = '" + mail + "'");
+
+		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
+				Integer.parseInt(rs.getString(10)), rs.getString(11));
+		stmt.close();
+		return user;
+
+	}
 		    
 		    
 		    
