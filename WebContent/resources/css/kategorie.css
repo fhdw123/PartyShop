@@ -89,8 +89,12 @@ img.logo
 }
 input.searchlogo 
 {
-	height: 20px;
-	margin-left: 8px;
+	height: 100%;
+	width: 100%;
+	background: url(/Partyshop/resources/images/lupe.png) no-repeat;
+	background-position: center;
+	background-size: 70%;
+	border: solid 0px;
 }
 form.searchbar 
 {
@@ -308,7 +312,7 @@ div.desc
 		display: none;
 		overflow: visible;
 		background: #fff;
-		width: 105%;
+		width: 102%;
 		height: auto;
 		list-style-type: none;
 		margin-left: -35px;
@@ -347,7 +351,6 @@ div.desc
 	}
 	input.searchlogo 
 	{
-		margin-top: 10px;
 		min-height: 30px;
 	}
 	/*Kategorie-Leiste verschwindet*/
