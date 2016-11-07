@@ -62,7 +62,7 @@ div.searchlogo
 	border-radius: 0px 5px 5px 0px;
 }
 
-/* Logos rechts im Header für Login und Warenkorb */
+/* Logos rechts im Header fÃ¼r Login und Warenkorb */
 div.headerlogos 
 {
 	width: 150px;
@@ -216,11 +216,36 @@ div.order
 {
 	float: right;
 	width: 24%;
-	border: 1px solid;
+	max-width: 250px;
+	background-color: #ccc;
 	margin-left: 25px;
 	margin-right: -5px;
+	padding-left: 20px;
+	border-width: 0px;
+	border-radius: 5px 5px 5px 5px;
 }
-
+div.order2
+{
+	width: 100%;
+}
+span.sum
+{
+	font-size: 22px;
+}
+span.articles
+{
+	font-size: 22px;
+}
+div.order-button
+{
+	text-align: center;
+	width: 80%;
+	height: 50px;
+	background-color: yellow;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	line-height: 50px;
+}
 /* Mobile */
 @media screen and (min-device-width: 801px)
 {
@@ -252,7 +277,7 @@ div.order
 		min-width: 1000px;
 	}
 
-	/* Größerer Header für mobile Version */
+	/* GrÃ¶ÃŸerer Header fÃ¼r mobile Version */
 	header.standard 
 	{
 		min-width: 1010px;
