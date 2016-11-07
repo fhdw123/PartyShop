@@ -10,22 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import classes.Article;
+import classes.Artikel;
 import classes.Position;
 import classes.SqlConnection;
-import classes.User;
 
 /**
- * Servlet implementation class AddToCartServlet
+ * Servlet implementation class InWarenkorbLegen
  */
 @WebServlet("/AddToCart")
-public class AddToCartServlet extends HttpServlet {
+public class InWarenkorbLegen extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddToCartServlet() {
+    public InWarenkorbLegen() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +36,7 @@ public class AddToCartServlet extends HttpServlet {
 		try
 		{
 			SqlConnection conn = new SqlConnection();
-			Article artikel = conn.showArtikelData(request.getParameter("id"));
+			Artikel artikel = conn.artikelMitIdLiefern(request.getParameter("id"));
 			System.out.println(artikel.getBezeichnung());
 			HttpSession session=request.getSession(false);  
 	        if(session!=null) 

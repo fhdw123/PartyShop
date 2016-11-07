@@ -10,20 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import classes.Article;
+import classes.Artikel;
+import classes.Kategorie;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class ArticleServlet
+ * Servlet implementation class KategorieServlet
  */
-@WebServlet("/Artikel")
-public class ArticleServlet extends HttpServlet {
+@WebServlet("/Kategorie")
+public class KategorieServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ArticleServlet() {
+    public KategorieServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,21 +35,32 @@ public class ArticleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try
 		{
+
 			SqlConnection conn = new SqlConnection();
-			Article artikel = conn.showArtikelData(request.getParameter("id"));
+			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
+			request.setAttribute("kategorien", kategorien);
+			ArrayList<Artikel> artikel = conn.artikelInKategorieLiefern(request.getParameter("id"));
 			request.setAttribute("artikel", artikel);
+			conn.closeConnection();
+			for(Kategorie kat: kategorien)
+			{
+				if(request.getParameter("id").equals(kat.getKategorieid()))
+				{
+					request.setAttribute("kategoriename", kat.getBezeichnung());
+				}
+					
+			}
 			
-			
-			
-			String nextJSP = "/article.jsp";
-	        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-	        dispatcher.forward(request,response);
+			String nextJSP = "/category.jsp";
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+            dispatcher.forward(request,response);
 		}
 		catch(Exception e)
 		{
-			response.getWriter().println("Error dies das");
-			e.printStackTrace();
+			String error = e.getMessage();
+			
 		}
+		
 	}
 
 	/**

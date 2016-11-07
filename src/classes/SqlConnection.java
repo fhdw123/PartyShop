@@ -1,26 +1,15 @@
 package classes;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.UUID;
-
-
-
-
-
 
 public class SqlConnection {
 
@@ -72,7 +61,7 @@ public class SqlConnection {
 	 * @param ort
 	 * @throws Exception
 	 */
-	public void createUser(String userid, String mail, String vorname, String nachname, String passwort, String rolle,
+	public void userErzeugen(String userid, String mail, String vorname, String nachname, String passwort, String rolle,
 			int gesperrt, String strasse, String hausnummer, int postleitzahl, String ort) throws Exception {
 
 		Statement stmt = conn.createStatement();
@@ -97,7 +86,7 @@ public class SqlConnection {
 	 * @param ort
 	 * @throws Exception
 	 */
-	public void updateUser(String userid, String mail, String vorname, String nachname, String passwort, String strasse,
+	public void userAktualisieren(String userid, String mail, String vorname, String nachname, String passwort, String strasse,
 			String hausnummer, int postleitzahl, String ort) throws Exception {
 
 		Statement stmt = conn.createStatement();
@@ -114,7 +103,7 @@ public class SqlConnection {
 	 * @param userid
 	 * @throws Exception
 	 */
-	public void lockUser(String userid) throws Exception {
+	public void userSperren(String userid) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -128,7 +117,7 @@ public class SqlConnection {
 	 * @param userid
 	 * @throws Exception
 	 */
-	public void unlockUser(String userid) throws Exception {
+	public void userEntsperren(String userid) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -143,7 +132,7 @@ public class SqlConnection {
 	 * @return
 	 * @throws Exception
 	 */
-	public User showUserDataById(String userid) throws Exception {
+	public User userMitIdLiefern(String userid) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -157,7 +146,7 @@ public class SqlConnection {
 
 	}
 
-	public User showUserDataByMail(String mail) throws Exception {
+	public User userMitMailLiefern(String mail) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -180,31 +169,35 @@ public class SqlConnection {
 	 * @param kategorie
 	 * @throws Exception
 	 */
-	public void createArtikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie, File bild)
-			throws Exception {
+	public void artikelErzeugen(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie,
+			File bild) throws Exception {
 
 		Statement stmt = conn.createStatement();
-		
-		
+
+		bild = new File("C:/Users/Jannik/Desktop/example.JPG");
+
 		FileInputStream fis = null;
-	    PreparedStatement ps = null;
-	    
-		String INSERT_ARTICLE = "insert into artikel(artikelid, bezeichnung, beschreibung, preis, kategorie, bild) values ('"+artikelid+"', '"+bezeichnung+"', '"+beschreibung+"', '"+preis+"', '"+kategorie+"', ?)";
-		
-		
-		
-	    try {
-	      conn.setAutoCommit(false);
-	      fis = new FileInputStream(bild);
-	      ps = conn.prepareStatement(INSERT_ARTICLE);
-	      ps.setBinaryStream(6, fis, (int) bild.length());
-	      ps.executeUpdate();
-	      conn.commit();
-	    } finally {
-	      ps.close();
-	      fis.close();
-	      stmt.close();
-	    }
+		PreparedStatement ps = null;
+
+		String INSERT_ARTICLE = "insert into artikel(artikelid, bezeichnung, beschreibung, preis, kategorie, bild) values (?,?,?,?,?,?)";
+
+		try {
+			conn.setAutoCommit(false);
+			fis = new FileInputStream(bild);
+			ps = conn.prepareStatement(INSERT_ARTICLE);
+			ps.setString(1, artikelid);
+			ps.setString(2, bezeichnung);
+			ps.setString(3, beschreibung);
+			ps.setDouble(4, preis);
+			ps.setString(5, kategorie);
+			ps.setBinaryStream(6, fis, (int) bild.length());
+			ps.executeUpdate();
+			conn.commit();
+		} finally {
+			ps.close();
+			fis.close();
+			stmt.close();
+		}
 
 	}
 
@@ -217,31 +210,33 @@ public class SqlConnection {
 	 * @param kategorie
 	 * @throws Exception
 	 */
-	public void updateArtikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie, File bild)
-			throws Exception {
+	public void artikelAktualisieren(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie,
+			File bild) throws Exception {
 
 		Statement stmt = conn.createStatement();
-		
-		
+
 		FileInputStream fis = null;
-	    PreparedStatement ps = null;
-	    
-		String UPDATE_ARTICLE = "update artikel set bezeichnung = '"+bezeichnung+"', beschreibung = '"+beschreibung+"', preis = '"+preis+"', kategorie = '"+kategorie+"', bild = ?)";
-		
-		
-		
-	    try {
-	      conn.setAutoCommit(false);
-	      fis = new FileInputStream(bild);
-	      ps = conn.prepareStatement(UPDATE_ARTICLE);
-	      ps.setBinaryStream(5, fis, (int) bild.length());
-	      ps.executeUpdate();
-	      conn.commit();
-	    } finally {
-	      ps.close();
-	      fis.close();
-	      stmt.close();
-	    }
+		PreparedStatement ps = null;
+
+		String UPDATE_ARTICLE = "update artikel set bezeichnung = ?, beschreibung = ?, preis = ?, kategorie = ?, bild = ? where artikelid = ?";
+
+		try {
+			conn.setAutoCommit(false);
+			fis = new FileInputStream(bild);
+			ps = conn.prepareStatement(UPDATE_ARTICLE);
+			ps.setString(1, bezeichnung);
+			ps.setString(2, beschreibung);
+			ps.setDouble(3, preis);
+			ps.setString(4, kategorie);
+			ps.setBinaryStream(5, fis, (int) bild.length());
+			ps.setString(6, artikelid);
+			ps.executeUpdate();
+			conn.commit();
+		} finally {
+			ps.close();
+			fis.close();
+			stmt.close();
+		}
 
 	}
 
@@ -250,7 +245,7 @@ public class SqlConnection {
 	 * @param artikelid
 	 * @throws Exception
 	 */
-	public void deleteArtikel(String artikelid) throws Exception {
+	public void artikelLoeschen(String artikelid) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -258,33 +253,44 @@ public class SqlConnection {
 		stmt.close();
 
 	}
-   
-		    
-		    /**
-			 * 
-			 * @param bezeichnung
-			 * @return
-			 * @throws Exception
-			 */
-			public Article searchArtikel(String bezeichnungSub) throws Exception {
 
-				Statement stmt = conn.createStatement();
+	/**
+	 * 
+	 * @param bezeichnung
+	 * @return
+	 * @throws Exception
+	 */
+	public ArrayList<Artikel> artikelSuchen(String bezeichnungSub) throws Exception {
 
-				ResultSet rs = stmt.executeQuery("Select * from artikel where upper(bezeichnung) like upper('" + bezeichnungSub + "%')");
-				
-				File file = new File("C:/Users/Jannik/Desktop/bild.jpg");
-				FileOutputStream output = new FileOutputStream(file);
-				 
-				    InputStream input = rs.getBinaryStream("bild");
-				    byte[] buffer = new byte[1024];
-				    while (input.read(buffer) > 0) {
-				        output.write(buffer);
-				    
-				}
+		ArrayList<Artikel> artikel = new ArrayList<Artikel>();
 
-		Article artikel = new Article(rs.getString(1), rs.getString(2), rs.getString(3), Double.parseDouble(rs.getString(4)),
-				rs.getString(5), file);
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt
+				.executeQuery("Select * from artikel where upper(bezeichnung) like upper('%" + bezeichnungSub + "%')");
+
+		while (rs.next()) {
+
+			String tmp_dir = System.getProperty("java.io.tmpdir");
+			File file = new File(tmp_dir + "/" + rs.getString(2));
+
+			FileOutputStream output = new FileOutputStream(file);
+
+			InputStream input = rs.getBinaryStream("bild");
+			byte[] buffer = new byte[1024];
+			while (input.read(buffer) > 0) {
+				output.write(buffer);
+
+			}
+
+			Artikel artikelElement = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
+					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
+
+			artikel.add(artikelElement);
+		}
+
 		stmt.close();
+
 		return artikel;
 
 	}
@@ -295,9 +301,9 @@ public class SqlConnection {
 	 * @return
 	 * @throws Exception
 	 */
-	public ArrayList<Article> showArtikelsInKategorie(String kategorieid) throws Exception {
+	public ArrayList<Artikel> artikelInKategorieLiefern(String kategorieid) throws Exception {
 
-		ArrayList<Article> artikels = new ArrayList<Article>();
+		ArrayList<Artikel> artikel = new ArrayList<Artikel>();
 
 		Statement stmt = conn.createStatement();
 
@@ -305,18 +311,31 @@ public class SqlConnection {
 
 		while (rs.next()) {
 
-			Article artikel = new Article(rs.getString(1), rs.getString(2), rs.getString(3),
-					Double.parseDouble(rs.getString(4)), rs.getString(5));
+			String tmp_dir = System.getProperty("java.io.tmpdir");
+			File file = new File(tmp_dir + "/" + rs.getString(2));
 
-			artikels.add(artikel);
+			FileOutputStream output = new FileOutputStream(file);
+
+			InputStream input = rs.getBinaryStream("bild");
+			byte[] buffer = new byte[1024];
+			while (input.read(buffer) > 0) {
+				output.write(buffer);
+
+			}
+
+			Artikel artikelElement = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
+					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
+
+			artikel.add(artikelElement);
 		}
+
 		stmt.close();
-		return artikels;
+		return artikel;
 	}
 
-	public ArrayList<Article> showAllArtikels() throws Exception {
+	public ArrayList<Artikel> artikelLiefern() throws Exception {
 
-		ArrayList<Article> artikels = new ArrayList<Article>();
+		ArrayList<Artikel> artikel = new ArrayList<Artikel>();
 
 		Statement stmt = conn.createStatement();
 
@@ -324,49 +343,71 @@ public class SqlConnection {
 
 		while (rs.next()) {
 
-			Article artikel = new Article(rs.getString(1), rs.getString(2), rs.getString(3),
-					Double.parseDouble(rs.getString(4)), rs.getString(5));
+			String tmp_dir = System.getProperty("java.io.tmpdir");
+			File file = new File(tmp_dir + "/" + rs.getString(2));
 
-			artikels.add(artikel);
+			FileOutputStream output = new FileOutputStream(file);
+
+			InputStream input = rs.getBinaryStream("bild");
+			byte[] buffer = new byte[1024];
+			while (input.read(buffer) > 0) {
+				output.write(buffer);
+
+			}
+
+			Artikel artikelElement = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
+					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
+
+			artikel.add(artikelElement);
 		}
+
 		stmt.close();
-		return artikels;
+		return artikel;
 
 	}
-	
+
 	/**
 	 * 
 	 * @param artikelid
 	 * @return
 	 * @throws Exception
 	 */
-	public Article showArtikelDataById(String artikelid) throws Exception {
-		Article artikel = new Article("?");
+	public Artikel artikelMitIdLiefern(String artikelid) throws Exception {
+		Artikel artikel = new Artikel("?");
 		Statement stmt = conn.createStatement();
+		File file = new File("C:/Users/Jannik/Desktop/te.JPG");
 
 		ResultSet rs = stmt.executeQuery("Select * from artikel where artikelid = '" + artikelid + "'");
 
-		while (rs.next()) {
+		FileOutputStream output = new FileOutputStream(file);
 
-			artikel = new Article(rs.getString(2), rs.getString(3), rs.getString(4),
-					Double.parseDouble(rs.getString(5)), rs.getString(6));
+		while (rs.next()) {
+			InputStream input = rs.getBinaryStream(6);
+			System.out.println(input);
+			byte[] buffer = new byte[1024];
+			while (input.read(buffer) > 0) {
+				output.write(buffer);
+
+			}
+
+			artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
+					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
 
 		}
 		stmt.close();
 		return artikel;
 
 	}
-	
-	
-	public Article showArtikelDataByName(String bezeichnung) throws Exception {
-		Article artikel = new Article("?");
+
+	public Artikel artikelMitBezeichnungLiefern(String bezeichnung) throws Exception {
+		Artikel artikel = new Artikel("?");
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery("Select * from artikel where bezeichnung = '" + bezeichnung + "'");
 
 		while (rs.next()) {
 
-			artikel = new Article(rs.getString(2), rs.getString(3), rs.getString(4),
+			artikel = new Artikel(rs.getString(2), rs.getString(3), rs.getString(4),
 					Double.parseDouble(rs.getString(5)), rs.getString(6));
 
 		}
@@ -381,7 +422,7 @@ public class SqlConnection {
 	 * @param bezeichnung
 	 * @throws Exception
 	 */
-	public void createKategorie(String kategorieid, String bezeichnung) throws Exception {
+	public void kategorieErzeugen(String kategorieid, String bezeichnung) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -396,7 +437,7 @@ public class SqlConnection {
 	 * @param bezeichnung
 	 * @throws Exception
 	 */
-	public void updateKategorie(String kategorieid, String bezeichnung) throws Exception {
+	public void kategorieAktualisieren(String kategorieid, String bezeichnung) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -411,9 +452,9 @@ public class SqlConnection {
 	 * @return
 	 * @throws Exception
 	 */
-	public ArrayList<Category> showKategorien() throws Exception {
+	public ArrayList<Kategorie> kategorienLiefern() throws Exception {
 
-		ArrayList<Category> kategorien = new ArrayList<Category>();
+		ArrayList<Kategorie> kategorien = new ArrayList<Kategorie>();
 
 		Statement stmt = conn.createStatement();
 
@@ -421,7 +462,7 @@ public class SqlConnection {
 
 		while (rs.next()) {
 
-			Category kategorie = new Category(rs.getString(1), rs.getString(2));
+			Kategorie kategorie = new Kategorie(rs.getString(1), rs.getString(2));
 
 			kategorien.add(kategorie);
 		}
@@ -439,7 +480,7 @@ public class SqlConnection {
 	 * @param positionen
 	 * @throws Exception
 	 */
-	public void createBestellungAndPositions(String bestellungid, String user, Double preis, int menge,
+	public void bestellungUndPositionenErzeugen(String bestellungid, String user, Double preis, int menge,
 			ArrayList<Position> positionen) throws Exception {
 
 		Statement stmtBes = conn.createStatement();
@@ -467,9 +508,9 @@ public class SqlConnection {
 	 * @throws NumberFormatException
 	 * @throws Exception
 	 */
-	public ArrayList<Order> showUserBestellungen(String userid) throws NumberFormatException, Exception {
+	public ArrayList<Bestellung> bestellungenVonUserLiefern(String userid) throws NumberFormatException, Exception {
 
-		ArrayList<Order> bestellungen = new ArrayList<Order>();
+		ArrayList<Bestellung> bestellungen = new ArrayList<Bestellung>();
 
 		Statement stmtBes = conn.createStatement();
 
@@ -487,7 +528,7 @@ public class SqlConnection {
 						Integer.parseInt(rsPos.getString(3)), Double.parseDouble(rsPos.getString(4)));
 				positionen.add(pos);
 			}
-			Order b = new Order(rsBes.getString(1), rsBes.getString(2),
+			Bestellung b = new Bestellung(rsBes.getString(1), rsBes.getString(2),
 					Double.parseDouble(rsBes.getString(3)), Integer.parseInt(rsBes.getString(4)), positionen);
 			stmtPos.close();
 		}
@@ -495,11 +536,5 @@ public class SqlConnection {
 
 		return bestellungen;
 	}
-	
-	
-	
-	
-	
-	
 
 }

@@ -3,7 +3,7 @@ package classes;
 import java.io.File;
 import java.util.UUID;
 
-public class Article {
+public class Artikel {
 
 	private SqlConnection jdbc;
 	private String artikelid;
@@ -28,6 +28,7 @@ public class Article {
 	 * @param bild
 	 */
 	public void setBild(File bild) {
+
 		this.bild = bild;
 	}
 
@@ -50,7 +51,7 @@ public class Article {
 	 * @param bild
 	 * @throws Exception
 	 */
-	public Article(String bezeichnung, String beschreibung, double preis, String kategorie, File bild) throws Exception {
+	public Artikel(String bezeichnung, String beschreibung, double preis, String kategorie, File bild) throws Exception {
 		super();
 		this.artikelid = UUID.randomUUID().toString();
 		this.bezeichnung = bezeichnung;
@@ -70,7 +71,7 @@ public class Article {
 	 * @param kategorie
 	 * @throws Exception
 	 */
-	public Article(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie) throws Exception {
+	public Artikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie) throws Exception {
 		super();
 		this.artikelid = artikelid;
 		this.bezeichnung = bezeichnung;
@@ -91,7 +92,7 @@ public class Article {
 	 * @param bild
 	 * @throws Exception
 	 */
-	public Article(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie, File bild) throws Exception {
+	public Artikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie, File bild) throws Exception {
 		super();
 		this.artikelid = artikelid;
 		this.bezeichnung = bezeichnung;
@@ -107,7 +108,7 @@ public class Article {
 	 * @param artikelid
 	 * @throws Exception
 	 */
-	public Article(String artikelid) throws Exception {
+	public Artikel(String artikelid) throws Exception {
 		super();
 		this.artikelid = artikelid;
 	}
@@ -206,9 +207,9 @@ public class Article {
 	 * 
 	 * @throws Exception
 	 */
-	public void createArtikelInDB() throws Exception {
+	public void artikelErzeugen() throws Exception {
 		jdbc = new SqlConnection();
-		jdbc.createArtikel(artikelid, bezeichnung, beschreibung, preis, kategorie, bild);
+		jdbc.artikelErzeugen(artikelid, bezeichnung, beschreibung, preis, kategorie, bild);
 		jdbc.closeConnection();
 	}
 	
@@ -217,10 +218,10 @@ public class Article {
 	 * 
 	 * @throws Exception
 	 */
-	public void deleteArtikel() throws Exception
+	public void artikelLoeschen() throws Exception
 	{
 		jdbc = new SqlConnection();
-		jdbc.deleteArtikel(artikelid);
+		jdbc.artikelLoeschen(artikelid);
 		jdbc.closeConnection();
 	}
 	
@@ -229,10 +230,10 @@ public class Article {
 	 * 
 	 * @throws Exception
 	 */
-	public void showArtikelDataById() throws Exception
+	public void artikelMitIdLiefern() throws Exception
 	{
 		jdbc = new SqlConnection();
-		Article tempArtikel = jdbc.showArtikelDataById(artikelid);
+		Artikel tempArtikel = jdbc.artikelMitIdLiefern(artikelid);
 		this.bezeichnung = tempArtikel.getBezeichnung();
 		this.beschreibung = tempArtikel.getBeschreibung();
 		this.preis = tempArtikel.getPreis();
@@ -245,10 +246,10 @@ public class Article {
 	 * 
 	 * @throws Exception
 	 */
-	public void showArtikelDataByName() throws Exception
+	public void artikelMitBezeichnungLiefern() throws Exception
 	{
 		jdbc = new SqlConnection();
-		Article tempArtikel = jdbc.showArtikelDataByName(bezeichnung);
+		Artikel tempArtikel = jdbc.artikelMitBezeichnungLiefern(bezeichnung);
 		this.artikelid = tempArtikel.getArtikelid();
 		this.beschreibung = tempArtikel.getBeschreibung();
 		this.preis = tempArtikel.getPreis();

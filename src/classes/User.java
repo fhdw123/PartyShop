@@ -281,9 +281,9 @@ public class User {
 	 * 
 	 * @throws Exception
 	 */
-	public void createUserInDB() throws Exception {
+	public void userAnlegen() throws Exception {
 		jdbc = new SqlConnection();
-		jdbc.createUser(userid, mail, vorname, nachname, passwort, rolle, gesperrt, strasse, hausnummer, postleitzahl,
+		jdbc.userErzeugen(userid, mail, vorname, nachname, passwort, rolle, gesperrt, strasse, hausnummer, postleitzahl,
 				ort);
 		jdbc.closeConnection();
 	}
@@ -293,9 +293,9 @@ public class User {
 	 * 
 	 * @throws Exception
 	 */
-	public void updateUserInDB() throws Exception {
+	public void userAktualisieren() throws Exception {
 		jdbc = new SqlConnection();
-		jdbc.updateUser(userid, mail, vorname, nachname, passwort, strasse, hausnummer, postleitzahl, ort);
+		jdbc.userAktualisieren(userid, mail, vorname, nachname, passwort, strasse, hausnummer, postleitzahl, ort);
 		jdbc.closeConnection();
 	}
 	
@@ -308,7 +308,7 @@ public class User {
 	{
 		jdbc = new SqlConnection();
 		this.gesperrt = 1;
-		jdbc.lockUser(userid);
+		jdbc.userSperren(userid);
 		jdbc.closeConnection();
 	}
 	
@@ -321,7 +321,7 @@ public class User {
 	{
 		jdbc = new SqlConnection();
 		this.gesperrt = 0;
-		jdbc.unlockUser(userid);
+		jdbc.userEntsperren(userid);
 		jdbc.closeConnection();
 	}
 	
@@ -330,10 +330,10 @@ public class User {
 	 * 
 	 * @throws Exception
 	 */
-	public void showUserDataById() throws Exception
+	public void userMitIdLiefern() throws Exception
 	{
 		jdbc = new SqlConnection();
-		User tempUser = jdbc.showUserDataById(userid);
+		User tempUser = jdbc.userMitIdLiefern(userid);
 		this.mail = tempUser.getMail();
 		this.vorname = tempUser.getVorname();
 		this.nachname = tempUser.getNachname();
@@ -352,7 +352,7 @@ public class User {
 	public void showUserDataByMail() throws Exception
 	{
 		jdbc = new SqlConnection();
-		User tempUser = jdbc.showUserDataByMail(mail);
+		User tempUser = jdbc.userMitMailLiefern(mail);
 		this.mail = tempUser.getMail();
 		this.vorname = tempUser.getVorname();
 		this.nachname = tempUser.getNachname();
@@ -370,10 +370,10 @@ public class User {
 	 * @return
 	 * @throws Exception
 	 */
-	public ArrayList<Order> getUserBestellungen() throws Exception
+	public ArrayList<Bestellung> bestellungenVonUserLiefern() throws Exception
 	{
 		jdbc = new SqlConnection();
-		ArrayList<Order> bestellungen = jdbc.showUserBestellungen(userid);
+		ArrayList<Bestellung> bestellungen = jdbc.bestellungenVonUserLiefern(userid);
 		jdbc.closeConnection();
 		return bestellungen;
 	}

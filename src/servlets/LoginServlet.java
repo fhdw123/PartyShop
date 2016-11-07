@@ -1,8 +1,11 @@
 package servlets;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,12 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import classes.EncryptPassword;
+import classes.PasswortVerschluesselung;
 import classes.SqlConnection;
 import classes.User;
-
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 /**
  * Servlet implementation class LoginServlet
@@ -51,10 +51,10 @@ public class LoginServlet extends HttpServlet {
 								+ "'");
 
 				if (rs.getString("gesperrt").equals(0)) {
-					EncryptPassword ep = new EncryptPassword();
+					PasswortVerschluesselung pv = new PasswortVerschluesselung();
 
 					while (rs.next()) {
-						String hashPasswort = ep.SHA512(rs.getString("passwort"));
+						String hashPasswort = pv.SHA512(rs.getString("passwort"));
 						if (hashPasswort.equals(pass)) {
 
 							if (rs.getString("rolle").equals("kunde")) {
@@ -81,6 +81,8 @@ public class LoginServlet extends HttpServlet {
 
 					}
 
+			
+			
 				} else {
 					// Ausgabe: User ist gesperrt
 				}
@@ -89,6 +91,7 @@ public class LoginServlet extends HttpServlet {
 			} catch (Exception ex) {
 				// Mail Adresse nicht vorhanden
 			}
+	
 
 		}
 

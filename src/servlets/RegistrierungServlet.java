@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,19 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import classes.EncryptPassword;
-import classes.SqlConnection;
+import classes.PasswortVerschluesselung;
 import classes.User;
-
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.UUID;
-import java.security.NoSuchAlgorithmException;
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class RegistrierungServlet
  */
 @WebServlet("/ServletRegistration")
-public class RegistrationServlet extends HttpServlet {
+public class RegistrierungServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -68,10 +61,10 @@ public class RegistrationServlet extends HttpServlet {
 
 							try {
 
-								EncryptPassword ep = new EncryptPassword();
-								User user = new User(mail, vname, nname, ep.SHA512(pass1), rolle, 0, strasse, hausnummer,
+								PasswortVerschluesselung pv = new PasswortVerschluesselung();
+								User user = new User(mail, vname, nname, pv.SHA512(pass1), rolle, 0, strasse, hausnummer,
 										Integer.parseInt(plz), ort);
-								user.createUserInDB();
+								user.userAnlegen();
 
 								HttpSession session = request.getSession(false);
 								session.setAttribute("user", user);

@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
  
-public class EncryptPassword
+public class PasswortVerschluesselung
 {
     private static String convertToHex(byte[] data)
     {

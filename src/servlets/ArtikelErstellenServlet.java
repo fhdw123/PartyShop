@@ -1,8 +1,7 @@
 package servlets;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ArticleServlet
+ * Servlet implementation class ArtikelServlet
  */
 @WebServlet("/ServletArtikelOption")
-public class ArticleCreationServlet extends HttpServlet {
+public class ArtikelErstellenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ArticleCreationServlet() {
+	public ArtikelErstellenServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -9,22 +9,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import classes.Article;
-import classes.Category;
+import classes.Position;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class CategoryServlet
+ * Servlet implementation class WarenkorbServlet
  */
-@WebServlet("/Kategorie")
-public class CategoryServlet extends HttpServlet {
+@WebServlet("/Warenkorb")
+public class WarenkorbServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CategoryServlet() {
+    public WarenkorbServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,32 +35,33 @@ public class CategoryServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try
 		{
-
 			SqlConnection conn = new SqlConnection();
-			ArrayList<Category> kategorien = conn.showKategorien();
-			request.setAttribute("kategorien", kategorien);
-			ArrayList<Article> artikel = conn.showArtikelsInKategorie(request.getParameter("id"));
-			request.setAttribute("artikel", artikel);
-			conn.closeConnection();
-			for(Category kat: kategorien)
-			{
-				if(request.getParameter("id").equals(kat.getKategorieid()))
-				{
-					request.setAttribute("kategoriename", kat.getBezeichnung());
-				}
-					
-			}
-			
-			String nextJSP = "/category.jsp";
+			HttpSession session=request.getSession(false);  
+	        if(session!=null) 
+	        {
+	        	ArrayList<Position> cart = new ArrayList<Position>();
+	        	if(session.getAttribute("cart") != null)
+	        	{
+	        		cart = (ArrayList<Position>) session.getAttribute("cart");
+	        		request.setAttribute("cart", cart);
+	        	}
+	        	else
+	        	{
+	        		request.setAttribute("cart", cart);
+	        	}
+	        	
+	        }
+	        String nextJSP = "/cart.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
+	        
+	        
 		}
 		catch(Exception e)
 		{
-			String error = e.getMessage();
-			
+			e.printStackTrace();
 		}
-		
+	        
 	}
 
 	/**

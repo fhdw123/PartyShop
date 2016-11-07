@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import classes.Category;
+import classes.Kategorie;
 import classes.SqlConnection;
 import classes.User;
 
@@ -46,7 +45,7 @@ public class IndexServlet extends HttpServlet {
         {
         	
         	SqlConnection conn = new SqlConnection();
-        	ArrayList<Category> kategorien = conn.showKategorien();
+        	ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
         	conn.closeConnection();
         	request.setAttribute("kategorien", kategorien);
         	String nextJSP = "/index.jsp";

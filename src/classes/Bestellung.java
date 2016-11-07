@@ -3,7 +3,7 @@ package classes;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Order {
+public class Bestellung {
 
 	private SqlConnection jdbc;
 	private String bestellungid;
@@ -21,7 +21,7 @@ public class Order {
 	 * @param positionen
 	 * @throws Exception
 	 */
-	public Order(String bestellungid, String user, double preis, int menge, ArrayList<Position> positionen)
+	public Bestellung(String bestellungid, String user, double preis, int menge, ArrayList<Position> positionen)
 			throws Exception {
 		super();
 		this.bestellungid = UUID.randomUUID().toString();
@@ -115,9 +115,9 @@ public class Order {
 	 * 
 	 * @throws Exception
 	 */
-	public void createBestellungAndPositionsInDB() throws Exception {
+	public void bestellungUndPositionenErzeugen() throws Exception {
 		jdbc = new SqlConnection();
-		jdbc.createBestellungAndPositions(bestellungid, user, preis, menge, positionen);
+		jdbc.bestellungUndPositionenErzeugen(bestellungid, user, preis, menge, positionen);
 		jdbc.closeConnection();
 	}
 

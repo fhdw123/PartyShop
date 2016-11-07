@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,23 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import classes.Article;
-import classes.Position;
+import classes.Artikel;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class CartServlet
+ * Servlet implementation class ArtikelServlet
  */
-@WebServlet("/Warenkorb")
-public class CartServlet extends HttpServlet {
+@WebServlet("/Artikel")
+public class ArtikelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartServlet() {
+    public ArtikelServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,32 +34,20 @@ public class CartServlet extends HttpServlet {
 		try
 		{
 			SqlConnection conn = new SqlConnection();
-			HttpSession session=request.getSession(false);  
-	        if(session!=null) 
-	        {
-	        	ArrayList<Position> cart = new ArrayList<Position>();
-	        	if(session.getAttribute("cart") != null)
-	        	{
-	        		cart = (ArrayList<Position>) session.getAttribute("cart");
-	        		request.setAttribute("cart", cart);
-	        	}
-	        	else
-	        	{
-	        		request.setAttribute("cart", cart);
-	        	}
-	        	
-	        }
-	        String nextJSP = "/cart.jsp";
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-            dispatcher.forward(request,response);
-	        
-	        
+			Artikel artikel = conn.artikelMitIdLiefern(request.getParameter("id"));
+			request.setAttribute("artikel", artikel);
+			
+			
+			
+			String nextJSP = "/article.jsp";
+	        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+	        dispatcher.forward(request,response);
 		}
 		catch(Exception e)
 		{
+			response.getWriter().println("Error dies das");
 			e.printStackTrace();
 		}
-	        
 	}
 
 	/**

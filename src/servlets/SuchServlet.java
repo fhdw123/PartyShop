@@ -2,9 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,21 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import classes.Article;
-import classes.Category;
+import classes.Artikel;
+import classes.Kategorie;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class SearchServlet
+ * Servlet implementation class SuchServlet
  */
 @WebServlet("/Suche")
-public class SearchServlet extends HttpServlet {
+public class SuchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchServlet() {
+    public SuchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,9 +39,9 @@ public class SearchServlet extends HttpServlet {
 		{
 
 			SqlConnection conn = new SqlConnection();
-			ArrayList<Category> kategorien = conn.showKategorien();
+			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
 			request.setAttribute("kategorien", kategorien);
-			ArrayList<Article> artikel = conn.showAllArtikels();
+			ArrayList<Artikel> artikel = conn.artikelLiefern();
 			
 			
 			
@@ -51,13 +49,13 @@ public class SearchServlet extends HttpServlet {
 			if((kategorieFilter = request.getParameterValues("kat")) != null)
 			{
 				HashMap<String, String> kategorienIds = new HashMap<String, String>();
-				for(Category kategorie: kategorien)
+				for(Kategorie kategorie: kategorien)
 				{
 					kategorienIds.put(kategorie.getKategorieid(), kategorie.getBezeichnung());
 				}
 			
-				ArrayList<Article> artikelCopy = new ArrayList<Article>();
-				for(Article art: artikel)
+				ArrayList<Artikel> artikelCopy = new ArrayList<Artikel>();
+				for(Artikel art: artikel)
 				{
 					boolean contains = false;
 					for(String filter: kategorieFilter)
