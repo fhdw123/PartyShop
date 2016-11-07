@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import classes.Artikel;
-import classes.Kategorie;
+import classes.Article;
+import classes.Category;
 import classes.SqlConnection;
 
 /**
@@ -37,12 +37,12 @@ public class CategoryServlet extends HttpServlet {
 		{
 
 			SqlConnection conn = new SqlConnection();
-			ArrayList<Kategorie> kategorien = conn.showKategorien();
+			ArrayList<Category> kategorien = conn.showKategorien();
 			request.setAttribute("kategorien", kategorien);
-			ArrayList<Artikel> artikel = conn.showArtikelsInKategorie(request.getParameter("id"));
+			ArrayList<Article> artikel = conn.showArtikelsInKategorie(request.getParameter("id"));
 			request.setAttribute("artikel", artikel);
 			conn.closeConnection();
-			for(Kategorie kat: kategorien)
+			for(Category kat: kategorien)
 			{
 				if(request.getParameter("id").equals(kat.getKategorieid()))
 				{
@@ -51,7 +51,7 @@ public class CategoryServlet extends HttpServlet {
 					
 			}
 			
-			String nextJSP = "/kategorie.jsp";
+			String nextJSP = "/category.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
 		}

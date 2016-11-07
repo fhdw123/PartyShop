@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import classes.Artikel;
-import classes.Kategorie;
+import classes.Article;
+import classes.Category;
 import classes.SqlConnection;
 
 /**
@@ -41,9 +41,9 @@ public class SearchServlet extends HttpServlet {
 		{
 
 			SqlConnection conn = new SqlConnection();
-			ArrayList<Kategorie> kategorien = conn.showKategorien();
+			ArrayList<Category> kategorien = conn.showKategorien();
 			request.setAttribute("kategorien", kategorien);
-			ArrayList<Artikel> artikel = conn.showAllArtikels();
+			ArrayList<Article> artikel = conn.showAllArtikels();
 			
 			
 			
@@ -51,13 +51,13 @@ public class SearchServlet extends HttpServlet {
 			if((kategorieFilter = request.getParameterValues("kat")) != null)
 			{
 				HashMap<String, String> kategorienIds = new HashMap<String, String>();
-				for(Kategorie kategorie: kategorien)
+				for(Category kategorie: kategorien)
 				{
 					kategorienIds.put(kategorie.getKategorieid(), kategorie.getBezeichnung());
 				}
 			
-				ArrayList<Artikel> artikelCopy = new ArrayList<Artikel>();
-				for(Artikel art: artikel)
+				ArrayList<Article> artikelCopy = new ArrayList<Article>();
+				for(Article art: artikel)
 				{
 					boolean contains = false;
 					for(String filter: kategorieFilter)
@@ -86,7 +86,7 @@ public class SearchServlet extends HttpServlet {
 			conn.closeConnection();
 			
 			
-			String nextJSP = "/suche.jsp";
+			String nextJSP = "/search.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
 		}

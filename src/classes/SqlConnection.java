@@ -258,43 +258,7 @@ public class SqlConnection {
 		stmt.close();
 
 	}
-
-	/**
-	 * 
-	 * @param artikelid
-	 * @return
-	 * @throws Exception
-	 */
-	public User showUserDataById(String userid) throws Exception {
-
-		Statement stmt = conn.createStatement();
-
-		ResultSet rs = stmt.executeQuery("Select * from user where userid = '" + userid + "'");
-
-		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
-				Integer.parseInt(rs.getString(10)), rs.getString(11));
-		stmt.close();
-		return user;
-
-	}
-	
-	
-	public User showUserDataByMail(String mail) throws Exception {
-
-		Statement stmt = conn.createStatement();
-
-		ResultSet rs = stmt.executeQuery("Select * from user where mail = '" + mail + "'");
-
-		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
-				Integer.parseInt(rs.getString(10)), rs.getString(11));
-		stmt.close();
-		return user;
-
-	}
-		    
-		    
+   
 		    
 		    /**
 			 * 
@@ -302,7 +266,7 @@ public class SqlConnection {
 			 * @return
 			 * @throws Exception
 			 */
-			public Artikel searchArtikel(String bezeichnungSub) throws Exception {
+			public Article searchArtikel(String bezeichnungSub) throws Exception {
 
 				Statement stmt = conn.createStatement();
 
@@ -318,7 +282,7 @@ public class SqlConnection {
 				    
 				}
 
-		Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3), Double.parseDouble(rs.getString(4)),
+		Article artikel = new Article(rs.getString(1), rs.getString(2), rs.getString(3), Double.parseDouble(rs.getString(4)),
 				rs.getString(5), file);
 		stmt.close();
 		return artikel;
@@ -331,9 +295,9 @@ public class SqlConnection {
 	 * @return
 	 * @throws Exception
 	 */
-	public ArrayList<Artikel> showArtikelsInKategorie(String kategorieid) throws Exception {
+	public ArrayList<Article> showArtikelsInKategorie(String kategorieid) throws Exception {
 
-		ArrayList<Artikel> artikels = new ArrayList<Artikel>();
+		ArrayList<Article> artikels = new ArrayList<Article>();
 
 		Statement stmt = conn.createStatement();
 
@@ -341,7 +305,7 @@ public class SqlConnection {
 
 		while (rs.next()) {
 
-			Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
+			Article artikel = new Article(rs.getString(1), rs.getString(2), rs.getString(3),
 					Double.parseDouble(rs.getString(4)), rs.getString(5));
 
 			artikels.add(artikel);
@@ -350,9 +314,9 @@ public class SqlConnection {
 		return artikels;
 	}
 
-	public ArrayList<Artikel> showAllArtikels() throws Exception {
+	public ArrayList<Article> showAllArtikels() throws Exception {
 
-		ArrayList<Artikel> artikels = new ArrayList<Artikel>();
+		ArrayList<Article> artikels = new ArrayList<Article>();
 
 		Statement stmt = conn.createStatement();
 
@@ -360,7 +324,7 @@ public class SqlConnection {
 
 		while (rs.next()) {
 
-			Artikel artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
+			Article artikel = new Article(rs.getString(1), rs.getString(2), rs.getString(3),
 					Double.parseDouble(rs.getString(4)), rs.getString(5));
 
 			artikels.add(artikel);
@@ -369,16 +333,41 @@ public class SqlConnection {
 		return artikels;
 
 	}
-	public Artikel showArtikelData(String artikelid) throws Exception {
-		Artikel artikel = new Artikel("?");
+	
+	/**
+	 * 
+	 * @param artikelid
+	 * @return
+	 * @throws Exception
+	 */
+	public Article showArtikelDataById(String artikelid) throws Exception {
+		Article artikel = new Article("?");
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery("Select * from artikel where artikelid = '" + artikelid + "'");
 
 		while (rs.next()) {
 
-			artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
-					Double.parseDouble(rs.getString(4)), rs.getString(5));
+			artikel = new Article(rs.getString(2), rs.getString(3), rs.getString(4),
+					Double.parseDouble(rs.getString(5)), rs.getString(6));
+
+		}
+		stmt.close();
+		return artikel;
+
+	}
+	
+	
+	public Article showArtikelDataByName(String bezeichnung) throws Exception {
+		Article artikel = new Article("?");
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt.executeQuery("Select * from artikel where bezeichnung = '" + bezeichnung + "'");
+
+		while (rs.next()) {
+
+			artikel = new Article(rs.getString(2), rs.getString(3), rs.getString(4),
+					Double.parseDouble(rs.getString(5)), rs.getString(6));
 
 		}
 		stmt.close();
@@ -422,9 +411,9 @@ public class SqlConnection {
 	 * @return
 	 * @throws Exception
 	 */
-	public ArrayList<Kategorie> showKategorien() throws Exception {
+	public ArrayList<Category> showKategorien() throws Exception {
 
-		ArrayList<Kategorie> kategorien = new ArrayList<Kategorie>();
+		ArrayList<Category> kategorien = new ArrayList<Category>();
 
 		Statement stmt = conn.createStatement();
 
@@ -432,7 +421,7 @@ public class SqlConnection {
 
 		while (rs.next()) {
 
-			Kategorie kategorie = new Kategorie(rs.getString(1), rs.getString(2));
+			Category kategorie = new Category(rs.getString(1), rs.getString(2));
 
 			kategorien.add(kategorie);
 		}
@@ -478,9 +467,9 @@ public class SqlConnection {
 	 * @throws NumberFormatException
 	 * @throws Exception
 	 */
-	public ArrayList<Bestellung> showUserBestellungen(String userid) throws NumberFormatException, Exception {
+	public ArrayList<Order> showUserBestellungen(String userid) throws NumberFormatException, Exception {
 
-		ArrayList<Bestellung> bestellungen = new ArrayList<Bestellung>();
+		ArrayList<Order> bestellungen = new ArrayList<Order>();
 
 		Statement stmtBes = conn.createStatement();
 
@@ -498,7 +487,7 @@ public class SqlConnection {
 						Integer.parseInt(rsPos.getString(3)), Double.parseDouble(rsPos.getString(4)));
 				positionen.add(pos);
 			}
-			Bestellung b = new Bestellung(rsBes.getString(1), rsBes.getString(2),
+			Order b = new Order(rsBes.getString(1), rsBes.getString(2),
 					Double.parseDouble(rsBes.getString(3)), Integer.parseInt(rsBes.getString(4)), positionen);
 			stmtPos.close();
 		}

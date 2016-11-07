@@ -370,10 +370,10 @@ public class User {
 	 * @return
 	 * @throws Exception
 	 */
-	public ArrayList<Bestellung> getUserBestellungen() throws Exception
+	public ArrayList<Order> getUserBestellungen() throws Exception
 	{
 		jdbc = new SqlConnection();
-		ArrayList<Bestellung> bestellungen = jdbc.showUserBestellungen(userid);
+		ArrayList<Order> bestellungen = jdbc.showUserBestellungen(userid);
 		jdbc.closeConnection();
 		return bestellungen;
 	}

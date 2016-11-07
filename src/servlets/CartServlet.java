@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import classes.Artikel;
+import classes.Article;
 import classes.Position;
 import classes.SqlConnection;
 
@@ -52,7 +52,7 @@ public class CartServlet extends HttpServlet {
 	        	}
 	        	
 	        }
-	        String nextJSP = "/warenkorb.jsp";
+	        String nextJSP = "/cart.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
 	        

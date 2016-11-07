@@ -4,7 +4,7 @@ package classes;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Kategorie {
+public class Category {
 	
 	private SqlConnection jdbc;
 	private String kategorieid;
@@ -15,7 +15,7 @@ public class Kategorie {
 	 * @param bezeichnung
 	 * @throws Exception
 	 */
-	public Kategorie(String bezeichnung) throws Exception {
+	public Category(String bezeichnung) throws Exception {
 		super();
 		this.kategorieid = UUID.randomUUID().toString();
 		this.bezeichnung = bezeichnung;
@@ -28,7 +28,7 @@ public class Kategorie {
 	 * @param bezeichnung
 	 * @throws Exception
 	 */
-	public Kategorie(String kategorieid, String bezeichnung) throws Exception {
+	public Category(String kategorieid, String bezeichnung) throws Exception {
 		super();
 		this.kategorieid = kategorieid;
 		this.bezeichnung = bezeichnung;

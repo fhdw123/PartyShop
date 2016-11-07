@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import classes.Artikel;
+import classes.Article;
 import classes.Position;
 import classes.SqlConnection;
 import classes.User;
@@ -37,7 +37,7 @@ public class AddToCartServlet extends HttpServlet {
 		try
 		{
 			SqlConnection conn = new SqlConnection();
-			Artikel artikel = conn.showArtikelData(request.getParameter("id"));
+			Article artikel = conn.showArtikelData(request.getParameter("id"));
 			System.out.println(artikel.getBezeichnung());
 			HttpSession session=request.getSession(false);  
 	        if(session!=null) 

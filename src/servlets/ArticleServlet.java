@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import classes.Artikel;
+import classes.Article;
 import classes.SqlConnection;
 
 /**
@@ -35,12 +35,12 @@ public class ArticleServlet extends HttpServlet {
 		try
 		{
 			SqlConnection conn = new SqlConnection();
-			Artikel artikel = conn.showArtikelData(request.getParameter("id"));
+			Article artikel = conn.showArtikelData(request.getParameter("id"));
 			request.setAttribute("artikel", artikel);
 			
 			
 			
-			String nextJSP = "/artikel.jsp";
+			String nextJSP = "/article.jsp";
 	        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 	        dispatcher.forward(request,response);
 		}

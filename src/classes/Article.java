@@ -3,7 +3,7 @@ package classes;
 import java.io.File;
 import java.util.UUID;
 
-public class Artikel {
+public class Article {
 
 	private SqlConnection jdbc;
 	private String artikelid;
@@ -40,23 +40,6 @@ public class Artikel {
 	}
 
 
-	/**
-	 * 
-	 * @param bezeichnung
-	 * @param beschreibung
-	 * @param preis
-	 * @param kategorie
-	 * @throws Exception
-	 */
-	public Artikel(String bezeichnung, String beschreibung, double preis, String kategorie) throws Exception {
-		super();
-		this.artikelid = UUID.randomUUID().toString();
-		this.bezeichnung = bezeichnung;
-		this.beschreibung = beschreibung;
-		this.preis = preis;
-		this.kategorie = kategorie;
-	}
-	
 	
 	/**
 	 * 
@@ -67,7 +50,7 @@ public class Artikel {
 	 * @param bild
 	 * @throws Exception
 	 */
-	public Artikel(String bezeichnung, String beschreibung, double preis, String kategorie, File bild) throws Exception {
+	public Article(String bezeichnung, String beschreibung, double preis, String kategorie, File bild) throws Exception {
 		super();
 		this.artikelid = UUID.randomUUID().toString();
 		this.bezeichnung = bezeichnung;
@@ -87,7 +70,7 @@ public class Artikel {
 	 * @param kategorie
 	 * @throws Exception
 	 */
-	public Artikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie) throws Exception {
+	public Article(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie) throws Exception {
 		super();
 		this.artikelid = artikelid;
 		this.bezeichnung = bezeichnung;
@@ -108,7 +91,7 @@ public class Artikel {
 	 * @param bild
 	 * @throws Exception
 	 */
-	public Artikel(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie, File bild) throws Exception {
+	public Article(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie, File bild) throws Exception {
 		super();
 		this.artikelid = artikelid;
 		this.bezeichnung = bezeichnung;
@@ -124,7 +107,7 @@ public class Artikel {
 	 * @param artikelid
 	 * @throws Exception
 	 */
-	public Artikel(String artikelid) throws Exception {
+	public Article(String artikelid) throws Exception {
 		super();
 		this.artikelid = artikelid;
 	}
@@ -249,7 +232,7 @@ public class Artikel {
 	public void showArtikelDataById() throws Exception
 	{
 		jdbc = new SqlConnection();
-		Artikel tempArtikel = jdbc.showArtikelDataById(artikelid);
+		Article tempArtikel = jdbc.showArtikelDataById(artikelid);
 		this.bezeichnung = tempArtikel.getBezeichnung();
 		this.beschreibung = tempArtikel.getBeschreibung();
 		this.preis = tempArtikel.getPreis();
@@ -265,7 +248,7 @@ public class Artikel {
 	public void showArtikelDataByName() throws Exception
 	{
 		jdbc = new SqlConnection();
-		Artikel tempArtikel = jdbc.showArtikelDataById(bezeichnung);
+		Article tempArtikel = jdbc.showArtikelDataByName(bezeichnung);
 		this.artikelid = tempArtikel.getArtikelid();
 		this.beschreibung = tempArtikel.getBeschreibung();
 		this.preis = tempArtikel.getPreis();
