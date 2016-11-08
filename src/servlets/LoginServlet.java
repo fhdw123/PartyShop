@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
 
 							} else if (rs.getString("rolle").equals("administrator")) {
 								
-								String nextJSP = "/adminArea.jsp";
+								String nextJSP = "/adminBereich.jsp";
 								RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 								dispatcher.forward(request, response);
 

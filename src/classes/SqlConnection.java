@@ -174,7 +174,6 @@ public class SqlConnection {
 
 		Statement stmt = conn.createStatement();
 
-		bild = new File("C:/Users/Jannik/Desktop/example.JPG");
 
 		FileInputStream fis = null;
 		PreparedStatement ps = null;
@@ -272,7 +271,7 @@ public class SqlConnection {
 		while (rs.next()) {
 
 			String tmp_dir = System.getProperty("java.io.tmpdir");
-			File file = new File(tmp_dir + "/" + rs.getString(2));
+			File file = new File(tmp_dir + "/" + rs.getString(2)+".jpg");
 
 			FileOutputStream output = new FileOutputStream(file);
 
@@ -468,6 +467,34 @@ public class SqlConnection {
 		}
 		stmt.close();
 		return kategorien;
+
+	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public Kategorie kategorienLiefernMitBezeichnung(String bezeichnung) throws Exception {
+
+		
+
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt.executeQuery("Select * from kategorie where bezeichnung = '"+bezeichnung+"'");
+
+		while (rs.next()) {
+
+			Kategorie kategorie = new Kategorie(rs.getString(1), rs.getString(2));
+			
+			return kategorie;
+
+		}
+		stmt.close();
+		return null;
+		
+		
 
 	}
 

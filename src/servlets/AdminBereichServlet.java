@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class AdminBereichServlet
  */
 
-@WebServlet("/ServletAdminArea")
+@WebServlet("/ServletAdminBereich")
 public class AdminBereichServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +34,7 @@ public class AdminBereichServlet extends HttpServlet {
 			// no button has been selected
 		} else if (act.equals("Artikel anlegen")) {
 
-			String nextJSP = "/articleCreation.jsp";
+			String nextJSP = "/ServletArticleCreation";
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 			dispatcher.forward(request, response);
 
@@ -42,35 +42,35 @@ public class AdminBereichServlet extends HttpServlet {
 		
 	} else if (act.equals("Artikel ändern")) {
 
-		String nextJSP = "/articleChanging.jsp";
+		String nextJSP = "/artikelAendern.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		
 	else if (act.equals("Artikel löschen")) {
 
-		String nextJSP = "/articleDeletion.jsp";
+		String nextJSP = "/artikelLoeschen.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		
 	else if (act.equals("Kategorie anlegen")) {
 
-		String nextJSP = "/categoryCreation.jsp";
+		String nextJSP = "/kategorieErstellen.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		
 	else if (act.equals("Kategorie ändern")) {
 
-		String nextJSP = "/categoryChanging.jsp";
+		String nextJSP = "/kategorieAendern.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		
 	else if (act.equals("Kunden verwalten")) {
 
-		String nextJSP = "/customerOptions.jsp";
+		String nextJSP = "/kundenVerwalten.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}

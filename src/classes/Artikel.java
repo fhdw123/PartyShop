@@ -276,5 +276,13 @@ public class Artikel {
 	}
 	
 	
+	public void artikelAendern() throws Exception
+	{
+		jdbc = new SqlConnection();
+		jdbc.artikelAktualisieren(artikelid, bezeichnung, beschreibung, preis, kategorie, bild);
+		
+	}
+	
+	
 
 }

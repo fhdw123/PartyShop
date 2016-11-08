@@ -10,7 +10,9 @@
 </head>
 <body>
 
-	<form action="ServletArticleCreation" method="post" enctype="multipart/form-data">
+	<form action="ServletArticleChanging" method="doGet">
+	
+	    Artikel-ID: <input type="text" name="artikelid" /> <br>
 
 		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
 
@@ -18,7 +20,8 @@
 
 		Preis: <input type="text" name="preis" /> <br> 
 		
-		Kategorie: <select name="kategorie">
+		Kategorie: 
+		<!--<select>
 			<%
 				ArrayList<Kategorie> kategorien = (ArrayList<Kategorie>) request.getAttribute("kategorien");
 				for (int i = 0; i < kategorien.size(); i++) {
@@ -28,14 +31,12 @@
 			<%
 				}
 			%>
-		</select>
+		</select>-->
 		
-		
-					<input type="file" name="file"> 
-			<input type="submit" name="act" value="anlegen">
 
-</form>
-	
+	</form>
+
+
 
 
 </body>
