@@ -64,6 +64,24 @@ public class Artikel {
 	
 	/**
 	 * 
+	 * @param bezeichnung
+	 * @param beschreibung
+	 * @param preis
+	 * @param kategorie
+	 * @throws Exception
+	 */
+	public Artikel(String bezeichnung, String beschreibung, double preis, String kategorie) throws Exception {
+		super();
+		this.artikelid = UUID.randomUUID().toString();
+		this.bezeichnung = bezeichnung;
+		this.beschreibung = beschreibung;
+		this.preis = preis;
+		this.kategorie = kategorie;
+	}
+	
+	
+	/**
+	 * 
 	 * @param artikelid
 	 * @param bezeichnung
 	 * @param beschreibung
