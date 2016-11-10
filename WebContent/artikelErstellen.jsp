@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form action="ServletArticleCreation" method="post" enctype="multipart/form-data">
+	<form action="ServletArtikelErstellen" method="post" enctype="multipart/form-data">
 
 		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
 

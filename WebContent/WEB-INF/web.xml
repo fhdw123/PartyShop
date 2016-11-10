@@ -24,26 +24,26 @@
   </servlet>
   <servlet>
     <description></description>
-    <display-name>SearchServlet</display-name>
-    <servlet-name>SearchServlet</servlet-name>
+    <display-name>SuchServlet</display-name>
+    <servlet-name>SuchServlet</servlet-name>
     <servlet-class>servlets.SearchServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
-    <display-name>CategoryServlet</display-name>
-    <servlet-name>CategoryServlet</servlet-name>
-    <servlet-class>servlets.CategoryServlet</servlet-class>
+    <display-name>KategorieServlet</display-name>
+    <servlet-name>KategorieServlet</servlet-name>
+    <servlet-class>servlets.KategorieServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
     <display-name>ArticleServlet</display-name>
     <servlet-name>ArticleServlet</servlet-name>
-    <servlet-class>servlets.ArticleServlet</servlet-class>
+    <servlet-class>servlets.ArtikelServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
-    <display-name>AddToCartServlet</display-name>
-    <servlet-name>AddToCartServlet</servlet-name>
-    <servlet-class>servlets.AddToCartServlet</servlet-class>
+    <display-name>InWarenkorbLegenServlet</display-name>
+    <servlet-name>InWarenkorbLegenServlet</servlet-name>
+    <servlet-class>servlets.InWarenkorbLegenServlet</servlet-class>
   </servlet>
 </web-app>

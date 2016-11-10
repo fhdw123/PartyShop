@@ -15,9 +15,9 @@ import classes.Kategorie;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class ArtikelServlet
+ * Servlet implementation class KategorieErstellenServlet
  */
-@WebServlet("/ServletCategoryCreation")
+@WebServlet("/ServletKategorieErstellen")
 public class KategorieErstellenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

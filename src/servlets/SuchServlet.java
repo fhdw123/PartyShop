@@ -18,7 +18,7 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class SuchServlet
  */
-@WebServlet("/Suche")
+@WebServlet("/ServletSuche")
 public class SuchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -84,7 +84,7 @@ public class SuchServlet extends HttpServlet {
 			conn.closeConnection();
 			
 			
-			String nextJSP = "/search.jsp";
+			String nextJSP = "/suche.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
 		}

@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form action="ServletCategoryChanging" method="doGet">
+	<form action="ServletKategorieAendern" method="doGet">
 
 		Kategorie-Id: <input type="text" name="kategorieid" /> <br>
 		Bezeichnung: <input type="text" name="bezeichnung" /> <br>

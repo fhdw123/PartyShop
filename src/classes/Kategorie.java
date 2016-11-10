@@ -8,7 +8,18 @@ public class Kategorie {
 	private SqlConnection jdbc;
 	private String kategorieid;
 	private String bezeichnung;
+	private int sichtbar;
 	
+	public int getSichtbar() {
+		return sichtbar;
+	}
+
+
+	public void setSichtbar(int sichtbar) {
+		this.sichtbar = sichtbar;
+	}
+
+
 	/**
 	 * 
 	 * @param bezeichnung
@@ -25,12 +36,14 @@ public class Kategorie {
 	 * 
 	 * @param kategorieid
 	 * @param bezeichnung
+	 * @param sichtbar
 	 * @throws Exception
 	 */
-	public Kategorie(String kategorieid, String bezeichnung) throws Exception {
+	public Kategorie(String kategorieid, String bezeichnung, int sichbar) throws Exception {
 		super();
 		this.kategorieid = kategorieid;
 		this.bezeichnung = bezeichnung;
+		this.sichtbar = sichtbar;
 	}
 
 
@@ -78,7 +91,7 @@ public class Kategorie {
 	public void kategorieErzeugen() throws Exception
 	{
 		jdbc = new SqlConnection();
-		jdbc.kategorieErzeugen(kategorieid, bezeichnung);
+		jdbc.kategorieErzeugen(kategorieid, bezeichnung, sichtbar);
 		jdbc.closeConnection();
 	}
 	
@@ -90,7 +103,7 @@ public class Kategorie {
 	public void kategorieAktualisieren() throws Exception
 	{
 		jdbc = new SqlConnection();
-		jdbc.kategorieAktualisieren(kategorieid, bezeichnung);
+		jdbc.kategorieAktualisieren(kategorieid, bezeichnung, sichtbar);
 		jdbc.closeConnection();
 	}
 	

@@ -120,15 +120,15 @@ public class Artikel {
 		this.bild = bild;
 	}
 	
-	
+
 	/**
 	 * 
 	 * @param artikelid
 	 * @throws Exception
 	 */
-	public Artikel(String artikelid) throws Exception {
+	public Artikel(String bezeichnung) throws Exception {
 		super();
-		this.artikelid = artikelid;
+		this.bezeichnung = bezeichnung;
 	}
 
 	

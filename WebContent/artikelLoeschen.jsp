@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form action="ServletArticleDeletion" method="doGet">
+	<form action="ServletArtikelLoeschen" method="doGet">
 
 		Artike-ID: <input type="text" name="artikelid" /> <br>
 

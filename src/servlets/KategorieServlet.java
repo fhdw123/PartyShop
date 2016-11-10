@@ -17,7 +17,7 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class KategorieServlet
  */
-@WebServlet("/Kategorie")
+@WebServlet("/ServletKategorie")
 public class KategorieServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -51,7 +51,7 @@ public class KategorieServlet extends HttpServlet {
 					
 			}
 			
-			String nextJSP = "/category.jsp";
+			String nextJSP = "/kategorie.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
 		}

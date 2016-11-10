@@ -16,9 +16,9 @@ import classes.SqlConnection;
 import classes.User;
 
 /**
- * Servlet implementation class MainServlet
+ * Servlet implementation class IndexServlet
  */
-@WebServlet("/index")
+@WebServlet("/ServletIndex")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,6 +48,7 @@ public class IndexServlet extends HttpServlet {
         	ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
         	conn.closeConnection();
         	request.setAttribute("kategorien", kategorien);
+        	
         	String nextJSP = "/index.jsp";
         	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         	dispatcher.forward(request,response);  

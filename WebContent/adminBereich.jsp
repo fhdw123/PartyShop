@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registriere dich beim Partyshop</title>
+<title>Administratorenbereich</title>
 </head>
 <body> 
 
-<form action="ServletAdminBereich" method="doGet">
+<form action="ServletAdminBereich" method="post">
 			
 			<input type="submit" name="act" value="Artikel anlegen"><br>
 			
@@ -19,6 +19,10 @@
 			<input type="submit" name="act" value="Kategorie anlegen"><br>
 			
 			<input type="submit" name="act" value="Kategorie ändern"><br>
+			
+			<input type="submit" name="act" value="Kategorie verbergen"><br>
+			
+			<input type="submit" name="act" value="Kategorie sichtbar machen"><br>
 			
 			<input type="submit" name="act" value="Kunden verwalten"><br>	
 

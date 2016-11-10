@@ -17,7 +17,7 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class InWarenkorbLegen
  */
-@WebServlet("/AddToCart")
+@WebServlet("/ServletInWarenkorbLegen")
 public class InWarenkorbLegen extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -55,7 +55,6 @@ public class InWarenkorbLegen extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			response.getWriter().println("Error und so");
 			e.printStackTrace();
 		}
 		

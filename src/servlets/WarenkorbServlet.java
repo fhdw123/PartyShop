@@ -17,7 +17,7 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class WarenkorbServlet
  */
-@WebServlet("/Warenkorb")
+@WebServlet("/ServletWarenkorb")
 public class WarenkorbServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -51,7 +51,7 @@ public class WarenkorbServlet extends HttpServlet {
 	        	}
 	        	
 	        }
-	        String nextJSP = "/cart.jsp";
+	        String nextJSP = "/warenkorb.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
 	        

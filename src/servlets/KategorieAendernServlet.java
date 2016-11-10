@@ -15,9 +15,9 @@ import classes.Kategorie;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class ArtikelServlet
+ * Servlet implementation class ArtikelAendernServlet
  */
-@WebServlet("/ServletCategoryChanging")
+@WebServlet("/ServletKategorieAendern")
 public class KategorieAendernServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,7 @@ public class KategorieAendernServlet extends HttpServlet {
 			
 			try{
 				
-				Kategorie kategorie = new Kategorie(kategorieid, bezeichnung);
+				Kategorie kategorie = new Kategorie(kategorieid, bezeichnung, 1);
 			}
 			catch(Exception ex)
 			{

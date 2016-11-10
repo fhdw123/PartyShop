@@ -29,51 +29,8 @@ public class AdminBereichServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String act = request.getParameter("act");
-		if (act == null) {
-			// no button has been selected
-		} else if (act.equals("Artikel anlegen")) {
-
-			String nextJSP = "/ServletArticleCreation";
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-			dispatcher.forward(request, response);
-
 		
 		
-	} else if (act.equals("Artikel ändern")) {
-
-		String nextJSP = "/artikelAendern.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
-	}
-		
-	else if (act.equals("Artikel löschen")) {
-
-		String nextJSP = "/artikelLoeschen.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
-	}
-		
-	else if (act.equals("Kategorie anlegen")) {
-
-		String nextJSP = "/kategorieErstellen.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
-	}
-		
-	else if (act.equals("Kategorie ändern")) {
-
-		String nextJSP = "/kategorieAendern.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
-	}
-		
-	else if (act.equals("Kunden verwalten")) {
-
-		String nextJSP = "/kundenVerwalten.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
-	}
 		
 		
 	}
@@ -82,8 +39,72 @@ public class AdminBereichServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String nextJSP = "/adminBereich.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
+		
+		
+		String act = request.getParameter("act");
+		if (act == null) {
+			// no button has been selected
+		} else if (act.equals("Artikel anlegen")) {
+
+			 nextJSP = "/ServletArtikelErstellen";
+			dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+			dispatcher.forward(request, response);
+
+		
+		
+	} else if (act.equals("Artikel ändern")) {
+
+			nextJSP = "/ServletArtikelAendern";
+		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
+	}
+		
+	else if (act.equals("Artikel löschen")) {
+
+		nextJSP = "/ServletArtikelLoeschen";
+		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
+	}
+		
+	else if (act.equals("Kategorie anlegen")) {
+
+		nextJSP = "/ServletKategorieErstellen";
+		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
+	}
+		
+	else if (act.equals("Kategorie ändern")) {
+
+		nextJSP = "/ServletKategorieAendern";
+		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
+	}
+		
+	else if (act.equals("Kategorie verbergen")) {
+
+		nextJSP = "/ServletKategorieUnsichtbar";
+		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
+	}
+		
+	else if (act.equals("Kategorie sichtbar machen")) {
+
+		nextJSP = "/ServletKategorieSichtbar";
+		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
+	}
+		
+	else if (act.equals("Kunden verwalten")) {
+
+		nextJSP = "/ServletKundenVerwalten";
+		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
+	}
+		
 	}
 
 }

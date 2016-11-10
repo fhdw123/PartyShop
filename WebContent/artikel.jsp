@@ -15,7 +15,7 @@ out.println(art.getPreis());
 %>
 
 
-<form action="AddToCart">
+<form action="ServletInWarenkorbLegen">
 	<input type="hidden" name="id" value="<%out.print(art.getArtikelid());%>">
 	<input type="submit" value="Add to cart">
 </form>

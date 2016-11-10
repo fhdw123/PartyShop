@@ -15,7 +15,7 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class ArtikelServlet
  */
-@WebServlet("/Artikel")
+@WebServlet("/ServletArtikel")
 public class ArtikelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

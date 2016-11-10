@@ -32,7 +32,7 @@
 				<img src="resources/images/cart.png">
 			</div>
 		</div>
-		<form action="Suche">
+		<form action="ServletSuche">
 			<div class="search">
 				<nav>
 					<a href="#" id="menu-icon"><img class="threelines"

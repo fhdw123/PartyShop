@@ -21,10 +21,10 @@ import classes.Kategorie;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class ArtikelServlet
+ * Servlet implementation class ArtikelErstellenServlet
  */
 @MultipartConfig
-@WebServlet("/ServletArticleCreation")
+@WebServlet("/ServletArtikelErstellen")
 public class ArtikelErstellenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

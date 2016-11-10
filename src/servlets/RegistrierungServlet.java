@@ -16,7 +16,7 @@ import classes.User;
 /**
  * Servlet implementation class RegistrierungServlet
  */
-@WebServlet("/ServletRegistration")
+@WebServlet("/ServletRegistrierung")
 public class RegistrierungServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -69,7 +69,7 @@ public class RegistrierungServlet extends HttpServlet {
 								HttpSession session = request.getSession(false);
 								session.setAttribute("user", user);
 
-								String nextJSP = "/index.jsp";
+								String nextJSP = "/ServletIndex";
 								RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 								dispatcher.forward(request, response);
 

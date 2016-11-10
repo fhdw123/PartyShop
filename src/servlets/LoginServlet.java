@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 						"Select user.mail, user.passwort, user.rolle, user.gesperrt from user where mail = '" + mail
 								+ "'");
 
-				if (rs.getString("gesperrt").equals(0)) {
+				if (Integer.parseInt(rs.getString(4)) == 0) {
 					PasswortVerschluesselung pv = new PasswortVerschluesselung();
 
 					while (rs.next()) {
@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
 
 							} else if (rs.getString("rolle").equals("administrator")) {
 								
-								String nextJSP = "/adminBereich.jsp";
+								String nextJSP = "/AdminBereichServlet";
 								RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 								dispatcher.forward(request, response);
 
