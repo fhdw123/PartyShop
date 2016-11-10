@@ -55,6 +55,7 @@ public class ArtikelErstellenServlet extends HttpServlet {
 		String nextJSP = "/artikelErstellen.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
+	
 		
 	}
 

@@ -30,6 +30,10 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String nextJSP = "/login.jsp";
+    	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+    	dispatcher.forward(request,response);
 
 		PrintWriter out = response.getWriter();
 		String mail = request.getParameter("mail");
@@ -71,9 +75,7 @@ public class LoginServlet extends HttpServlet {
 
 							} else if (rs.getString("rolle").equals("administrator")) {
 								
-								String nextJSP = "/AdminBereichServlet";
-								RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-								dispatcher.forward(request, response);
+								response.sendRedirect("/AdminBereichServlet");
 
 							}
 

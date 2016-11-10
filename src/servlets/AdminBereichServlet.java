@@ -30,7 +30,7 @@ public class AdminBereichServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		response.sendRedirect("/adminBereich.jsp");
 		
 		
 	}
@@ -40,68 +40,62 @@ public class AdminBereichServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nextJSP = "/adminBereich.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
-		
-		
+	
 		String act = request.getParameter("act");
 		if (act == null) {
 			// no button has been selected
 		} else if (act.equals("Artikel anlegen")) {
 
-			 nextJSP = "/ServletArtikelErstellen";
-			dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+			 String nextJSP = "/ServletArtikelErstellen";
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 			dispatcher.forward(request, response);
-
-		
 		
 	} else if (act.equals("Artikel ändern")) {
 
-			nextJSP = "/ServletArtikelAendern";
-		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		String nextJSP = "/ServletArtikelAendern";
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		
 	else if (act.equals("Artikel löschen")) {
 
-		nextJSP = "/ServletArtikelLoeschen";
-		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		String nextJSP = "/ServletArtikelLoeschen";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		
 	else if (act.equals("Kategorie anlegen")) {
 
-		nextJSP = "/ServletKategorieErstellen";
-		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		String nextJSP = "/ServletKategorieErstellen";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		
 	else if (act.equals("Kategorie ändern")) {
 
-		nextJSP = "/ServletKategorieAendern";
-		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		String nextJSP = "/ServletKategorieAendern";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		
 	else if (act.equals("Kategorie verbergen")) {
 
-		nextJSP = "/ServletKategorieUnsichtbar";
-		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		String nextJSP = "/ServletKategorieUnsichtbar";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		
 	else if (act.equals("Kategorie sichtbar machen")) {
 
-		nextJSP = "/ServletKategorieSichtbar";
-		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		String nextJSP = "/ServletKategorieSichtbar";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		
 	else if (act.equals("Kunden verwalten")) {
 
-		nextJSP = "/ServletKundenVerwalten";
-		dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		String nextJSP = "/ServletKundenVerwalten";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 	}
 		

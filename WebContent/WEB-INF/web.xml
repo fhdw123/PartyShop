@@ -18,15 +18,15 @@
   </servlet>
   <servlet>
     <description></description>
-    <display-name>RegistrationServlet</display-name>
-    <servlet-name>RegistrationServlet</servlet-name>
-    <servlet-class>servlets.RegistrationServlet</servlet-class>
+    <display-name>RegistrierungServlet</display-name>
+    <servlet-name>RegistrierungServlet</servlet-name>
+    <servlet-class>servlets.RegistrierungServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
     <display-name>SuchServlet</display-name>
     <servlet-name>SuchServlet</servlet-name>
-    <servlet-class>servlets.SearchServlet</servlet-class>
+    <servlet-class>servlets.SuchServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
@@ -36,8 +36,8 @@
   </servlet>
   <servlet>
     <description></description>
-    <display-name>ArticleServlet</display-name>
-    <servlet-name>ArticleServlet</servlet-name>
+    <display-name>ArtikelServlet</display-name>
+    <servlet-name>ArtikelServlet</servlet-name>
     <servlet-class>servlets.ArtikelServlet</servlet-class>
   </servlet>
   <servlet>

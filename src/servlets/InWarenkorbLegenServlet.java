@@ -18,13 +18,13 @@ import classes.SqlConnection;
  * Servlet implementation class InWarenkorbLegen
  */
 @WebServlet("/ServletInWarenkorbLegen")
-public class InWarenkorbLegen extends HttpServlet {
+public class InWarenkorbLegenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InWarenkorbLegen() {
+    public InWarenkorbLegenServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

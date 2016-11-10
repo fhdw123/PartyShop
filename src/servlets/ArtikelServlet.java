@@ -39,13 +39,12 @@ public class ArtikelServlet extends HttpServlet {
 			
 			
 			
-			String nextJSP = "/article.jsp";
+			String nextJSP = "/artikelServlet.jsp";
 	        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 	        dispatcher.forward(request,response);
 		}
 		catch(Exception e)
 		{
-			response.getWriter().println("Error dies das");
 			e.printStackTrace();
 		}
 	}
