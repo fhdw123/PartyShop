@@ -326,44 +326,6 @@ public class User {
 	}
 	
 	
-	/**
-	 * 
-	 * @throws Exception
-	 */
-	public void userMitIdLiefern() throws Exception
-	{
-		jdbc = new SqlConnection();
-		User tempUser = jdbc.userMitIdLiefern(userid);
-		this.mail = tempUser.getMail();
-		this.vorname = tempUser.getVorname();
-		this.nachname = tempUser.getNachname();
-		this.passwort = tempUser.getPasswort();
-		this.strasse = tempUser.getStrasse();
-		this.hausnummer = tempUser.getHausnummer();
-		this.postleitzahl = tempUser.getPostleitzahl();
-		this.ort = tempUser.getOrt();
-		jdbc.closeConnection();
-	}
-	
-	/**
-	 * 
-	 * @throws Exception
-	 */
-	public void showUserDataByMail() throws Exception
-	{
-		jdbc = new SqlConnection();
-		User tempUser = jdbc.userMitMailLiefern(mail);
-		this.mail = tempUser.getMail();
-		this.vorname = tempUser.getVorname();
-		this.nachname = tempUser.getNachname();
-		this.passwort = tempUser.getPasswort();
-		this.strasse = tempUser.getStrasse();
-		this.hausnummer = tempUser.getHausnummer();
-		this.postleitzahl = tempUser.getPostleitzahl();
-		this.ort = tempUser.getOrt();
-		jdbc.closeConnection();
-	}
-	
 	
 	/**
 	 * 

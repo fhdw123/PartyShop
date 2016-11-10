@@ -24,7 +24,13 @@
 			
 			<input type="submit" name="act" value="Kategorie sichtbar machen"><br>
 			
-			<input type="submit" name="act" value="Kunden verwalten"><br>	
+			<input type="submit" name="act" value="Mitarbeiter anlegen"><br>
+			
+			<input type="submit" name="act" value="Mitarbeiter loeschen"><br>
+			
+			<input type="submit" name="act" value="Kunden sperren"><br>	
+			
+			<input type="submit" name="act" value="Kunden entsperren"><br>	
 
 		
 		

@@ -232,48 +232,6 @@ public class Artikel {
 	}
 	
 	
-	/**
-	 * 
-	 * @throws Exception
-	 */
-	public void artikelLoeschen() throws Exception
-	{
-		jdbc = new SqlConnection();
-		jdbc.artikelLoeschen(artikelid);
-		jdbc.closeConnection();
-	}
-	
-	
-	/**
-	 * 
-	 * @throws Exception
-	 */
-	public void artikelMitIdLiefern() throws Exception
-	{
-		jdbc = new SqlConnection();
-		Artikel tempArtikel = jdbc.artikelMitIdLiefern(artikelid);
-		this.bezeichnung = tempArtikel.getBezeichnung();
-		this.beschreibung = tempArtikel.getBeschreibung();
-		this.preis = tempArtikel.getPreis();
-		this.kategorie = tempArtikel.getKategorie();
-		jdbc.closeConnection();
-	}
-	
-	
-	/**
-	 * 
-	 * @throws Exception
-	 */
-	public void artikelMitBezeichnungLiefern() throws Exception
-	{
-		jdbc = new SqlConnection();
-		Artikel tempArtikel = jdbc.artikelMitBezeichnungLiefern(bezeichnung);
-		this.artikelid = tempArtikel.getArtikelid();
-		this.beschreibung = tempArtikel.getBeschreibung();
-		this.preis = tempArtikel.getPreis();
-		this.kategorie = tempArtikel.getKategorie();
-		jdbc.closeConnection();
-	}
 	
 	
 	public void artikelAendern() throws Exception

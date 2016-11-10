@@ -46,57 +46,57 @@ public class AdminBereichServlet extends HttpServlet {
 			// no button has been selected
 		} else if (act.equals("Artikel anlegen")) {
 
-			 String nextJSP = "/ServletArtikelErstellen";
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-			dispatcher.forward(request, response);
+			response.sendRedirect("/ServletArtikelErstellen");
 		
 	} else if (act.equals("Artikel ändern")) {
 
-		String nextJSP = "/ServletArtikelAendern";
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
+		response.sendRedirect("/ServletArtikelAendern");
 	}
 		
 	else if (act.equals("Artikel löschen")) {
 
-		String nextJSP = "/ServletArtikelLoeschen";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
+		response.sendRedirect("/ServletArtikelLoeschen");
 	}
 		
 	else if (act.equals("Kategorie anlegen")) {
 
-		String nextJSP = "/ServletKategorieErstellen";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
+		response.sendRedirect("/ServletKategorieAnlegen");
 	}
 		
 	else if (act.equals("Kategorie ändern")) {
 
-		String nextJSP = "/ServletKategorieAendern";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
+		response.sendRedirect("/ServletKategorieAendern");
 	}
 		
 	else if (act.equals("Kategorie verbergen")) {
 
-		String nextJSP = "/ServletKategorieUnsichtbar";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
+		response.sendRedirect("/ServletKategorieUnsichtbar");
 	}
 		
 	else if (act.equals("Kategorie sichtbar machen")) {
 
-		String nextJSP = "/ServletKategorieSichtbar";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
+		response.sendRedirect("/ServletKategorieSichtbar");
 	}
 		
-	else if (act.equals("Kunden verwalten")) {
+		
+	else if (act.equals("Mitarbeiter anlegen")) {
 
-		String nextJSP = "/ServletKundenVerwalten";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request, response);
+		response.sendRedirect("/ServletMitarbeiterAnlegen");
+	}
+		
+	else if (act.equals("Mitarbeiter loeschen")) {
+
+		response.sendRedirect("/ServletMitarbeiterLoeschen");
+	}
+		
+	else if (act.equals("Kunden sperren")) {
+
+		response.sendRedirect("/ServletKundenSperren");
+	}
+		
+	else if (act.equals("Kunden entsperren")) {
+
+		response.sendRedirect("/ServletKundenEntsperren");
 	}
 		
 	}

@@ -41,7 +41,7 @@ public class SuchServlet extends HttpServlet {
 			SqlConnection conn = new SqlConnection();
 			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
 			request.setAttribute("kategorien", kategorien);
-			ArrayList<Artikel> artikel = conn.artikelLiefern();
+			ArrayList<Artikel> artikel = conn.alleArtikelLiefern();
 			
 			
 			

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import classes.PasswortVerschluesselung;
+import classes.SqlConnection;
 import classes.User;
 /**
  * Servlet implementation class RegistrierungServlet
@@ -66,12 +67,27 @@ public class RegistrierungServlet extends HttpServlet {
 										Integer.parseInt(plz), ort);
 								user.userAnlegen();
 
-								HttpSession session = request.getSession(false);
-								session.setAttribute("user", user);
 
-								String nextJSP = "/ServletIndex";
-								RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-								dispatcher.forward(request, response);
+								if (rolle.equals("kunde")) {
+
+									SqlConnection con = new SqlConnection();
+
+									HttpSession session = request.getSession(false);
+									session.setAttribute("user", user);
+
+									String nextJSP = "/indexServlet.jsp";
+									RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+									dispatcher.forward(request,response);
+
+								} else if (rolle.equals("mitarbeiter")) {
+									
+									response.sendRedirect("/MitarbeiterBereichServlet");
+
+								} else if (rolle.equals("administrator")) {
+									
+									response.sendRedirect("/AdminBereichServlet");
+
+								}
 
 							} catch (Exception ex) {
 								ex.printStackTrace();

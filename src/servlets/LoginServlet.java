@@ -63,8 +63,8 @@ public class LoginServlet extends HttpServlet {
 
 							if (rs.getString("rolle").equals("kunde")) {
 
-								User user = new User(mail);
-								user.showUserDataByMail();
+								SqlConnection con = new SqlConnection();
+								User user = con.userMitMailLiefern(mail);
 
 								HttpSession session = request.getSession(false);
 								session.setAttribute("user", user);
@@ -72,6 +72,8 @@ public class LoginServlet extends HttpServlet {
 								response.sendRedirect("/Partyshop");
 
 							} else if (rs.getString("rolle").equals("mitarbeiter")) {
+								
+								response.sendRedirect("/MitarbeiterBereichServlet");
 
 							} else if (rs.getString("rolle").equals("administrator")) {
 								

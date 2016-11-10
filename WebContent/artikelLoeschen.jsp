@@ -6,13 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Artikel erstellen</title>
+<title>Artikel löschen</title>
 </head>
 <body>
 
 	<form action="ServletArtikelLoeschen" method="doGet">
 
 		Artike-ID: <input type="text" name="artikelid" /> <br>
+		
+		<input type="submit" name="act" value="loeschen">
 
 	</form>
 
