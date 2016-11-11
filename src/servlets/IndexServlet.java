@@ -37,9 +37,7 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		
-		String nextJSP = "/index.jsp";
-    	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-    	dispatcher.forward(request,response);  
+		  
 		
 		HttpSession session=request.getSession(false);  
         if(session!=null) 
@@ -54,7 +52,9 @@ public class IndexServlet extends HttpServlet {
         	conn.closeConnection();
         	request.setAttribute("kategorien", kategorien);
         	
-        	
+        	String nextJSP = "/index.jsp";
+        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+        	dispatcher.forward(request,response);
         	
         }
         catch(Exception e)
