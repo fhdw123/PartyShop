@@ -86,13 +86,9 @@ public class ArtikelAendernServlet extends HttpServlet {
 			try {
 
 				String kategorieid = "";
-				try {
+				
 					SqlConnection con = new SqlConnection();
 					kategorieid = con.kategorienLiefernMitBezeichnung(kategorie).getKategorieid();
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 				
 				Part filePart = request.getPart("file");
 				InputStream fileContent = filePart.getInputStream();
@@ -110,8 +106,11 @@ public class ArtikelAendernServlet extends HttpServlet {
 				fileContent.close();
 
 				Double preis = Double.parseDouble(preisStr);
-				Artikel artikel = new Artikel(artikelid, bezeichnung, beschreibung, preis, kategorieid, file);
-				artikel.artikelAendern();
+				con.artikelAktualisieren(artikelid, bezeichnung, beschreibung, preis, kategorieid, file);
+				con.closeConnection();
+				
+				response.sendRedirect("ServletArtikelAendernAuswahl");
+				
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}

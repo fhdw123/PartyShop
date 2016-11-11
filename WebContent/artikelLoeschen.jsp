@@ -12,7 +12,7 @@
 
 	<form action="ServletArtikelLoeschen" method="doGet">
 
-		Artike-ID: <input type="text" name="artikelid" /> <br>
+		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
 		
 		<input type="submit" name="act" value="loeschen">
 

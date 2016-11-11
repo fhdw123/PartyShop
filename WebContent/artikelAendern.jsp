@@ -1,3 +1,4 @@
+<%@page import="classes.SqlConnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.ArrayList"%>
@@ -11,22 +12,33 @@
 </head>
 <body>
 
-	<form action="ServletArtikelAendern" method="post" enctype="multipart/form-data">
+	<form action="ServletArtikelAendern" method="post"
+		enctype="multipart/form-data">
 
-<%
-				Artikel a = (Artikel) request.getAttribute("artikel");
+		<%
+			String artikelid = request.getParameter("artikel");
 
-			%>
+			SqlConnection con = new SqlConnection();
+			Artikel a = con.artikelMitIdLiefern(artikelid);
+			
+			Kategorie aktKat = con.kategorienLiefernMitId(a.getKategorie());
+			
+			con.closeConnection();
+		%>
 
-		Artikel-Id: <input type="text" name="artikelid" value="<%out.print(a.getArtikelid());%>"/> <br>
-		
-		Bezeichnung: <input type="text" name="bezeichnung" value="<%out.print(a.getBezeichnung());%>"/> <br>
+		Artikel-Id: <input type="text" name="artikelid"
+			value="<%out.print(a.getArtikelid());%>" readonly/> <br> Bezeichnung: <input
+			type="text" name="bezeichnung"
+			value="<%out.print(a.getBezeichnung());%>" /> <br> Beschreibung:
+		<input type="text" name="beschreibung"
+			value="<%out.print(a.getBeschreibung());%>" /> <br> Preis: <input
+			type="text" name="preis" value="<%out.print(a.getPreis());%>" /> <br>
+			
+			aktuelle Kategorie:
+		<input type="text" name="aktKategorie" value="<%out.print(aktKat.getBezeichnung());%>" readonly /><br>
 
-		Beschreibung: <input type="text" name="beschreibung" value="<%out.print(a.getBeschreibung());%>"/> <br>
-
-		Preis: <input type="text" name="preis" value="<%out.print(a.getPreis());%>"/> <br> 
-		
-		Kategorie: <select name="kategorie" value="<%out.print(a.getKategorie());%>">
+		neue Kategorie: <select name="kategorie"
+			value="<%out.print(a.getKategorie());%>">
 			<%
 				ArrayList<Kategorie> kategorien = (ArrayList<Kategorie>) request.getAttribute("kategorien");
 				for (int i = 0; i < kategorien.size(); i++) {
@@ -37,13 +49,11 @@
 				}
 			%>
 		</select>
-		
-		
-					<input type="file" name="file"> 
-			<input type="submit" name="act" value="anlegen">
+		 <input type="file" name="file"> <input type="submit"
+			name="act" value="aendern">
 
-</form>
-	
+	</form>
+
 
 
 </body>

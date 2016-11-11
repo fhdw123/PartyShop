@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form action="ServletArtikelAendernAuswahl" method="doGet">
+	<form action="ServletArtikelAendernAuswahl" method="post">
 
 		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
 		

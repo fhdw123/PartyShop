@@ -14,7 +14,7 @@
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>servlets.IndexServlet</servlet-class>
+    <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
@@ -45,5 +45,23 @@
     <display-name>InWarenkorbLegenServlet</display-name>
     <servlet-name>InWarenkorbLegenServlet</servlet-name>
     <servlet-class>servlets.InWarenkorbLegenServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>ArtikelErstellenServlet</display-name>
+    <servlet-name>ArtikelErstellenServlet</servlet-name>
+    <servlet-class>servlets.ArtikelErstellenServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>KategorieErstellenServlet</display-name>
+    <servlet-name>KategorieErstellenServlet</servlet-name>
+    <servlet-class>servlets.KategorieErstellenServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>AdminBereichServlet</display-name>
+    <servlet-name>AdminBereichServlet</servlet-name>
+    <servlet-class>servlets.AdminBereichServlet</servlet-class>
   </servlet>
 </web-app>

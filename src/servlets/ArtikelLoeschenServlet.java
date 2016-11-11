@@ -50,7 +50,7 @@ public class ArtikelLoeschenServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		String artikelid = request.getParameter("artikelid");
+		String bezeichnung = request.getParameter("bezeichnung");
 		
 		String act = request.getParameter("act");
 		if (act == null) {
@@ -59,7 +59,8 @@ public class ArtikelLoeschenServlet extends HttpServlet {
 			
 			try{
 				SqlConnection con = new SqlConnection();
-				con.artikelLoeschen(artikelid);
+				Artikel a = con.artikelMitBezeichnungLiefern(bezeichnung);
+				con.artikelLoeschen(a.getArtikelid());
 			}
 			catch(Exception ex)
 			{

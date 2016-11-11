@@ -18,8 +18,6 @@
 			
 			<input type="submit" name="act" value="Kategorie anlegen"><br>
 			
-			<input type="submit" name="act" value="Kategorie ändern"><br>
-			
 			<input type="submit" name="act" value="Kategorie verbergen"><br>
 			
 			<input type="submit" name="act" value="Kategorie sichtbar machen"><br>

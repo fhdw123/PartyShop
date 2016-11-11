@@ -13,6 +13,8 @@
 	<form action="ServletKategorieErstellen" method="doGet">
 
 		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
+		
+		<input type="submit" name="act" value="anlegen">
 
 	</form>
 

@@ -88,8 +88,8 @@ public class SqlConnection {
 	 * @param ort
 	 * @throws Exception
 	 */
-	public void userAktualisieren(String userid, String mail, String vorname, String nachname, String passwort, String strasse,
-			String hausnummer, int postleitzahl, String ort) throws Exception {
+	public void userAktualisieren(String userid, String mail, String vorname, String nachname, String passwort,
+			String strasse, String hausnummer, int postleitzahl, String ort) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -153,16 +153,17 @@ public class SqlConnection {
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery("Select * from user where mail = '" + mail + "'");
-
-		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
-				Integer.parseInt(rs.getString(10)), rs.getString(11));
-		stmt.close();
-		return user;
+		while (rs.next()) {
+			User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+					rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
+					Integer.parseInt(rs.getString(10)), rs.getString(11));
+			stmt.close();
+			return user;
+		}
+		return null;
 
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param artikelid
@@ -172,11 +173,10 @@ public class SqlConnection {
 
 		Statement stmt = conn.createStatement();
 
-		stmt.executeUpdate("Delete from user where mail = '" + mail + "' and rolle = mitarbeiter");
+		stmt.executeUpdate("Delete from user where mail = '" + mail + "' and rolle = 'mitarbeiter'");
 		stmt.close();
 
 	}
-	
 
 	/**
 	 * 
@@ -187,8 +187,8 @@ public class SqlConnection {
 	 * @param kategorie
 	 * @throws Exception
 	 */
-	public void artikelErzeugen(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie,
-			File bild) throws Exception {
+	public void artikelErzeugen(String artikelid, String bezeichnung, String beschreibung, double preis,
+			String kategorie, File bild) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -198,7 +198,7 @@ public class SqlConnection {
 		FileInputStream fis = null;
 		PreparedStatement ps = null;
 
-		String INSERT_ARTICLE = "insert into artikel(artikelid, bezeichnung, beschreibung, preis, kategorie, bild, timestamp) values (?,?,?,?,?,?,?)";
+		String INSERT_ARTICLE = "insert into artikel(artikelid, bezeichnung, beschreibung, preis, kategorie, bild, zeitstempel) values (?,?,?,?,?,?,?)";
 
 		try {
 			conn.setAutoCommit(false);
@@ -230,8 +230,8 @@ public class SqlConnection {
 	 * @param kategorie
 	 * @throws Exception
 	 */
-	public void artikelAktualisieren(String artikelid, String bezeichnung, String beschreibung, double preis, String kategorie,
-			File bild) throws Exception {
+	public void artikelAktualisieren(String artikelid, String bezeichnung, String beschreibung, double preis,
+			String kategorie, File bild) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
@@ -292,7 +292,7 @@ public class SqlConnection {
 		while (rs.next()) {
 
 			String tmp_dir = System.getProperty("java.io.tmpdir");
-			File file = new File(tmp_dir + "/" + rs.getString(2)+".jpg");
+			File file = new File(tmp_dir + "/" + rs.getString(2) + ".jpg");
 
 			FileOutputStream output = new FileOutputStream(file);
 
@@ -385,9 +385,7 @@ public class SqlConnection {
 		return artikel;
 
 	}
-	
-	
-	
+
 	/**
 	 * 
 	 * @return
@@ -425,17 +423,15 @@ public class SqlConnection {
 		return artikel;
 
 	}
-	
-	
-	
-	
+
 	public ArrayList<Artikel> meistegkaufteZehnArtikelLiefern() throws Exception {
 
 		ArrayList<Artikel> artikel = new ArrayList<Artikel>();
 
 		Statement stmt = conn.createStatement();
 
-		ResultSet rs = stmt.executeQuery("Select a.artikelid, a.bezeichnung, a.beschreibung, a.preis, a.kategorie, a.bild, a.zeitstempel, (Select sum(*) where a.artikelbezeichnung = p.artikelbezeichnung) as anzVer from artikel a, position p  order by anzVer desc limit 10");
+		ResultSet rs = stmt.executeQuery(
+				"Select a.artikelid, a.bezeichnung, a.beschreibung, a.preis, a.kategorie, a.bild, a.zeitstempel, (Select sum(*) where a.artikelbezeichnung = p.artikelbezeichnung) as anzVer from artikel a, position p  order by anzVer desc limit 10");
 
 		while (rs.next()) {
 
@@ -471,17 +467,16 @@ public class SqlConnection {
 	public Artikel artikelMitIdLiefern(String artikelid) throws Exception {
 		Artikel artikel = new Artikel("?");
 		Statement stmt = conn.createStatement();
-		
-		
 
 		ResultSet rs = stmt.executeQuery("Select * from artikel where artikelid = '" + artikelid + "'");
-		
-		String tmp_dir = System.getProperty("java.io.tmpdir");
-		File file = new File(tmp_dir + "/" + rs.getString(2));
 
-		FileOutputStream output = new FileOutputStream(file);
+		String tmp_dir = System.getProperty("java.io.tmpdir");
 
 		while (rs.next()) {
+			File file = new File(tmp_dir + "/" + rs.getString(2) + "jpg");
+
+			FileOutputStream output = new FileOutputStream(file);
+
 			InputStream input = rs.getBinaryStream(6);
 			System.out.println(input);
 			byte[] buffer = new byte[1024];
@@ -507,8 +502,8 @@ public class SqlConnection {
 
 		while (rs.next()) {
 
-			artikel = new Artikel(rs.getString(1), bezeichnung, rs.getString(3),
-					Double.parseDouble(rs.getString(4)), rs.getString(5));
+			artikel = new Artikel(rs.getString(1), bezeichnung, rs.getString(3), Double.parseDouble(rs.getString(4)),
+					rs.getString(5));
 
 		}
 		stmt.close();
@@ -526,7 +521,8 @@ public class SqlConnection {
 
 		Statement stmt = conn.createStatement();
 
-		stmt.executeUpdate("INSERT INTO kategorie " + "VALUES ('" + kategorieid + "', '" + bezeichnung + "', "+sichtbar+")");
+		stmt.executeUpdate(
+				"INSERT INTO kategorie " + "VALUES ('" + kategorieid + "', '" + bezeichnung + "', " + sichtbar + ")");
 		stmt.close();
 
 	}
@@ -541,8 +537,8 @@ public class SqlConnection {
 
 		Statement stmt = conn.createStatement();
 
-		stmt.executeUpdate(
-				"Update kategorie set bezeichnung = '" + bezeichnung + "', sichtbar = "+sichtbar+"where kategorieid = '" + kategorieid + "'");
+		stmt.executeUpdate("Update kategorie set bezeichnung = '" + bezeichnung + "', sichtbar = " + sichtbar
+				+ "where kategorieid = '" + kategorieid + "'");
 		stmt.close();
 
 	}
@@ -570,8 +566,7 @@ public class SqlConnection {
 		return kategorien;
 
 	}
-	
-	
+
 	/**
 	 * 
 	 * @return
@@ -579,28 +574,70 @@ public class SqlConnection {
 	 */
 	public Kategorie kategorienLiefernMitBezeichnung(String bezeichnung) throws Exception {
 
-		
-
 		Statement stmt = conn.createStatement();
 
-		ResultSet rs = stmt.executeQuery("Select * from kategorie where bezeichnung = '"+bezeichnung+"' and sichtbar = 1");
+		ResultSet rs = stmt
+				.executeQuery("Select * from kategorie where bezeichnung = '" + bezeichnung + "' and sichtbar = 1");
 
 		while (rs.next()) {
 
 			Kategorie kategorie = new Kategorie(rs.getString(1), rs.getString(2), Integer.parseInt(rs.getString(3)));
-			
+
 			return kategorie;
 
 		}
 		stmt.close();
 		return null;
-		
-		
+	}
+
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public Kategorie kategorienUnsichtbarLiefernMitBezeichnung(String bezeichnung) throws Exception {
+
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt
+				.executeQuery("Select * from kategorie where bezeichnung = '" + bezeichnung + "' and sichtbar = 0");
+
+		while (rs.next()) {
+
+			Kategorie kategorie = new Kategorie(rs.getString(1), rs.getString(2), Integer.parseInt(rs.getString(3)));
+
+			return kategorie;
+
+		}
+		stmt.close();
+		return null;
 
 	}
-	
-	
-	
+
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public Kategorie kategorienLiefernMitId(String kategorieid) throws Exception {
+
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt
+				.executeQuery("Select * from kategorie where kategorieid = '" + kategorieid + "' and sichtbar = 1");
+
+		while (rs.next()) {
+
+			Kategorie kategorie = new Kategorie(rs.getString(1), rs.getString(2), Integer.parseInt(rs.getString(3)));
+
+			return kategorie;
+
+		}
+		stmt.close();
+		return null;
+
+	}
+
 	/**
 	 * 
 	 * @param kategorieid
@@ -610,12 +647,11 @@ public class SqlConnection {
 
 		Statement stmt = conn.createStatement();
 
-		stmt.executeUpdate("Update User Set sichtbar = 0 where kategorieid = '" + kategorieid + "'");
+		stmt.executeUpdate("Update kategorie Set sichtbar = 0 where kategorieid = '" + kategorieid + "'");
 		stmt.close();
 
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param kategorieid
@@ -625,12 +661,10 @@ public class SqlConnection {
 
 		Statement stmt = conn.createStatement();
 
-		stmt.executeUpdate("Update User Set sichtbar = 1 where kategorieid = '" + kategorieid + "'");
+		stmt.executeUpdate("Update kategorie Set sichtbar = 1 where kategorieid = '" + kategorieid + "'");
 		stmt.close();
 
 	}
-	
-	
 
 	/**
 	 * 

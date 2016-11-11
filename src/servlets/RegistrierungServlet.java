@@ -25,11 +25,18 @@ public class RegistrierungServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String nextJSP = "/registrieren.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request,response);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		
+		
 		PrintWriter out = response.getWriter();
 		String mail = request.getParameter("mail").toLowerCase();
 		String vname = request.getParameter("vn");
@@ -75,17 +82,15 @@ public class RegistrierungServlet extends HttpServlet {
 									HttpSession session = request.getSession(false);
 									session.setAttribute("user", user);
 
-									String nextJSP = "/indexServlet.jsp";
-									RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-									dispatcher.forward(request,response);
+									response.sendRedirect("IndexServlet");
 
 								} else if (rolle.equals("mitarbeiter")) {
 									
-									response.sendRedirect("/MitarbeiterBereichServlet");
+									response.sendRedirect("MitarbeiterBereichServlet");
 
 								} else if (rolle.equals("administrator")) {
 									
-									response.sendRedirect("/AdminBereichServlet");
+									response.sendRedirect("AdminBereichServlet");
 
 								}
 

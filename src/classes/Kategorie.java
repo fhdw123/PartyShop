@@ -29,6 +29,7 @@ public class Kategorie {
 		super();
 		this.kategorieid = UUID.randomUUID().toString();
 		this.bezeichnung = bezeichnung;
+		this.sichtbar = 1;
 	}
 	
 	

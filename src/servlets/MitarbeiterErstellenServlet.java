@@ -25,7 +25,9 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.sendRedirect("/mitarbeiterErstellen.jsp");
+		String nextJSP = "/mitarbeiterErstellen.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
 
 	}
 
@@ -67,7 +69,7 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 								User user = new User(mail, vname, nname, pv.SHA512(pass1), rolle, 0, strasse, hausnummer,
 										Integer.parseInt(plz), ort);
 								user.userAnlegen();
-
+								response.sendRedirect("ServletMitarbeiterErstellen");
 
 
 							} catch (Exception ex) {

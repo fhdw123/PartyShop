@@ -30,7 +30,9 @@ public class AdminBereichServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.sendRedirect("/adminBereich.jsp");
+		String nextJSP = "/adminBereich.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request,response);
 		
 		
 	}
@@ -46,57 +48,52 @@ public class AdminBereichServlet extends HttpServlet {
 			// no button has been selected
 		} else if (act.equals("Artikel anlegen")) {
 
-			response.sendRedirect("/ServletArtikelErstellen");
+			response.sendRedirect("ServletArtikelErstellen");
 		
 	} else if (act.equals("Artikel ändern")) {
 
-		response.sendRedirect("/ServletArtikelAendern");
+		response.sendRedirect("ServletArtikelAendernAuswahl");
 	}
 		
 	else if (act.equals("Artikel löschen")) {
 
-		response.sendRedirect("/ServletArtikelLoeschen");
+		response.sendRedirect("ServletArtikelLoeschen");
 	}
 		
 	else if (act.equals("Kategorie anlegen")) {
 
-		response.sendRedirect("/ServletKategorieAnlegen");
-	}
-		
-	else if (act.equals("Kategorie ändern")) {
-
-		response.sendRedirect("/ServletKategorieAendern");
+		response.sendRedirect("ServletKategorieErstellen");
 	}
 		
 	else if (act.equals("Kategorie verbergen")) {
 
-		response.sendRedirect("/ServletKategorieUnsichtbar");
+		response.sendRedirect("ServletKategorieUnsichtbar");
 	}
 		
 	else if (act.equals("Kategorie sichtbar machen")) {
 
-		response.sendRedirect("/ServletKategorieSichtbar");
+		response.sendRedirect("ServletKategorieSichtbar");
 	}
 		
 		
 	else if (act.equals("Mitarbeiter anlegen")) {
 
-		response.sendRedirect("/ServletMitarbeiterAnlegen");
+		response.sendRedirect("ServletMitarbeiterErstellen");
 	}
 		
 	else if (act.equals("Mitarbeiter loeschen")) {
 
-		response.sendRedirect("/ServletMitarbeiterLoeschen");
+		response.sendRedirect("ServletMitarbeiterLoeschen");
 	}
 		
 	else if (act.equals("Kunden sperren")) {
 
-		response.sendRedirect("/ServletKundenSperren");
+		response.sendRedirect("ServletKundenSperren");
 	}
 		
 	else if (act.equals("Kunden entsperren")) {
 
-		response.sendRedirect("/ServletKundenEntsperren");
+		response.sendRedirect("ServletKundenEntsperren");
 	}
 		
 	}

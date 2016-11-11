@@ -30,7 +30,9 @@ public class MitarbeiterBereichServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.sendRedirect("/mitarbeiterBereich.jsp");
+		String nextJSP = "/mitarbeiterBereich.jsp";
+    	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+    	dispatcher.forward(request,response);
 		
 		
 	}

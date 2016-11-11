@@ -37,7 +37,9 @@ public class MitarbeiterLoeschenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.sendRedirect("/mitarbeiterLoeschen.jsp");
+		String nextJSP = "/mitarbeiterLoeschen.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
 		
 		
 		String mail = request.getParameter("mail");

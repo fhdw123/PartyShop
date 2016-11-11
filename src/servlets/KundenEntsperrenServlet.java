@@ -37,7 +37,9 @@ public class KundenEntsperrenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.sendRedirect("/kundenEntsperren.jsp");
+		String nextJSP = "/kundenEntsperren.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
 		
 		
 		String mail = request.getParameter("mail");

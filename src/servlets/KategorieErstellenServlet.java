@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,14 +37,10 @@ public class KategorieErstellenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		SqlConnection conn;
-		try {
-			conn = new SqlConnection();
-			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
-			request.setAttribute("kategorien", kategorien);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		String nextJSP = "/kategorieErstellen.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
+		
 		
 		String bezeichnung = request.getParameter("bezeichnung");
 		
@@ -55,6 +52,7 @@ public class KategorieErstellenServlet extends HttpServlet {
 			try{
 				
 				Kategorie kategorie = new Kategorie(bezeichnung);
+				kategorie.kategorieErzeugen();
 			}
 			catch(Exception ex)
 			{

@@ -30,10 +30,16 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		String nextJSP = "/login.jsp";
     	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
     	dispatcher.forward(request,response);
+
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
 
 		PrintWriter out = response.getWriter();
 		String mail = request.getParameter("mail");
@@ -46,42 +52,38 @@ public class LoginServlet extends HttpServlet {
 
 			try {
 
-				SqlConnection sql = new SqlConnection();
-				Connection connection = sql.getJDBCConnection();
+				SqlConnection con = new SqlConnection();
 
-				Statement stmt = connection.createStatement();
-				ResultSet rs = stmt.executeQuery(
-						"Select user.mail, user.passwort, user.rolle, user.gesperrt from user where mail = '" + mail
-								+ "'");
-
-				if (Integer.parseInt(rs.getString(4)) == 0) {
+				User user = con.userMitMailLiefern(mail);
+				con.closeConnection();
+				
+				if (user.getGesperrt() == 0) {
 					PasswortVerschluesselung pv = new PasswortVerschluesselung();
 
-					while (rs.next()) {
-						String hashPasswort = pv.SHA512(rs.getString("passwort"));
+
+						String hashPasswort = pv.SHA512(user.getPasswort());
 						if (hashPasswort.equals(pass)) {
 
-							if (rs.getString("rolle").equals("kunde")) {
+							if (user.getRolle().equals("kunde")) {
 
-								SqlConnection con = new SqlConnection();
-								User user = con.userMitMailLiefern(mail);
+
 
 								HttpSession session = request.getSession(false);
 								session.setAttribute("user", user);
 
-								response.sendRedirect("/Partyshop");
+								response.sendRedirect("/indexServlet");
 
-							} else if (rs.getString("rolle").equals("mitarbeiter")) {
+							} else if (user.getRolle().equals("mitarbeiter")) {
 								
 								response.sendRedirect("/MitarbeiterBereichServlet");
 
-							} else if (rs.getString("rolle").equals("administrator")) {
+							} else if (user.getRolle().equals("administrator")) {
 								
 								response.sendRedirect("/AdminBereichServlet");
 
 							}
 
-						}
+						
 
 					}
 
@@ -94,17 +96,12 @@ public class LoginServlet extends HttpServlet {
 				int i = 1;
 			} catch (Exception ex) {
 				// Mail Adresse nicht vorhanden
+				ex.printStackTrace();
 			}
 	
 
 		}
 
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

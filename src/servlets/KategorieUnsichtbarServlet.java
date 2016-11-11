@@ -54,6 +54,7 @@ public class KategorieUnsichtbarServlet extends HttpServlet {
 				SqlConnection con = new SqlConnection();
 				Kategorie k = con.kategorienLiefernMitBezeichnung(bezeichnung);
 				con.kategorieUnsichtbar(k.getKategorieid());
+				con.closeConnection();
 				
 				
 			} catch (Exception e) {

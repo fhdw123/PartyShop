@@ -42,18 +42,23 @@ public class KategorieSichtbarServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String nextJSP = "/kategorieSichtbar.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
 
 		String act = request.getParameter("actChoose");
 		if (act == null) {
 			// no button has been selected
-		} else if (act.equals("verbergen")) {
+		} else if (act.equals("sichtbar machen")) {
 
 			String bezeichnung = request.getParameter("bezeichnung");
 
 			try {
 				SqlConnection con = new SqlConnection();
-				Kategorie k = con.kategorienLiefernMitBezeichnung(bezeichnung);
+				Kategorie k = con.kategorienUnsichtbarLiefernMitBezeichnung(bezeichnung);
 				con.kategorieSichtbar(k.getKategorieid());
+				con.closeConnection();
 				
 				
 			} catch (Exception e) {
@@ -63,9 +68,7 @@ public class KategorieSichtbarServlet extends HttpServlet {
 
 			}
 			
-			String nextJSP = "/kategorieSichtbar.jsp";
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-			dispatcher.forward(request, response);
+			
 		} 
 
 	}
