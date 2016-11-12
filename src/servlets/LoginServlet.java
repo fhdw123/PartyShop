@@ -59,8 +59,8 @@ public class LoginServlet extends HttpServlet {
 					PasswortVerschluesselung pv = new PasswortVerschluesselung();
 
 
-						String hashPasswort = pv.SHA512(user.getPasswort());
-						if (hashPasswort.equals(pass)) {
+						String hashPasswort = pv.SHA512(pass);
+						if (hashPasswort.equals(user.getPasswort())) {
 
 							if (user.getRolle().equals("kunde")) {
 
