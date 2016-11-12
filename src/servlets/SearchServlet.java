@@ -41,9 +41,10 @@ public class SearchServlet extends HttpServlet {
 		{
 
 			SqlConnection conn = new SqlConnection();
-			ArrayList<Kategorie> kategorien = conn.showKategorien();
+			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
 			request.setAttribute("kategorien", kategorien);
-			ArrayList<Artikel> artikel = conn.showAllArtikels();
+			String searchtext = request.getParameter("searchtext");
+			ArrayList<Artikel> artikel = conn.artikelSuchen(searchtext);
 			
 			
 			

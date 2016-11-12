@@ -35,7 +35,7 @@ public class ArticleServlet extends HttpServlet {
 		try
 		{
 			SqlConnection conn = new SqlConnection();
-			Artikel artikel = conn.showArtikelData(request.getParameter("id"));
+			Artikel artikel = conn.artikelMitIdLiefern(request.getParameter("id"));
 			request.setAttribute("artikel", artikel);
 			
 			

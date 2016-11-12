@@ -37,7 +37,7 @@ public class AddToCartServlet extends HttpServlet {
 		try
 		{
 			SqlConnection conn = new SqlConnection();
-			Artikel artikel = conn.showArtikelData(request.getParameter("id"));
+			Artikel artikel = conn.artikelMitIdLiefern(request.getParameter("id"));
 			HttpSession session=request.getSession(false);  
 	        if(session!=null) 
 	        {

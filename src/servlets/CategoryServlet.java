@@ -37,9 +37,9 @@ public class CategoryServlet extends HttpServlet {
 		{
 
 			SqlConnection conn = new SqlConnection();
-			ArrayList<Kategorie> kategorien = conn.showKategorien();
+			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
 			request.setAttribute("kategorien", kategorien);
-			ArrayList<Artikel> artikel = conn.showArtikelsInKategorie(request.getParameter("id"));
+			ArrayList<Artikel> artikel = conn.artikelInKategorieLiefern(request.getParameter("id"));
 			request.setAttribute("artikel", artikel);
 			conn.closeConnection();
 			for(Kategorie kat: kategorien)
@@ -58,7 +58,7 @@ public class CategoryServlet extends HttpServlet {
 		catch(Exception e)
 		{
 			String error = e.getMessage();
-			
+			e.printStackTrace();
 		}
 		
 	}

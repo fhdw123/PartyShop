@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,9 +17,9 @@ import classes.SqlConnection;
 import classes.User;
 
 /**
- * Servlet implementation class IndexServlet
+ * Servlet implementation class MainServlet
  */
-@WebServlet("/ServletIndex")
+@WebServlet("/index")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,9 +37,6 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		  
-		
 		HttpSession session=request.getSession(false);  
         if(session!=null) 
         {
@@ -51,10 +49,9 @@ public class IndexServlet extends HttpServlet {
         	ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
         	conn.closeConnection();
         	request.setAttribute("kategorien", kategorien);
-        	
         	String nextJSP = "/index.jsp";
         	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-        	dispatcher.forward(request,response);
+        	dispatcher.forward(request,response);  
         	
         }
         catch(Exception e)
