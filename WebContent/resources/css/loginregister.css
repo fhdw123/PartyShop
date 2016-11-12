@@ -1,0 +1,61 @@
+
+div.logo
+{
+	margin: auto;
+	width: 300px;
+}
+div.logo img
+{
+	width: 300px;
+	height: auto;
+}
+div.full
+{
+	margin: auto;
+	border-radius: 5px 5px 5px 5px;
+	border: 1px solid #ccc;
+	width: 1000px;
+	height: 500px;
+}
+div.half
+{
+	float: left;
+	width: 450px;
+}
+div.half2
+{
+	float:right;
+	width: 450px;
+}
+div.headline
+{
+	float: left;
+	text-align: center;
+	width: 100%;
+	margin-bottom: 25px;
+}
+span.headline
+{
+	font-size: 20px;
+}
+div.element
+{
+	float: left;
+	margin-bottom: 10px;
+	width: 100%;
+}
+input[type=text]
+{
+	float: left;
+	width: 200px;
+}
+input[type=password]
+{
+	float: left;
+	width: 200px;
+}
+div.text
+{
+	float: left;
+	width: 100px;
+}

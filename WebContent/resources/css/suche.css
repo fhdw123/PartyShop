@@ -65,20 +65,44 @@ div.searchlogo
 /* Logos rechts im Header für Login und Warenkorb */
 div.headerlogos 
 {
-	width: 150px;
-	margin-top: 35px;
+	width: 250px;
+	margin-top: 25px;
 	float: right;
 }
 div.headerlogo 
 {
 	float: left;
-	width: 40px;
+	width: 100px;
 	margin-left: 10px;
 }
-div.headerlogo img 
+div.headerlogo a.user
+{
+	margin: auto;
+	display: block;
+	width: 40px;
+	height: 45px;
+	background: url(/Partyshop/resources/images/user.png) no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+div.headerdesc
 {
 	width: 100%;
+	text-align: center;
+}
+span.headerdesc
+{
+	font-size: 20px;
+}
+div.headerlogo a.cart 
+{
+	margin: auto;
+	display: block;
+	width: 50px;
 	height: 45px;
+	background: url(/Partyshop/resources/images/cart.png) no-repeat;
+	background-position: center;
+	background-size: 100%;
 }
 img.logo 
 {
@@ -260,9 +284,19 @@ div.desc
 	{
 		min-width: 70px;
 	}
-	div.headerlogo img 
+	div.headerlogo a.cart 
+	{
+		min-width: 80px;
+		min-height: 80px;
+	}
+	div.headerlogo a.user
 	{
 		min-height: 75px;
+		min-width: 75px;
+	}
+	div.headerdesc
+	{
+		display: none;
 	}
 	div.search 
 	{
@@ -305,7 +339,6 @@ div.desc
 		margin-bottom: 40px;
 		width: 100%;
 		font-size: 50px;
-		border-bottom: solid #ccc;
 	}
 	nav:hover ul 
 	{

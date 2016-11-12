@@ -1,5 +1,5 @@
 /*
-    Document   : kategorie.css
+    Document   : artikel.css
     Created on : 28.10.2016
     Author     : Leon
 */
@@ -36,7 +36,7 @@ div.header-logo
 /*Suchleiste +button*/
 div.search
 {
-	width: 63%;
+	width: 57%;
 	float: left;
 	margin-top: 45px;
 }
@@ -85,6 +85,15 @@ div.headerlogo a.user
 	background-position: center;
 	background-size: 100%;
 }
+div.headerdesc
+{
+	width: 100%;
+	text-align: center;
+}
+span.headerdesc
+{
+	font-size: 20px;
+}
 div.headerlogo a.cart 
 {
 	margin: auto;
@@ -94,15 +103,6 @@ div.headerlogo a.cart
 	background: url(/Partyshop/resources/images/cart.png) no-repeat;
 	background-position: center;
 	background-size: 100%;
-}
-div.headerdesc
-{
-	width: 100%;
-	text-align: center;
-}
-span.headerdesc
-{
-	font-size: 20px;
 }
 img.logo 
 {
@@ -134,87 +134,51 @@ input.searchbar
 /* Content */
 div.content 
 {
-	max-width: 1500px;
+	max-width: 1150px;
 	min-width: 1000px;
-	width: auto;
 	display: block;
-	margin-left: -10px;
-}
-
-/* Kategorie Leiste */
-div.categories 
-{
-	width: 15%;
-	float: left;
-	border-right: solid 1px #ccc;
-}
-ul.categories 
-{
-	width: 100%;
-	list-style-type: none;
-	margin: 0px;
-	padding: 0;
-	background-color: #f1f1f1;	
-}
-li.categories a 
-{
-	display: block;
-	color: #000;
-	padding: 8px 16px;
-	text-decoration: none;	
-}
-li.categories a.title 
-{
-	font-size: 20px;
-	color: black;
-}
-li.categories a:hover
-{
-	background-color: #555;
-	color: white;
-}
-li.categories a.active
-{
-	background-color: #555;
-	color: white;
-}
-div.articles 
-{
-	width: 33%;
-	background-color: white;
-	/*height: 380px;*/
-	max-width: 800px;
-	float: left;
-	display: block;
-	border-bottom: solid 1px #ccc;
-}
-div.single-article 
-{
-	width: 80%;
-	float: left;
-	margin-right: 5px;
-	margin-bottom: 10px;
-	height: 347px;
-}
-div.single-article:hover
-{
+	margin: 10px auto;
 	
 }
-div.single-article img 
+
+
+div.article
 {
-	height: 250px;
-	width: 250px;
+	float: left;
+}
+div.articleimg
+{
+	width: 350px;
+	height: 300px;
+}
+div.articleimg img
+{
+	width: 300px;
+	height: 300px;
+}
+div.generalinfo
+{
+	position: relative;
+	float: left;
+	width: 40%;
+	height: 300px;
+}
+
+div.articlename
+{
+	width: 100%;
 }
 div.price
 {
+	margin-top: 15px;
 	float: left;
-	width: 50%;
+	width: 100%;
 }
-span.price
+div.stock
 {
-	font-size: 20px;
-	font-weight: bold;
-	color: red;
+	float: left;
+	margin-top: 15px;
+	width: 100%;
 }
 div.articlename
 {
@@ -222,12 +186,14 @@ div.articlename
 	width: 100%;
 	margin-bottom: 5px;
 }
+
 div.desc
 {
-	
+	float: left;
+	width: 100%;
 }
 
-/* Mobile */
+
 @media screen and (min-device-width: 801px)
 {
 	div.header-logo-mobile
@@ -238,31 +204,64 @@ div.desc
 	{
 		display: none;
 	}
-	div.content2 
+	div.articleimg
 	{
-		position: relative;
-		width: 80%;
-		height: 100%;
-		margin: auto;
-		display: block;
-		margin-bottom: 30px;
-		margin-left: 50px;
 		float: left;
+	}
+	div.articlename
+	{
+		height: 60px;
 	}
 	span.articlename
 	{
-		font-size: 20px;
-		font-weight: bold;
+		font-size: 18px;
 		color: black;
 	}
 	span.price
 	{
-		font-size: 20px;
-		font-weight: bold;
+		font-size: 18px;
 		color: red;
+	}
+	span.stock
+	{
+		font-size: 18px;
+		color: green;
+	}
+	span.headline
+	{
+		color: brown;
+		font-size: 18px;
+	}
+	span.information
+	{
+		font-size: 14px;
+		color: #646464;
+	}
+	span.proddesc
+	{
+		
+	}
+	div.addToCart
+	{
+		position: absolute;
+		bottom: 10px;
+		float: left;
+		margin-top: 15px;
+		width: 100%;
+	}
+	input.add
+	{
+		width: 300px;
+		height: 30px;
+		font-size: 18px;
+		background-color: red;
+		color: white;
+		border: solid 0px;
 	}
 	
 }
+
+/* Mobile */
 @media screen and (max-device-width: 800px) 
 {
 	body 
@@ -322,48 +321,6 @@ div.desc
 		margin-left: 1%;
 		min-height: 40px;
 	}
-	/* Mobile Categories */
-	nav
-	{
-		width: 5%;
-		float: left;	
-		margin-top: -16px;
-		margin-right: 35px;
-	}	
-	img.threelines
-	{
-		margin-left: -20px;
-		height: 60px;
-		width: 120px;
-	}
-	
-	nav ul, nav:active ul 
-	{ 
-		position: absolute;
-		left: 0;
-		z-index: 10;
-		top: 250px;
-		display: none;
-		overflow: visible;
-		background: #fff;
-		width: 102%;
-		height: auto;
-		list-style-type: none;
-		margin-left: -35px;
-	}
-
-	nav li 
-	{
-		margin-bottom: 40px;
-		width: 100%;
-		font-size: 50px;
-		border-bottom: solid #ccc;
-	}
-	nav:hover ul 
-	{
-		display: block;
-	}
-	
 	
 	div.searchbar
 	{
@@ -393,60 +350,98 @@ div.desc
 		display: none;
 	}
 	/* Haupt Content Über ganzen Bildschirm*/
-	div.content2 
+	div.articleimg
 	{
-		position: relative;
-		width: 100%;
-		height: 100%;
+		width: 600px;
+		height: 600px;
 		margin: auto;
-		display: block;
-		margin-bottom: 30px;
-		margin-left: 0px;
+	}
+	div.articleimg img
+	{
+		width: 600px;
+		height: 600px;
+	}
+	div.generalinfo
+	{
 		float: left;
+		width: 100%;
 	}
-	div.articles 
+	span.information
 	{
-		min-width: 100%;
-		min-height: 500px;
-	}
-	div.single-article
-	{
-		min-width: 100%;
-	}
-	div.price
-	{
-		margin-top: 30px;
-		margin-left: 30px;
-		min-width: 500px;
-		max-width: 500px;
+		font-size: 30px;
+		color: #646464;
 	}
 	div.articlename
 	{
-		margin-top: 30px;
-		margin-left: 30px;
-		min-width: 500px;
-		max-width: 500px;
+		width: 100%;
+	}
+	div.price
+	{
+		margin-top: 15px;
+		float: left;
+		width: 100%;
+	}
+	div.stock
+	{
+		float: left;
+		margin-top: 15px;
+		width: 100%;
 	}
 	span.articlename
 	{
-		font-size: 45px;
-		font-weight: bold;
+		font-size: 35px;
 		color: black;
 	}
 	span.price
 	{
-		font-size: 45px;
-		font-weight: bold;
+		font-size: 35px;
 		color: red;
 	}
-	div.single-article img {
-		min-width: 480px;
-		min-height: 480px;
-		float: left;
+	span.stock
+	{
+		font-size: 35px;
+		color: green;
 	}
-	div.desc 
+	span.headline
+	{
+		color: brown;
+		font-size: 35px;
+	}
+	span.headline
+	{
+		color: brown;
+		font-size: 30px;
+	}
+	span.proddesc
 	{
 		font-size: 25px;
 	}
+	div.articlename
+	{
+		float: left;
+		width: 100%;
+		margin-bottom: 5px;
+	}
+	div.addToCart
+	{
+		float: left;
+		width: 100%;
+	}
+	input.add
+	{
+		width: 1000px;
+		height: 50px;
+		font-size: 25px;
+		background-color: red;
+		color: white;
+		margin-top: 10px;
+		border: solid 0px;
+	}
+	div.desc
+	{
+		float: left;
+		width: 100%;
+	}
+	
 }
 

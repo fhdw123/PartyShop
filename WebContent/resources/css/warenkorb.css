@@ -62,23 +62,47 @@ div.searchlogo
 	border-radius: 0px 5px 5px 0px;
 }
 
-/* Logos rechts im Header fÃ¼r Login und Warenkorb */
+/* Logos rechts im Header für Login und Warenkorb */
 div.headerlogos 
 {
-	width: 150px;
-	margin-top: 35px;
+	width: 250px;
+	margin-top: 25px;
 	float: right;
 }
 div.headerlogo 
 {
 	float: left;
-	width: 40px;
+	width: 100px;
 	margin-left: 10px;
 }
-div.headerlogo img 
+div.headerlogo a.user
+{
+	margin: auto;
+	display: block;
+	width: 40px;
+	height: 45px;
+	background: url(/Partyshop/resources/images/user.png) no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+div.headerlogo a.cart 
+{
+	margin: auto;
+	display: block;
+	width: 50px;
+	height: 45px;
+	background: url(/Partyshop/resources/images/cart.png) no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+div.headerdesc
 {
 	width: 100%;
-	height: 45px;
+	text-align: center;
+}
+span.headerdesc
+{
+	font-size: 20px;
 }
 img.logo 
 {
@@ -115,7 +139,6 @@ div.content
 }
 div.main
 {
-	width: 70%;
 	display: block;
 	float: left;
 }
@@ -132,6 +155,7 @@ div.headlines
 	width: 100%;
 	float: left;
 	margin-bottom: 10px;
+	border-bottom: solid 1px #ccc;
 }
 div.headline-articlename
 {
@@ -177,7 +201,6 @@ div.lineitem-articlename
 	float: left;
 	width: 40%;
 	margin-right: 15px;
-	height: 75px;
 }
 span.articlename-bold
 {
@@ -189,7 +212,6 @@ div.lineitem-price
 {
 	float: left;
 	width: 60px;
-	height: 75px;
 }
 span.price-bold
 {
@@ -203,10 +225,26 @@ div.lineitem-amount
 	width: 5%;
 	height: 60px;
 }
-div.lineitem input[type=text]
+input.refresh
 {
-	width: 20px;
+	background: url(/Partyshop/resources/images/refresh.png) no-repeat;
+	background-position: center;
+	background-size: 70%;
+	border: solid 0px;
+	margin-top: -6px;
 }
+input.trash
+{
+	float: left;
+	height: 30px;
+	width: 30px;
+	background: url(/Partyshop/resources/images/trash.png) no-repeat;
+	background-position: center;
+	background-size: 70%;
+	border: solid 0px;
+	margin-top: -6px;
+}
+
 div.lineitem-delete
 {
 	float: left;
@@ -228,14 +266,7 @@ div.order2
 {
 	width: 100%;
 }
-span.sum
-{
-	font-size: 22px;
-}
-span.articles
-{
-	font-size: 22px;
-}
+
 div.order-button
 {
 	text-align: center;
@@ -268,6 +299,40 @@ div.order-button
 		font-size: 20px;
 		color:black;
 	}	
+	div.main
+	{
+		width: 70%;
+	}
+	div-lineitem-articlename
+	{
+		height: 75px;
+	}
+	div-lineitem-price
+	{
+		height: 75px;
+	}
+	div.lineitem-amount
+	{
+		min-width: 54px;
+	}
+	input.refresh
+	{
+		float: right;
+		height: 30px;
+		width: 30px;
+	}
+	div.lineitem input[type=text]
+	{
+		width: 20px;
+	}
+	span.sum
+	{
+		font-size: 22px;
+	}
+	span.articles
+	{
+		font-size: 22px;
+	}
 	
 }
 @media screen and (max-device-width: 800px) 
@@ -277,7 +342,7 @@ div.order-button
 		min-width: 1000px;
 	}
 
-	/* GrÃ¶ÃŸerer Header fÃ¼r mobile Version */
+	/* Größerer Header für mobile Version */
 	header.standard 
 	{
 		min-width: 1010px;
@@ -307,11 +372,21 @@ div.order-button
 	}
 	div.headerlogo 
 	{
-		min-width: 70px;
+		min-width: 80px;
 	}
-	div.headerlogo img 
+	div.headerlogo a.cart 
+	{
+		min-width: 80px;
+		min-height: 80px;
+	}
+	div.headerlogo a.user
 	{
 		min-height: 75px;
+		min-width: 75px;
+	}
+	div.headerdesc
+	{
+		display: none;
 	}
 	div.search 
 	{
@@ -343,54 +418,100 @@ div.order-button
 	{
 		min-height: 30px;
 	}
-	/*Kategorie-Leiste verschwindet*/
-	div.categories 
+	
+	div.headlines
 	{
 		display: none;
+	}
+	div.main
+	{
+		width: 100%;
 	}
 	div.articles 
 	{
 		min-width: 100%;
 		min-height: 500px;
 	}
-	div.single-article
+	div.lineitem
 	{
 		min-width: 100%;
+		min-height: 450px;
 	}
-	div.price
+	div.lineitem-img
 	{
-		margin-top: 30px;
-		margin-left: 30px;
-		min-width: 500px;
-		max-width: 500px;
+		min-width: 450px;
+		max-width: 450px;
+		min-height: 450px;
+		margin-right: 15px;
 	}
-	div.articlename
+	div.lineitem-img img 
 	{
-		margin-top: 30px;
-		margin-left: 30px;
-		min-width: 500px;
-		max-width: 500px;
+		min-height: 450px;
+		min-width: 450px;
+	}
+	div.lineitem-articlename
+	{
+		min-width: 52%;
+	}
+	div.lineitem-price
+	{
+		min-width: 52%;
+	}
+	div.lineitem-amount
+	{
+		min-width: 52%;
+		float: left;
+		margin-top: 15px;
+	}
+	input.refresh
+	{
+		float: left;
+		height: 75px;
+		width: 75px;
+	}
+	div.lineitem input[type=text]
+	{
+		width: 60px;
+		height: 60px;
+		font-size: 40px;
+		float: left;
+	}
+	div.lineitem-delete
+	{
+		min-width: 52%;
+		margin-top: 15px;
+		margin-left: -4px;
+	}
+	input.trash
+	{
+		float: left;
+		height: 75px;
+		width: 75px;
+	}
+	div.order
+	{
+		min-width: 97%;
+		margin: auto;
 	}
 	span.articlename
 	{
-		font-size: 45px;
+		font-size: 35px;
 		font-weight: bold;
 		color: black;
 	}
 	span.price
 	{
-		font-size: 45px;
+		font-size: 35px;
 		font-weight: bold;
 		color: red;
 	}
-	div.single-article img {
-		min-width: 480px;
-		min-height: 480px;
-		float: left;
-	}
-	div.desc 
+	span.sum
 	{
-		font-size: 25px;
+		font-size: 42px;
+	}
+	span.articles
+	{
+		font-size: 42px;
 	}
 }
 
