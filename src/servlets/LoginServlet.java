@@ -41,9 +41,10 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String mail = request.getParameter("mail");
-		String pass = request.getParameter("pass");
+		String pass = request.getParameter("pw");
 
 		String act = request.getParameter("act");
+		System.out.println(act);
 	  if (act.equals("login")) {
 
 			try {
@@ -51,6 +52,7 @@ public class LoginServlet extends HttpServlet {
 				SqlConnection con = new SqlConnection();
 
 				User user = con.userMitMailLiefern(mail);
+				System.out.println(user.getNachname());
 				con.closeConnection();
 				
 				if (user.getGesperrt() == 0) {
@@ -67,21 +69,25 @@ public class LoginServlet extends HttpServlet {
 								HttpSession session = request.getSession(false);
 								session.setAttribute("user", user);
 
-								response.sendRedirect("/indexServlet");
+								response.sendRedirect("/Partyshop");
 
 							} else if (user.getRolle().equals("mitarbeiter")) {
 								
-								response.sendRedirect("/MitarbeiterBereichServlet");
+								response.sendRedirect("/Partyshop/MitarbeiterBereichServlet");
 
 							} else if (user.getRolle().equals("administrator")) {
 								
-								response.sendRedirect("/AdminBereichServlet");
+								response.sendRedirect("/Partyshop/AdminBereichServlet");
 
 							}
 
 						
 
 					}
+						else
+						{
+							System.out.println("pw stimmt nicht");
+						}
 
 			
 			
@@ -136,7 +142,7 @@ public class LoginServlet extends HttpServlet {
 										HttpSession session = request.getSession(false);
 										session.setAttribute("user", user);
 
-										response.sendRedirect("IndexServlet");
+										response.sendRedirect("/Partyshop");
 
 									} else if (rolle.equals("mitarbeiter")) {
 										
