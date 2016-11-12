@@ -29,7 +29,7 @@
 			<%
 			if(session.getAttribute("user") == null)
 			{
-				out.println("<a class=\"user\" href=\"registrieren.jsp\" >	</a>");
+				out.println("<a class=\"user\" href=\"loginregister.jsp\" >	</a>");
 				out.println("<div class=\"headerdesc\">");
 				out.println("<span class=\"headerdesc\">Login</span>");
 				out.println("</div>");

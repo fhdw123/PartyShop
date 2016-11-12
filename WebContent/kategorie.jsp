@@ -27,36 +27,30 @@
 
 		<div class="headerlogos">
 			<div class="headerlogo">
-			<%
-			if(session.getAttribute("user") == null)
-			{
-				out.println("<a class=\"user\" href=\"registrieren.jsp\" >	</a>");
-				out.println("<div class=\"headerdesc\">");
-				out.println("<span class=\"headerdesc\">Login</span>");
-				out.println("</div>");
-				out.println("");
-			}
-			else
-			{
-				out.println("<a class=\"user\" href=\"\">	</a>");
-				out.println("<div class=\"headerdesc\">");
-				out.println("<span class=\"headerdesc\">Mein Konto</span>");
-				out.println("</div>");
-				out.println("");
-			}
-			
-			%>
-				
+				<%
+					if (session.getAttribute("user") == null) {
+						out.println("<a class=\"user\" href=\"loginregister.jsp\" >	</a>");
+						out.println("<div class=\"headerdesc\">");
+						out.println("<span class=\"headerdesc\">Login</span>");
+						out.println("</div>");
+						out.println("");
+					} else {
+						out.println("<a class=\"user\" href=\"\">	</a>");
+						out.println("<div class=\"headerdesc\">");
+						out.println("<span class=\"headerdesc\">Mein Konto</span>");
+						out.println("</div>");
+						out.println("");
+					}
+				%>
+
 			</div>
 			<div class="headerlogo">
 				<a class="cart" href="/Partyshop/Warenkorb"></a>
 				<div class="headerdesc">
-					<span class="headerdesc">
-						Warenkorb
-					</span>
+					<span class="headerdesc"> Warenkorb </span>
 				</div>
 			</div>
-			
+
 		</div>
 		<form action="Suche">
 			<div class="search">
@@ -108,11 +102,29 @@
 		</div>
 
 		<div class="content2">
-		<h1>Kategorie: <%out.println(request.getAttribute("kategoriename")); %></h1>
+			<h1>
+				Kategorie:
+				<%
+				out.println(request.getAttribute("kategoriename"));
+			%>
+			</h1>
 
 			<%
+				String pagenr = request.getParameter("page");
+				int pagenumber;
+				if (pagenr == null) {
+					pagenumber = 1;
+				} else {
+					pagenumber = Integer.parseInt(pagenr);
+				}
 				ArrayList<Artikel> artikel = (ArrayList<Artikel>) request.getAttribute("artikel");
-				for (Artikel art : artikel) {
+
+				for (int i = (pagenumber - 1) * 9; i < pagenumber * 9; i++) {
+					if (artikel.size() <= i) {
+						break;
+					}
+
+					Artikel art = artikel.get(i);
 					DecimalFormat df = new DecimalFormat("#.00");
 					out.println("<div class=\"articles\">");
 					out.println("<div class=\"single-article\">");
@@ -128,10 +140,18 @@
 				}
 			%>
 
-
-
+		
+			<div class="changepage">
+				<div class="prev<%if(pagenumber==1){out.print("-inactive");} %>">
+					<span class="prev"></span> Vorherige Seite
+				</div>
+				<div class="next<%if(artikel.size()<pagenumber*9){out.print("-inactive");}%>">
+					<span class="next"> </span>Nächste Seite
+				</div>
+			</div>
 
 		</div>
+
 	</div>
 
 </body>
