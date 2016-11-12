@@ -28,13 +28,38 @@
 
 		<div class="headerlogos">
 			<div class="headerlogo">
-				<img src="resources/images/user.png">
+			<%
+			if(session.getAttribute("user") == null)
+			{
+				out.println("<a class=\"user\" href=\"registrieren.jsp\" >	</a>");
+				out.println("<div class=\"headerdesc\">");
+				out.println("<span class=\"headerdesc\">Login</span>");
+				out.println("</div>");
+				out.println("");
+			}
+			else
+			{
+				out.println("<a class=\"user\" href=\"\">	</a>");
+				out.println("<div class=\"headerdesc\">");
+				out.println("<span class=\"headerdesc\">Mein Konto</span>");
+				out.println("</div>");
+				out.println("");
+			}
+			
+			%>
+				
 			</div>
 			<div class="headerlogo">
-				<img src="resources/images/cart.png">
+				<a class="cart" href="/Partyshop/Warenkorb"></a>
+				<div class="headerdesc">
+					<span class="headerdesc">
+						Warenkorb
+					</span>
+				</div>
 			</div>
+			
 		</div>
-		<form action="ServletSuche">
+		<form action="Suche">
 			<div class="search">
 
 				<div class="searchbar">
@@ -75,45 +100,53 @@
 					ArrayList<Position> positionen = (ArrayList<Position>) request.getAttribute("cart");
 					DecimalFormat df = new DecimalFormat("#.00");
 					double summe = 0;
-					for (Position pos : positionen) {
-						summe += pos.getPreis();
-						out.println("<div class=\"lineitem\">");
-						out.println("<div class=\"lineitem-img\">");
-						out.println("<img src=\"resources/images/beispiel2.jpg\"></div>");
-						out.println("<div class=\"lineitem-articlename\">");
-						out.println("<span class=\"articlename\">" + pos.getArtikelbezeichnung() + "</span></div>");
-						out.println("<div class=\"lineitem-price\">");
-						out.println("<span class=\"price\">" + df.format(pos.getPreis()) + "€</span></div>");
-						out.println("<div class=\"lineitem-amount\">");
-						out.println("<input type=\"text\" value=\"" + pos.getMenge() + "\">");
-						out.println("</div>");
-						out.println("<div class=\"lineitem-delete\">delete</div>");
-						out.println("</div>");
-						out.println("");
+					if(positionen == null || positionen.size() == 0)
+					{
+						out.println("<h2>Ihr Warenkorb ist zur Zeit leer</h2>");
+					}
+					else
+					{
+						
+						summe = 0;
+						for (Position pos : positionen) {
+							summe += pos.getPreis() * pos.getMenge();
+							out.println("<div class=\"lineitem\">");
+							out.println("<div class=\"lineitem-img\">");
+							out.println("<img src=\"resources/images/beispiel2.jpg\"></div>");
+							out.println("<div class=\"lineitem-articlename\">");
+							out.println("<span class=\"articlename\">" + pos.getArtikelbezeichnung() + "</span></div>");
+							out.println("<div class=\"lineitem-price\">");
+							out.println("<span class=\"price\">" + df.format(pos.getPreis()) + "€</span></div>");
+							out.println("<div class=\"lineitem-amount\">");
+							out.println("<form action=\"Warenkorb\" method=\"post\">");
+							out.println("<input type=\"text\" name=\"" + pos.getArtikelbezeichnung() + "\" value=\"" + pos.getMenge() + "\">");
+							out.println("<input class=\"refresh\" type=\"submit\" value=\"\" title=\"Aktualisieren\">");
+							out.println("<input type=\"hidden\" name=\"act\" value=\"refresh\">");
+							out.println("<input type=\"hidden\" name=\"name\" value=\"" + pos.getArtikelbezeichnung() + "\">");
+							out.println("</form>");
+							out.println("</div>");
+							out.println("<form action=\"Warenkorb\" method=\"post\">");
+							out.println("<div class=\"lineitem-delete\">");
+							out.println("<input type=\"hidden\" name=\"act\" value=\"delete\">");
+							out.println("<input type=\"hidden\" name=\"name\" value=\"" + pos.getArtikelbezeichnung() + "\">");
+							out.println("<input class=\"trash\" type=\"submit\" value=\"\" title=\"Aus dem Warenkorb löschen\">");
+							out.println("</div>");
+							out.println("</form>");
+							out.println("</div>");
+						
+						}
 					}
 				%>
-				<!--  
-				<div class="lineitem">
-					<div class="lineitem-img">
-						<img src="resources/images/beispiel2.jpg">
-					</div>
-					<div class="lineitem-articlename">
-						<span class="articlename">Beliebiger ARtikelname für
-							artikel</span>
-					</div>
-					<div class="lineitem-price">
-						<span class="price">25,99€</span>
-					</div>
-				</div>
-			</div>
-	 -->
 
 			</div>
 		</div>
 		<div class="order">
 			<div class="order2">
 				<span class="sum">Summe: <%
+				if(summe != 0)
 					out.println(df.format(summe));
+				else
+					out.println("0");
 				%>€</span>
 			</div>
 			<div class="order2">
@@ -123,9 +156,16 @@
 					%> Artikel
 				</span>
 			</div>
-			<div class="order-button">
-				Bestellen
-			</div>
+			<%
+				if(positionen != null && positionen.size() != 0)
+				{
+					out.println("<div class=\"order-button\">");
+					out.println("Bestellen");
+					out.println("</div>");
+				}
+			
+			%>
+			
 		</div>
 </body>
 </html>

@@ -27,13 +27,38 @@
 
 		<div class="headerlogos">
 			<div class="headerlogo">
-				<img src="resources/images/user.png">
+			<%
+			if(session.getAttribute("user") == null)
+			{
+				out.println("<a class=\"user\" href=\"registrieren.jsp\" >	</a>");
+				out.println("<div class=\"headerdesc\">");
+				out.println("<span class=\"headerdesc\">Login</span>");
+				out.println("</div>");
+				out.println("");
+			}
+			else
+			{
+				out.println("<a class=\"user\" href=\"\">	</a>");
+				out.println("<div class=\"headerdesc\">");
+				out.println("<span class=\"headerdesc\">Mein Konto</span>");
+				out.println("</div>");
+				out.println("");
+			}
+			
+			%>
+				
 			</div>
 			<div class="headerlogo">
-				<img src="resources/images/cart.png">
+				<a class="cart" href="/Partyshop/Warenkorb"></a>
+				<div class="headerdesc">
+					<span class="headerdesc">
+						Warenkorb
+					</span>
+				</div>
 			</div>
+			
 		</div>
-		<form action="ServletSuche">
+		<form action="Suche">
 			<div class="search">
 				<nav>
 					<a href="#" id="menu-icon"><img class="threelines"
