@@ -10,11 +10,13 @@
 </head>
 <body>
 	<div class="logo">
+	<a href="/Partyshop">
 		<img src="resources/images/mlogo.png">
+		</a>
 	</div>
 	<div class="full">
 		<div class="half">
-			<form action="ServletLogin" method="post">
+			<form action="login" method="post">
 				<div class="headline">
 					<span class="headline"> Login </span>
 				</div>
@@ -39,7 +41,7 @@
 			</form>
 		</div>
 		<div class="half2">
-			<form action="register" method="post">
+			<form action="login" method="post">
 			<div class="headline">
 					<span class="headline"> Registrieren </span>
 				</div>
