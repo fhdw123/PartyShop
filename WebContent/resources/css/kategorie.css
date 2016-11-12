@@ -186,7 +186,7 @@ div.articles
 	max-width: 800px;
 	float: left;
 	display: block;
-	border-bottom: solid 1px #ccc;
+	border-top: solid 1px #ccc;
 }
 div.single-article 
 {
@@ -226,7 +226,71 @@ div.desc
 {
 	
 }
-
+div.changepage
+{
+	width: 100%;
+	float: left;
+}
+div.next
+{
+	height: 30px;
+	background-color: red;
+	color: white;
+	text-align: center;
+	float: right;
+	width: 135px;
+	line-height: 30px;
+}
+div.prev
+{
+	height: 30px;
+	background-color: red;
+	color: white;
+	text-align: center;
+	float: left;
+	width: 135px;
+	line-height: 30px;
+}
+div.next-inactive
+{
+	height: 30px;
+	background-color: #646464;
+	color: white;
+	text-align: center;
+	float: right;
+	width: 135px;
+	line-height: 30px;
+}
+div.prev-inactive
+{
+	height: 30px;
+	background-color: #646464;
+	color: white;
+	text-align: center;
+	float: left;
+	width: 135px;
+	line-height: 30px;
+}
+span.next
+{
+	display: block;
+	width: 20px;
+	height: 30px;
+	background: url(/Partyshop/resources/images/arrowRight.png) no-repeat;
+	background-position: center;
+	background-size: 100%;
+	float: right;
+}
+span.prev
+{
+	display: block;
+	width: 20px;
+	height: 30px;
+	background: url(/Partyshop/resources/images/arrowLeft.png) no-repeat;
+	background-position: center;
+	background-size: 100%;
+	float: left;
+}
 /* Mobile */
 @media screen and (min-device-width: 801px)
 {

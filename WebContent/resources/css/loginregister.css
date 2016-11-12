@@ -19,6 +19,7 @@ div.full
 }
 div.half
 {
+	margin-left: 2%;
 	float: left;
 	width: 450px;
 }
