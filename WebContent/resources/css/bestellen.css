@@ -180,7 +180,7 @@ div.lineitem
 	width: 100%;
 	float: left;
 	margin-bottom: 10px;
-	height: 250px;
+	height: 50px;
 	border-bottom: solid 1px #ccc;
 	display: table;
 }
@@ -222,8 +222,8 @@ span.price-bold
 div.lineitem-amount
 {
 	float: right;
-	width: 6%;
 	height: 60px;
+	text-align: center;
 }
 input.refresh
 {
@@ -277,9 +277,42 @@ input.order-button
 	margin-bottom: 20px;
 	margin-top: 20px;
 	line-height: 50px;
-	font-size: 20px;
-	border: solid 1px #646464;
+	font-size: 25px;
 }
+div.headline
+{
+	width: 100%;
+	float: left;
+	margin-bottom: 20px;
+}
+span.address
+{
+	font-size: 25px;
+	font-weight: bold;
+}
+div.address
+{
+	float: left;
+	width: 700px;
+}
+div.element
+{
+	width: 100%;
+	float: left;
+}
+div.text
+{
+	margin-bottom: 5px;
+	float: left;
+	width: 120px;
+}
+div.text2
+{
+	float: left;
+	width: 300px;
+	margin-left: 20px;
+}
+
 /* Mobile */
 @media screen and (min-device-width: 801px)
 {
@@ -422,10 +455,6 @@ input.order-button
 		min-height: 30px;
 	}
 	
-	div.headlines
-	{
-		display: none;
-	}
 	div.main
 	{
 		width: 100%;
@@ -433,12 +462,28 @@ input.order-button
 	div.articles 
 	{
 		min-width: 100%;
-		min-height: 500px;
+		min-height: 50px;
+	}
+	span.price-bold
+	{
+		font-size: 30px;
+	}
+	span.articlename-bold
+	{
+		font-size: 30px;
+	}
+	div.headline-articlename
+	{
+		min-width: 700px;
+	}
+	div.headline-amount
+	{
+		min-width: 100px;
 	}
 	div.lineitem
 	{
 		min-width: 100%;
-		min-height: 450px;
+		min-height: 50px;
 	}
 	div.lineitem-img
 	{
@@ -454,19 +499,13 @@ input.order-button
 	}
 	div.lineitem-articlename
 	{
-		min-width: 52%;
-	}
-	div.lineitem-price
-	{
-		min-width: 52%;
+		min-width: 700px;
 	}
 	div.lineitem-amount
 	{
-		min-width: 52%;
-		float: left;
-		margin-top: 15px;
-		min-height: 70px;
+		margin-right: 50px;
 	}
+	
 	input.refresh
 	{
 		float: left;
@@ -495,14 +534,13 @@ input.order-button
 	}
 	div.order
 	{
-		float: left;
 		min-width: 97%;
 		margin: auto;
+		float: left;
 	}
 	span.articlename
 	{
-		font-size: 35px;
-		font-weight: bold;
+		font-size: 30px;
 		color: black;
 	}
 	span.price
@@ -519,11 +557,34 @@ input.order-button
 	{
 		font-size: 42px;
 	}
-	input.order-button
+	span.address
 	{
-		
-		height: 80px;		
 		font-size: 35px;
+		font-weight: bold;
+	}
+	div.address
+	{
+		float: left;
+		width: 1000px;
+	}
+	div.element
+	{
+		width: 100%;
+		float: left;
+	}
+	div.text
+	{
+		font-size: 25px;
+		margin-bottom: 5px;
+		float: left;
+		width: 300px;
+	}
+	div.text2
+	{
+		font-size: 25px;
+		float: left;
+		width: 500px;
+		margin-left: 20px;
 	}
 }
 

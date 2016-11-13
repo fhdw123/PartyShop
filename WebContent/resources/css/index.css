@@ -38,6 +38,23 @@
 		max-width: 220px;
 		font-size: 16px;
 	}
+	span.drop
+	{
+		font-size: 18px;
+	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 250px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: white;
+		padding: 5px;
+		position: absolute;
+		right: 0px;
+		top: 90px;
+	}	
 	
 	
 
@@ -141,6 +158,13 @@
 		font-size: 50px;
 		border-bottom: solid #ccc;
 	}
+	nav li.headline
+	{
+		margin-bottom: 40px;
+		width: 100%;
+		font-size: 50px;
+		border-bottom: solid 0px #ccc;
+	}
 	nav:hover ul 
 	{
 		display: block;
@@ -201,6 +225,24 @@
 		text-align: center;
 		max-width: 420px;
 		font-size: 25px;
+	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 600px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: white;
+		padding: 5px;
+		position: absolute;
+		right: -30px;
+		top: 120px;
+	}	
+	
+	span.drop
+	{
+		font-size: 45px;
 	}
 }
 
@@ -292,22 +334,21 @@ div.headerlogo a.cart
 	background-position: center;
 	background-size: 100%;
 }
-div.dropdown
+
+div.dropdownelement
 {
-	z-index: 10;
-	display: none;
-	width: 185px;
-	border: solid 1px #ccc;
-	border-radius: 1px;
-	background-color: white;
-	padding: 5px;
+	width: 100%;
+	margin-bottom: 5px;
 }
+div.dropdownelement a
+{
+	color: black;
+}
+
 #account:hover div.dropdown
 {
 	display: block;
-	position: absolute;
-	right: 60px;
-	top: 90px;
+	
 }
 img.logo 
 {
