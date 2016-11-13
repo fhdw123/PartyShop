@@ -139,7 +139,7 @@
 					out.println("<img src=\"resources/images/" + a.getBild().getName()  + "\">");
 					out.println("</a>");
 					out.println("<div class=\"desc\">");
-					out.println(a.getBezeichnung() + "aaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaaaaaa aaaaaaa");
+					out.println(a.getBezeichnung());
 					out.println("</div>");
 					out.println("</div>");
 				}
