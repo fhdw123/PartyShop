@@ -19,13 +19,13 @@ import classes.SqlConnection;
  * Servlet implementation class CartServlet
  */
 @WebServlet("/Warenkorb")
-public class CartServlet extends HttpServlet {
+public class WarenkorbServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartServlet() {
+    public WarenkorbServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -75,7 +75,10 @@ public class CartServlet extends HttpServlet {
 		String action = request.getParameter("act");
 		if(action.equals("delete"))
 		{
-			Position delete = new Position("?", "?", 1, 2.0);
+			Position delete;
+			try {
+				delete = new Position("?", "?", 1, 2.0);
+			
 			for(Position pos: cart)
 			{
 				if(pos.getArtikelbezeichnung().equals(request.getParameter("name")))
@@ -84,6 +87,10 @@ public class CartServlet extends HttpServlet {
 				}
 			}
 			cart.remove(delete);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if(action.equals("refresh"))
 		{

@@ -2,9 +2,6 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,16 +15,16 @@ import classes.Kategorie;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class SearchServlet
+ * Servlet implementation class CategoryServlet
  */
-@WebServlet("/Suche")
-public class SearchServlet extends HttpServlet {
+@WebServlet("/Kategorie")
+public class KategorieServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchServlet() {
+    public KategorieServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,66 +33,34 @@ public class SearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		try
 		{
 
 			SqlConnection conn = new SqlConnection();
 			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
 			request.setAttribute("kategorien", kategorien);
-			String searchtext = request.getParameter("searchtext");
-			ArrayList<Artikel> artikel = conn.artikelSuchen(searchtext);
-			
-			
-			
-			String[] kategorieFilter;
-			if((kategorieFilter = request.getParameterValues("kat")) != null)
-			{
-				HashMap<String, String> kategorienIds = new HashMap<String, String>();
-				for(Kategorie kategorie: kategorien)
-				{
-					kategorienIds.put(kategorie.getKategorieid(), kategorie.getBezeichnung());
-				}
-			
-				ArrayList<Artikel> artikelCopy = new ArrayList<Artikel>();
-				for(Artikel art: artikel)
-				{
-					boolean contains = false;
-					for(String filter: kategorieFilter)
-					{
-						
-						if(kategorienIds.get(art.getKategorie()).equals(filter))
-						{
-							contains = true;
-						}
-					}
-					if(contains)
-					{
-						artikelCopy.add(art);
-					}
-					
-				}
-				for(String filter: kategorieFilter)
-				{
-					request.setAttribute(filter + "checked", "checked=\"checked\"");
-				}
-				artikel = artikelCopy;
-
-				
-			}
+			ArrayList<Artikel> artikel = conn.artikelInKategorieLiefern(request.getParameter("id"));
 			request.setAttribute("artikel", artikel);
 			conn.closeConnection();
+			for(Kategorie kat: kategorien)
+			{
+				if(request.getParameter("id").equals(kat.getKategorieid()))
+				{
+					request.setAttribute("kategoriename", kat.getBezeichnung());
+				}
+					
+			}
 			
-			
-			String nextJSP = "/suche.jsp";
+			String nextJSP = "/kategorie.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
 		}
 		catch(Exception e)
 		{
+			String error = e.getMessage();
 			e.printStackTrace();
-			
 		}
+		
 	}
 
 	/**
