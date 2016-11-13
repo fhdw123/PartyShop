@@ -52,6 +52,7 @@ public class WarenkorbServlet extends HttpServlet {
 	        	}
 	        	
 	        }
+	        conn.closeConnection();
 	        String nextJSP = "/warenkorb.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
@@ -75,10 +76,7 @@ public class WarenkorbServlet extends HttpServlet {
 		String action = request.getParameter("act");
 		if(action.equals("delete"))
 		{
-			Position delete;
-			try {
-				delete = new Position("?", "?", 1, 2.0);
-			
+			Position delete = new Position("?", "?", 1, 2.0);
 			for(Position pos: cart)
 			{
 				if(pos.getArtikelbezeichnung().equals(request.getParameter("name")))
@@ -87,10 +85,6 @@ public class WarenkorbServlet extends HttpServlet {
 				}
 			}
 			cart.remove(delete);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		else if(action.equals("refresh"))
 		{

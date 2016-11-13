@@ -3,27 +3,29 @@ package servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import classes.Artikel;
+import classes.Position;
 import classes.SqlConnection;
+import classes.User;
 
 /**
- * Servlet implementation class ArticleServlet
+ * Servlet implementation class AddToCartServlet
  */
-@WebServlet("/Artikel")
-public class ArticleServlet extends HttpServlet {
+@WebServlet("/AddToCart")
+public class InDenWarenkorbServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ArticleServlet() {
+    public InDenWarenkorbServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,19 +38,40 @@ public class ArticleServlet extends HttpServlet {
 		{
 			SqlConnection conn = new SqlConnection();
 			Artikel artikel = conn.artikelMitIdLiefern(request.getParameter("id"));
-			request.setAttribute("artikel", artikel);
-			
-			
-			conn.closeConnection();
-			String nextJSP = "/artikel.jsp";
-	        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-	        dispatcher.forward(request,response);
+			HttpSession session=request.getSession(false);  
+	        if(session!=null) 
+	        {
+	        	ArrayList<Position> cart = new ArrayList<Position>();
+	        	if(session.getAttribute("cart") != null)
+	        	{
+	        		cart = (ArrayList<Position>) session.getAttribute("cart");
+	        	}
+	        	boolean contains = false;
+	        	for(Position pos: cart)
+	        	{
+	        		System.out.println(pos.getArtikelbezeichnung() + " " + artikel.getBezeichnung() );
+	        		if(pos.getArtikelbezeichnung().equals(artikel.getBezeichnung()))
+	        		{
+	        			contains = true;
+	        		}
+	        	}
+	        	if(!contains)
+	        	{
+	        		cart.add(new Position("?", artikel.getBezeichnung(), 1, artikel.getPreis() ));
+	        	}
+	        	
+	        	session.setAttribute("cart", cart);
+	        }
+	        conn.closeConnection();
+	        response.sendRedirect("/Partyshop/Warenkorb");
+	        
 		}
 		catch(Exception e)
 		{
-			response.getWriter().println("Error dies das");
+			response.getWriter().println("Error und so");
 			e.printStackTrace();
 		}
+		
 	}
 
 	/**

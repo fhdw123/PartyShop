@@ -50,7 +50,7 @@ public class KategorieServlet extends HttpServlet {
 				}
 					
 			}
-			
+			conn.closeConnection();
 			String nextJSP = "/kategorie.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
             dispatcher.forward(request,response);
