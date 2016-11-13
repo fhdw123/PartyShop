@@ -29,7 +29,7 @@
 			<%
 			if(session.getAttribute("user") == null)
 			{
-				out.println("<a class=\"user\" href=\"loginregister.jsp\" >	</a>");
+				out.println("<a class=\"user\" href=\"login\" >	</a>");
 				out.println("<div class=\"headerdesc\">");
 				out.println("<span class=\"headerdesc\">Login</span>");
 				out.println("</div>");
@@ -133,7 +133,7 @@
 					out.println("<div class=\"articles\">");
 					out.println("<div class=\"single-article\">");
 					out.println("<a href=\"/Partyshop/Artikel?id=" + art.getArtikelid() + "\">");
-					out.println("<img src=\"resources/images/beispiel2.jpg\">");
+					out.println("<img src=\"resources/images/" + art.getBild().getName()  + "\">");
 					out.println("</a>");
 					out.println("<div class=\"articlename\">");
 					out.println("<span class=\"articlename\">" + art.getBezeichnung() + "</span>");

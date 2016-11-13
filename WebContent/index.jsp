@@ -8,6 +8,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="classes.Kategorie"%>
+<%@ page import="classes.Artikel" %>
 <!DOCTYPE html>
 <html>
 
@@ -31,26 +32,36 @@
 		</div>
 
 		<div class="headerlogos">
-			<div class="headerlogo">
+			
 			<%
 			if(session.getAttribute("user") == null)
 			{
-				out.println("<a class=\"user\" href=\"loginregister.jsp\" >	</a>");
+				out.println("<div class=\"headerlogo\">");
+				out.println("<a class=\"user\" href=\"login\" >	</a>");
 				out.println("<div class=\"headerdesc\">");
 				out.println("<span class=\"headerdesc\">Login</span>");
-				out.println("</div>");
-				out.println("");
+			
 			}
 			else
 			{
-				out.println("<a class=\"user\" href=\"\">	</a>");
+				out.println("<div class=\"headerlogo\" id=\"account\">");
+				out.println("<a class=\"user\" href=\"#\"></a>");
 				out.println("<div class=\"headerdesc\">");
 				out.println("<span class=\"headerdesc\">Mein Konto</span>");
-				out.println("</div>");
-				out.println("");
+			
 			}
 			
 			%>
+			</div>
+			<div class="dropdown">
+			<span class="headerdesc">
+				Abmelden
+			</span><br>
+			<span class="headerdesc">
+				Meine Bestellungen
+			</span>
+			
+			</div>
 				
 			</div>
 			<div class="headerlogo">
@@ -116,55 +127,27 @@
 
 		<div class="content2">
 			<div class="articles">
-				<h1 class="article">Aktuelle Angebote</h1>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel1.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel2.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel3.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-			</div>
-			<div class="articles">
 				<h1 class="article">Bestseller</h1>
 
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel4.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
+				<%
+				ArrayList<Artikel> best = (ArrayList<Artikel>) request.getAttribute("neu");
+				for(int i = 0; i < 3; i++)
+				{
+					Artikel a = best.get(i);
+					out.println("<div class=\"article1\">");
+					out.println("<a href=\"/Partyshop/Artikel?id=" + a.getArtikelid() + "\">");
+					out.println("<img src=\"resources/images/" + a.getBild().getName()  + "\">");
+					out.println("</a>");
+					out.println("<div class=\"desc\">");
+					out.println(a.getBezeichnung() + "aaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaaaaaa aaaaaaa");
+					out.println("</div>");
+					out.println("</div>");
+				}
+				%>
+				
 
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel1.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
-
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel3.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
 			</div>
+			
 			<div class="articles">
 				<h1 class="article">Bestseller</h1>
 
