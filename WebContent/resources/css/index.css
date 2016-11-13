@@ -31,6 +31,13 @@
 		font-size: 30px;
 		font-weight: bold;
 	}
+	div.desc 
+	{
+		padding: 25px;
+		text-align: center;
+		max-width: 220px;
+		font-size: 16px;
+	}
 	
 	
 
@@ -190,6 +197,9 @@
 	}
 	div.desc 
 	{
+		padding: 25px;
+		text-align: center;
+		max-width: 420px;
 		font-size: 25px;
 	}
 }
@@ -281,6 +291,23 @@ div.headerlogo a.cart
 	background: url(/Partyshop/resources/images/cart.png) no-repeat;
 	background-position: center;
 	background-size: 100%;
+}
+div.dropdown
+{
+	z-index: 10;
+	display: none;
+	width: 185px;
+	border: solid 1px #ccc;
+	border-radius: 1px;
+	background-color: white;
+	padding: 5px;
+}
+#account:hover div.dropdown
+{
+	display: block;
+	position: absolute;
+	right: 60px;
+	top: 90px;
 }
 img.logo 
 {
@@ -389,11 +416,7 @@ div.article1 img
 	height: 250px;
 	width: 250px;
 }
-div.desc 
-{
-	padding: 15px;
-	text-align: center;
-}
+
 
 /* Artikel Ende */
 
