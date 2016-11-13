@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: partyshop
 -- ------------------------------------------------------
--- Server version	5.7.15-log
+-- Server version	5.7.16-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,6 +36,7 @@ CREATE TABLE `kategorie` (
 
 LOCK TABLES `kategorie` WRITE;
 /*!40000 ALTER TABLE `kategorie` DISABLE KEYS */;
+INSERT INTO `kategorie` VALUES ('abc','Geburtstag',1),('def','Weihnachten',1),('ghi','Silvester',1),('jkl','Einfach so',1);
 /*!40000 ALTER TABLE `kategorie` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-12 16:01:59
+-- Dump completed on 2016-11-13 12:51:17
