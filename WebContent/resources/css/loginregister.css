@@ -39,6 +39,10 @@ span.headline
 {
 	font-size: 20px;
 }
+span.errmsg
+{
+	color: red;
+}
 div.element
 {
 	float: left;
@@ -59,4 +63,63 @@ div.text
 {
 	float: left;
 	width: 100px;
+}
+@media screen and (max-device-width: 800px) 
+{
+	div.full
+	{
+		height: auto;
+		float: left;
+		max-width: 980px;
+		min-width: 980px;
+	}
+	div.half
+	{
+		min-width: 100%;
+	}	
+	div.half2
+	{
+		float: left;
+		min-width: 100%;
+		margin-left: 2%;
+	}	
+	div.text
+	{
+		min-width: 400px;
+		font-size: 25px;
+	}
+	input[type=text]
+	{
+		min-width: 80%;
+		height: 50px;
+		border: 1px solid #ccc;
+		font-size: 25px;
+	}
+	input[type=password]
+	{
+		font-size: 25px;
+		min-width: 80%;
+		height: 50px;
+		border: 1px solid #ccc;
+	}
+	input[type=submit]
+	{
+		width: 300px;
+		height: 50px;
+		font-size: 25px;
+	}
+	span.headline
+	{
+		font-size: 30px;
+		float: left;
+		font-weight: bold;
+	}
+	div.logo
+	{
+		float: left;
+	}
+	span.errmsg
+	{
+		font-size: 25px;
+	}
 }
