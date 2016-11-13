@@ -31,6 +31,13 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		if(request.getParameter("act") != null && request.getParameter("act").equals("logout"))
+		{
+			HttpSession session=request.getSession(false); 
+			session.setAttribute("user", null);
+			response.sendRedirect("/Partyshop");
+			return;
+		}
 
 
 		request.setAttribute("ErrorMessageReg", "");
@@ -255,6 +262,7 @@ public class LoginServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
+		
 
 	}
 
