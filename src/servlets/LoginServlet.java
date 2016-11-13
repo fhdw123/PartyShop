@@ -44,6 +44,7 @@ public class LoginServlet extends HttpServlet {
 		request.setAttribute("hn", "");
 		request.setAttribute("plz", "");
 		request.setAttribute("ort", "");
+		request.setAttribute("maillog", "");
 
 		
 		String nextJSP = "/loginregister.jsp";
@@ -94,7 +95,8 @@ public class LoginServlet extends HttpServlet {
 					} else {
 						request.setAttribute("ErrorMessageReg", "");
 						request.setAttribute("ErrorMessageLog", "Passwort nicht korrekt!");
-						request.setAttribute("mail", mail);
+						request.setAttribute("maillog", mail);
+						request.setAttribute("mail", "");
 						request.setAttribute("pw", "");
 						request.setAttribute("pw2", "");
 						request.setAttribute("vn", "");
@@ -131,6 +133,7 @@ public class LoginServlet extends HttpServlet {
 			} catch (Exception ex) {
 				request.setAttribute("ErrorMessageReg", "");
 				request.setAttribute("ErrorMessageLog", "Mailadresse unbekannt!");
+				request.setAttribute("maillog", mail);
 				request.setAttribute("mail", "");
 				request.setAttribute("pw", "");
 				request.setAttribute("pw2", "");
