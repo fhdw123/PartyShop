@@ -131,7 +131,7 @@
 
 				<%
 				ArrayList<Artikel> best = (ArrayList<Artikel>) request.getAttribute("neu");
-				for(int i = 0; i < 3; i++)
+				for(int i = 0; i < 3 && i < best.size(); i++)
 				{
 					Artikel a = best.get(i);
 					out.println("<div class=\"article1\">");
