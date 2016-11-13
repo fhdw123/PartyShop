@@ -14,37 +14,43 @@
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>servlets.LoginServlet</servlet-class>
+    <servlet-class>servlets.IndexServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
-    <display-name>RegistrierungServlet</display-name>
-    <servlet-name>RegistrierungServlet</servlet-name>
-    <servlet-class>servlets.RegistrierungServlet</servlet-class>
+    <display-name>SearchServlet</display-name>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>servlets.SearchServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
-    <display-name>SuchServlet</display-name>
-    <servlet-name>SuchServlet</servlet-name>
-    <servlet-class>servlets.SuchServlet</servlet-class>
+    <display-name>CategoryServlet</display-name>
+    <servlet-name>CategoryServlet</servlet-name>
+    <servlet-class>servlets.CategoryServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
-    <display-name>KategorieServlet</display-name>
-    <servlet-name>KategorieServlet</servlet-name>
-    <servlet-class>servlets.KategorieServlet</servlet-class>
+    <display-name>ArticleServlet</display-name>
+    <servlet-name>ArticleServlet</servlet-name>
+    <servlet-class>servlets.ArticleServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
-    <display-name>ArtikelServlet</display-name>
-    <servlet-name>ArtikelServlet</servlet-name>
-    <servlet-class>servlets.ArtikelServlet</servlet-class>
+    <display-name>AddToCartServlet</display-name>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <servlet-class>servlets.AddToCartServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
-    <display-name>InWarenkorbLegenServlet</display-name>
-    <servlet-name>InWarenkorbLegenServlet</servlet-name>
-    <servlet-class>servlets.InWarenkorbLegenServlet</servlet-class>
+    <display-name>CartServlet</display-name>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>servlets.CartServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>OrderServlet</display-name>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>servlets.OrderServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
