@@ -11,36 +11,17 @@
 <body>
 	<%
 		final String errorMessageReg = (String) request.getAttribute("ErrorMessageReg");
-	%>
-	<%
 		final String errorMessageLog = (String) request.getAttribute("ErrorMessageLog");
-	%>
-	<%
 		final String mail = (String) request.getAttribute("mail");
-	%>
-	<%
 		final String pw = (String) request.getAttribute("pw");
-	%>
-	<%
 		final String pw2 = (String) request.getAttribute("pw2");
-	%>
-	<%
 		final String vn = (String) request.getAttribute("vn");
-	%>
-	<%
 		final String nn = (String) request.getAttribute("nn");
-	%>
-	<%
 		final String str = (String) request.getAttribute("str");
-	%>
-	<%
 		final String hn = (String) request.getAttribute("hn");
-	%>
-	<%
-		final String plz = (String) request.getAttribute("plz");
-	%>
-	<%
+		final String plz = (String) request.getAttribute("plz");	
 		final String ort = (String) request.getAttribute("ort");
+		final String maillog = (String) request.getAttribute("maillog");
 	%>
 
 
@@ -57,7 +38,7 @@
 				<div class="element">
 					<div class="text">E-Mail:</div>
 
-					<input type="text" name="mail" />
+					<input type="text" name="mail" value="<%=maillog%>" />
 				</div>
 				<div class="element">
 					<div class="text">Passwort:</div>
@@ -68,8 +49,9 @@
 
 				<br> <input type="submit" name="act" value="login"><br>
 				<br>
-
+				<span class="errmsg">
 				<%=errorMessageLog%><br>
+				</span>
 
 			</form>
 		</div>
@@ -89,7 +71,7 @@
 				</div>
 
 				<div class="element">
-					<div class="text">Passwort:</div>
+					<div class="text">Passwort wiederholen:</div>
 					<input type="password" name="pw2" value="<%=pw2%>" />
 				</div>
 
@@ -132,7 +114,9 @@
 				<input type="submit" name="act" value="registrieren"><br>
 				<br>
 
-				<%=errorMessageReg%><br> <br>
+				<span class="errmsg">
+				<%=errorMessageReg%><br>
+				</span>
 
 			</form>
 		</div>
