@@ -18,6 +18,9 @@
 <title>Partyshop</title>
 </head>
 <body>
+
+<% final String errorMessage = (String)request.getAttribute("ErrorMessage"); %>
+
 	<form action="ServletLogin" method="post">
 
 			E-Mail:	
