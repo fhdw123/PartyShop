@@ -54,12 +54,26 @@
 			%>
 			</div>
 			<div class="dropdown">
-			<span class="headerdesc">
-				Abmelden
-			</span><br>
-			<span class="headerdesc">
-				Meine Bestellungen
-			</span>
+				<div class="dropdownelement">
+					<span class="drop">
+						Meine persönlichen Daten
+					</span>
+				</div>
+				<div class="dropdownelement">
+					<span class="drop">
+						Meine Bestellungen
+					</span>
+				</div>
+				
+				<div class="dropdownelement">
+				<a href="login?act=logout">
+					<span class="drop">
+						Abmelden
+					</span>
+					</a>
+				</div>
+				
+			
 			
 			</div>
 				
@@ -82,6 +96,7 @@
 						src="resources/images/threelines.png"></a>
 
 					<ul>
+						<li class="headline"> Alle Kategorien </span>
 						<%
 							ArrayList<Kategorie> kats = (ArrayList<Kategorie>) request.getAttribute("kategorien");
 							for (Kategorie kat : kats) {
@@ -131,7 +146,7 @@
 
 				<%
 				ArrayList<Artikel> best = (ArrayList<Artikel>) request.getAttribute("neu");
-				for(int i = 0; i < 3 && i < best.size(); i++)
+				for(int i = 0; i < 3; i++)
 				{
 					Artikel a = best.get(i);
 					out.println("<div class=\"article1\">");

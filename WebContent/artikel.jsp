@@ -77,7 +77,7 @@ DecimalFormat df = new DecimalFormat("#.00");
 	</header>
 <div class="content">
 	<div class="articleimg">
-		<img src="resources/images/beispiel2.jpg">
+		<img src="resources/images/<%=art.getBild().getName() %>">
 	</div>
 	<div class="generalinfo">
 		<div class="articlename">

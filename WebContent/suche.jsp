@@ -86,7 +86,7 @@
 
 				<div class="searchbar">
 					<input class="searchbar" placeholder="Suchen" type="text"
-						name="searchtext">
+						name="searchtext" value="<%out.print(request.getParameter("searchtext"));%>">
 				</div>
 
 				<div class="searchlogo">
