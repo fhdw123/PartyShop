@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import classes.Artikel;
 import classes.Kategorie;
 import classes.SqlConnection;
 import classes.User;
@@ -37,18 +38,17 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session=request.getSession(false);  
-        if(session!=null) 
-        {
-        	User user=(User)session.getAttribute("user");
-        }
         try
         {
         	
         	SqlConnection conn = new SqlConnection();
         	ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
+        	ArrayList<Artikel> neu = conn.neuesteZehnArtikelLiefern();
+        	//ArrayList<Artikel> best = conn.meistegkaufteZehnArtikelLiefern();
         	conn.closeConnection();
         	request.setAttribute("kategorien", kategorien);
+        	request.setAttribute("neu", neu);
+        	//request.setAttribute("best", best);
         	String nextJSP = "/index.jsp";
         	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         	dispatcher.forward(request,response);  

@@ -1,5 +1,6 @@
 package servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -50,9 +51,7 @@ public class LoginServlet extends HttpServlet {
 			try {
 
 				SqlConnection con = new SqlConnection();
-
 				User user = con.userMitMailLiefern(mail);
-				System.out.println(user.getNachname());
 				con.closeConnection();
 				
 				if (user.getGesperrt() == 0) {
@@ -86,7 +85,7 @@ public class LoginServlet extends HttpServlet {
 					}
 						else
 						{
-							System.out.println("pw stimmt nicht");
+							//pw falsch
 						}
 
 			

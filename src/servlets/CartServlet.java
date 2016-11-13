@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,19 +14,18 @@ import javax.servlet.http.HttpSession;
 import classes.Artikel;
 import classes.Position;
 import classes.SqlConnection;
-import classes.User;
 
 /**
- * Servlet implementation class AddToCartServlet
+ * Servlet implementation class CartServlet
  */
-@WebServlet("/AddToCart")
-public class AddToCartServlet extends HttpServlet {
+@WebServlet("/Warenkorb")
+public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddToCartServlet() {
+    public CartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +37,6 @@ public class AddToCartServlet extends HttpServlet {
 		try
 		{
 			SqlConnection conn = new SqlConnection();
-			Artikel artikel = conn.artikelMitIdLiefern(request.getParameter("id"));
 			HttpSession session=request.getSession(false);  
 	        if(session!=null) 
 	        {
@@ -45,33 +44,26 @@ public class AddToCartServlet extends HttpServlet {
 	        	if(session.getAttribute("cart") != null)
 	        	{
 	        		cart = (ArrayList<Position>) session.getAttribute("cart");
+	        		request.setAttribute("cart", cart);
 	        	}
-	        	boolean contains = false;
-	        	for(Position pos: cart)
+	        	else
 	        	{
-	        		System.out.println(pos.getArtikelbezeichnung() + " " + artikel.getBezeichnung() );
-	        		if(pos.getArtikelbezeichnung().equals(artikel.getBezeichnung()))
-	        		{
-	        			contains = true;
-	        		}
-	        	}
-	        	if(!contains)
-	        	{
-	        		cart.add(new Position("?", artikel.getBezeichnung(), 1, artikel.getPreis() ));
+	        		request.setAttribute("cart", cart);
 	        	}
 	        	
-	        	session.setAttribute("cart", cart);
 	        }
 	        conn.closeConnection();
-	        response.sendRedirect("/Partyshop/Warenkorb");
+	        String nextJSP = "/warenkorb.jsp";
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+            dispatcher.forward(request,response);
+	        
 	        
 		}
 		catch(Exception e)
 		{
-			response.getWriter().println("Error und so");
 			e.printStackTrace();
 		}
-		
+	        
 	}
 
 	/**
@@ -79,6 +71,32 @@ public class AddToCartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session=request.getSession(false); 
+		ArrayList<Position> cart = (ArrayList<Position>) session.getAttribute("cart");
+		String action = request.getParameter("act");
+		if(action.equals("delete"))
+		{
+			Position delete = new Position("?", "?", 1, 2.0);
+			for(Position pos: cart)
+			{
+				if(pos.getArtikelbezeichnung().equals(request.getParameter("name")))
+				{
+					delete = pos;
+				}
+			}
+			cart.remove(delete);
+		}
+		else if(action.equals("refresh"))
+		{
+			for(Position pos: cart)
+			{
+				if(pos.getArtikelbezeichnung().equals(request.getParameter("name")))
+				{
+					pos.setMenge(Integer.parseInt(request.getParameter(pos.getArtikelbezeichnung())));;
+				}
+			}
+		}
+		session.setAttribute("cart", cart);
 		doGet(request, response);
 	}
 

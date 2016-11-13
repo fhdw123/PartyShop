@@ -11,19 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import classes.Artikel;
+import classes.Kategorie;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class ArticleServlet
+ * Servlet implementation class CategoryServlet
  */
-@WebServlet("/Artikel")
-public class ArticleServlet extends HttpServlet {
+@WebServlet("/Kategorie")
+public class CategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ArticleServlet() {
+    public CategoryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,21 +35,32 @@ public class ArticleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try
 		{
+
 			SqlConnection conn = new SqlConnection();
-			Artikel artikel = conn.artikelMitIdLiefern(request.getParameter("id"));
+			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
+			request.setAttribute("kategorien", kategorien);
+			ArrayList<Artikel> artikel = conn.artikelInKategorieLiefern(request.getParameter("id"));
 			request.setAttribute("artikel", artikel);
-			
-			
 			conn.closeConnection();
-			String nextJSP = "/artikel.jsp";
-	        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-	        dispatcher.forward(request,response);
+			for(Kategorie kat: kategorien)
+			{
+				if(request.getParameter("id").equals(kat.getKategorieid()))
+				{
+					request.setAttribute("kategoriename", kat.getBezeichnung());
+				}
+					
+			}
+			conn.closeConnection();
+			String nextJSP = "/kategorie.jsp";
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+            dispatcher.forward(request,response);
 		}
 		catch(Exception e)
 		{
-			response.getWriter().println("Error dies das");
+			String error = e.getMessage();
 			e.printStackTrace();
 		}
+		
 	}
 
 	/**
