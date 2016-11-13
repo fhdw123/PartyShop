@@ -13,6 +13,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.ServletContext;
+
 public class SqlConnection {
 
 	private Connection conn;
@@ -330,19 +332,18 @@ public class SqlConnection {
 		ResultSet rs = stmt.executeQuery("Select * from artikel where kategorie = '" + kategorieid + "'");
 
 		while (rs.next()) {
-
-			String tmp_dir = System.getProperty("java.io.tmpdir");
-			File file = new File(tmp_dir + "/" + rs.getString(2));
+			 
+			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
+			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
 			FileOutputStream output = new FileOutputStream(file);
-
 			InputStream input = rs.getBinaryStream("bild");
 			byte[] buffer = new byte[1024];
 			while (input.read(buffer) > 0) {
 				output.write(buffer);
 
 			}
-
+			 
 			Artikel artikelElement = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
 					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
 
@@ -363,8 +364,8 @@ public class SqlConnection {
 
 		while (rs.next()) {
 
-			String tmp_dir = System.getProperty("java.io.tmpdir");
-			File file = new File(tmp_dir + "/" + rs.getString(2));
+			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
+			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
 			FileOutputStream output = new FileOutputStream(file);
 
@@ -397,12 +398,12 @@ public class SqlConnection {
 
 		Statement stmt = conn.createStatement();
 
-		ResultSet rs = stmt.executeQuery("Select * from artikel order by timestamp desc limit 10");
+		ResultSet rs = stmt.executeQuery("Select * from artikel order by zeitstempel desc limit 10");
 
 		while (rs.next()) {
 
-			String tmp_dir = System.getProperty("java.io.tmpdir");
-			File file = new File(tmp_dir + "/" + rs.getString(2));
+			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
+			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
 			FileOutputStream output = new FileOutputStream(file);
 
@@ -435,8 +436,8 @@ public class SqlConnection {
 
 		while (rs.next()) {
 
-			String tmp_dir = System.getProperty("java.io.tmpdir");
-			File file = new File(tmp_dir + "/" + rs.getString(2));
+			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
+			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
 			FileOutputStream output = new FileOutputStream(file);
 
@@ -470,18 +471,18 @@ public class SqlConnection {
 
 		ResultSet rs = stmt.executeQuery("Select * from artikel where artikelid = '" + artikelid + "'");
 
-		String tmp_dir = System.getProperty("java.io.tmpdir");
+		String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 
 		while (rs.next()) {
-			File file = new File(tmp_dir + "/" + rs.getString(2) + "jpg");
+			
+			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
 			FileOutputStream output = new FileOutputStream(file);
 
 			InputStream input = rs.getBinaryStream(6);
-			System.out.println(input);
 			byte[] buffer = new byte[1024];
 			while (input.read(buffer) > 0) {
-				output.write(buffer);
+				//output.write(buffer);
 
 			}
 

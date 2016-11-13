@@ -1,8 +1,9 @@
 package classes;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Position {
+public class Position implements Serializable{
 
 	private String positionid;
 	private String artikelbezeichnung;
@@ -17,7 +18,7 @@ public class Position {
 	 * @param preis
 	 * @throws Exception
 	 */
-	public Position(String positionid, String artikelbezeichnung, int menge, Double preis) throws Exception {
+	public Position(String positionid, String artikelbezeichnung, int menge, Double preis){
 		super();
 		this.positionid = UUID.randomUUID().toString();
 		this.artikelbezeichnung = artikelbezeichnung;
