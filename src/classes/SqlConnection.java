@@ -295,7 +295,7 @@ public class SqlConnection {
 
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
-			if(file.exists())
+			if(!file.exists())
 			{
 				FileOutputStream output = new FileOutputStream(file);
 
@@ -339,7 +339,7 @@ public class SqlConnection {
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(file.exists())
+			if(!file.exists())
 			{
 				FileOutputStream output = new FileOutputStream(file);
 
@@ -348,7 +348,7 @@ public class SqlConnection {
 				while (input.read(buffer) > 0) {
 					output.write(buffer);
 
-				}
+			}
 			
 			}
 
@@ -376,7 +376,7 @@ public class SqlConnection {
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(file.exists())
+			if(!file.exists())
 			{
 				FileOutputStream output = new FileOutputStream(file);
 
@@ -419,7 +419,7 @@ public class SqlConnection {
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(file.exists())
+			if(!file.exists())
 			{
 				FileOutputStream output = new FileOutputStream(file);
 
@@ -431,7 +431,6 @@ public class SqlConnection {
 			}
 			
 			}
-
 
 			Artikel artikelElement = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
 					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
@@ -458,7 +457,7 @@ public class SqlConnection {
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(file.exists())
+			if(!file.exists())
 			{
 				FileOutputStream output = new FileOutputStream(file);
 
@@ -501,7 +500,7 @@ public class SqlConnection {
 			
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(file.exists())
+			if(!file.exists())
 			{
 				FileOutputStream output = new FileOutputStream(file);
 
@@ -513,7 +512,6 @@ public class SqlConnection {
 			}
 			
 			}
-
 
 			artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
 					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
@@ -534,7 +532,7 @@ public class SqlConnection {
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(file.exists())
+			if(!file.exists())
 			{
 				FileOutputStream output = new FileOutputStream(file);
 
@@ -548,8 +546,8 @@ public class SqlConnection {
 			}
 
 
-			artikel = new Artikel(rs.getString(1), bezeichnung, rs.getString(3), Double.parseDouble(rs.getString(4)),
-					rs.getString(5));
+			artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
+					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
 
 		}
 		stmt.close();
