@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form action="ServletKategorieErstellen" method="doGet">
+	<form action="KategorieErstellen" method="doGet">
 
 		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
 		

@@ -142,13 +142,13 @@
 
 		<div class="content2">
 			<div class="articles">
-				<h1 class="article">Bestseller</h1>
+				<h1 class="article">Neuheiten</h1>
 
 				<%
-				ArrayList<Artikel> best = (ArrayList<Artikel>) request.getAttribute("neu");
+				ArrayList<Artikel> neu = (ArrayList<Artikel>) request.getAttribute("neu");
 				for(int i = 0; i < 3; i++)
 				{
-					Artikel a = best.get(i);
+					Artikel a = neu.get(i);
 					out.println("<div class=\"article1\">");
 					out.println("<a href=\"/Partyshop/Artikel?id=" + a.getArtikelid() + "\">");
 					out.println("<img src=\"resources/images/" + a.getBild().getName()  + "\">");

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form action="ServletKundenSperren" method="doGet">
+	<form action="KundenSperren" method="doGet">
 
 		Mail: <input type="text" name="mail" /> <br>
 		

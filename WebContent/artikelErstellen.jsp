@@ -10,11 +10,12 @@
 </head>
 <body>
 
-	<form action="ServletArtikelErstellen" method="post" enctype="multipart/form-data">
+	<form action="ArtikelErstellen" method="post" enctype="multipart/form-data">
 
 		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
 
-		Beschreibung: <input type="text" name="beschreibung" /> <br>
+		Beschreibung: <br>
+		<textarea cols="50" rows="10" name="beschreibung"></textarea><br>
 
 		Preis: <input type="text" name="preis" /> <br> 
 		

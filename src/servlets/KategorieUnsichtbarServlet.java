@@ -24,7 +24,7 @@ import classes.SqlConnection;
  * Servlet implementation class KategorieUnsichtbarServlet
  */
 @MultipartConfig
-@WebServlet("/ServletKategorieUnsichtbar")
+@WebServlet("/KategorieUnsichtbar")
 public class KategorieUnsichtbarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

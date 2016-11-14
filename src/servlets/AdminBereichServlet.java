@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class AdminBereichServlet
  */
 
-@WebServlet("/ServletAdminBereich")
+@WebServlet("/AdminBereich")
 public class AdminBereichServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,52 +48,52 @@ public class AdminBereichServlet extends HttpServlet {
 			// no button has been selected
 		} else if (act.equals("Artikel anlegen")) {
 
-			response.sendRedirect("ServletArtikelErstellen");
+			response.sendRedirect("ArtikelErstellen");
 		
 	} else if (act.equals("Artikel ändern")) {
 
-		response.sendRedirect("ServletArtikelAendernAuswahl");
+		response.sendRedirect("ArtikelAendernAuswahl");
 	}
 		
 	else if (act.equals("Artikel löschen")) {
 
-		response.sendRedirect("ServletArtikelLoeschen");
+		response.sendRedirect("ArtikelLoeschen");
 	}
 		
 	else if (act.equals("Kategorie anlegen")) {
 
-		response.sendRedirect("ServletKategorieErstellen");
+		response.sendRedirect("KategorieErstellen");
 	}
 		
 	else if (act.equals("Kategorie verbergen")) {
 
-		response.sendRedirect("ServletKategorieUnsichtbar");
+		response.sendRedirect("KategorieUnsichtbar");
 	}
 		
 	else if (act.equals("Kategorie sichtbar machen")) {
 
-		response.sendRedirect("ServletKategorieSichtbar");
+		response.sendRedirect("KategorieSichtbar");
 	}
 		
 		
 	else if (act.equals("Mitarbeiter anlegen")) {
 
-		response.sendRedirect("ServletMitarbeiterErstellen");
+		response.sendRedirect("MitarbeiterErstellen");
 	}
 		
 	else if (act.equals("Mitarbeiter loeschen")) {
 
-		response.sendRedirect("ServletMitarbeiterLoeschen");
+		response.sendRedirect("MitarbeiterLoeschen");
 	}
 		
 	else if (act.equals("Kunden sperren")) {
 
-		response.sendRedirect("ServletKundenSperren");
+		response.sendRedirect("KundenSperren");
 	}
 		
 	else if (act.equals("Kunden entsperren")) {
 
-		response.sendRedirect("ServletKundenEntsperren");
+		response.sendRedirect("KundenEntsperren");
 	}
 		
 	}

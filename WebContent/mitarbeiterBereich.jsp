@@ -8,7 +8,7 @@
 </head>
 <body> 
 
-<form action="ServletMitarbeiterBereich" method="post">
+<form action="MitarbeiterBereich" method="post">
 			
 			<input type="submit" name="act" value="Artikel anlegen"><br>
 			

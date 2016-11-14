@@ -59,7 +59,6 @@ public class IndexServlet extends HttpServlet {
         	e.printStackTrace();        
         }
         
-          
 
 		
 	}

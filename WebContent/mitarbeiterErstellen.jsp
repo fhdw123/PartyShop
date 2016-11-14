@@ -9,36 +9,70 @@
 </head>
 <body> 
 
-<form action="ServletMitarbeiterErstellen" method="post">
+    <%
+		final String errorMessageReg = (String) request.getAttribute("ErrorMessageReg");
+	%>
+	<%
+		final String mail = (String) request.getAttribute("mail");
+	%>
+	<%
+		final String pw = (String) request.getAttribute("pw");
+	%>
+	<%
+		final String pw2 = (String) request.getAttribute("pw2");
+	%>
+	<%
+		final String vn = (String) request.getAttribute("vn");
+	%>
+	<%
+		final String nn = (String) request.getAttribute("nn");
+	%>
+	<%
+		final String str = (String) request.getAttribute("str");
+	%>
+	<%
+		final String hn = (String) request.getAttribute("hn");
+	%>
+	<%
+		final String plz = (String) request.getAttribute("plz");
+	%>
+	<%
+		final String ort = (String) request.getAttribute("ort");
+	%>
+	
+
+<form action="MitarbeiterErstellen" method="post">
 
 			E-Mail:	
-			<input type="text" name="mail"/><br>		
+			<input type="text" name="mail" value="<%=mail%>"/><br>		
 		
 			Passwort:
-			<input type="password" name="pw"/><br>		
+			<input type="password" name="pw" value="<%=pw%>"/><br>		
 			
 			Passwort wiederholen:
-			<input type="password" name="pw2"/><br>		
+			<input type="password" name="pw2" value="<%=pw2%>"/><br>		
 			
 			Vorname:
-			<input type="text" name="vn"/><br>		
+			<input type="text" name="vn" value="<%=vn%>"/><br>		
 			
 			Nachname:
-			<input type="text" name="nn"/><br>		
+			<input type="text" name="nn" value="<%=nn%>"/><br>		
 			
 			Straﬂe:
-			<input type="text" name="str"/><br>		
+			<input type="text" name="str" value="<%=str%>"/><br>		
 			
 			Hausnummer:
-			<input type="text" name="hn"/><br>		
+			<input type="text" name="hn" value="<%=hn%>"/><br>		
 			
 			PLZ:
-			<input type="text" name="plz"/><br>		
+			<input type="text" name="plz" value="<%=plz%>"/><br>		
 			
 			Ort:
-			<input type="text" name="ort"/><br>	<br>		
+			<input type="text" name="ort" value="<%=ort%>"/><br>	<br>		
 			
-			<input type="submit" name="act" value="anlegen"><br>		
+			<input type="submit" name="act" value="anlegen"><br><br>
+			
+			<%=errorMessageReg%><br>		
 		
 		
 		

@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form action="ServletKategorieSichtbar" method="doGet">
+	<form action="KategorieSichtbar" method="doGet">
 
 		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
 		

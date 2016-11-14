@@ -91,11 +91,11 @@ public class LoginServlet extends HttpServlet {
 
 						} else if (user.getRolle().equals("mitarbeiter")) {
 
-							response.sendRedirect("/Partyshop/MitarbeiterBereichServlet");
+							response.sendRedirect("/Partyshop/MitarbeiterBereich");
 
 						} else if (user.getRolle().equals("administrator")) {
 
-							response.sendRedirect("/Partyshop/AdminBereichServlet");
+							response.sendRedirect("/Partyshop/AdminBereich");
 
 						}
 

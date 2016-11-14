@@ -16,7 +16,7 @@ import classes.User;
 /**
  * Servlet implementation class MitarbeiterErstellenServlet
  */
-@WebServlet("/ServletMitarbeiterErstellen")
+@WebServlet("/MitarbeiterErstellen")
 public class MitarbeiterErstellenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -24,6 +24,17 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		request.setAttribute("ErrorMessageReg", "");
+		request.setAttribute("mail", "");
+		request.setAttribute("pw", "");
+		request.setAttribute("pw2", "");
+		request.setAttribute("vn", "");
+		request.setAttribute("nn", "");
+		request.setAttribute("str", "");
+		request.setAttribute("hn", "");
+		request.setAttribute("plz", "");
+		request.setAttribute("ort", "");
 		
 		String nextJSP = "/mitarbeiterErstellen.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
@@ -69,25 +80,91 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 								User user = new User(mail, vname, nname, pv.SHA512(pass1), rolle, 0, strasse, hausnummer,
 										Integer.parseInt(plz), ort);
 								user.userAnlegen();
-								response.sendRedirect("ServletMitarbeiterErstellen");
+								
+								request.setAttribute("ErrorMessageReg", "Mitarbeiter wurde angelegt!");
+								request.setAttribute("mail", "");
+								request.setAttribute("pw", "");
+								request.setAttribute("pw2", "");
+								request.setAttribute("vn", "");
+								request.setAttribute("nn", "");
+								request.setAttribute("str", "");
+								request.setAttribute("hn", "");
+								request.setAttribute("plz", "");
+								request.setAttribute("ort", "");
+								
+								String nextJSP = "/mitarbeiterErstellen.jsp";
+								RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+								dispatcher.forward(request, response);
 
 
 							} catch (Exception ex) {
 								ex.printStackTrace();
 							}
 						} else {
-							// Ausgabe: Passwörter stimmen nicht überein
+							request.setAttribute("ErrorMessageReg", "Passwörter stimmen nicht überein!");
+							request.setAttribute("mail", mail);
+							request.setAttribute("pw", "");
+							request.setAttribute("pw2", "");
+							request.setAttribute("vn", "");
+							request.setAttribute("nn", "");
+							request.setAttribute("str", "");
+							request.setAttribute("hn", "");
+							request.setAttribute("plz", "");
+							request.setAttribute("ort", "");
+							
+							String nextJSP = "/mitarbeiterErstellen.jsp";
+							RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+							dispatcher.forward(request, response);
 						}
 
 					} else {
-						// Ausgabe: Postleitzahl ungültig
+						request.setAttribute("ErrorMessageReg", "Postleitzahl ungültig!");
+						request.setAttribute("mail", mail);
+						request.setAttribute("pw", "");
+						request.setAttribute("pw2", "");
+						request.setAttribute("vn", vname);
+						request.setAttribute("nn", nname);
+						request.setAttribute("str", strasse);
+						request.setAttribute("hn", hausnummer);
+						request.setAttribute("plz","");
+						request.setAttribute("ort", ort);
+						
+						String nextJSP = "/mitarbeiterErstellen.jsp";
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+						dispatcher.forward(request, response);
 					}
 				} else {
-					// Ausgabe: bitte eine gültige Mailadresse angeben
+					request.setAttribute("ErrorMessageReg", "Mailadresse wird schon verwendet!");
+					request.setAttribute("mail", mail);
+					request.setAttribute("pw", "");
+					request.setAttribute("pw2", "");
+					request.setAttribute("vn", vname);
+					request.setAttribute("nn", nname);
+					request.setAttribute("str", strasse);
+					request.setAttribute("hn", hausnummer);
+					request.setAttribute("plz","");
+					request.setAttribute("ort", ort);
+					
+					String nextJSP = "/mitarbeiterErstellen.jsp";
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+					dispatcher.forward(request, response);
 
 				}
 			} else {
-				// Ausgabe: Daten fehlen
+				request.setAttribute("ErrorMessageReg", "Bitte alle Felder ausfüllen!");
+				request.setAttribute("mail", mail);
+				request.setAttribute("pw", "");
+				request.setAttribute("pw2", "");
+				request.setAttribute("vn", vname);
+				request.setAttribute("nn", nname);
+				request.setAttribute("str", strasse);
+				request.setAttribute("hn", hausnummer);
+				request.setAttribute("plz","");
+				request.setAttribute("ort", ort);
+				
+				String nextJSP = "/mitarbeiterErstellen.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
 			}
 
 		}

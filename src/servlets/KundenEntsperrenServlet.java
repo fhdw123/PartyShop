@@ -18,7 +18,7 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class KundenEntsperrenServlet
  */
-@WebServlet("/ServletKundenEntsperren")
+@WebServlet("/KundenEntsperren")
 public class KundenEntsperrenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

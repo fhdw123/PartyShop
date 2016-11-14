@@ -124,7 +124,7 @@
 							out.println("<span class=\"price\">" + df.format(pos.getPreis()) + "€</span></div>");
 							out.println("<div class=\"lineitem-amount\">");
 							out.println("<form action=\"Warenkorb\" method=\"post\">");
-							out.println("<input type=\"number\" min=\"1\" name=\"" + pos.getArtikelbezeichnung() + "\" value=\"" + pos.getMenge() + "\">");
+							out.println("<input type=\"number\" min=\"1\" max=\"99\" name=\"" + pos.getArtikelbezeichnung() + "\" value=\"" + pos.getMenge() + "\">");
 							out.println("<input class=\"refresh\" type=\"submit\" value=\"\" title=\"Aktualisieren\">");
 							out.println("<input type=\"hidden\" name=\"act\" value=\"refresh\">");
 							out.println("<input type=\"hidden\" name=\"name\" value=\"" + pos.getArtikelbezeichnung() + "\">");

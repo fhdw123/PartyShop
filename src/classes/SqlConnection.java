@@ -150,11 +150,40 @@ public class SqlConnection {
 
 	}
 
+	/**
+	 * 
+	 * @param mail
+	 * @return
+	 * @throws Exception
+	 */
 	public User userMitMailLiefern(String mail) throws Exception {
 
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery("Select * from user where mail = '" + mail + "'");
+		while (rs.next()) {
+			User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+					rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
+					Integer.parseInt(rs.getString(10)), rs.getString(11));
+			stmt.close();
+			return user;
+		}
+		return null;
+
+	}
+	
+	
+	/**
+	 * 
+	 * @param mail
+	 * @return
+	 * @throws Exception
+	 */
+	public User mitarbeiterMitMailLiefern(String mail) throws Exception {
+
+		Statement stmt = conn.createStatement();
+
+		ResultSet rs = stmt.executeQuery("Select * from user where mail = '" + mail + "' and rolle = 'mitarbeiter'");
 		while (rs.next()) {
 			User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
 					rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),

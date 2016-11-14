@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<form action="ServletArtikelAendern" method="post"
+	<form action="tArtikelAendern" method="post"
 		enctype="multipart/form-data">
 
 		<%
@@ -29,8 +29,8 @@
 		Artikel-Id: <input type="text" name="artikelid"
 			value="<%out.print(a.getArtikelid());%>" readonly/> <br> Bezeichnung: <input
 			type="text" name="bezeichnung"
-			value="<%out.print(a.getBezeichnung());%>" /> <br> Beschreibung:
-		<input type="text" name="beschreibung"
+			value="<%out.print(a.getBezeichnung());%>" /> <br> Beschreibung: <br>
+		<textarea cols="50" rows="10" name="beschreibung"></textarea><br>
 			value="<%out.print(a.getBeschreibung());%>" /> <br> Preis: <input
 			type="text" name="preis" value="<%out.print(a.getPreis());%>" /> <br>
 			

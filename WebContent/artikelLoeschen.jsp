@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form action="ServletArtikelLoeschen" method="doGet">
+	<form action="ArtikelLoeschen" method="doGet">
 
 		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
 		

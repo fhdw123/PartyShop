@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form action="ServletKategorieUnsichtbar" method="doGet">
+	<form action="KategorieUnsichtbar" method="doGet">
 
 		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
 		

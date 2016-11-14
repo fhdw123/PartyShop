@@ -24,7 +24,7 @@ import classes.SqlConnection;
  * Servlet implementation class ArtikelAendernServlet
  */
 @MultipartConfig
-@WebServlet("/ServletArtikelAendern")
+@WebServlet("/ArtikelAendern")
 public class ArtikelAendernServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

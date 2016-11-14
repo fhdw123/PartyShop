@@ -8,11 +8,22 @@
 </head>
 <body>
 
-	<form action="ServletMitarbeiterLoeschen" method="doGet">
+<%
+		final String errorMessage = (String) request.getAttribute("ErrorMessage");
+	%>
+	<%
+		final String mail = (String) request.getAttribute("mail");
+	%>
 
-		Mail: <input type="text" name="mail" /> <br>
+	<form action="MitarbeiterLoeschen" method="post">
+
+		Mail: <input type="text" name="mail" value="<%=mail%>"/> <br><br>
 		
 		<input type="submit" name="act" value="loeschen">
+		
+		<br><br>
+		
+		<%=errorMessage%>
 
 	</form>
 
