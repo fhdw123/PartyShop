@@ -6,6 +6,7 @@
 <%@ page import="java.text.DecimalFormat"%>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.io.File" %>
+<%@ page import="classes.SqlConnection" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,13 +110,14 @@
 					else
 					{
 						
-						
+						SqlConnection conn = new SqlConnection();
 						summe = 0;
 						for (Position pos : positionen) {
+							
 							summe += pos.getPreis() * pos.getMenge();
 							out.println("<div class=\"lineitem\">");
 							out.println("<div class=\"lineitem-img\">");
-							out.println("<img src=\"resources/images/beispiel2.jpg\"></div>");
+							out.println("<img src=\"resources/images/" +conn.artikelMitBezeichnungLiefern(pos.getArtikelbezeichnung()).getBild().getName() + "\"></div>");
 							out.println("<div class=\"lineitem-articlename\">");
 							out.println("<span class=\"articlename\">" + pos.getArtikelbezeichnung() + "</span></div>");
 							out.println("<div class=\"lineitem-price\">");
@@ -138,6 +140,7 @@
 							out.println("</div>");
 						
 						}
+						conn.closeConnection();
 					}
 				%>
 
