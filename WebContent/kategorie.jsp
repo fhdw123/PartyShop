@@ -27,9 +27,10 @@ while (paramNames.hasMoreElements())
         if(!paramName.equals("page"))
         {
         	url=url + paramName + "=" + paramValue;
+        	url=url+"&";
         }
     }
-    url=url+"&";
+    
 }
 url = url.substring(0, url.length() -1);
 %>
