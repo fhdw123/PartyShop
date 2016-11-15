@@ -12,6 +12,14 @@
 <title>Partyshop</title>
 </head>
 <body>
+
+<%
+String searchterm = request.getParameter("searchtext");
+if(searchterm == null)
+{
+	searchterm = "";
+}
+%>
 	<header class="standard">
 		<div class="header-logo">
 			<a href="/Partyshop"> <img class="logo"
@@ -86,7 +94,7 @@
 
 				<div class="searchbar">
 					<input class="searchbar" placeholder="Suchen" type="text"
-						name="searchtext" value="<%out.print(request.getParameter("searchtext"));%>">
+						name="searchtext" value="<%=searchterm%>">
 				</div>
 
 				<div class="searchlogo">
@@ -129,7 +137,7 @@
 			<%
 				ArrayList<Artikel> artikel = (ArrayList<Artikel>) request.getAttribute("artikel");
 				for (Artikel art : artikel) {
-					DecimalFormat df = new DecimalFormat("#.00");
+					DecimalFormat df = new DecimalFormat("0.00");
 					out.println("<div class=\"articles\">");
 					out.println("<div class=\"single-article\">");
 					out.println("<a href=\"/Partyshop/Artikel?id=" + art.getArtikelid() + "\">");

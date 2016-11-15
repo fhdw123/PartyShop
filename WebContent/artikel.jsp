@@ -12,7 +12,7 @@
 <body>
 <% 
 Artikel art = (Artikel) request.getAttribute("artikel");
-DecimalFormat df = new DecimalFormat("#.00");
+DecimalFormat df = new DecimalFormat("0.00");
 %>
 <header class="standard">
 		<div class="header-logo">

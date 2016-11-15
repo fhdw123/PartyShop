@@ -101,7 +101,7 @@
 				</div>
 				<%
 					ArrayList<Position> positionen = (ArrayList<Position>) request.getAttribute("cart");
-					DecimalFormat df = new DecimalFormat("#.00");
+					DecimalFormat df = new DecimalFormat("0.00");
 					double summe = 0;
 					if(positionen == null || positionen.size() == 0)
 					{
