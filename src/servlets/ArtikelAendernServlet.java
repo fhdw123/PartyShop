@@ -43,7 +43,9 @@ public class ArtikelAendernServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
+		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("SuccessMessage", "");
+		request.setAttribute("bezeichnung", "");
 		
 
 			SqlConnection conn;
@@ -90,11 +92,15 @@ public class ArtikelAendernServlet extends HttpServlet {
 					SqlConnection con = new SqlConnection();
 					kategorieid = con.kategorienLiefernMitBezeichnung(kategorie).getKategorieid();
 				
+					
 				Part filePart = request.getPart("file");
 				InputStream fileContent = filePart.getInputStream();
 
 				String tmp_Dir = System.getProperty("java.io.tmpdir");
 				File file = new File(tmp_Dir + "/" + bezeichnung + ".jpg");
+				
+				if(filePart!=null)
+				{
 
 				OutputStream out = new FileOutputStream(file);
 				byte[] buf = new byte[1024];
@@ -104,15 +110,22 @@ public class ArtikelAendernServlet extends HttpServlet {
 				}
 				out.close();
 				fileContent.close();
+				
+				}
 
 				Double preis = Double.parseDouble(preisStr);
 				con.artikelAktualisieren(artikelid, bezeichnung, beschreibung, preis, kategorieid, file);
 				con.closeConnection();
+				request.setAttribute("ErrorMessage", "");
+				request.setAttribute("SuccessMessage", "Artikel erfolgreich geändert!");
 				
-				response.sendRedirect("ServletArtikelAendernAuswahl");
+				response.sendRedirect("ArtikelAendernAuswahl");
 				
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				request.setAttribute("ErrorMessage", "Änderung fehlgeschlagen!");
+				request.setAttribute("SuccessMessage", "");
+				
+				response.sendRedirect("ArtikelAendernAuswahl");
 			}
 
 		}

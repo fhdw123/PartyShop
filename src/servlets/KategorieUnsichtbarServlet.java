@@ -42,28 +42,9 @@ public class KategorieUnsichtbarServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String act = request.getParameter("actChoose");
-		if (act == null) {
-			// no button has been selected
-		} else if (act.equals("verbergen")) {
-
-			String bezeichnung = request.getParameter("bezeichnung");
-
-			try {
-				SqlConnection con = new SqlConnection();
-				Kategorie k = con.kategorienLiefernMitBezeichnung(bezeichnung);
-				con.kategorieUnsichtbar(k.getKategorieid());
-				con.closeConnection();
-				
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-
-				
-
-			}
-		} 
+		
+		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("bezeichnung", "");
 		
 		String nextJSP = "/kategorieUnsichtbar.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
@@ -81,6 +62,45 @@ public class KategorieUnsichtbarServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		
+		String act = request.getParameter("actChoose");
+		if (act == null) {
+			// no button has been selected
+		} else if (act.equals("verbergen")) {
+
+			String bezeichnung = request.getParameter("bezeichnung");
+
+			try {
+				SqlConnection con = new SqlConnection();
+				Kategorie k = con.kategorienLiefernMitBezeichnung(bezeichnung);
+				if(k.getKategorieid()!=null)
+				{
+				con.kategorieUnsichtbar(k.getKategorieid());
+				request.setAttribute("ErrorMessage", "Kategorie ist jetzt unsichtbar!");
+				request.setAttribute("bezeichnung", "");
+				
+				String nextJSP = "/kategorieUnsichtbar.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
+				}
+				else
+				{
+					request.setAttribute("ErrorMessage", "Kategorie nicht vorhanden!");
+					request.setAttribute("bezeichnung", bezeichnung);
+					
+					String nextJSP = "/kategorieUnsichtbar.jsp";
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+					dispatcher.forward(request, response);
+					
+				}
+				con.closeConnection();
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+
+				
+			}
+			}
 		
 
 	}

@@ -10,11 +10,20 @@
 </head>
 <body>
 
-	<form action="KategorieUnsichtbar" method="doGet">
+<%
+		final String errorMessage = (String) request.getAttribute("ErrorMessage");
+	%>
+	<%
+		final String bezeichnung = (String) request.getAttribute("bezeichnung");
+	%>
 
-		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
+	<form action="KategorieUnsichtbar" method="post">
+
+		Bezeichnung: <input type="text" name="bezeichnung" value="<%=bezeichnung%>"/> <br>
 		
-			<input type="submit" name="actChoose" value="verbergen">
+			<input type="submit" name="actChoose" value="verbergen"><br><br>
+			
+			<%=errorMessage%><br>		
 
 </form>
 	

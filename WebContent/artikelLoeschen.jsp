@@ -10,11 +10,22 @@
 </head>
 <body>
 
-	<form action="ArtikelLoeschen" method="doGet">
+<%
+		final String errorMessage = (String) request.getAttribute("ErrorMessage");
 
-		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
 		
-		<input type="submit" name="act" value="loeschen">
+	%>
+	<%
+		final String bezeichnung = (String) request.getAttribute("bezeichnung");
+	%>
+
+	<form action="ArtikelLoeschen" method="post">
+
+		Bezeichnung: <input type="text" name="bezeichnung" value="<%=bezeichnung%>" /> <br>
+		
+		<input type="submit" name="act" value="loeschen"><br><br>
+		
+		<%=errorMessage%><br>
 
 	</form>
 

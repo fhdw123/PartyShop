@@ -14,6 +14,7 @@ import javax.servlet.http.Part;
 import classes.Artikel;
 import classes.Kategorie;
 import classes.SqlConnection;
+import classes.User;
 
 /**
  * Servlet implementation class KundenEntsperrenServlet
@@ -37,30 +38,15 @@ public class KundenEntsperrenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("mail", "");
+		
 		String nextJSP = "/kundenEntsperren.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 		
 		
-		String mail = request.getParameter("mail");
 		
-		String act = request.getParameter("act");
-		if (act == null) {
-			// no button has been selected
-		} else if (act.equals("entsperren")) {
-			
-			try{
-				SqlConnection con = new SqlConnection();
-				con.userEntsperren(mail);
-			}
-			catch(Exception ex)
-			{
-				ex.printStackTrace();
-			}
-			
-			
-			
-		}
 		
 		
 		
@@ -74,6 +60,49 @@ public class KundenEntsperrenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+String mail = request.getParameter("mail");
+		
+		String act = request.getParameter("act");
+		if (act == null) {
+			// no button has been selected
+		} else if (act.equals("entsperren")) {
+			
+			try{
+								
+				SqlConnection con = new SqlConnection();
+				
+				User user = con.userMitMailLiefern(mail);
+				
+				if(user!=null)
+				{
+				con.userEntsperren(mail);
+				request.setAttribute("ErrorMessage", "Kunde wurde entsperrt!");
+				request.setAttribute("mail", "");
+				
+				String nextJSP = "/kundenEntsperren.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
+				}
+				else
+				{
+					request.setAttribute("ErrorMessage", "Kunde nicht vorhanden!");
+					request.setAttribute("mail", "");
+					
+					String nextJSP = "/kundenEntsperren.jsp";
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+					dispatcher.forward(request, response);
+					
+				}
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+			}
+			
+			
+			
+		}
+		
 	}
 
 }

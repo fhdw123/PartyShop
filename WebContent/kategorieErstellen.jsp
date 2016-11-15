@@ -10,11 +10,22 @@
 </head>
 <body>
 
-	<form action="KategorieErstellen" method="doGet">
+<%
+		final String errorMessage = (String) request.getAttribute("ErrorMessage");
+        final String successMessage = (String) request.getAttribute("SuccessMessage");
+	%>
+	<%
+		final String bezeichnung = (String) request.getAttribute("bezeichnung");
+	%>
 
-		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
+	<form action="KategorieErstellen" method="post">
+
+		Bezeichnung: <input type="text" name="bezeichnung" value="<%=bezeichnung%>" /> <br>
 		
-		<input type="submit" name="act" value="anlegen">
+		<input type="submit" name="act" value="anlegen"><br><br>
+			
+			<%=errorMessage%><br>
+			<%=successMessage%><br>		
 
 	</form>
 

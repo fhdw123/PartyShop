@@ -188,9 +188,7 @@ User u = (User) request.getAttribute("user");
 			<%
 				if(positionen != null && positionen.size() != 0)
 				{
-					out.println("<input class=\"order-button\">");
-					out.println("Bestellen");
-					out.println("</div>");
+					out.println("<input class=\"order-button\" value=\"Bestätigen\">");
 				}
 			
 			%>

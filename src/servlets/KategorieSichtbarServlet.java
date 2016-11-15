@@ -43,10 +43,27 @@ public class KategorieSichtbarServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		
+		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("bezeichnung", "");
+		
 		String nextJSP = "/kategorieSichtbar.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
+		
 
+		
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		
 		String act = request.getParameter("actChoose");
 		if (act == null) {
 			// no button has been selected
@@ -57,7 +74,27 @@ public class KategorieSichtbarServlet extends HttpServlet {
 			try {
 				SqlConnection con = new SqlConnection();
 				Kategorie k = con.kategorienUnsichtbarLiefernMitBezeichnung(bezeichnung);
-				con.kategorieSichtbar(k.getKategorieid());
+				if(k.getKategorieid()!=null)
+				{
+					con.kategorieSichtbar(k.getKategorieid());
+				request.setAttribute("ErrorMessage", "Kategorie ist jetzt sichtbar!");
+				request.setAttribute("bezeichnung", "");
+				
+				String nextJSP = "/kategorieUnsichtbar.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
+				}
+				else
+				{
+					request.setAttribute("ErrorMessage", "Kategorie nicht vorhanden!");
+					request.setAttribute("bezeichnung", bezeichnung);
+					
+					String nextJSP = "/kategorieSichtbar.jsp";
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+					dispatcher.forward(request, response);
+					
+				}
+				
 				con.closeConnection();
 				
 				
@@ -70,18 +107,6 @@ public class KategorieSichtbarServlet extends HttpServlet {
 			
 			
 		} 
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		
-		
 
 	}
 

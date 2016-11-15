@@ -37,12 +37,25 @@ public class KategorieErstellenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("SuccessMessage", "");
+		request.setAttribute("bezeichnung", "");
+		
 		String nextJSP = "/kategorieErstellen.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
+
 		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		
-		String bezeichnung = request.getParameter("bezeichnung");
+String bezeichnung = request.getParameter("bezeichnung");
 		
 		String act = request.getParameter("act");
 		if (act == null) {
@@ -53,27 +66,29 @@ public class KategorieErstellenServlet extends HttpServlet {
 				
 				Kategorie kategorie = new Kategorie(bezeichnung);
 				kategorie.kategorieErzeugen();
+				
+				request.setAttribute("ErrorMessage", "");
+				request.setAttribute("SuccessMessage", "Kategorie angelegt!");
+				request.setAttribute("bezeichnung", "");
+				
+				String nextJSP = "/kategorieErstellen.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
 			}
 			catch(Exception ex)
 			{
-				ex.printStackTrace();
+				request.setAttribute("ErrorMessage", "Kategorie existiert bereits!");
+				request.setAttribute("SuccessMessage", "");
+				request.setAttribute("bezeichnung", bezeichnung);
+				
+				String nextJSP = "/kategorieErstellen.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
 			}
 			
 			
 			
 		}
-		
-		
-		
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 
 	}
 

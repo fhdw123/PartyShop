@@ -49,7 +49,7 @@
 		width: 250px;
 		border: solid 1px #ccc;
 		border-radius: 1px;
-		background-color: white;
+		background-color: gray;
 		padding: 5px;
 		position: absolute;
 		right: 0px;
@@ -144,7 +144,7 @@
 		top: 250px;
 		display: none;
 		overflow: visible;
-		background: #fff;
+		background: gray';
 		width: 102%;
 		height: auto;
 		list-style-type: none;
@@ -233,7 +233,7 @@
 		width: 600px;
 		border: solid 1px #ccc;
 		border-radius: 1px;
-		background-color: white;
+		background-color: gray;
 		padding: 5px;
 		position: absolute;
 		right: -30px;
@@ -246,12 +246,16 @@
 	}
 }
 
+body
+{
+	background-color: gray;
+}
 /*Desktop Version */
 /* Header */
 header.standard 
 {
 	height: 100px;
-	background-color: Bisque;
+	background-color: white;
 	margin: -8px -8px 0px -8px;
 	display: block;
 }
@@ -387,6 +391,7 @@ div.content
 	width: auto;
 	margin: auto;
 	display: block;
+	background-color: gray;
 }
 
 /* Kategorie Leiste */
@@ -401,7 +406,7 @@ ul.categories
 	list-style-type: none;
 	margin: 0px;
 	padding: 0;
-	background-color: #f1f1f1;	
+	background-color: #c6c6c6;	
 }
 li.categories a 
 {
@@ -418,7 +423,7 @@ li.categories a.title
 li.categories a:hover
 {
 	background-color: #555;
-	color: white;
+	color: gray;
 }
 
 /* Artikel auf der Startseite */
@@ -432,15 +437,18 @@ div.content2
 	margin-bottom: 30px;
 	max-width: 900px;
 	float: left;
+	background-color: gray;
+
 }
 div.articles 
 {
 	width: 100%;
-	background-color: white;
+	background-color: gray;
 	/*height: 380px;*/
 	max-width: 800px;
 	float: right;
 	display: block;
+		background-color: gray;
 }
 div.article1
 {

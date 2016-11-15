@@ -8,11 +8,22 @@
 </head>
 <body>
 
-	<form action="KundenSperren" method="doGet">
+<%
+		final String errorMessage = (String) request.getAttribute("ErrorMessage");
 
-		Mail: <input type="text" name="mail" /> <br>
 		
-		<input type="submit" name="act" value="sperren">
+	%>
+	<%
+		final String mail = (String) request.getAttribute("mail");
+	%>
+
+	<form action="KundenSperren" method="post">
+
+		Mail: <input type="text" name="mail" value="<%=mail%>"/> <br>
+		
+		<input type="submit" name="act" value="sperren"><br><br>
+		
+		<%=errorMessage%><br>
 
 	</form>
 

@@ -259,6 +259,7 @@ public class SqlConnection {
 	 * @param beschreibung
 	 * @param preis
 	 * @param kategorie
+	 * @param bild
 	 * @throws Exception
 	 */
 	public void artikelAktualisieren(String artikelid, String bezeichnung, String beschreibung, double preis,
@@ -280,6 +281,44 @@ public class SqlConnection {
 			ps.setDouble(3, preis);
 			ps.setString(4, kategorie);
 			ps.setBinaryStream(5, fis, (int) bild.length());
+			ps.setString(6, artikelid);
+			ps.executeUpdate();
+			conn.commit();
+		} finally {
+			ps.close();
+			fis.close();
+			stmt.close();
+		}
+
+	}
+	
+	
+	/**
+	 * 
+	 * @param artikelid
+	 * @param bezeichnung
+	 * @param beschreibung
+	 * @param preis
+	 * @param kategorie
+	 * @throws Exception
+	 */
+	public void artikelAktualisierenOhneBild(String artikelid, String bezeichnung, String beschreibung, double preis,
+			String kategorie) throws Exception {
+
+		Statement stmt = conn.createStatement();
+
+		FileInputStream fis = null;
+		PreparedStatement ps = null;
+
+		String UPDATE_ARTICLE = "update artikel set bezeichnung = ?, beschreibung = ?, preis = ?, kategorie = ? where artikelid = ?";
+
+		try {
+			conn.setAutoCommit(false);
+			ps = conn.prepareStatement(UPDATE_ARTICLE);
+			ps.setString(1, bezeichnung);
+			ps.setString(2, beschreibung);
+			ps.setDouble(3, preis);
+			ps.setString(4, kategorie);
 			ps.setString(6, artikelid);
 			ps.executeUpdate();
 			conn.commit();

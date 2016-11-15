@@ -36,44 +36,15 @@ public class ArtikelLoeschenServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
+		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("SuccessMessage", "");
+		request.setAttribute("bezeichnung", "");
+
 		String nextJSP = "/artikelLoeschen.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
-		
-		SqlConnection conn;
-		try {
-			conn = new SqlConnection();
-			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
-			request.setAttribute("kategorien", kategorien);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		String bezeichnung = request.getParameter("bezeichnung");
-		
-		String act = request.getParameter("act");
-		if (act == null) {
-			// no button has been selected
-		} else if (act.equals("loeschen")) {
-			
-			try{
-				SqlConnection con = new SqlConnection();
-				Artikel a = con.artikelMitBezeichnungLiefern(bezeichnung);
-				con.artikelLoeschen(a.getArtikelid());
-			}
-			catch(Exception ex)
-			{
-				ex.printStackTrace();
-			}
-			
-			
-			
-		}
-		
-		
-		
-		
+
 	}
 
 	/**
@@ -82,6 +53,49 @@ public class ArtikelLoeschenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		SqlConnection conn;
+		try {
+			conn = new SqlConnection();
+			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
+			request.setAttribute("kategorien", kategorien);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		String bezeichnung = request.getParameter("bezeichnung");
+
+		String act = request.getParameter("act");
+		if (act == null) {
+			// no button has been selected
+		} else if (act.equals("loeschen")) {
+
+			try {
+				SqlConnection con = new SqlConnection();
+				Artikel a = con.artikelMitBezeichnungLiefern(bezeichnung);
+
+				if (a.getArtikelid() != null) {
+					con.artikelLoeschen(a.getArtikelid());
+
+					request.setAttribute("ErrorMessage", "Artikel wurde entfernt!");
+					request.setAttribute("bezeichnung", "");
+
+					String nextJSP = "/artikelLoeschen.jsp";
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+					dispatcher.forward(request, response);
+				} else {
+					request.setAttribute("ErrorMessage", "Artikel wurde nicht gefunden!");
+					request.setAttribute("bezeichnung", "");
+
+					String nextJSP = "/artikelLoeschen.jsp";
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+					dispatcher.forward(request, response);
+
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
 
 	}
 

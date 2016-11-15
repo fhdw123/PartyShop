@@ -43,14 +43,14 @@ public class ArtikelErstellenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		SqlConnection conn;
-		try {
-			conn = new SqlConnection();
-			ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
-			request.setAttribute("kategorien", kategorien);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("SuccessMessage", "");
+		request.setAttribute("bezeichnung", "");
+		request.setAttribute("beschreibung", "");
+		request.setAttribute("preis", "");
+		
+		
+		
 		
 		String nextJSP = "/artikelErstellen.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
@@ -111,10 +111,30 @@ public class ArtikelErstellenServlet extends HttpServlet {
 				Double preis = Double.parseDouble(preisStr);
 				Artikel artikel = new Artikel(bezeichnung, beschreibung, preis, kategorieid, file);
 				artikel.artikelErzeugen();
+				
+				request.setAttribute("ErrorMessage", "");
+				request.setAttribute("SuccessMessage", "Artikel wurde erfolgreich angelegt!");
+				request.setAttribute("bezeichnung", "");
+				request.setAttribute("beschreibung", "");
+				request.setAttribute("preis", "");
+				
+				String nextJSP = "/artikelErstellen.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
+				
 			}
+			
 			catch(Exception ex)
 			{
-				ex.printStackTrace();
+				request.setAttribute("ErrorMessage", "Artikel konnte nicht angelegt werden!");
+				request.setAttribute("SuccessMessage", "");
+				request.setAttribute("bezeichnung", bezeichnung);
+				request.setAttribute("beschreibung", beschreibung);
+				request.setAttribute("preis", preisStr);
+				
+				String nextJSP = "/artikelErstellen.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
 			}
 			
 			

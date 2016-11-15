@@ -166,26 +166,10 @@
 			<div class="articles">
 				<h1 class="article">Bestseller</h1>
 
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel4.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
+				
 
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel1.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
 
-				<div class="article1">
-					<a target="_blank" href=""> <img
-						src="resources/images/beispiel3.jpg" alt="">
-					</a>
-					<div class="desc">beschreibung</div>
-				</div>
+				
 			</div>
 
 		</div>

@@ -10,11 +10,24 @@
 </head>
 <body>
 
+<%
+		final String errorMessage = (String) request.getAttribute("ErrorMessage");
+final String successMessage = (String) request.getAttribute("SuccessMessage");
+
+		
+	%>
+	<%
+		final String bezeichnung = (String) request.getAttribute("bezeichnung");
+	%>
+
 	<form action="ArtikelAendernAuswahl" method="post">
 
-		Bezeichnung: <input type="text" name="bezeichnung" /> <br>
+		Bezeichnung: <input type="text" name="bezeichnung" value="<%=bezeichnung%>"/> <br>
 		
-			<input type="submit" name="actChoose" value="anzeigen">
+			<input type="submit" name="actChoose" value="anzeigen"><br><br>
+			
+			<%=errorMessage%><br>
+			<%=successMessage%><br>
 
 </form>
 	

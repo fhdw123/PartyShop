@@ -37,6 +37,14 @@ public class ArtikelAendernAuswahlServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		request.setAttribute("ErrorMessage", "");
+		String s = (String) request.getAttribute("SuccessMessage");
+		if(s == null);
+		{
+		request.setAttribute("SuccessMessage", "");
+		}
+		request.setAttribute("bezeichnung", "");
+		
 		String nextJSP = "/artikelAendernAuswahl.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
@@ -67,11 +75,17 @@ public class ArtikelAendernAuswahlServlet extends HttpServlet {
 				Kategorie kat = con.kategorienLiefernMitId(a.getKategorie());
 				String katBez = kat.getBezeichnung();
 				request.setAttribute("katBez", katBez);
-				response.sendRedirect("ServletArtikelAendern?artikel="+a.getArtikelid()+"&katBez="+katBez);
+				response.sendRedirect("ArtikelAendern?artikel="+a.getArtikelid()+"&katBez="+katBez);
 				
 				
 			} catch (Exception e) {
-				e.printStackTrace();
+				request.setAttribute("ErrorMessage", "Artikel wurde nicht gefunden!");
+				request.setAttribute("SuccessMessage", "Artikel wurde nicht gefunden!");
+				request.setAttribute("bezeichnung", "");
+				
+				String nextJSP = "/artikelAendernAuswahl.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
 
 				
 

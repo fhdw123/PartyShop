@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<form action="tArtikelAendern" method="post"
+	<form action="ArtikelAendern" method="post"
 		enctype="multipart/form-data">
 
 		<%
@@ -30,8 +30,8 @@
 			value="<%out.print(a.getArtikelid());%>" readonly/> <br> Bezeichnung: <input
 			type="text" name="bezeichnung"
 			value="<%out.print(a.getBezeichnung());%>" /> <br> Beschreibung: <br>
-		<textarea cols="50" rows="10" name="beschreibung"></textarea><br>
-			value="<%out.print(a.getBeschreibung());%>" /> <br> Preis: <input
+		<textarea cols="50" rows="10" name="beschreibung" ><%out.print(a.getBeschreibung());%></textarea><br>
+			 <br> Preis: <input
 			type="text" name="preis" value="<%out.print(a.getPreis());%>" /> <br>
 			
 			aktuelle Kategorie:

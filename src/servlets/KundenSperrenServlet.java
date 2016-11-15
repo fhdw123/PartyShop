@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,14 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
-import classes.Artikel;
-import classes.Kategorie;
 import classes.SqlConnection;
+import classes.User;
 
 /**
- * Servlet implementation class KundenSperrenServlet
+ * Servlet implementation class KundenEntsperrenServlet
  */
 @WebServlet("/KundenSperren")
 public class KundenSperrenServlet extends HttpServlet {
@@ -37,30 +34,15 @@ public class KundenSperrenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("mail", "");
+		
 		String nextJSP = "/kundenSperren.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		dispatcher.forward(request, response);
 		
 		
-		String mail = request.getParameter("mail");
 		
-		String act = request.getParameter("act");
-		if (act == null) {
-			// no button has been selected
-		} else if (act.equals("sperren")) {
-			
-			try{
-				SqlConnection con = new SqlConnection();
-				con.userSperren(mail);
-			}
-			catch(Exception ex)
-			{
-				ex.printStackTrace();
-			}
-			
-			
-			
-		}
 		
 		
 		
@@ -74,6 +56,49 @@ public class KundenSperrenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+String mail = request.getParameter("mail");
+		
+		String act = request.getParameter("act");
+		if (act == null) {
+			// no button has been selected
+		} else if (act.equals("sperren")) {
+			
+			try{
+								
+				SqlConnection con = new SqlConnection();
+				
+				User user = con.userMitMailLiefern(mail);
+				
+				if(user!=null)
+				{
+				con.userEntsperren(mail);
+				request.setAttribute("ErrorMessage", "Kunde wurde gesperrt!");
+				request.setAttribute("mail", "");
+				
+				String nextJSP = "/kundenSperren.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
+				}
+				else
+				{
+					request.setAttribute("ErrorMessage", "Kunde nicht vorhanden!");
+					request.setAttribute("mail", "");
+					
+					String nextJSP = "/kundenSperren.jsp";
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+					dispatcher.forward(request, response);
+					
+				}
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+			}
+			
+			
+			
+		}
+		
 	}
 
 }
