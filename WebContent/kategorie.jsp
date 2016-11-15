@@ -4,6 +4,7 @@
 <%@ page import="classes.Kategorie"%>
 <%@ page import="classes.Artikel"%>
 <%@ page import="java.text.DecimalFormat"%>
+<%@ page import="java.util.Enumeration" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,25 @@
 <title>Partyshop</title>
 </head>
 <body>
+<%
+String url=(String) request.getAttribute("javax.servlet.forward.request_uri") +"?";
+Enumeration<String> paramNames = request.getParameterNames();
+while (paramNames.hasMoreElements())
+{
+    String paramName = paramNames.nextElement();
+    String[] paramValues = request.getParameterValues(paramName);
+    for (int i = 0; i < paramValues.length; i++) 
+    {
+        String paramValue = paramValues[i];
+        if(!paramName.equals("page"))
+        {
+        	url=url + paramName + "=" + paramValue;
+        }
+    }
+    url=url+"&";
+}
+url = url.substring(0, url.length() -1);
+%>
 	<header class="standard">
 		<div class="header-logo">
 			<a href="/Partyshop"> <img class="logo"
@@ -125,7 +145,7 @@
 					}
 
 					Artikel art = artikel.get(i);
-					DecimalFormat df = new DecimalFormat("#.00");
+					DecimalFormat df = new DecimalFormat("0.00");
 					out.println("<div class=\"articles\">");
 					out.println("<div class=\"single-article\">");
 					out.println("<a href=\"/Partyshop/Artikel?id=" + art.getArtikelid() + "\">");
@@ -146,7 +166,8 @@
 					<span class="prev"></span> Vorherige Seite
 				</div>
 				<div class="next<%if(artikel.size()<pagenumber*9){out.print("-inactive");}%>">
-					<span class="next"> </span>Nächste Seite
+					<%if(artikel.size()>=pagenumber*9){out.print("<a class=\"change\" href=\"" +url +"&page="+ (pagenumber+1) + "\">");}%><span class="next"> </span>Nächste Seite
+					<%if(artikel.size()>=pagenumber*9){out.print("</a>");}%>
 				</div>
 			</div>
 
