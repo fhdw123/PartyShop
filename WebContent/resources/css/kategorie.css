@@ -231,6 +231,10 @@ div.changepage
 	width: 100%;
 	float: left;
 }
+a.change
+{
+	color: white;
+}
 div.next
 {
 	height: 30px;
