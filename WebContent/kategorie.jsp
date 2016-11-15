@@ -163,10 +163,14 @@ url = url.substring(0, url.length() -1);
 		
 			<div class="changepage">
 				<div class="prev<%if(pagenumber==1){out.print("-inactive");} %>">
+					<%if(pagenumber!=1){out.print("<a class=\"change\" href=\"" +url +"&page="+ (pagenumber-1) + "\">");}%>
 					<span class="prev"></span> Vorherige Seite
+					<%if(pagenumber!=1){out.print("</a>");}%>
+					
 				</div>
 				<div class="next<%if(artikel.size()<pagenumber*9){out.print("-inactive");}%>">
-					<%if(artikel.size()>=pagenumber*9){out.print("<a class=\"change\" href=\"" +url +"&page="+ (pagenumber+1) + "\">");}%><span class="next"> </span>Nächste Seite
+					<%if(artikel.size()>=pagenumber*9){out.print("<a class=\"change\" href=\"" +url +"&page="+ (pagenumber+1) + "\">");}%>
+					<span class="next"> </span>Nächste Seite
 					<%if(artikel.size()>=pagenumber*9){out.print("</a>");}%>
 				</div>
 			</div>
