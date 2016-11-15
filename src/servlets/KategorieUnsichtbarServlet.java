@@ -44,6 +44,7 @@ public class KategorieUnsichtbarServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("SuccessMessage", "");
 		request.setAttribute("bezeichnung", "");
 		
 		String nextJSP = "/kategorieUnsichtbar.jsp";
@@ -75,7 +76,8 @@ public class KategorieUnsichtbarServlet extends HttpServlet {
 				if(k.getKategorieid()!=null)
 				{
 				con.kategorieUnsichtbar(k.getKategorieid());
-				request.setAttribute("ErrorMessage", "Kategorie ist jetzt unsichtbar!");
+				request.setAttribute("ErrorMessage", "");
+				request.setAttribute("SuccessMessage", "Kategorie ist jetzt unsichtbar!");
 				request.setAttribute("bezeichnung", "");
 				
 				String nextJSP = "/kategorieUnsichtbar.jsp";
@@ -85,6 +87,7 @@ public class KategorieUnsichtbarServlet extends HttpServlet {
 				else
 				{
 					request.setAttribute("ErrorMessage", "Kategorie nicht vorhanden!");
+					request.setAttribute("SuccessMessage", "");
 					request.setAttribute("bezeichnung", bezeichnung);
 					
 					String nextJSP = "/kategorieUnsichtbar.jsp";

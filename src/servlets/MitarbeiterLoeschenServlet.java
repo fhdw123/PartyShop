@@ -35,6 +35,7 @@ public class MitarbeiterLoeschenServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("SuccessMessage", "");
 		request.setAttribute("mail", "");
 
 		String nextJSP = "/mitarbeiterLoeschen.jsp";
@@ -63,7 +64,8 @@ public class MitarbeiterLoeschenServlet extends HttpServlet {
 				if (user != null) {
 					con.mitarbeiterLoeschen(mail);
 
-					request.setAttribute("ErrorMessage", "Mitarbeiter wurde gelöscht!");
+					request.setAttribute("ErrorMessage", "");
+					request.setAttribute("SuccessMessage", "Mitarbeiter wurde gelöscht!");
 					request.setAttribute("mail", "");
 
 					String nextJSP = "/mitarbeiterLoeschen.jsp";
@@ -72,6 +74,7 @@ public class MitarbeiterLoeschenServlet extends HttpServlet {
 
 				} else {
 					request.setAttribute("ErrorMessage", "Mitarbeiter wurde nicht gefunden!");
+					request.setAttribute("SuccessMessage", "");
 					request.setAttribute("mail", "");
 
 					String nextJSP = "/mitarbeiterLoeschen.jsp";

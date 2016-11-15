@@ -39,6 +39,7 @@ public class KundenEntsperrenServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("SuccessMessage", "");
 		request.setAttribute("mail", "");
 		
 		String nextJSP = "/kundenEntsperren.jsp";
@@ -76,7 +77,8 @@ String mail = request.getParameter("mail");
 				if(user!=null)
 				{
 				con.userEntsperren(mail);
-				request.setAttribute("ErrorMessage", "Kunde wurde entsperrt!");
+				request.setAttribute("ErrorMessage", "");
+				request.setAttribute("SuccessMessage", "Kunde wurde entsperrt!");
 				request.setAttribute("mail", "");
 				
 				String nextJSP = "/kundenEntsperren.jsp";
@@ -86,6 +88,7 @@ String mail = request.getParameter("mail");
 				else
 				{
 					request.setAttribute("ErrorMessage", "Kunde nicht vorhanden!");
+					request.setAttribute("SuccessMessage", "");
 					request.setAttribute("mail", "");
 					
 					String nextJSP = "/kundenEntsperren.jsp";

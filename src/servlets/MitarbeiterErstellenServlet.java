@@ -25,7 +25,8 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		request.setAttribute("ErrorMessageReg", "");
+		request.setAttribute("ErrorMessage", "");
+		request.setAttribute("SuccessMessage", "");
 		request.setAttribute("mail", "");
 		request.setAttribute("pw", "");
 		request.setAttribute("pw2", "");
@@ -81,7 +82,8 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 										Integer.parseInt(plz), ort);
 								user.userAnlegen();
 								
-								request.setAttribute("ErrorMessageReg", "Mitarbeiter wurde angelegt!");
+								request.setAttribute("ErrorMessage", "");
+								request.setAttribute("SuccessMessage", "Mitarbeiter wurde angelegt!");
 								request.setAttribute("mail", "");
 								request.setAttribute("pw", "");
 								request.setAttribute("pw2", "");
@@ -101,7 +103,8 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 								ex.printStackTrace();
 							}
 						} else {
-							request.setAttribute("ErrorMessageReg", "Passwörter stimmen nicht überein!");
+							request.setAttribute("ErrorMessage", "Passwörter stimmen nicht überein!");
+							request.setAttribute("SuccessMessage", "");
 							request.setAttribute("mail", mail);
 							request.setAttribute("pw", "");
 							request.setAttribute("pw2", "");
@@ -134,7 +137,7 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 						dispatcher.forward(request, response);
 					}
 				} else {
-					request.setAttribute("ErrorMessageReg", "Mailadresse wird schon verwendet!");
+					request.setAttribute("ErrorMessage", "Mailadresse wird schon verwendet!");
 					request.setAttribute("mail", mail);
 					request.setAttribute("pw", "");
 					request.setAttribute("pw2", "");
@@ -151,7 +154,7 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 
 				}
 			} else {
-				request.setAttribute("ErrorMessageReg", "Bitte alle Felder ausfüllen!");
+				request.setAttribute("ErrorMessage", "Bitte alle Felder ausfüllen!");
 				request.setAttribute("mail", mail);
 				request.setAttribute("pw", "");
 				request.setAttribute("pw2", "");

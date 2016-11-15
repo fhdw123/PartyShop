@@ -14,6 +14,9 @@
 		final String errorMessage = (String) request.getAttribute("ErrorMessage");
 	%>
 	<%
+		final String successMessage = (String) request.getAttribute("SuccessMessage");
+	%>
+	<%
 		final String bezeichnung = (String) request.getAttribute("bezeichnung");
 	%>
 
@@ -23,7 +26,8 @@
 		
 			<input type="submit" name="actChoose" value="verbergen"><br><br>
 			
-			<%=errorMessage%><br>		
+			<%=errorMessage%><br>
+			<%=successMessage%><br>		
 
 </form>
 	

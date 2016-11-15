@@ -10,8 +10,9 @@
 
 <%
 		final String errorMessage = (String) request.getAttribute("ErrorMessage");
-
-		
+	%>
+	<%
+		final String successMessage = (String) request.getAttribute("SuccessMessage");
 	%>
 	<%
 		final String mail = (String) request.getAttribute("mail");
@@ -24,6 +25,7 @@
 		<input type="submit" name="act" value="entsperren"><br><br>
 		
 		<%=errorMessage%><br>
+		<%=successMessage%><br>
 
 	</form>
 

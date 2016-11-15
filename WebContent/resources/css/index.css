@@ -49,7 +49,7 @@
 		width: 250px;
 		border: solid 1px #ccc;
 		border-radius: 1px;
-		background-color: gray;
+		background-color: lightgray;
 		padding: 5px;
 		position: absolute;
 		right: 0px;
@@ -144,7 +144,7 @@
 		top: 250px;
 		display: none;
 		overflow: visible;
-		background: gray';
+		background-color: white;
 		width: 102%;
 		height: auto;
 		list-style-type: none;
@@ -233,7 +233,7 @@
 		width: 600px;
 		border: solid 1px #ccc;
 		border-radius: 1px;
-		background-color: gray;
+		background-color: white;
 		padding: 5px;
 		position: absolute;
 		right: -30px;
@@ -248,7 +248,7 @@
 
 body
 {
-	background-color: gray;
+	background-color: white;
 }
 /*Desktop Version */
 /* Header */
@@ -391,7 +391,7 @@ div.content
 	width: auto;
 	margin: auto;
 	display: block;
-	background-color: gray;
+	background-color: white;
 }
 
 /* Kategorie Leiste */
@@ -423,7 +423,7 @@ li.categories a.title
 li.categories a:hover
 {
 	background-color: #555;
-	color: gray;
+	color: lightgray;
 }
 
 /* Artikel auf der Startseite */
@@ -437,18 +437,18 @@ div.content2
 	margin-bottom: 30px;
 	max-width: 900px;
 	float: left;
-	background-color: gray;
+	background-color: lightgray;
 
 }
 div.articles 
 {
 	width: 100%;
-	background-color: gray;
+	background-color: lightgray;
 	/*height: 380px;*/
 	max-width: 800px;
 	float: right;
 	display: block;
-		background-color: gray;
+		background-color: lightgray;
 }
 div.article1
 {

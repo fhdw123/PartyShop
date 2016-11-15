@@ -10,7 +10,7 @@
 <body> 
 
     <%
-		final String errorMessageReg = (String) request.getAttribute("ErrorMessageReg");
+		final String errorMessage = (String) request.getAttribute("ErrorMessage");
 	%>
 	<%
 		final String mail = (String) request.getAttribute("mail");
@@ -72,7 +72,7 @@
 			
 			<input type="submit" name="act" value="anlegen"><br><br>
 			
-			<%=errorMessageReg%><br>		
+			<%=errorMessage%><br>		
 		
 		
 		
