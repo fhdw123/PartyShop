@@ -83,12 +83,19 @@ public class LoginServlet extends HttpServlet {
 					if (hashPasswort.equals(user.getPasswort())) {
 
 						if (user.getRolle().equals("kunde")) {
+							
 
 							HttpSession session = request.getSession(false);
 							session.setAttribute("user", user);
-
-							response.sendRedirect("/Partyshop");
-
+							if(request.getParameter("redirect") != null)
+							{
+								response.sendRedirect("Warenkorb");
+							}
+							else
+							{
+								response.sendRedirect("/Partyshop");
+							}
+							
 						} else if (user.getRolle().equals("mitarbeiter")) {
 
 							response.sendRedirect("/Partyshop/MitarbeiterBereich");
@@ -190,7 +197,14 @@ public class LoginServlet extends HttpServlet {
 								HttpSession session = request.getSession(false);
 								session.setAttribute("user", user);
 
-								response.sendRedirect("/Partyshop");
+								if(request.getParameter("redirect") != null)
+								{
+									response.sendRedirect("Warenkorb");
+								}
+								else
+								{
+									response.sendRedirect("/Partyshop");
+								}
 
 							} catch (Exception ex) {
 								ex.printStackTrace();

@@ -49,10 +49,17 @@ public class OrderServlet extends HttpServlet {
 				request.setAttribute("cart", session.getAttribute("cart"));
 				User u = (User) session.getAttribute("user");
 				request.setAttribute("user", u);
+				if(u != null)
+				{
+					String nextJSP = "/bestellen.jsp";
+		        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		        	dispatcher.forward(request,response);  
+				}
+				else
+				{
+					response.sendRedirect("login?redirect=1");
+				}
 				
-				String nextJSP = "/bestellen.jsp";
-	        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-	        	dispatcher.forward(request,response);  
 			}
 			
 		}
