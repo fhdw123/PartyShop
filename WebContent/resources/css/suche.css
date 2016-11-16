@@ -22,7 +22,7 @@
 header.standard 
 {
 	height: 100px;
-	background-color: white;
+	background-color: gold;
 	margin: -8px -8px 0px -8px;
 	display: block;
 }
@@ -93,6 +93,21 @@ div.headerdesc
 span.headerdesc
 {
 	font-size: 20px;
+}
+div.dropdownelement
+{
+	width: 100%;
+	margin-bottom: 5px;
+}
+div.dropdownelement a
+{
+	color: black;
+}
+
+#account:hover div.dropdown
+{
+	display: block;
+	
 }
 div.headerlogo a.cart 
 {
@@ -312,6 +327,20 @@ span.prev
 		font-weight: bold;
 		color: red;
 	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 250px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: lightgray;
+		padding: 5px;
+		position: absolute;
+		right: 0px;
+		top: 90px;
+	}	
+	
 	
 }
 @media screen and (max-device-width: 800px) 
@@ -366,6 +395,24 @@ span.prev
 	div.headerdesc
 	{
 		display: none;
+	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 600px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: white;
+		padding: 5px;
+		position: absolute;
+		right: -30px;
+		top: 120px;
+	}	
+	
+	span.drop
+	{
+		font-size: 45px;
 	}
 	div.search 
 	{
@@ -444,6 +491,24 @@ span.prev
 	div.content
 	{
 		margin-left: -10px;
+	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 600px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: white;
+		padding: 5px;
+		position: absolute;
+		right: -30px;
+		top: 120px;
+	}	
+	
+	span.drop
+	{
+		font-size: 45px;
 	}
 	/*Kategorie-Leiste verschwindet*/
 	div.filter

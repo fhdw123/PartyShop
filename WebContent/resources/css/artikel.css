@@ -22,7 +22,7 @@
 header.standard 
 {
 	height: 100px;
-	background-color: white;
+	background-color: gold;
 	margin: -8px -8px 0px -8px;
 	display: block;
 }
@@ -103,6 +103,21 @@ div.headerlogo a.cart
 	background: url(/Partyshop/resources/images/cart.png) no-repeat;
 	background-position: center;
 	background-size: 100%;
+}
+div.dropdownelement
+{
+	width: 100%;
+	margin-bottom: 5px;
+}
+div.dropdownelement a
+{
+	color: black;
+}
+
+#account:hover div.dropdown
+{
+	display: block;
+	
 }
 img.logo 
 {
@@ -258,6 +273,19 @@ div.desc
 		color: white;
 		border: solid 0px;
 	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 250px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: lightgray;
+		padding: 5px;
+		position: absolute;
+		right: 0px;
+		top: 90px;
+	}	
 	
 }
 
@@ -314,6 +342,24 @@ div.desc
 	div.headerdesc
 	{
 		display: none;
+	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 600px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: white;
+		padding: 5px;
+		position: absolute;
+		right: -30px;
+		top: 120px;
+	}	
+	
+	span.drop
+	{
+		font-size: 45px;
 	}
 	div.search 
 	{

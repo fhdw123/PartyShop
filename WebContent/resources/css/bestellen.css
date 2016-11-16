@@ -22,7 +22,7 @@
 header.standard 
 {
 	height: 100px;
-	background-color: white;
+	background-color: gold;
 	margin: -8px -8px 0px -8px;
 	display: block;
 }
@@ -104,6 +104,21 @@ span.headerdesc
 {
 	font-size: 20px;
 }
+div.dropdownelement
+{
+	width: 100%;
+	margin-bottom: 5px;
+}
+div.dropdownelement a
+{
+	color: black;
+}
+
+#account:hover div.dropdown
+{
+	display: block;
+	
+}
 img.logo 
 {
 	width: 150px;
@@ -160,7 +175,7 @@ div.headlines
 div.headline-articlename
 {
 	float: left;
-	width: 40%;
+	width: 60%;
 	margin-right: 15px;
 }
 div.headline-price
@@ -199,7 +214,7 @@ div.lineitem-img img
 div.lineitem-articlename
 {
 	float: left;
-	width: 40%;
+	width: 60%;
 	margin-right: 15px;
 }
 span.articlename-bold
@@ -368,6 +383,19 @@ div.text2
 	{
 		font-size: 22px;
 	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 250px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: lightgray;
+		padding: 5px;
+		position: absolute;
+		right: 0px;
+		top: 90px;
+	}	
 	
 }
 @media screen and (max-device-width: 800px) 
@@ -422,6 +450,24 @@ div.text2
 	div.headerdesc
 	{
 		display: none;
+	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 600px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: white;
+		padding: 5px;
+		position: absolute;
+		right: -30px;
+		top: 120px;
+	}	
+	
+	span.drop
+	{
+		font-size: 45px;
 	}
 	div.search 
 	{

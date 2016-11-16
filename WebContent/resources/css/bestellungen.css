@@ -1,17 +1,17 @@
 /*
-    Document   : warenkorb.css
-    Created on : 06.11.2016
+    Document   : bestellungen.css
+    Created on : 16.11.2016
     Author     : Leon
 */
-@media screen and (max-width: 1070px) 
+@media screen and (max-width: 1050px) 
 {
 	header 
 	{
-		min-width: 1070px;
+		min-width: 1050px;
 	}
 	body 
 	{
-		min-width: 1070px;
+		min-width: 1050px;
 	}
 }
 
@@ -85,6 +85,15 @@ div.headerlogo a.user
 	background-position: center;
 	background-size: 100%;
 }
+div.headerdesc
+{
+	width: 100%;
+	text-align: center;
+}
+span.headerdesc
+{
+	font-size: 20px;
+}
 div.headerlogo a.cart 
 {
 	margin: auto;
@@ -94,15 +103,6 @@ div.headerlogo a.cart
 	background: url(/Partyshop/resources/images/cart.png) no-repeat;
 	background-position: center;
 	background-size: 100%;
-}
-div.headerdesc
-{
-	width: 100%;
-	text-align: center;
-}
-span.headerdesc
-{
-	font-size: 20px;
 }
 div.dropdownelement
 {
@@ -149,72 +149,37 @@ input.searchbar
 /* Content */
 div.content 
 {
-	width: 100%;
+	max-width: 1150px;
+	min-width: 1000px;
+	display: block;
+	margin: 10px auto;
 	
 }
-div.main
-{
-	display: block;
-	float: left;
-}
-div.articles 
-{
-	width: 100%;
-	background-color: white;
-	float: left;
-	display: block;
-	min-width: 793px;
-}
-div.headlines
+div.order
 {
 	width: 100%;
 	float: left;
-	margin-bottom: 10px;
-	border-bottom: solid 1px #ccc;
+	margin-top: 15px;
 }
-div.headline-articlename
+div.order-date
 {
-	float: left;
-	width: 40%;
-	margin-right: 15px;
+	
 }
-div.headline-price
-{
-	float: left;
-	width: 60px;
-}
-div.headline-amount
-{
-	float: right;
-	width: 5%;
-	min-width: 60px;
-}
+div.order-
 
 div.lineitem
 {
 	width: 100%;
 	float: left;
 	margin-bottom: 10px;
-	height: 250px;
+	height: 50px;
 	border-bottom: solid 1px #ccc;
 	display: block;
-}
-div.lineitem-img
-{
-	width: 300px;
-	height: 100%;
-	float: left;
-}
-div.lineitem-img img 
-{
-	height: 250px;
-	width: 250px;
-	float: left;
 }
 div.lineitem-articlename
 {
 	float: left;
-	width: 40%;
+	width: 60%;
 	margin-right: 15px;
 }
 span.articlename-bold
@@ -240,72 +205,19 @@ div.lineitem-amount
 	width: 6%;
 	height: 60px;
 }
-input.refresh
-{
-	background: url(/Partyshop/resources/images/refresh.png) no-repeat;
-	background-position: center;
-	background-size: 70%;
-	border: solid 0px;
-	margin-top: -6px;
-}
-input.trash
-{
-	float: left;
-	height: 40px;
-	width: 40px;
-	background: url(/Partyshop/resources/images/trash.png) no-repeat;
-	background-position: center;
-	background-size: 70%;
-	border: solid 0px;
-	margin-top: 20px;
-	margin-left: -10px;
-}
 
-div.lineitem-delete
-{
-	float: left;
-	width: 50%;
-}
-div.order
-{
-	float: right;
-	width: 24%;
-	max-width: 250px;
-	background-color: #ccc;
-	margin-left: 25px;
-	margin-right: -5px;
-	padding-left: 20px;
-	border-width: 0px;
-	border-radius: 5px 5px 5px 5px;
-}
-div.order2
-{
-	width: 100%;
-}
 
-input.order-button
-{
-	text-align: center;
-	width: 80%;
-	height: 50px;
-	background-color: yellow;
-	margin-bottom: 20px;
-	margin-top: 20px;
-	line-height: 50px;
-	font-size: 20px;
-	border: solid 1px #646464;
-}
-/* Mobile */
+
+
 @media screen and (min-device-width: 801px)
 {
 	div.header-logo-mobile
 	{
 		display: none;
 	}
-	div.wrap
+	nav 
 	{
-		width: 100%;
-		display: flex;
+		display: none;
 	}
 	div.dropdown
 	{
@@ -320,52 +232,10 @@ input.order-button
 		right: 0px;
 		top: 90px;
 	}	
-	span.price
-	{
-		font-size: 20px;
-		color: black;
-	}
-	span.articlename
-	{
-		font-size: 20px;
-		color:black;
-	}	
-	div.main
-	{
-		width: 70%;
-	}
-	div-lineitem-articlename
-	{
-		height: 75px;
-	}
-	div-lineitem-price
-	{
-		height: 75px;
-	}
-	div.lineitem-amount
-	{
-		min-width: 64px;
-	}
-	input.refresh
-	{
-		float: right;
-		height: 30px;
-		width: 30px;
-	}
-	div.lineitem input[type=number]
-	{
-		width: 30px;
-	}
-	span.sum
-	{
-		font-size: 22px;
-	}
-	span.articles
-	{
-		font-size: 22px;
-	}
 	
 }
+
+/* Mobile */
 @media screen and (max-device-width: 800px) 
 {
 	body 
@@ -403,7 +273,7 @@ input.order-button
 	}
 	div.headerlogo 
 	{
-		min-width: 80px;
+		min-width: 70px;
 	}
 	div.headerlogo a.cart 
 	{
@@ -419,13 +289,30 @@ input.order-button
 	{
 		display: none;
 	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 600px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: white;
+		padding: 5px;
+		position: absolute;
+		right: -30px;
+		top: 120px;
+	}	
+	
+	span.drop
+	{
+		font-size: 45px;
+	}
 	div.search 
 	{
 		min-width: 95%;
 		margin-left: 1%;
 		min-height: 40px;
 	}
-	
 	
 	div.searchbar
 	{
@@ -449,127 +336,7 @@ input.order-button
 	{
 		min-height: 30px;
 	}
-	div.dropdown
-	{
-		z-index: 10;
-		display: none;
-		width: 600px;
-		border: solid 1px #ccc;
-		border-radius: 1px;
-		background-color: white;
-		padding: 5px;
-		position: absolute;
-		right: -30px;
-		top: 120px;
-	}	
 	
-	span.drop
-	{
-		font-size: 45px;
-	}
 	
-	div.headlines
-	{
-		display: none;
-	}
-	div.main
-	{
-		width: 100%;
-	}
-	div.articles 
-	{
-		min-width: 100%;
-		min-height: 500px;
-	}
-	div.lineitem
-	{
-		min-width: 100%;
-		min-height: 450px;
-	}
-	div.lineitem-img
-	{
-		min-width: 450px;
-		max-width: 450px;
-		min-height: 450px;
-		margin-right: 15px;
-	}
-	div.lineitem-img img 
-	{
-		min-height: 450px;
-		min-width: 450px;
-	}
-	div.lineitem-articlename
-	{
-		min-width: 52%;
-	}
-	div.lineitem-price
-	{
-		min-width: 52%;
-	}
-	div.lineitem-amount
-	{
-		min-width: 52%;
-		float: left;
-		margin-top: 15px;
-		min-height: 70px;
-	}
-	input.refresh
-	{
-		float: left;
-		height: 75px;
-		width: 75px;
-	}
-	div.lineitem input[type=number]
-	{
-		width: 60px;
-		height: 60px;
-		font-size: 40px;
-		float: left;
-		border: 1px solid;
-	}
-	div.lineitem-delete
-	{
-		min-width: 52%;
-		margin-top: 15px;
-		margin-left: -4px;
-	}
-	input.trash
-	{
-		float: left;
-		height: 75px;
-		width: 75px;
-	}
-	div.order
-	{
-		float: left;
-		min-width: 97%;
-		margin: auto;
-	}
-	span.articlename
-	{
-		font-size: 35px;
-		font-weight: bold;
-		color: black;
-	}
-	span.price
-	{
-		font-size: 35px;
-		font-weight: bold;
-		color: red;
-	}
-	span.sum
-	{
-		font-size: 42px;
-	}
-	span.articles
-	{
-		font-size: 42px;
-	}
-	input.order-button
-	{
-		
-		height: 80px;		
-		font-size: 35px;
-	}
 }
 

@@ -255,7 +255,7 @@ body
 header.standard 
 {
 	height: 100px;
-	background-color: white;
+	background-color: gold;
 	margin: -8px -8px 0px -8px;
 	display: block;
 }
@@ -437,18 +437,15 @@ div.content2
 	margin-bottom: 30px;
 	max-width: 900px;
 	float: left;
-	background-color: lightgray;
 
 }
 div.articles 
 {
 	width: 100%;
-	background-color: lightgray;
 	/*height: 380px;*/
 	max-width: 800px;
 	float: right;
 	display: block;
-		background-color: lightgray;
 }
 div.article1
 {
