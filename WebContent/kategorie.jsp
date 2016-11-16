@@ -47,30 +47,47 @@ url = url.substring(0, url.length() -1);
 		</div>
 
 		<div class="headerlogos">
-			<div class="headerlogo">
-				<%
-					if (session.getAttribute("user") == null) {
-						out.println("<a class=\"user\" href=\"login\" >	</a>");
-						out.println("<div class=\"headerdesc\">");
-						out.println("<span class=\"headerdesc\">Login</span>");
-						out.println("</div>");
-						out.println("");
-					} else {
-						out.println("<a class=\"user\" href=\"\">	</a>");
-						out.println("<div class=\"headerdesc\">");
-						out.println("<span class=\"headerdesc\">Mein Konto</span>");
-						out.println("</div>");
-						out.println("");
-					}
-				%>
+			<%
+				if (session.getAttribute("user") == null) {
+					out.println("<div class=\"headerlogo\">");
+					out.println("<a class=\"user\" href=\"login\" >	</a>");
+					out.println("<div class=\"headerdesc\">");
+					out.println("<span class=\"headerdesc\">Login</span>");
 
+				} else {
+					out.println("<div class=\"headerlogo\" id=\"account\">");
+					out.println("<a class=\"user\" href=\"#\"></a>");
+					out.println("<div class=\"headerdesc\">");
+					out.println("<span class=\"headerdesc\">Mein Konto</span>");
+
+				}
+			%>
+		</div>
+		<div class="dropdown">
+			<div class="dropdownelement">
+				<span class="drop"> Meine persönlichen Daten </span>
 			</div>
-			<div class="headerlogo">
-				<a class="cart" href="/Partyshop/Warenkorb"></a>
-				<div class="headerdesc">
-					<span class="headerdesc"> Warenkorb </span>
-				</div>
+			<div class="dropdownelement">
+				<span class="drop"> Meine Bestellungen </span>
 			</div>
+
+			<div class="dropdownelement">
+				<a href="login?act=logout"> <span class="drop"> Abmelden
+				</span>
+				</a>
+			</div>
+
+
+
+		</div>
+
+		</div>
+		<div class="headerlogo">
+			<a class="cart" href="/Partyshop/Warenkorb"></a>
+			<div class="headerdesc">
+				<span class="headerdesc"> Warenkorb </span>
+			</div>
+		</div>
 
 		</div>
 		<form action="Suche">

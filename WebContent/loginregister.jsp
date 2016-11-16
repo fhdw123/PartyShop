@@ -45,10 +45,11 @@
 					<input type="password" name="pw" />
 				</div>
 
-
-
-				<br> <input type="submit" name="act" value="login"><br>
-				<br>
+				<%if(request.getParameter("redirect") != null){out.println("<input type=\"hidden\""
+				 + " name=\"redirect\" value=\"1\">");} %>
+				<div class="element">
+				<input type="submit" name="act" value="login">
+				</div>
 				<span class="errmsg">
 				<%=errorMessageLog%><br>
 				</span>
@@ -110,9 +111,11 @@
 
 					<input type="text" name="ort" value="<%=ort%>" />
 				</div>
-
-				<input type="submit" name="act" value="registrieren"><br>
-				<br>
+				<%if(request.getParameter("redirect") != null){out.println("<input type=\"hidden\""
+				 + " name=\"redirect\" value=\"1\">");} %>
+				 <div class="element">
+					<input type="submit" name="act" value="registrieren">
+				</div>
 
 				<span class="errmsg">
 				<%=errorMessageReg%><br>
