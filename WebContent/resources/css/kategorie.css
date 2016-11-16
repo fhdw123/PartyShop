@@ -516,5 +516,49 @@ span.prev
 	{
 		font-size: 25px;
 	}
+	div.next
+	{
+		height: 70px;
+		width: 300px;
+		line-height: 70px;
+		margin-right: 15%;
+		font-size: 30px;
+	}
+	div.prev
+	{
+		height: 70px;
+		width: 300px;
+		line-height: 70px;
+		margin-left: 15%;
+		font-size: 30px;
+	}
+	div.next-inactive
+	{
+		height: 70px;
+		width: 300px;
+		line-height: 70px;
+		margin-right: 15%;
+		font-size: 30px;
+	}
+	div.prev-inactive
+	{
+		height: 70px;
+		width: 300px;
+		line-height: 70px;
+		margin-left: 15%;
+		font-size: 30px;
+	}
+	span.next
+	{
+		width: 30px;
+		height: 50px;
+		margin-top: 3%;
+	}
+	span.prev
+	{
+		width: 30px;
+		height: 50px;
+		margin-top: 3%;
+	}
 }
 
