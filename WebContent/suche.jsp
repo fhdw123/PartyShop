@@ -4,6 +4,7 @@
 <%@ page import="classes.Kategorie"%>
 <%@ page import="classes.Artikel"%>
 <%@ page import="java.text.DecimalFormat"%>
+<%@ page import="java.util.Enumeration" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,24 @@ if(searchterm == null)
 {
 	searchterm = "";
 }
+String url=(String) request.getAttribute("javax.servlet.forward.request_uri") +"?";
+Enumeration<String> paramNames = request.getParameterNames();
+while (paramNames.hasMoreElements())
+{
+    String paramName = paramNames.nextElement();
+    String[] paramValues = request.getParameterValues(paramName);
+    for (int i = 0; i < paramValues.length; i++) 
+    {
+        String paramValue = paramValues[i];
+        if(!paramName.equals("page"))
+        {
+        	url=url + paramName + "=" + paramValue;
+        	url=url+"&";
+        }
+    }
+    
+}
+url = url.substring(0, url.length() -1);
 %>
 	<header class="standard">
 		<div class="header-logo">
@@ -135,8 +154,19 @@ if(searchterm == null)
 
 
 			<%
+				String pagenr = request.getParameter("page");
+				int pagenumber;
+				if (pagenr == null) {
+					pagenumber = 1;
+				} else {
+					pagenumber = Integer.parseInt(pagenr);
+				}
 				ArrayList<Artikel> artikel = (ArrayList<Artikel>) request.getAttribute("artikel");
-				for (Artikel art : artikel) {
+				for (int i = (pagenumber - 1) * 9; i < pagenumber * 9; i++) {
+					if (artikel.size() <= i) {
+						break;
+					}
+					Artikel art = artikel.get(i);
 					DecimalFormat df = new DecimalFormat("0.00");
 					out.println("<div class=\"articles\">");
 					out.println("<div class=\"single-article\">");
@@ -154,7 +184,19 @@ if(searchterm == null)
 
 
 
-
+			<div class="changepage">
+				<div class="prev<%if(pagenumber==1){out.print("-inactive");} %>">
+					<%if(pagenumber!=1){out.print("<a class=\"change\" href=\"" +url +"&page="+ (pagenumber-1) + "\">");}%>
+					<span class="prev"></span> Vorherige Seite
+					<%if(pagenumber!=1){out.print("</a>");}%>
+					
+				</div>
+				<div class="next<%if(artikel.size()<pagenumber*9){out.print("-inactive");}%>">
+					<%if(artikel.size()>=pagenumber*9){out.print("<a class=\"change\" href=\"" +url +"&page="+ (pagenumber+1) + "\">");}%>
+					<span class="next"> </span>Nächste Seite
+					<%if(artikel.size()>=pagenumber*9){out.print("</a>");}%>
+				</div>
+			</div>
 		</div>
 	</div>
 
