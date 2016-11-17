@@ -154,7 +154,6 @@ div.content
 	display: block;
 	margin: 10px auto;
 	min-height: 800px;
-	
 }
 
 
@@ -289,6 +288,7 @@ div.desc
 	}	
 	div.footer
 	{
+		margin-top: 50px;
 		margin-left: -15px;
 		float: left;
 		width: 101.75%;

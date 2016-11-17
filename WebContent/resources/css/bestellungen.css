@@ -154,7 +154,6 @@ div.content
 	display: block;
 	margin: 10px auto;
 	min-height: 700px;
-	
 }
 div.order
 {
@@ -169,6 +168,7 @@ div.order-header
 	border: 1px solid #646464;
 	float: left;	
 	padding: 10px;
+	background-color: #f1f1f1;
 }
 div.line
 {
@@ -272,6 +272,7 @@ span.general
 	}	
 	div.footer
 	{
+	margin-top: 50px;
 		margin-left: -15px;
 		float: left;
 		width: 101.75%;
@@ -279,6 +280,7 @@ span.general
 		text-align: center;
 		background-color: gold;
 		line-height: 50px;
+		margin-top: 50px;
 	}
 	div.footer a
 	{
@@ -403,6 +405,7 @@ span.general
 	}
 	div.footer
 	{
+		margin-top: 50px;
 		margin-left: -15px;
 		float: left;
 		width: 101.75%;

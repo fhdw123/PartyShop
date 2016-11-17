@@ -367,6 +367,7 @@ input.order-button
 	}
 	div.footer
 	{
+		margin-top: 50px;
 		margin-left: -15px;
 		float: left;
 		width: 101.75%;
@@ -589,6 +590,7 @@ input.order-button
 	}
 	div.footer
 	{
+		margin-top: 50px;
 		margin-left: -15px;
 		float: left;
 		width: 101.75%;

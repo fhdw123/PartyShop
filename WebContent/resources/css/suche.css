@@ -344,6 +344,7 @@ span.prev
 	}	
 	div.footer
 	{
+		margin-top: 50px;
 		margin-left: -15px;
 		float: left;
 		width: 101.75%;
@@ -633,6 +634,7 @@ span.prev
 	}
 	div.footer
 	{
+		margin-top: 50px;
 		margin-left: -15px;
 		float: left;
 		width: 101.75%;
