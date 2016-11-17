@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.util.ArrayList;
+import classes.Position;
+import classes.Bestellung;
 import classes.SqlConnection;
 import classes.User;
 
@@ -60,6 +63,14 @@ public class OrderServlet extends HttpServlet {
 					response.sendRedirect("login?redirect=1");
 				}
 				
+			}
+			else if(act.equals("confirm"))
+			{
+				HttpSession session=request.getSession(false);
+				ArrayList<Position> positionen = (ArrayList<Position>)session.getAttribute("cart");
+				User user = (User) session.getAttribute("user");
+				Bestellung bestellung = new Bestellung(user.getUserid(), positionen);
+				bestellung.bestellungUndPositionenErzeugen();
 			}
 			
 		}
