@@ -51,7 +51,8 @@ User u = (User) request.getAttribute("user");
 				<span class="drop"> Meine persönlichen Daten </span>
 			</div>
 			<div class="dropdownelement">
-				<span class="drop"> Meine Bestellungen </span>
+				<a href="MeineBestellungen"><span class="drop"> Meine Bestellungen 
+				</span></a>
 			</div>
 
 			<div class="dropdownelement">
