@@ -232,6 +232,21 @@ div.lineitem-amount
 		right: 0px;
 		top: 90px;
 	}	
+	div.footer
+	{
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 50px;
+		text-align: center;
+		background-color: gold;
+		line-height: 50px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 50px;
+	}
 	
 }
 
@@ -336,7 +351,22 @@ div.lineitem-amount
 	{
 		min-height: 30px;
 	}
-	
+	div.footer
+	{
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 80px;
+		text-align: center;
+		background-color: gold;
+		line-height: 80px;
+		font-size: 25px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 150px;
+	}
 	
 }
 

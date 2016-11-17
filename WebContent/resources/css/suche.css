@@ -149,10 +149,12 @@ input.searchbar
 /* Content */
 div.content 
 {
+	margin-top: 0px;
 	max-width: 1500px;
 	min-width: 1000px;
 	width: auto;
 	display: block;
+	min-height: 750px;
 }
 
 /* Kategorie Leiste */
@@ -340,7 +342,21 @@ span.prev
 		right: 0px;
 		top: 90px;
 	}	
-	
+	div.footer
+	{
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 50px;
+		text-align: center;
+		background-color: gold;
+		line-height: 50px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 50px;
+	}
 	
 }
 @media screen and (max-device-width: 800px) 
@@ -614,6 +630,22 @@ span.prev
 		width: 30px;
 		height: 50px;
 		margin-top: 3%;
+	}
+	div.footer
+	{
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 80px;
+		text-align: center;
+		background-color: gold;
+		line-height: 80px;
+		font-size: 25px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 150px;
 	}
 }
 
