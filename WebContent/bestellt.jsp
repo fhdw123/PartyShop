@@ -111,7 +111,7 @@
 	<div class="content">
 		<div class="content2">
 		<h1>Vielen Dank für ihre Bestellung</h1><br>
-		<a href="/Paryshop">
+		<a href="/Partyshop">
 			<span class="headerdesc">
 				Zurück zur Startseite
 			</span>
