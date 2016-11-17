@@ -93,6 +93,10 @@
 	<div class="content">
 	<%
 		DecimalFormat df = new DecimalFormat("0.00");
+		if(bestellungen == null || bestellungen.size() == 0)
+		{
+			out.println("<h1>Sie haben noch nicht bei uns bestellt</h1>");
+		}
 		for(Bestellung b: bestellungen)
 		{
 			ArrayList<Position> positionen = b.getPositionen();
@@ -153,7 +157,9 @@
 	<%			
 			}
 		out.println("</div>");
+		out.println("</div>");
 		}
+		out.println("</div>");
 		out.println("</div>");
 		out.println("</div>");
 	
