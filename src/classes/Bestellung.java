@@ -24,13 +24,20 @@ public class Bestellung {
 	 * @param positionen
 	 * @throws Exception
 	 */
-	public Bestellung(String user, double preis, ArrayList<Position> positionen)
+	public Bestellung(String user, ArrayList<Position> positionen)
 			throws Exception {
 		super();
 		this.bestellungid = UUID.randomUUID().toString();
 		this.user = user;
-		this.preis = preis;
+		this.preis = 0;
 		this.positionen = positionen;
+		if(positionen != null && positionen.size() != 0)
+		{
+			for(Position pos: positionen)
+			{
+				preis += pos.getPreis() * pos.getMenge();
+			}
+		}
 	}
 	
 	/**

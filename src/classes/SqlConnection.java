@@ -836,6 +836,7 @@ public class SqlConnection {
 				positionen.add(pos);
 			}
 			Bestellung b = new Bestellung(rsBes.getString(2), Double.parseDouble(rsBes.getString(3)), positionen, rsBes.getString(4));
+			bestellungen.add(b);
 			stmtPos.close();
 		}
 		stmtBes.close();
