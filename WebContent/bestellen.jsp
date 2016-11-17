@@ -206,6 +206,12 @@ User u = (User) request.getAttribute("user");
 			%>
 			<input type="hidden" name="act" value="confirm">
 			</form>
+			</div>
 		</div>
+		<div class="footer">
+		<a href="">Impressum</a>
+		<a href="">FAQ</a>
+		<a href="">Ananas</a>
+	</div>
 </body>
 </html>
