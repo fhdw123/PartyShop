@@ -828,11 +828,11 @@ public class SqlConnection {
 
 			Statement stmtPos = conn.createStatement();
 
-			ResultSet rsPos = stmtPos.executeQuery("Select * from position where user = '" + userid + "'");
+			ResultSet rsPos = stmtPos.executeQuery("Select * from position where bestellung = '" + rsBes.getString(1) + "'");
 
 			while (rsPos.next()) {
 				Position pos = new Position(rsPos.getString(1), rsPos.getString(2),
-						Integer.parseInt(rsPos.getString(3)), Double.parseDouble(rsPos.getString(4)));
+						Integer.parseInt(rsPos.getString(3)), Double.parseDouble(rsPos.getString(5)));
 				positionen.add(pos);
 			}
 			Bestellung b = new Bestellung(rsBes.getString(2), Double.parseDouble(rsBes.getString(3)), positionen, rsBes.getString(4));
