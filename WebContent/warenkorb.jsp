@@ -114,6 +114,7 @@
 					ArrayList<Position> positionen = (ArrayList<Position>) request.getAttribute("cart");
 					DecimalFormat df = new DecimalFormat("0.00");
 					double summe = 0;
+					int anzArtikel = 0;
 					if(positionen == null || positionen.size() == 0)
 					{
 						out.println("<h2>Ihr Warenkorb ist zur Zeit leer</h2>");
@@ -123,9 +124,11 @@
 						
 						SqlConnection conn = new SqlConnection();
 						summe = 0;
+						
 						for (Position pos : positionen) {
 							
 							summe += pos.getPreis() * pos.getMenge();
+							anzArtikel += pos.getMenge();
 							out.println("<div class=\"lineitem\">");
 							out.println("<div class=\"lineitem-img\">");
 							out.println("<img src=\"resources/images/" +conn.artikelMitBezeichnungLiefern(pos.getArtikelbezeichnung()).getBild().getName() + "\"></div>");
@@ -169,7 +172,7 @@
 			<div class="order2">
 				<span class="articles">
 					<%
-						out.println(positionen.size());
+						out.println(anzArtikel);
 					%> Artikel
 				</span>
 			</div>
