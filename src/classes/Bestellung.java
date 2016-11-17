@@ -1,6 +1,9 @@
 package classes;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.UUID;
 
 public class Bestellung {
@@ -9,7 +12,7 @@ public class Bestellung {
 	private String bestellungid;
 	private String user;
 	private double preis;
-	private int menge;
+	private String datum;
 	private ArrayList<Position> positionen;
 
 	/**
@@ -21,13 +24,29 @@ public class Bestellung {
 	 * @param positionen
 	 * @throws Exception
 	 */
-	public Bestellung(String bestellungid, String user, double preis, int menge, ArrayList<Position> positionen)
+	public Bestellung(String user, double preis, ArrayList<Position> positionen)
 			throws Exception {
 		super();
 		this.bestellungid = UUID.randomUUID().toString();
 		this.user = user;
 		this.preis = preis;
-		this.menge = menge;
+		this.positionen = positionen;
+	}
+	
+	/**
+	 * 
+	 * @param user
+	 * @param preis
+	 * @param positionen
+	 * @param datum
+	 * @throws Exception
+	 */
+	public Bestellung(String user, double preis, ArrayList<Position> positionen, String datum)
+			throws Exception {
+		super();
+		this.bestellungid = UUID.randomUUID().toString();
+		this.user = user;
+		this.preis = preis;
 		this.positionen = positionen;
 	}
 
@@ -79,21 +98,7 @@ public class Bestellung {
 		this.preis = preis;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public int getMenge() {
-		return menge;
-	}
 
-	/**
-	 * 
-	 * @param menge
-	 */
-	public void setMenge(int menge) {
-		this.menge = menge;
-	}
 
 	/**
 	 * 
@@ -117,8 +122,17 @@ public class Bestellung {
 	 */
 	public void bestellungUndPositionenErzeugen() throws Exception {
 		jdbc = new SqlConnection();
-		jdbc.bestellungUndPositionenErzeugen(bestellungid, user, preis, menge, positionen);
+		
+		DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        Calendar c = df.getCalendar();
+        c.setTimeInMillis(System.currentTimeMillis());
+        datum = c.get(Calendar.DAY_OF_MONTH) + "." + (c.get(Calendar.MONTH) + 1) + "." + c.get(Calendar.YEAR);
+		
+		jdbc.bestellungUndPositionenErzeugen(bestellungid, user, preis, positionen, datum);
 		jdbc.closeConnection();
 	}
+	
+	
+	
 
 }

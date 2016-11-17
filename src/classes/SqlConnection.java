@@ -787,13 +787,13 @@ public class SqlConnection {
 	 * @param positionen
 	 * @throws Exception
 	 */
-	public void bestellungUndPositionenErzeugen(String bestellungid, String user, Double preis, int menge,
-			ArrayList<Position> positionen) throws Exception {
+	public void bestellungUndPositionenErzeugen(String bestellungid, String user, Double preis,
+			ArrayList<Position> positionen, String datum) throws Exception {
 
 		Statement stmtBes = conn.createStatement();
 
 		stmtBes.executeUpdate("INSERT INTO bestellung " + "VALUES ('" + bestellungid + "', '" + user + "', '" + preis
-				+ "', '" + menge + "')");
+				+ "', '" + datum + "')");
 		stmtBes.close();
 
 		for (Position pos : positionen) {
@@ -835,8 +835,7 @@ public class SqlConnection {
 						Integer.parseInt(rsPos.getString(3)), Double.parseDouble(rsPos.getString(4)));
 				positionen.add(pos);
 			}
-			Bestellung b = new Bestellung(rsBes.getString(1), rsBes.getString(2),
-					Double.parseDouble(rsBes.getString(3)), Integer.parseInt(rsBes.getString(4)), positionen);
+			Bestellung b = new Bestellung(rsBes.getString(2), Double.parseDouble(rsBes.getString(3)), positionen, rsBes.getString(4));
 			stmtPos.close();
 		}
 		stmtBes.close();

@@ -13,6 +13,9 @@
 		final String errorMessage = (String) request.getAttribute("ErrorMessage");
 	%>
 	<%
+		final String successMessage = (String) request.getAttribute("ErrorMessage");
+	%>
+	<%
 		final String mail = (String) request.getAttribute("mail");
 	%>
 	<%
@@ -72,7 +75,8 @@
 			
 			<input type="submit" name="act" value="anlegen"><br><br>
 			
-			<%=errorMessage%><br>		
+			<%=errorMessage%><br>	
+			<%=successMessage%><br>		
 		
 		
 		
