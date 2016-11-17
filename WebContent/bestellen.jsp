@@ -196,14 +196,16 @@ User u = (User) request.getAttribute("user");
 					%> Artikel
 				</span>
 			</div>
+			<form action="bestellen" method="post">
 			<%
 				if(positionen != null && positionen.size() != 0)
 				{
-					out.println("<input class=\"order-button\" value=\"Bestätigen\">");
+					out.println("<input class=\"order-button\" type=\"submit\" value=\"Bestätigen\">");
 				}
 			
 			%>
-			
+			<input type="hidden" name="act" value="confirm">
+			</form>
 		</div>
 </body>
 </html>
