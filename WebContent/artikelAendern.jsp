@@ -43,9 +43,15 @@
 				ArrayList<Kategorie> kategorien = (ArrayList<Kategorie>) request.getAttribute("kategorien");
 				for (int i = 0; i < kategorien.size(); i++) {
 					String option = (String) kategorien.get(i).getBezeichnung();
+					String aktuell = "";
+					if(kategorien.get(i).getBezeichnung().equals(aktKat.getBezeichnung()))
+					{
+						aktuell = "selected=\"selected\"";
+					}
 			%>
-			<option value="<%=option%>"><%=option%></option>
+			<option <%=aktuell%> value="<%=option%>"><%=option%></option>
 			<%
+				aktuell="";
 				}
 			%>
 		</select>
