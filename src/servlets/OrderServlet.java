@@ -71,6 +71,11 @@ public class OrderServlet extends HttpServlet {
 				User user = (User) session.getAttribute("user");
 				Bestellung bestellung = new Bestellung(user.getUserid(), positionen);
 				bestellung.bestellungUndPositionenErzeugen();
+				session.removeAttribute("cart");
+				
+				String nextJSP = "/bestellt.jsp";
+	        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+	        	dispatcher.forward(request,response);  
 			}
 			
 		}
