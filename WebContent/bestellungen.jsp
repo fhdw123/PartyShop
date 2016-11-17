@@ -117,7 +117,7 @@
 							<span class="general"><%=b.getDatum()%></span>
 						</div>
 						<div class="sum">
-							<span class="general"><%out.println(df.format(b.getPreis())); %> </span>
+							<span class="general"><%out.print(df.format(b.getPreis()));%>€</span>
 						</div>
 					</div>
 				</div>
@@ -141,9 +141,7 @@
 						</span>
 					</div>
 					<div class="lineitem-price">
-					<span class="general">
-						<%=df.format(pos.getPreis()) %>
-						</span>
+						<span class="general"><%=df.format(pos.getPreis())%>€</span>
 					</div>
 					<div class="lineitem-amount">
 					<span class="general">
