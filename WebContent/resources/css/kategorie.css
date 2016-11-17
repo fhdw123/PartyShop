@@ -154,6 +154,7 @@ div.content
 	width: auto;
 	display: block;
 	margin-left: -10px;
+	min-height: 700px;
 }
 
 /* Kategorie Leiste */
