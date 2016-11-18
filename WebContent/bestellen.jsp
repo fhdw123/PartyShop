@@ -113,7 +113,7 @@ User u = (User) request.getAttribute("user");
 				</div>
 				<%
 					ArrayList<Position> positionen = (ArrayList<Position>) request.getAttribute("cart");
-					DecimalFormat df = new DecimalFormat("#.00");
+					DecimalFormat df = new DecimalFormat("0.00");
 					double summe = 0;
 					
 						summe = 0;
