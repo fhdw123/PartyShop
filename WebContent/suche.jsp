@@ -157,6 +157,7 @@ url = url.substring(0, url.length() -1);
 								+ ">" + "<span class=\"filter\">" + kat.getBezeichnung() + "</span><br>");
 					}
 				%>
+				<input type="hidden" name="searchtext" value="<%=searchterm %>">
 				<input type="submit" value="Filter anwenden">
 
 
