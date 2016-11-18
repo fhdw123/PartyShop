@@ -649,6 +649,12 @@ div.text2
 		width: 500px;
 		margin-left: 20px;
 	}
+	input.order-button
+	{
+		height: 80px;
+		line-height: 80px;
+		font-size: 35px;
+}
 	div.footer
 	{
 		margin-top: 50px;
