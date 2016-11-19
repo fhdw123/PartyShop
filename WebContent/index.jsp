@@ -55,9 +55,11 @@
 			</div>
 			<div class="dropdown">
 				<div class="dropdownelement">
+				<a href="UserAendern">
 					<span class="drop">
 						Meine persönlichen Daten
 					</span>
+				
 				</div>
 				<div class="dropdownelement">
 					<span class="drop">
@@ -166,7 +168,21 @@
 			<div class="articles">
 				<h1 class="article">Bestseller</h1>
 
-				
+				<%
+				ArrayList<Artikel> best = (ArrayList<Artikel>) request.getAttribute("best");
+				for(int i = 0; i < 3; i++)
+				{
+					Artikel a = neu.get(i);
+					out.println("<div class=\"article1\">");
+					out.println("<a href=\"/Partyshop/Artikel?id=" + a.getArtikelid() + "\">");
+					out.println("<img src=\"resources/images/" + a.getBild().getName()  + "\">");
+					out.println("</a>");
+					out.println("<div class=\"desc\">");
+					out.println(a.getBezeichnung());
+					out.println("</div>");
+					out.println("</div>");
+				}
+				%>
 
 
 				

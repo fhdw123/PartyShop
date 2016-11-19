@@ -18,7 +18,7 @@ import classes.SqlConnection;
 import classes.User;
 
 /**
- * Servlet implementation class MainServlet
+ * Servlet implementation class IndexServlet
  */
 @WebServlet("/index")
 public class IndexServlet extends HttpServlet {
@@ -44,11 +44,11 @@ public class IndexServlet extends HttpServlet {
         	SqlConnection conn = new SqlConnection();
         	ArrayList<Kategorie> kategorien = conn.kategorienLiefern();
         	ArrayList<Artikel> neu = conn.neuesteZehnArtikelLiefern();
-        	//ArrayList<Artikel> best = conn.meistegkaufteZehnArtikelLiefern();
+        	ArrayList<Artikel> best = conn.meistegkaufteZehnArtikelLiefern();
         	conn.closeConnection();
         	request.setAttribute("kategorien", kategorien);
         	request.setAttribute("neu", neu);
-        	//request.setAttribute("best", best);
+        	request.setAttribute("best", best);
         	String nextJSP = "/index.jsp";
         	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         	dispatcher.forward(request,response);  

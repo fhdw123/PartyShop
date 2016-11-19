@@ -97,10 +97,16 @@ public class LoginServlet extends HttpServlet {
 							}
 							
 						} else if (user.getRolle().equals("mitarbeiter")) {
+							
+							HttpSession session = request.getSession(false);
+							session.setAttribute("user", user);
 
 							response.sendRedirect("/Partyshop/MitarbeiterBereich");
 
 						} else if (user.getRolle().equals("administrator")) {
+							
+							HttpSession session = request.getSession(false);
+							session.setAttribute("user", user);
 
 							response.sendRedirect("/Partyshop/AdminBereich");
 

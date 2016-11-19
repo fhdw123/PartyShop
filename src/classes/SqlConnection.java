@@ -96,8 +96,8 @@ public class SqlConnection {
 		Statement stmt = conn.createStatement();
 
 		stmt.executeUpdate("Update User Set mail = '" + mail + "', vorname = '" + vorname + "', nachname = '" + nachname
-				+ "', '" + passwort + "''" + strasse + "', '" + hausnummer + "', '" + postleitzahl + "', '" + ort
-				+ "' where userid = '" + userid + "'");
+				+ "', passwort = '" + passwort + "', strasse = '" + strasse + "', hausnummer = '" + hausnummer
+				+ "', postleitzahl = '" + postleitzahl + "', ort = '" + ort + "' where userid = '" + userid + "'");
 		stmt.close();
 
 	}
@@ -141,12 +141,20 @@ public class SqlConnection {
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery("Select * from user where userid = '" + userid + "'");
+		
+	
 
-		User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-				rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
-				Integer.parseInt(rs.getString(10)), rs.getString(11));
+		while (rs.next()) {
+
+			User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+					rs.getString(6), Integer.parseInt(rs.getString(7)), rs.getString(8), rs.getString(9),
+					Integer.parseInt(rs.getString(10)), rs.getString(11));
+			
+			return user;
+		}
 		stmt.close();
-		return user;
+		return null;
+		
 
 	}
 
@@ -171,8 +179,7 @@ public class SqlConnection {
 		return null;
 
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param mail
@@ -291,8 +298,7 @@ public class SqlConnection {
 		}
 
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param artikelid
@@ -363,8 +369,7 @@ public class SqlConnection {
 
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
-			if(!file.exists())
-			{
+			if (!file.exists()) {
 				FileOutputStream output = new FileOutputStream(file);
 
 				InputStream input = rs.getBinaryStream("bild");
@@ -372,8 +377,8 @@ public class SqlConnection {
 				while (input.read(buffer) > 0) {
 					output.write(buffer);
 
-			}
-			
+				}
+
 			}
 
 			Artikel artikelElement = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
@@ -403,12 +408,11 @@ public class SqlConnection {
 		ResultSet rs = stmt.executeQuery("Select * from artikel where kategorie = '" + kategorieid + "'");
 
 		while (rs.next()) {
-			 
+
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(!file.exists())
-			{
+			if (!file.exists()) {
 				FileOutputStream output = new FileOutputStream(file);
 
 				InputStream input = rs.getBinaryStream("bild");
@@ -416,11 +420,10 @@ public class SqlConnection {
 				while (input.read(buffer) > 0) {
 					output.write(buffer);
 
-			}
-			
+				}
+
 			}
 
-			 
 			Artikel artikelElement = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
 					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
 
@@ -444,8 +447,7 @@ public class SqlConnection {
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(!file.exists())
-			{
+			if (!file.exists()) {
 				FileOutputStream output = new FileOutputStream(file);
 
 				InputStream input = rs.getBinaryStream("bild");
@@ -453,10 +455,9 @@ public class SqlConnection {
 				while (input.read(buffer) > 0) {
 					output.write(buffer);
 
-			}
-			
-			}
+				}
 
+			}
 
 			Artikel artikelElement = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
 					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
@@ -480,15 +481,14 @@ public class SqlConnection {
 
 		Statement stmt = conn.createStatement();
 
-		ResultSet rs = stmt.executeQuery("Select * from artikel order by zeitstempel desc limit 10");
+		ResultSet rs = stmt.executeQuery("Select * from artikel order by zeitstempel desc limit 3");
 
 		while (rs.next()) {
 
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(!file.exists())
-			{
+			if (!file.exists()) {
 				FileOutputStream output = new FileOutputStream(file);
 
 				InputStream input = rs.getBinaryStream("bild");
@@ -496,8 +496,8 @@ public class SqlConnection {
 				while (input.read(buffer) > 0) {
 					output.write(buffer);
 
-			}
-			
+				}
+
 			}
 
 			Artikel artikelElement = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
@@ -518,15 +518,13 @@ public class SqlConnection {
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery(
-				"Select a.artikelid, a.bezeichnung, a.beschreibung, a.preis, a.kategorie, a.bild, a.zeitstempel, (Select sum(*) where a.artikelbezeichnung = p.artikelbezeichnung) as anzVer from artikel a, position p  order by anzVer desc limit 10");
-
+				"select *, (select count(*) from position p where a.bezeichnung = p.artikelbezeichnung) as anzahl from artikel a order by anzahl desc limit 3");
 		while (rs.next()) {
 
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(!file.exists())
-			{
+			if (!file.exists()) {
 				FileOutputStream output = new FileOutputStream(file);
 
 				InputStream input = rs.getBinaryStream("bild");
@@ -534,10 +532,9 @@ public class SqlConnection {
 				while (input.read(buffer) > 0) {
 					output.write(buffer);
 
-			}
-			
-			}
+				}
 
+			}
 
 			Artikel artikelElement = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
 					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
@@ -565,11 +562,10 @@ public class SqlConnection {
 		String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 
 		while (rs.next()) {
-			
+
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(!file.exists())
-			{
+			if (!file.exists()) {
 				FileOutputStream output = new FileOutputStream(file);
 
 				InputStream input = rs.getBinaryStream("bild");
@@ -577,8 +573,8 @@ public class SqlConnection {
 				while (input.read(buffer) > 0) {
 					output.write(buffer);
 
-			}
-			
+				}
+
 			}
 
 			artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
@@ -595,13 +591,12 @@ public class SqlConnection {
 		Statement stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery("Select * from artikel where bezeichnung = '" + bezeichnung + "'");
-		
+
 		while (rs.next()) {
 			String tmp_dir = System.getProperty("catalina.base") + "/wtpwebapps/Partyshop/resources/images";
 			File file = new File(tmp_dir + "/" + rs.getString(1) + ".jpg");
 
-			if(!file.exists())
-			{
+			if (!file.exists()) {
 				FileOutputStream output = new FileOutputStream(file);
 
 				InputStream input = rs.getBinaryStream("bild");
@@ -609,10 +604,9 @@ public class SqlConnection {
 				while (input.read(buffer) > 0) {
 					output.write(buffer);
 
-			}
-			
-			}
+				}
 
+			}
 
 			artikel = new Artikel(rs.getString(1), rs.getString(2), rs.getString(3),
 					Double.parseDouble(rs.getString(4)), rs.getString(5), file);
@@ -835,7 +829,8 @@ public class SqlConnection {
 						Integer.parseInt(rsPos.getString(3)), Double.parseDouble(rsPos.getString(4)));
 				positionen.add(pos);
 			}
-			Bestellung b = new Bestellung(rsBes.getString(2), Double.parseDouble(rsBes.getString(3)), positionen, rsBes.getString(4));
+			Bestellung b = new Bestellung(rsBes.getString(2), Double.parseDouble(rsBes.getString(3)), positionen,
+					rsBes.getString(4));
 			bestellungen.add(b);
 			stmtPos.close();
 		}

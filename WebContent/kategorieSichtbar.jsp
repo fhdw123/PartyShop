@@ -6,9 +6,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel=stylesheet type="text/css"
+	href="./resources/css/kategorieSichtbar.css">
 <title>Kategorie verbergen</title>
 </head>
 <body>
+
+<header class="standard">
+		<div class="header-logo">
+			<a href="/Partyshop/AdminBereich"> <img class="logo"
+				src="resources/images/logo.png">
+			</a>
+		</div>
+
+		</header>
 
 <%
 		final String errorMessage = (String) request.getAttribute("ErrorMessage");
@@ -22,12 +33,24 @@
 
 	<form action="KategorieSichtbar" method="post">
 
-		Bezeichnung: <input type="text" name="bezeichnung" value="<%=bezeichnung%>"/> <br>
+		<div class="data">
+
+			<div class="element">
+				<div class="name">Bezeichnung: </div><input type="text" name="bezeichnung" value="<%=bezeichnung%>"/> </div>
 		
+		<div class="element">
 			<input type="submit" name="actChoose" value="sichtbar machen"><br><br>
+			</div>
 			
-			<%=errorMessage%><br>	
-			<%=successMessage%><br>		
+			
+			<div class="element">
+				<span class="errmsg"> <%=errorMessage%><br>
+				</span> <span class="sucmsg"> <%=successMessage%><br>
+				</span>
+			</div>
+			
+			
+			</div>
 
 </form>
 	

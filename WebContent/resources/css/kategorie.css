@@ -229,7 +229,7 @@ span.price
 {
 	font-size: 20px;
 	font-weight: bold;
-	color: red;
+	color: gold;
 }
 div.articlename
 {
@@ -253,7 +253,7 @@ a.change
 div.next
 {
 	height: 30px;
-	background-color: red;
+	background-color: gold;
 	color: white;
 	text-align: center;
 	float: right;
@@ -263,7 +263,7 @@ div.next
 div.prev
 {
 	height: 30px;
-	background-color: red;
+	background-color: gold;
 	color: white;
 	text-align: center;
 	float: left;
@@ -342,7 +342,7 @@ span.prev
 	{
 		font-size: 20px;
 		font-weight: bold;
-		color: red;
+		color: gold;
 	}
 	div.dropdown
 	{
@@ -551,7 +551,7 @@ span.prev
 	{
 		font-size: 45px;
 		font-weight: bold;
-		color: red;
+		color: gold;
 	}
 	div.single-article img {
 		min-width: 480px;

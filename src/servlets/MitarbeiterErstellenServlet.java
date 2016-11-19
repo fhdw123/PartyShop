@@ -138,6 +138,7 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 					}
 				} else {
 					request.setAttribute("ErrorMessage", "Mailadresse wird schon verwendet!");
+					request.setAttribute("SuccessMessage", "");
 					request.setAttribute("mail", mail);
 					request.setAttribute("pw", "");
 					request.setAttribute("pw2", "");
@@ -155,6 +156,7 @@ public class MitarbeiterErstellenServlet extends HttpServlet {
 				}
 			} else {
 				request.setAttribute("ErrorMessage", "Bitte alle Felder ausfüllen!");
+				request.setAttribute("SuccessMessage", "");
 				request.setAttribute("mail", mail);
 				request.setAttribute("pw", "");
 				request.setAttribute("pw2", "");

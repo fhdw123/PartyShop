@@ -77,7 +77,8 @@ public class ArtikelLoeschenServlet extends HttpServlet {
 				if (a.getArtikelid() != null) {
 					con.artikelLoeschen(a.getArtikelid());
 
-					request.setAttribute("ErrorMessage", "Artikel wurde entfernt!");
+					request.setAttribute("ErrorMessage", "");
+					request.setAttribute("SuccessMessage", "Artikel wurde entfernt!");
 					request.setAttribute("bezeichnung", "");
 
 					String nextJSP = "/artikelLoeschen.jsp";
@@ -85,6 +86,7 @@ public class ArtikelLoeschenServlet extends HttpServlet {
 					dispatcher.forward(request, response);
 				} else {
 					request.setAttribute("ErrorMessage", "Artikel wurde nicht gefunden!");
+					request.setAttribute("SuccessMessage", "");
 					request.setAttribute("bezeichnung", "");
 
 					String nextJSP = "/artikelLoeschen.jsp";

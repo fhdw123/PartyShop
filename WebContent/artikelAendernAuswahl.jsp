@@ -6,9 +6,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel=stylesheet type="text/css"
+	href="./resources/css/artikelAendernAuswahl.css">
 <title>Artikel ändern</title>
 </head>
 <body>
+
+<header class="standard">
+		<div class="header-logo">
+			<a href="/Partyshop/AdminBereich"> <img class="logo"
+				src="resources/images/logo.png">
+			</a>
+		</div>
+
+		</header>
 
 <%
 		final String errorMessage = (String) request.getAttribute("ErrorMessage");
@@ -22,12 +33,19 @@ final String successMessage = (String) request.getAttribute("SuccessMessage");
 
 	<form action="ArtikelAendernAuswahl" method="post">
 
-		Bezeichnung: <input type="text" name="bezeichnung" value="<%=bezeichnung%>"/> <br>
+		<div class="data">
+
+			<div class="element">
+				<div class="name">Bezeichnung: </div><input type="text" name="bezeichnung" value="<%=bezeichnung%>"/> </div>
 		
-			<input type="submit" name="actChoose" value="anzeigen"><br><br>
+		<div class="element">
+			<input type="submit" name="actChoose" value="anzeigen"></div>
 			
-			<%=errorMessage%><br>
-			<%=successMessage%><br>
+			</div>
+			
+			<br><br><span class="errmsg"> <%=errorMessage%>
+			</span> <span class="sucmsg"> <%=successMessage%>
+			</span>
 
 </form>
 	

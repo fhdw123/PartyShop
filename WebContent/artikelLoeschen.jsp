@@ -6,12 +6,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel=stylesheet type="text/css"
+	href="./resources/css/artikelLoeschen.css">
 <title>Artikel löschen</title>
 </head>
 <body>
 
+<header class="standard">
+		<div class="header-logo">
+			<a href="/AdminBereich"> <img class="logo"
+				src="resources/images/logo.png">
+			</a>
+		</div>
+
+		</header>
+
 <%
 		final String errorMessage = (String) request.getAttribute("ErrorMessage");
+final String successMessage = (String) request.getAttribute("SuccessMessage");
 
 		
 	%>
@@ -20,12 +32,19 @@
 	%>
 
 	<form action="ArtikelLoeschen" method="post">
+	
+	<div class="data">
 
-		Bezeichnung: <input type="text" name="bezeichnung" value="<%=bezeichnung%>" /> <br>
+			<div class="element">
+				<div class="name">
+
+		Bezeichnung:</div> <input type="text" name="bezeichnung" value="<%=bezeichnung%>" /></div>
 		
-		<input type="submit" name="act" value="loeschen"><br><br>
+		<input type="submit" name="act" value="loeschen">
 		
-		<%=errorMessage%><br>
+		<span class="errmsg"> <%=errorMessage%>
+			</span> <span class="sucmsg"> <%=successMessage%>
+			</span>
 
 	</form>
 

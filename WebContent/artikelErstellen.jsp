@@ -15,9 +15,7 @@
 
 	<%
 		final String errorMessage = (String) request.getAttribute("ErrorMessage");
-	    final String successMessage = (String) request.getAttribute("SuccessMessage");
-
-		
+		final String successMessage = (String) request.getAttribute("SuccessMessage");
 	%>
 	<%
 		final String bezeichnung = (String) request.getAttribute("bezeichnung");
@@ -33,37 +31,71 @@
 	<form action="ArtikelErstellen" method="post"
 		enctype="multipart/form-data">
 
-		Bezeichnung: <input type="text" name="bezeichnung"
-			value="<%=bezeichnung%>" /> <br> Beschreibung: <br>
-		<textarea cols="50" rows="10" name="beschreibung"
-			value="<%=beschreibung%>"></textarea>
-		<br> Preis: <input type="text" name="preis" value="<%=preis%>" />
-		<br> Kategorie: <select name="kategorie">
-			<%
-			SqlConnection conn;
-			ArrayList<Kategorie> kategorien = new ArrayList<Kategorie>();
-			try {
-				conn = new SqlConnection();
-				kategorien = conn.kategorienLiefern();
+		<header class="standard">
+		<div class="header-logo">
+			<a href="/AdminBereich"> <img class="logo"
+				src="resources/images/logo.png">
+			</a>
+		</div>
 
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-				for (int i = 0; i < kategorien.size(); i++) {
-					String option = (String) kategorien.get(i).getBezeichnung();
-			%>
-			<option value="<%=option%>"><%=option%></option>
-			<%
-				}
-			%>
-		</select> <input type="file" name="file"> <input type="submit"
-			name="act" value="anlegen">  
-			<br>
-		<br>
+		</header>
 
-		<%=errorMessage%><br>
-		<%=successMessage%><br>	
+		<div class="data">
 
+			<div class="element">
+
+				<div class="name">Bezeichnung:</div>
+				<input type="text" name="bezeichnung" value="<%=bezeichnung%>" />
+			</div>
+
+			<div class="element">
+
+				<div class="name">Beschreibung:</div>
+				<textarea cols="50" rows="10" name="beschreibung"
+					value="<%=beschreibung%>"></textarea>
+
+			</div>
+			<div class="element">
+
+				<div class="name">Preis:</div>
+				<input type="text" name="preis" value="<%=preis%>" />
+
+			</div>
+			<div class="element">
+
+				<div class="name"> Kategorie:</div>
+				<select name="kategorie">
+					<%
+						SqlConnection conn;
+						ArrayList<Kategorie> kategorien = new ArrayList<Kategorie>();
+						try {
+							conn = new SqlConnection();
+							kategorien = conn.kategorienLiefern();
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						for (int i = 0; i < kategorien.size(); i++) {
+							String option = (String) kategorien.get(i).getBezeichnung();
+					%>
+					<option value="<%=option%>"><%=option%></option>
+					<%
+						}
+					%>
+				</select>
+			</div>
+
+			<div class="element">
+
+
+				<input type="file" name="file"> <input type="submit"
+					name="act" value="anlegen">
+
+			</div>
+
+			<br><br><span class="errmsg"> <%=errorMessage%><br>
+			</span> <span class="sucmsg"> <%=successMessage%><br>
+			</span>
 	</form>
 
 

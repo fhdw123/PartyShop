@@ -80,7 +80,7 @@ public class ArtikelAendernAuswahlServlet extends HttpServlet {
 				
 			} catch (Exception e) {
 				request.setAttribute("ErrorMessage", "Artikel wurde nicht gefunden!");
-				request.setAttribute("SuccessMessage", "Artikel wurde nicht gefunden!");
+				request.setAttribute("SuccessMessage", "");
 				request.setAttribute("bezeichnung", "");
 				
 				String nextJSP = "/artikelAendernAuswahl.jsp";

@@ -130,7 +130,7 @@ public class Bestellung {
 	public void bestellungUndPositionenErzeugen() throws Exception {
 		jdbc = new SqlConnection();
 		
-		DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         Calendar c = df.getCalendar();
         c.setTimeInMillis(System.currentTimeMillis());
         datum = c.get(Calendar.DAY_OF_MONTH) + "." + (c.get(Calendar.MONTH) + 1) + "." + c.get(Calendar.YEAR);

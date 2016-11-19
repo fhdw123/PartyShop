@@ -6,13 +6,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Artikel erstellen</title>
+<link rel=stylesheet type="text/css"
+	href="./resources/css/kategorieErstellen.css">
+<title>Kategorie anlegen</title>
 </head>
 <body>
 
-<%
+	<header class="standard">
+	<div class="header-logo">
+		<a href="/Partyshop/AdminBereich"> <img class="logo"
+			src="resources/images/logo.png">
+		</a>
+	</div>
+
+	</header>
+
+	<%
 		final String errorMessage = (String) request.getAttribute("ErrorMessage");
-        final String successMessage = (String) request.getAttribute("SuccessMessage");
+		final String successMessage = (String) request.getAttribute("SuccessMessage");
 	%>
 	<%
 		final String bezeichnung = (String) request.getAttribute("bezeichnung");
@@ -20,13 +31,23 @@
 
 	<form action="KategorieErstellen" method="post">
 
-		Bezeichnung: <input type="text" name="bezeichnung" value="<%=bezeichnung%>" /> <br>
-		
-		<input type="submit" name="act" value="anlegen"><br><br>
-			
-			<%=errorMessage%><br>
-			<%=successMessage%><br>		
+		<div class="data">
 
+			<div class="element">
+				<div class="name">Bezeichnung:</div>
+				<input type="text" name="bezeichnung" value="<%=bezeichnung%>" />
+			</div>
+
+			<div class="element">
+				<input type="submit" name="act" value="anlegen">
+			</div>
+
+			<div class="element">
+				<span class="errmsg"> <%=errorMessage%><br>
+				</span> <span class="sucmsg"> <%=successMessage%><br>
+				</span>
+			</div>
+		</div>
 	</form>
 
 
