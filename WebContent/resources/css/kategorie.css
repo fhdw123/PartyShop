@@ -154,6 +154,7 @@ div.content
 	width: auto;
 	display: block;
 	margin-left: -10px;
+	min-height: 700px;
 }
 
 /* Kategorie Leiste */
@@ -357,6 +358,22 @@ span.prev
 		right: 0px;
 		top: 90px;
 	}	
+	div.footer
+	{
+		margin-top: 50px;
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 50px;
+		text-align: center;
+		background-color: gold;
+		line-height: 50px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 50px;
+	}
 	
 }
 @media screen and (max-device-width: 800px) 
@@ -605,6 +622,23 @@ span.prev
 		width: 30px;
 		height: 50px;
 		margin-top: 3%;
+	}
+	div.footer
+	{
+		margin-top: 50px;
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 80px;
+		text-align: center;
+		background-color: gold;
+		line-height: 80px;
+		font-size: 25px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 150px;
 	}
 }
 

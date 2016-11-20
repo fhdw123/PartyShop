@@ -14,7 +14,7 @@
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>servlets.IndexServlet</servlet-class>
+    <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
   <servlet>
     <description></description>
@@ -70,5 +70,10 @@
     <servlet-name>AdminBereichServlet</servlet-name>
     <servlet-class>servlets.AdminBereichServlet</servlet-class>
   </servlet>
-
+  <servlet>
+    <description></description>
+    <display-name>OrderOverview</display-name>
+    <servlet-name>OrderOverview</servlet-name>
+    <servlet-class>servlets.OrderOverview</servlet-class>
+  </servlet>
 </web-app>

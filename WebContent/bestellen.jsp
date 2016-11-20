@@ -51,7 +51,8 @@ User u = (User) request.getAttribute("user");
 				<span class="drop"> Meine persönlichen Daten </span>
 			</div>
 			<div class="dropdownelement">
-				<span class="drop"> Meine Bestellungen </span>
+				<a href="MeineBestellungen"><span class="drop"> Meine Bestellungen 
+				</span></a>
 			</div>
 
 			<div class="dropdownelement">
@@ -112,7 +113,7 @@ User u = (User) request.getAttribute("user");
 				</div>
 				<%
 					ArrayList<Position> positionen = (ArrayList<Position>) request.getAttribute("cart");
-					DecimalFormat df = new DecimalFormat("#.00");
+					DecimalFormat df = new DecimalFormat("0.00");
 					double summe = 0;
 					
 						summe = 0;
@@ -206,6 +207,12 @@ User u = (User) request.getAttribute("user");
 			%>
 			<input type="hidden" name="act" value="confirm">
 			</form>
+			</div>
 		</div>
+		<div class="footer">
+		<a href="">Impressum</a>
+		<a href="">FAQ</a>
+		<a href="">Ananas</a>
+	</div>
 </body>
 </html>

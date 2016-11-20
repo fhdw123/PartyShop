@@ -55,6 +55,7 @@ public class Bestellung {
 		this.user = user;
 		this.preis = preis;
 		this.positionen = positionen;
+		this.datum = datum;
 	}
 
 	/**
@@ -121,6 +122,16 @@ public class Bestellung {
 	 */
 	public void setPositionen(ArrayList<Position> positionen) {
 		this.positionen = positionen;
+	}
+	
+
+	public String getDatum()
+	{
+		return this.datum;
+	}
+	public void setDatum(String datum)
+	{
+		this.datum = datum;
 	}
 
 	/**

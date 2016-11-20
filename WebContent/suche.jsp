@@ -73,7 +73,8 @@ url = url.substring(0, url.length() -1);
 				<span class="drop"> Meine persönlichen Daten </span>
 			</div>
 			<div class="dropdownelement">
-				<span class="drop"> Meine Bestellungen </span>
+				<a href="MeineBestellungen"><span class="drop"> Meine Bestellungen 
+				</span></a>
 			</div>
 
 			<div class="dropdownelement">
@@ -156,6 +157,7 @@ url = url.substring(0, url.length() -1);
 								+ ">" + "<span class=\"filter\">" + kat.getBezeichnung() + "</span><br>");
 					}
 				%>
+				<input type="hidden" name="searchtext" value="<%=searchterm %>">
 				<input type="submit" value="Filter anwenden">
 
 
@@ -210,6 +212,10 @@ url = url.substring(0, url.length() -1);
 			</div>
 		</div>
 	</div>
-
+<div class="footer">
+		<a href="">Impressum</a>
+		<a href="">FAQ</a>
+		<a href="">Ananas</a>
+	</div>
 </body>
 </html>

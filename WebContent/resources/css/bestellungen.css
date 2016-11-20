@@ -149,11 +149,11 @@ input.searchbar
 /* Content */
 div.content 
 {
-	max-width: 1150px;
-	min-width: 1000px;
+	max-width: 900px;
+	min-width: 800px;
 	display: block;
 	margin: 10px auto;
-	
+	min-height: 700px;
 }
 div.order
 {
@@ -161,19 +161,54 @@ div.order
 	float: left;
 	margin-top: 15px;
 }
-div.order-date
+div.order-header
 {
-	
+	width: 100%;
+	border-radius: 15px 15px 0px 0px;
+	border: 1px solid #646464;
+	float: left;	
+	padding: 10px;
+	background-color: #f1f1f1;
 }
-div.order-
-
+div.line
+{
+	width: 100%;
+	float: left;
+}
+div.date
+{
+	float: left;
+	width: 200px;
+}
+div.sum
+{
+	width: 200px;
+	float: left;
+}
+span.information
+{
+	font-size: 15px;
+	color: #646464;
+}
+div.order-body
+{
+	width: 100%;
+	border: 1px solid #646464;
+	padding: 10px;
+	float: left;
+}
+div.body-headlines
+{
+	margin-bottom: 20px;
+	float: left;
+	width: 100%;
+}
 div.lineitem
 {
 	width: 100%;
 	float: left;
 	margin-bottom: 10px;
-	height: 50px;
-	border-bottom: solid 1px #ccc;
+	border-top: solid 1px #ccc;
 	display: block;
 }
 div.lineitem-articlename
@@ -202,8 +237,11 @@ span.price-bold
 div.lineitem-amount
 {
 	float: right;
-	width: 6%;
-	height: 60px;
+	width: 55px;
+}
+span.general
+{
+	font-size: 15px;
 }
 
 
@@ -232,6 +270,23 @@ div.lineitem-amount
 		right: 0px;
 		top: 90px;
 	}	
+	div.footer
+	{
+	margin-top: 50px;
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 50px;
+		text-align: center;
+		background-color: gold;
+		line-height: 50px;
+		margin-top: 50px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 50px;
+	}
 	
 }
 
@@ -336,7 +391,36 @@ div.lineitem-amount
 	{
 		min-height: 30px;
 	}
-	
+	div.lineitem-amount
+	{
+		min-width: 100px;
+	}
+	span.information
+	{
+		font-size: 25px;
+	}
+	span.general
+	{
+		font-size: 25px;
+	}
+	div.footer
+	{
+		margin-top: 50px;
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 80px;
+		text-align: center;
+		background-color: gold;
+		line-height: 80px;
+		font-size: 25px;
+		overflow:hidden;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 150px;
+	}
 	
 }
 

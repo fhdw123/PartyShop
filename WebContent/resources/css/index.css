@@ -55,6 +55,22 @@
 		right: 0px;
 		top: 90px;
 	}	
+	div.footer
+	{
+		margin-top: 50px;
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 50px;
+		text-align: center;
+		background-color: gold;
+		line-height: 50px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 50px;
+	}
 	
 	
 
@@ -94,7 +110,6 @@
 	div.headerlogos 
 	{
 		min-width: 200px;
-		margin-right: 70px;
 	}
 	div.headerlogo 
 	{
@@ -244,6 +259,23 @@
 	{
 		font-size: 45px;
 	}
+	div.footer
+	{
+		margin-top: 50px;
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 80px;
+		text-align: center;
+		background-color: gold;
+		line-height: 80px;
+		font-size: 25px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 150px;
+	}
 }
 
 body
@@ -392,6 +424,7 @@ div.content
 	margin: auto;
 	display: block;
 	background-color: white;
+	min-height: 800px;
 }
 
 /* Kategorie Leiste */

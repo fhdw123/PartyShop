@@ -62,9 +62,8 @@
 				
 				</div>
 				<div class="dropdownelement">
-					<span class="drop">
-						Meine Bestellungen
-					</span>
+					<a href="MeineBestellungen"><span class="drop"> Meine Bestellungen 
+				</span></a>
 				</div>
 				
 				<div class="dropdownelement">
@@ -189,6 +188,11 @@
 			</div>
 
 		</div>
+	</div>
+	<div class="footer">
+		<a href="">Impressum</a>
+		<a href="">FAQ</a>
+		<a href="">Ananas</a>
 	</div>
 
 </body>
