@@ -22,7 +22,7 @@ public class Artikel {
 		return bild;
 	}
 
-    
+  
 	/**
 	 * 
 	 * @param bild
