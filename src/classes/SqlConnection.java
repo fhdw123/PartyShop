@@ -815,7 +815,7 @@ public class SqlConnection {
 
 		Statement stmtBes = conn.createStatement();
 
-		ResultSet rsBes = stmtBes.executeQuery("Select * from bestellung where user = '" + userid + "'");
+		ResultSet rsBes = stmtBes.executeQuery("Select * from bestellung where user = '" + userid + "' order by datum desc");
 
 		while (rsBes.next()) {
 			ArrayList<Position> positionen = new ArrayList<Position>();
