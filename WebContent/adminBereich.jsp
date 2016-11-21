@@ -16,15 +16,16 @@
 		<a href="/Partyshop/AdminBereich"> <img class="logo"
 			src="resources/images/logo.png">
 		</a>
+		</div>
 		
-		<div class="abmelden">
-		<a href="login?act=logout">
+		<div class="abmelden" style="margin-top: 50px;margin-right: 30px;">
+		<a style="color: black;" href="login?act=logout">
 					<span class="drop">
 						Abmelden
 					</span>
 					</a>
 					</div>
-	</div>
+	
 
 	</header>
 

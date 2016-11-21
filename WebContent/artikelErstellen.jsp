@@ -33,7 +33,7 @@
 
 		<header class="standard">
 		<div class="header-logo">
-			<a href="/AdminBereich"> <img class="logo"
+			<a href="AdminBereich"> <img class="logo"
 				src="resources/images/logo.png">
 			</a>
 		</div>

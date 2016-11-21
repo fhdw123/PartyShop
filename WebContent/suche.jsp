@@ -70,7 +70,11 @@ url = url.substring(0, url.length() -1);
 		</div>
 		<div class="dropdown">
 			<div class="dropdownelement">
-				<span class="drop"> Meine persönlichen Daten </span>
+				<a href="MeineDaten">
+					<span class="drop">
+						Meine persönlichen Daten
+					</span>
+					</a>
 			</div>
 			<div class="dropdownelement">
 				<a href="MeineBestellungen"><span class="drop"> Meine Bestellungen 

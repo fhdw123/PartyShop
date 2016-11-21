@@ -25,14 +25,12 @@
 	%>
 
 
-<header class="standard">
-		<div class="header-logo">
-			<a href="AdminBereich"> <img class="logo"
-				src="resources/images/logo.png">
-			</a>
-		</div>
 
-		</header>
+		<div class="logo">
+		<a href="/Partyshop"> <img src="resources/images/mlogo.png">
+		</a>
+	</div>
+
 
 	<div class="full">
 		<div class="half">

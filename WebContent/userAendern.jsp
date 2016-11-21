@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-	<%@ page import="classes.User"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="classes.User"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet type="text/css" href="./resources/css/userAendern.css">
-<title>Kundendaten �ndern</title>
+<title>Kundendaten ändern</title>
 </head>
 <body>
 	<%
@@ -31,16 +31,81 @@
 
 <header class="standard">
 		<div class="header-logo">
-			<a href="AdminBereich"> <img class="logo"
+			<a href="/Partyshop"> <img class="logo"
 				src="resources/images/logo.png">
 			</a>
 		</div>
+		<div class="header-logo-mobile">
+			<a href="/Partyshop"> <img class="logo"
+				src="resources/images/mlogo.png">
+			</a>
+		</div>
+		<div class="headerlogos">
+			<%
+				if (session.getAttribute("user") == null) {
+					out.println("<div class=\"headerlogo\">");
+					out.println("<a class=\"user\" href=\"login\" >	</a>");
+					out.println("<div class=\"headerdesc\">");
+					out.println("<span class=\"headerdesc\">Login</span>");
 
-		</header>
+				} else {
+					out.println("<div class=\"headerlogo\" id=\"account\">");
+					out.println("<a class=\"user\" href=\"#\"></a>");
+					out.println("<div class=\"headerdesc\">");
+					out.println("<span class=\"headerdesc\">Mein Konto</span>");
 
-	
+				}
+			%>
+		</div>
+		<div class="dropdown">
+			<div class="dropdownelement">
+				<span class="drop"> Meine persönlichen Daten </span>
+			</div>
+			<div class="dropdownelement">
+				<a href="MeineBestellungen"><span class="drop"> Meine Bestellungen 
+				</span></a>
+			</div>
+
+			<div class="dropdownelement">
+				<a href="login?act=logout"> <span class="drop"> Abmelden
+				</span>
+				</a>
+			</div>
+
+
+
+		</div>
+
+		</div>
+		<div class="headerlogo">
+			<a class="cart" href="/Partyshop/Warenkorb"></a>
+			<div class="headerdesc">
+				<span class="headerdesc"> Warenkorb </span>
+			</div>
+		</div>
+
+		</div>
+		<form action="Suche">
+			<div class="search">
+
+				<div class="searchbar">
+					<input class="searchbar" placeholder="Suchen" type="text"
+						name="searchtext">
+				</div>
+
+				<div class="searchlogo">
+					<input class="searchlogo" type="submit" value="">
+				</div>
+			</div>
+		</form>
+
+
+
+	</header>
+
+	<form action="UserAendern" method="post">
 		<div class="data">
-			<form action="UserAendern" method="post">
+				<div class="element">
 					<div class="text">E-Mail:</div>
 
 					<input type="text" name="mail" value="<%=mail%>" />
@@ -68,7 +133,7 @@
 				</div>
 
 				<div class="element">
-					<div class="text">Stra�e</div>
+					<div class="text">Straße</div>
 
 					<input type="text" name="str" value="<%=str%>" />
 				</div>
@@ -92,7 +157,7 @@
 				</div>
 
 				 <div class="element">
-					<input type="submit" name="act" value="Daten aendern">
+					<input type="submit" name="act" value="Daten ändern">
 				</div>
 
 				<span class="errmsg">
@@ -101,9 +166,9 @@
 				<span class="errmsg">
 				<%=successMessage%><br>
 				</span>
-
+				</div>
 			</form>
-		</div>
-	</div>
+		
+	
 </body>
 </html>
