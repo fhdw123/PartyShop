@@ -191,9 +191,9 @@
 		</div>
 	</div>
 	<div class="footer">
-		<a href="">Impressum</a>
-		<a href="">FAQ</a>
-		<a href="">Ananas</a>
+		<a href="impressum.jsp">Impressum</a>
+		<a href="faq.jsp">FAQ</a>
+		<a href="kontakt.jsp">Kontakt</a>
 	</div>
 
 </body>
