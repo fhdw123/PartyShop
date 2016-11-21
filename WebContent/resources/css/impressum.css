@@ -1,0 +1,56 @@
+/*
+    Document   : impressum
+    Created on : 20.11.2016
+    Author     : Jannik
+
+
+
+/*Desktop Version */
+/* Header */
+header.standard 
+{
+	height: 100px;
+	background-color: gold;
+	margin: -8px -8px 0px -8px;
+	display: block;
+}
+div.header-logo 
+{
+	height: 90px;
+	float: left;
+	margin-right: 10px;
+	width: 180px;
+}
+
+div.headerlogo 
+{
+	float: left;
+	width: 100px;
+	margin-left: 10px;
+}
+
+
+
+div.abmelden
+{
+	float: right;
+	margin-right: 50px;
+	margin-top: 30px;
+}
+
+div.text
+{
+	margin-left: 10px;
+	
+}
+
+img.logo 
+{
+	width: 150px;
+	height: auto;
+	margin-top: -5px;
+	margin-left: 5px;
+}
+
+
+
