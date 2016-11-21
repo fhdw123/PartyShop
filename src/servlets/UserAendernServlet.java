@@ -17,7 +17,7 @@ import classes.User;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/UserAendern")
+@WebServlet("/MeineDaten")
 public class UserAendernServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
