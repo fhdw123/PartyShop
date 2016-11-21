@@ -1,3 +1,24 @@
+/*
+    Document   : artikel.css
+    Created on : 28.10.2016
+    Author     : Leon
+*/
+@media screen and (max-width: 1050px) 
+{
+	header 
+	{
+		min-width: 1050px;
+	}
+	body 
+	{
+		min-width: 1050px;
+	}
+}
+
+
+/*Desktop */
+
+/*Header */
 header.standard 
 {
 	height: 100px;
@@ -12,14 +33,92 @@ div.header-logo
 	margin-right: 10px;
 	width: 180px;
 }
+/*Suchleiste +button*/
+div.search
+{
+	width: 57%;
+	float: left;
+	margin-top: 45px;
+}
+div.searchbar 
+{
+	position: relative;
+	height: 30px;
+	width: 90%;
+	float: left;
+	border-style: solid;
+	border-width: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+div.searchlogo 
+{
+	float: left;
+	height: 25px;
+	width: 37px;
+	padding: 5px;
+	background: blue;
+	border-style: solid;
+	border-width: 0px;
+	border-radius: 0px 5px 5px 0px;
+}
 
+/* Logos rechts im Header für Login und Warenkorb */
+div.headerlogos 
+{
+	width: 250px;
+	margin-top: 25px;
+	float: right;
+}
 div.headerlogo 
 {
 	float: left;
 	width: 100px;
 	margin-left: 10px;
 }
+div.headerlogo a.user
+{
+	margin: auto;
+	display: block;
+	width: 40px;
+	height: 45px;
+	background: url(/Partyshop/resources/images/user.png) no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+div.headerdesc
+{
+	width: 100%;
+	text-align: center;
+}
+span.headerdesc
+{
+	font-size: 20px;
+}
+div.headerlogo a.cart 
+{
+	margin: auto;
+	display: block;
+	width: 50px;
+	height: 45px;
+	background: url(/Partyshop/resources/images/cart.png) no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+div.dropdownelement
+{
+	width: 100%;
+	margin-bottom: 5px;
+}
+div.dropdownelement a
+{
+	color: black;
+}
 
+#account:hover div.dropdown
+{
+	display: block;
+	
+}
 img.logo 
 {
 	width: 150px;
@@ -27,38 +126,40 @@ img.logo
 	margin-top: -5px;
 	margin-left: 5px;
 }
-
-div.logo
+input.searchlogo 
 {
-	margin: auto;
-	width: 300px;
+	height: 100%;
+	width: 100%;
+	background: url(/Partyshop/resources/images/lupe.png) no-repeat;
+	background-position: center;
+	background-size: 70%;
+	border: solid 0px;
 }
-div.logo img
+form.searchbar 
 {
-	width: 300px;
-	height: auto;
+	margin-top: -60px;
 }
-div.full
+input.searchbar 
 {
-	margin: auto;
-	border-radius: 5px 5px 5px 5px;
-	border: 1px solid #ccc;
-	width: 1000px;
-	height: 500px;
+	width: 100%;
+	height: 30px;
+	border-radius: 5px 0px 0px 5px;
+	outline: 0;	
 }
-
+/* Content */
+div.content 
+{
+	max-width: 1150px;
+	min-width: 1000px;
+	display: block;
+	margin: 10px auto;
+	min-height: 800px;
+}
 div.data
 {
-	margin-top: 20px;
+	margin: 20px auto;
 	float:left;
 	width: 450px;
-}
-div.headline
-{
-	float: left;
-	text-align: center;
-	width: 100%;
-	margin-bottom: 25px;
 }
 span.headline
 {
@@ -78,21 +179,21 @@ div.element
 	margin-bottom: 10px;
 	width: 100%;
 }
-input[type=submit]
+div.data input[type=submit]
 {
 	display:block;
 	width: 100px;
 	height: 30px;
-	background-color: gold;
+	background-color: red;
 	color: white;
 	border: solid 0px;
 }
-input[type=text]
+div.data input[type=text]
 {
 	float: left;
 	width: 200px;
 }
-input[type=password]
+div.data input[type=password]
 {
 	float: left;
 	width: 200px;
@@ -102,60 +203,372 @@ div.text
 	float: left;
 	width: 100px;
 }
-@media screen and (max-device-width: 800px) 
+
+
+div.article
 {
-	div.full
+	float: left;
+}
+div.articleimg
+{
+	width: 350px;
+	height: 300px;
+}
+div.articleimg img
+{
+	width: 300px;
+	height: 300px;
+}
+div.generalinfo
+{
+	position: relative;
+	float: left;
+	width: 40%;
+	height: 300px;
+}
+
+div.articlename
+{
+	width: 100%;
+}
+div.price
+{
+	margin-top: 15px;
+	float: left;
+	width: 100%;
+}
+div.stock
+{
+	float: left;
+	margin-top: 15px;
+	width: 100%;
+}
+div.articlename
+{
+	float: left;
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+div.desc
+{
+	float: left;
+	width: 100%;
+}
+
+
+@media screen and (min-device-width: 801px)
+{
+	div.header-logo-mobile
 	{
-		height: auto;
+		display: none;
+	}
+	nav 
+	{
+		display: none;
+	}
+	div.articleimg
+	{
 		float: left;
-		max-width: 980px;
-		min-width: 980px;
 	}
-	div.data
+	div.articlename
 	{
-		min-width: 100%;
-	}	
-	div.text
-	{
-		min-width: 400px;
-		font-size: 25px;
+		height: 60px;
 	}
-	input[type=text]
+	span.articlename
 	{
-		min-width: 80%;
-		height: 50px;
-		border: 1px solid #ccc;
-		font-size: 25px;
+		font-size: 18px;
+		color: black;
 	}
-	input[type=password]
+	span.price
 	{
-		font-size: 25px;
-		min-width: 80%;
-		height: 50px;
-		border: 1px solid #ccc;
+		font-size: 18px;
+		color: gold;
 	}
-	input[type=submit]
+	span.stock
 	{
-		width: 300px;
-		height: 50px;
-		font-size: 25px;
+		font-size: 18px;
+		color: green;
 	}
 	span.headline
 	{
+		color: brown;
+		font-size: 18px;
+	}
+	span.information
+	{
+		font-size: 14px;
+		color: #646464;
+	}
+	span.proddesc
+	{
+		
+	}
+	div.addToCart
+	{
+		position: absolute;
+		bottom: 10px;
+		float: left;
+		margin-top: 15px;
+		width: 100%;
+	}
+	input.add
+	{
+		width: 300px;
+		height: 30px;
+		font-size: 18px;
+		background-color: gold;
+		color: white;
+		border: solid 0px;
+	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 250px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: lightgray;
+		padding: 5px;
+		position: absolute;
+		right: 0px;
+		top: 90px;
+	}	
+	div.footer
+	{
+		margin-top: 50px;
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 50px;
+		text-align: center;
+		background-color: gold;
+		line-height: 50px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 50px;
+	}
+	
+}
+
+/* Mobile */
+@media screen and (max-device-width: 800px) 
+{
+	body 
+	{
+		min-width: 1000px;
+	}
+
+	/* Größerer Header für mobile Version */
+	header.standard 
+	{
+		min-width: 1010px;
+		max-width: 1010px;
+		min-height: 250px;
+	}
+	div.header-logo
+	{
+		display: none;
+	}
+	div.header-logo-mobile
+	{
+		display: block;
+		width: 300px;
+		height: 100px;
+		float: left;
+	}
+	div.header-logo-mobile img
+	{
+		width: 100%;
+		height: 100%;
+		padding-top: 20px;
+	}
+	div.headerlogos 
+	{
+		min-width: 200px;
+	}
+	div.headerlogo 
+	{
+		min-width: 70px;
+	}
+	div.headerlogo a.cart 
+	{
+		min-width: 80px;
+		min-height: 80px;
+	}
+	div.headerlogo a.user
+	{
+		min-height: 75px;
+		min-width: 75px;
+	}
+	div.headerdesc
+	{
+		display: none;
+	}
+	div.dropdown
+	{
+		z-index: 10;
+		display: none;
+		width: 600px;
+		border: solid 1px #ccc;
+		border-radius: 1px;
+		background-color: white;
+		padding: 5px;
+		position: absolute;
+		right: -30px;
+		top: 120px;
+	}	
+	
+	span.drop
+	{
+		font-size: 45px;
+	}
+	div.search 
+	{
+		min-width: 95%;
+		margin-left: 1%;
+		min-height: 40px;
+	}
+	
+	div.searchbar
+	{
+		max-width: 85%;
+		margin-right: auto;
+		min-height: 100%;
+		margin-top: -15px;
+	}
+	div.searchbar input 
+	{
+		min-height: 60px;
 		font-size: 30px;
-		float: left;
-		font-weight: bold;
 	}
-	div.logo
+	div.searchlogo 
+	{
+		margin-top: -14px;
+		min-height: 54px;
+		min-width: 50px;
+	}
+	input.searchlogo 
+	{
+		min-height: 30px;
+	}
+	/*Kategorie-Leiste verschwindet*/
+	div.categories 
+	{
+		display: none;
+	}
+	/* Haupt Content Über ganzen Bildschirm*/
+	div.articleimg
+	{
+		width: 600px;
+		height: 600px;
+		margin: auto;
+	}
+	div.articleimg img
+	{
+		width: 600px;
+		height: 600px;
+	}
+	div.generalinfo
 	{
 		float: left;
+		width: 100%;
 	}
-	span.errmsg
+	span.information
+	{
+		font-size: 30px;
+		color: #646464;
+	}
+	div.articlename
+	{
+		width: 100%;
+	}
+	div.price
+	{
+		margin-top: 15px;
+		float: left;
+		width: 100%;
+	}
+	div.stock
+	{
+		float: left;
+		margin-top: 15px;
+		width: 100%;
+	}
+	span.articlename
+	{
+		font-size: 35px;
+		color: black;
+	}
+	span.price
+	{
+		font-size: 35px;
+		color: gold;
+	}
+	span.stock
+	{
+		font-size: 35px;
+		color: green;
+	}
+	span.headline
+	{
+		color: brown;
+		font-size: 35px;
+	}
+	span.headline
+	{
+		color: brown;
+		font-size: 30px;
+	}
+	span.proddesc
 	{
 		font-size: 25px;
 	}
-	span.sucmsg
+	div.articlename
 	{
+		float: left;
+		width: 100%;
+		margin-bottom: 5px;
+	}
+	div.addToCart
+	{
+		float: left;
+		width: 100%;
+	}
+	input.add
+	{
+		width: 1000px;
+		height: 70px;
+		font-size: 40px;
+		background-color: gold;
+		color: white;
+		margin-top: 10px;
+		border: solid 0px;
+	}
+	div.desc
+	{
+		margin-top: 20px;
+		float: left;
+		width: 100%;
+	}
+	div.footer
+	{
+		margin-top: 50px;
+		margin-left: -15px;
+		float: left;
+		width: 101.75%;
+		height: 80px;
+		text-align: center;
+		background-color: gold;
+		line-height: 80px;
 		font-size: 25px;
+	}
+	div.footer a
+	{
+		color: black;
+		margin-right: 150px;
 	}
 }
+

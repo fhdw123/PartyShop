@@ -235,7 +235,7 @@ div.desc
 	span.price
 	{
 		font-size: 18px;
-		color: gold;
+		color: red;
 	}
 	span.stock
 	{
@@ -269,7 +269,7 @@ div.desc
 		width: 300px;
 		height: 30px;
 		font-size: 18px;
-		background-color: gold;
+		background-color: red;
 		color: white;
 		border: solid 0px;
 	}
@@ -457,7 +457,7 @@ div.desc
 	span.price
 	{
 		font-size: 35px;
-		color: gold;
+		color: red;
 	}
 	span.stock
 	{
@@ -494,7 +494,7 @@ div.desc
 		width: 1000px;
 		height: 70px;
 		font-size: 40px;
-		background-color: gold;
+		background-color: red;
 		color: white;
 		margin-top: 10px;
 		border: solid 0px;
