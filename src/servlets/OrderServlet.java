@@ -57,7 +57,7 @@ public class OrderServlet extends HttpServlet {
 
 				if (u != null) {
 					if (u.getRolle().equals("mitarbeiter")) {
-						response.sendRedirect("login&act=logout");
+						response.sendRedirect("login?act=logout");
 					} else {
 						String nextJSP = "/bestellen.jsp";
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
