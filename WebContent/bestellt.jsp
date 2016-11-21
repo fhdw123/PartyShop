@@ -120,10 +120,6 @@
 		
 		</div>
 	</div>
-	<div class="footer">
-		<a href="">Impressum</a>
-		<a href="">FAQ</a>
-		<a href="">Ananas</a>
-	</div>
+
 </body>
 </html>
