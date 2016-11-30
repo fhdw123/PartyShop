@@ -3,6 +3,11 @@ package classes;
 import java.io.Serializable;
 import java.util.UUID;
 
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 public class Position implements Serializable{
 
 	private String positionid;

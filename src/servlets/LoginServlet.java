@@ -23,6 +23,11 @@ import java.sql.Statement;
 /**
  * Servlet implementation class LoginServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 

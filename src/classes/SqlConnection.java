@@ -13,8 +13,11 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.servlet.ServletContext;
-
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 public class SqlConnection {
 
 	private Connection conn;

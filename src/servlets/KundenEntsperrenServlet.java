@@ -19,6 +19,11 @@ import classes.User;
 /**
  * Servlet implementation class KundenEntsperrenServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @WebServlet("/KundenEntsperren")
 public class KundenEntsperrenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

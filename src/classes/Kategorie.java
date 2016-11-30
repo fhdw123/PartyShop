@@ -1,24 +1,34 @@
 package classes;
 
-
 import java.util.UUID;
 
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 public class Kategorie {
-	
+
 	private SqlConnection jdbc;
 	private String kategorieid;
 	private String bezeichnung;
 	private int sichtbar;
-	
+
+	/**
+	 * 
+	 * @return
+	 */
 	public int getSichtbar() {
 		return sichtbar;
 	}
 
-
+	/**
+	 * 
+	 * @param sichtbar
+	 */
 	public void setSichtbar(int sichtbar) {
 		this.sichtbar = sichtbar;
 	}
-
 
 	/**
 	 * 
@@ -31,8 +41,7 @@ public class Kategorie {
 		this.bezeichnung = bezeichnung;
 		this.sichtbar = 1;
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param kategorieid
@@ -47,7 +56,6 @@ public class Kategorie {
 		this.sichtbar = sichtbar;
 	}
 
-
 	/**
 	 * 
 	 * @return
@@ -55,7 +63,6 @@ public class Kategorie {
 	public String getKategorieid() {
 		return kategorieid;
 	}
-
 
 	/**
 	 * 
@@ -65,7 +72,6 @@ public class Kategorie {
 		this.kategorieid = kategorieid;
 	}
 
-
 	/**
 	 * 
 	 * @return
@@ -74,7 +80,6 @@ public class Kategorie {
 		return bezeichnung;
 	}
 
-
 	/**
 	 * 
 	 * @param bezeichnung
@@ -82,33 +87,25 @@ public class Kategorie {
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
-	
-	
-	
+
 	/**
 	 * 
 	 * @throws Exception
 	 */
-	public void kategorieErzeugen() throws Exception
-	{
+	public void kategorieErzeugen() throws Exception {
 		jdbc = new SqlConnection();
 		jdbc.kategorieErzeugen(kategorieid, bezeichnung, sichtbar);
 		jdbc.closeConnection();
 	}
-	
-	
+
 	/**
 	 * 
 	 * @throws Exception
 	 */
-	public void kategorieAktualisieren() throws Exception
-	{
+	public void kategorieAktualisieren() throws Exception {
 		jdbc = new SqlConnection();
 		jdbc.kategorieAktualisieren(kategorieid, bezeichnung, sichtbar);
 		jdbc.closeConnection();
 	}
-	
-	
-	
 
 }

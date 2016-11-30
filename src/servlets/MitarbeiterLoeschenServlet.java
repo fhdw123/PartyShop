@@ -15,6 +15,11 @@ import classes.User;
 /**
  * Servlet implementation class MitarbeiterLoeschenServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @WebServlet("/MitarbeiterLoeschen")
 public class MitarbeiterLoeschenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

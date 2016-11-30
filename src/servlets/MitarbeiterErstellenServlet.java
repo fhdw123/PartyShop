@@ -16,6 +16,11 @@ import classes.User;
 /**
  * Servlet implementation class MitarbeiterErstellenServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @WebServlet("/MitarbeiterErstellen")
 public class MitarbeiterErstellenServlet extends HttpServlet {
 

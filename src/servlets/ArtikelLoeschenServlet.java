@@ -18,6 +18,11 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class ArtikelLoeschenServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @WebServlet("/ArtikelLoeschen")
 public class ArtikelLoeschenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -17,6 +17,11 @@ import classes.User;
 /**
  * Servlet implementation class LoginServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @WebServlet("/MeineDaten")
 public class UserAendernServlet extends HttpServlet {
 

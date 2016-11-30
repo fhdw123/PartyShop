@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class AdminBereichServlet
  */
 
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @WebServlet("/AdminBereich")
 public class AdminBereichServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,6 +25,7 @@ public class AdminBereichServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	/**
     public AdminBereichServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -28,6 +34,7 @@ public class AdminBereichServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	/**
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String nextJSP = "/adminBereich.jsp";

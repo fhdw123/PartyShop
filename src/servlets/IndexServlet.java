@@ -20,6 +20,11 @@ import classes.User;
 /**
  * Servlet implementation class IndexServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @WebServlet("/index")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

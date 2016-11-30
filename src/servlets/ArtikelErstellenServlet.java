@@ -23,6 +23,11 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class ArtikelErstellenServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @MultipartConfig
 @WebServlet("/ArtikelErstellen")
 public class ArtikelErstellenServlet extends HttpServlet {

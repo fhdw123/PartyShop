@@ -23,6 +23,11 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class KategorieUnsichtbarServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @MultipartConfig
 @WebServlet("/KategorieSichtbar")
 public class KategorieSichtbarServlet extends HttpServlet {
@@ -75,7 +80,7 @@ public class KategorieSichtbarServlet extends HttpServlet {
 			try {
 				SqlConnection con = new SqlConnection();
 				Kategorie k = con.kategorienUnsichtbarLiefernMitBezeichnung(bezeichnung);
-				if(k.getKategorieid()!=null)
+				if(k != null)
 				{
 					con.kategorieSichtbar(k.getKategorieid());
 				request.setAttribute("ErrorMessage", "");

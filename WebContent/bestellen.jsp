@@ -116,13 +116,16 @@ User u = (User) request.getAttribute("user");
 
 				</div>
 				<%
+					int anzArtikel = 0;
 					ArrayList<Position> positionen = (ArrayList<Position>) request.getAttribute("cart");
+					
 					DecimalFormat df = new DecimalFormat("0.00");
 					double summe = 0;
 					
 						summe = 0;
 						for (Position pos : positionen) {
 							summe += pos.getPreis() * pos.getMenge();
+							anzArtikel += pos.getMenge();
 							out.println("<div class=\"lineitem\">");
 							out.println("<div class=\"lineitem-articlename\">");
 							out.println("<span class=\"articlename\">" + pos.getArtikelbezeichnung() + "</span></div>");
@@ -197,7 +200,7 @@ User u = (User) request.getAttribute("user");
 			<div class="order2">
 				<span class="articles">
 					<%
-						out.println(positionen.size());
+						out.println(anzArtikel);
 					%> Artikel
 				</span>
 			</div>

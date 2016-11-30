@@ -23,6 +23,11 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class ArtikelAendernServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @MultipartConfig
 @WebServlet("/ArtikelAendern")
 public class ArtikelAendernServlet extends HttpServlet {

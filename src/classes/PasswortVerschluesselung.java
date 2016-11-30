@@ -4,6 +4,11 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
  
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 public class PasswortVerschluesselung
 {
     private static String convertToHex(byte[] data)

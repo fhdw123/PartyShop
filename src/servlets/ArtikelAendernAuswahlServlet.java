@@ -17,6 +17,12 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class ArtikelAendernAuswahlServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
+
 @MultipartConfig
 @WebServlet("/ArtikelAendernAuswahl")
 public class ArtikelAendernAuswahlServlet extends HttpServlet {

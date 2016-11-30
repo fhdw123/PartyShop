@@ -162,7 +162,7 @@ url = url.substring(0, url.length() -1);
 					}
 				%>
 				<input type="hidden" name="searchtext" value="<%=searchterm %>">
-				<input type="submit" value="Filter anwenden">
+				<input type="submit" value="Filter anwenden" style="margin-top: 20px;">
 
 
 			</div>
@@ -179,6 +179,10 @@ url = url.substring(0, url.length() -1);
 					pagenumber = Integer.parseInt(pagenr);
 				}
 				ArrayList<Artikel> artikel = (ArrayList<Artikel>) request.getAttribute("artikel");
+				if(artikel.size() == 0)
+				{
+					out.println("<h1>Keine Artikel gefunden </h1>");
+				}
 				for (int i = (pagenumber - 1) * 9; i < pagenumber * 9; i++) {
 					if (artikel.size() <= i) {
 						break;

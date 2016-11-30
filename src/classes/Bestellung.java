@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.UUID;
 
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 public class Bestellung {
 
 	private SqlConnection jdbc;

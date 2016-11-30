@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 public class User implements Serializable{
 
 	private SqlConnection jdbc;
@@ -93,6 +98,12 @@ public class User implements Serializable{
 	}
 	
 	
+	/**
+	 * 
+	 * @param mail
+	 * @param passwort
+	 * @throws Exception
+	 */
 	public User(String mail, String passwort) throws Exception  {
 		super();
 		this.mail = mail;

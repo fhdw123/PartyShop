@@ -18,6 +18,11 @@ import classes.SqlConnection;
 /**
  * Servlet implementation class KategorieErstellenServlet
  */
+/**
+ * 
+ * @author Jannik Reiffer
+ *
+ */
 @WebServlet("/KategorieErstellen")
 public class KategorieErstellenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -3,6 +3,11 @@ package classes;
 import java.io.File;
 import java.util.UUID;
 
+/**
+ * 
+ * @author Jannik
+ *
+ */
 public class Artikel {
 
 	private SqlConnection jdbc;

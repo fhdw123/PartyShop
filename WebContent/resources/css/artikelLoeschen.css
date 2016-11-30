@@ -73,9 +73,9 @@ input[type=text]
 {
 	width: 200px;
 }
-input[type=password]
+input[type=submit]
 {
-	width: 200px;
+		margin-left:20px;
 }
 
 
