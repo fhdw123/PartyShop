@@ -5,6 +5,12 @@
 <%@ page import="classes.Artikel"%>
 <%@ page import="java.text.DecimalFormat"%>
 <%@ page import="java.util.Enumeration" %> 
+<%
+/**
+ * Darstellung der Produktansammlung einer bestimmten Kategorie
+ * Das Servlet übergibt eine ArrayList mit allen Artikeln die dann strukturiert auf diesem JSP angezeigt werden
+ */
+%>
 <!DOCTYPE html>
 <html>
 <head>

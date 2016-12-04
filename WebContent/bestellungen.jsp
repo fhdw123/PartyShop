@@ -5,6 +5,13 @@
 <%@ page import="classes.Bestellung"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.text.DecimalFormat" %>
+<%
+/**
+ * Darstellung der vorherigen Bestellungen eines Users
+ * Hier werden alle Besttelungen strukturiert dargestellt. 
+ * Der Gesamtpreis, das Datum und alle Positionen der Bestellung werden angezeigt
+ */
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,6 +182,9 @@
 
 
 
+	<div class="footer">
+		<a href="">Impressum</a> <a href="">FAQ</a> <a href="">Ananas</a>
+	</div>
 
 </body>
 </html>

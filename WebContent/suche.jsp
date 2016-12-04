@@ -5,6 +5,12 @@
 <%@ page import="classes.Artikel"%>
 <%@ page import="java.text.DecimalFormat"%>
 <%@ page import="java.util.Enumeration" %>
+<%
+/**
+ * Darstellung eines Suchergebnisses
+ * Das Servlet übergibt eine ArrayList mit allen Artikeln, die dann strukturiert auf diesem JSP angezeigt werden
+ */
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -162,7 +168,7 @@ url = url.substring(0, url.length() -1);
 					}
 				%>
 				<input type="hidden" name="searchtext" value="<%=searchterm %>">
-				<input type="submit" value="Filter anwenden" style="margin-top: 20px;">
+				<input type="submit" value="Filter anwenden">
 
 
 			</div>
@@ -179,10 +185,6 @@ url = url.substring(0, url.length() -1);
 					pagenumber = Integer.parseInt(pagenr);
 				}
 				ArrayList<Artikel> artikel = (ArrayList<Artikel>) request.getAttribute("artikel");
-				if(artikel.size() == 0)
-				{
-					out.println("<h1>Keine Artikel gefunden </h1>");
-				}
 				for (int i = (pagenumber - 1) * 9; i < pagenumber * 9; i++) {
 					if (artikel.size() <= i) {
 						break;
@@ -220,6 +222,10 @@ url = url.substring(0, url.length() -1);
 			</div>
 		</div>
 	</div>
-
+<div class="footer">
+		<a href="">Impressum</a>
+		<a href="">FAQ</a>
+		<a href="">Ananas</a>
+	</div>
 </body>
 </html>

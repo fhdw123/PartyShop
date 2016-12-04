@@ -7,6 +7,12 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.io.File" %>
 <%@ page import="classes.SqlConnection" %>
+<%
+/**
+ * Darstellung des Warenkorbs
+ * Alle Positionen werden hier angezeigt. Der Gesamtpreis wird dynamisch in diesem JSP berechnet
+ */
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -194,6 +200,10 @@
 			
 		</div>
 		</div>
-	
+		<div class="footer">
+		<a href="">Impressum</a>
+		<a href="">FAQ</a>
+		<a href="">Ananas</a>
+	</div>
 </body>
 </html>

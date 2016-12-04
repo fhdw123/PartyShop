@@ -1,14 +1,13 @@
-<%-- 
-    Document   : index
-    Created on : 04.10.2016
-    Author     : Leon
---%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="classes.Kategorie"%>
 <%@ page import="classes.Artikel" %>
+<%
+/**
+ * Dieses JSP wird nach einer erfolgreichen Bestellung angezeigt
+ */
+%>
 <!DOCTYPE html>
 <html>
 
@@ -120,6 +119,10 @@
 		
 		</div>
 	</div>
-
+	<div class="footer">
+		<a href="">Impressum</a>
+		<a href="">FAQ</a>
+		<a href="">Ananas</a>
+	</div>
 </body>
 </html>

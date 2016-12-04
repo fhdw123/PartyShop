@@ -9,6 +9,12 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="classes.Kategorie"%>
 <%@ page import="classes.Artikel" %>
+<%
+/**
+ * Darstellung der Startseite
+ * Das IndexServlet holt alle benötigten Daten, die auf diesem JSP angezeigt werden müssen
+ */
+%>
 <!DOCTYPE html>
 <html>
 
@@ -172,7 +178,7 @@
 				ArrayList<Artikel> best = (ArrayList<Artikel>) request.getAttribute("best");
 				for(int i = 0; i < 3; i++)
 				{
-					Artikel a = best.get(i);
+					Artikel a = neu.get(i);
 					out.println("<div class=\"article1\">");
 					out.println("<a href=\"/Partyshop/Artikel?id=" + a.getArtikelid() + "\">");
 					out.println("<img src=\"resources/images/" + a.getBild().getName()  + "\">");
@@ -191,9 +197,9 @@
 		</div>
 	</div>
 	<div class="footer">
-		<a href="impressum.jsp">Impressum</a>
-		<a href="faq.jsp">FAQ</a>
-		<a href="kontakt.jsp">Kontakt</a>
+		<a href="">Impressum</a>
+		<a href="">FAQ</a>
+		<a href="">Ananas</a>
 	</div>
 
 </body>

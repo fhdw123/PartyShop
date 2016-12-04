@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="classes.Artikel"%>
 <%@ page import="java.text.DecimalFormat"%>
+<%
+/**
+ * Darstellung der Produktdetailseite
+ * Die Artikeldaten kommen von dem ArticleServlet und werden auf diesem JSP dargestellt
+ */
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,6 +144,11 @@
 
 
 
+<div class="footer">
+		<a href="">Impressum</a>
+		<a href="">FAQ</a>
+		<a href="">Ananas</a>
+	</div>
 
 </body>
 </html>
