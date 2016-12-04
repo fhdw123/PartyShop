@@ -14,7 +14,8 @@ import classes.Artikel;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class ArticleServlet
+ * Hier werden die benötigten Daten aus der Datenbank geholt, um eine Produktdetailseite anzuzeigen
+ * Danach wird zu dem zugehörigen JSP navigiert
  */
 @WebServlet("/Artikel")
 public class ArticleServlet extends HttpServlet {

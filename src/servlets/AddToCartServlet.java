@@ -17,6 +17,11 @@ import classes.User;
 
 /**
  * Servlet implementation class AddToCartServlet
+ * 
+ * Dieses Servlet implementiert die Funktion einen Artikel in den Warenkorb zu legen
+ * Dem Servlet wird ID des Artikels mittels einem Parameter übergeben. Dieser wird dann in die
+ * ArrayList der Session gelegt, sofern der Artikel dort nicht bereits vorhanden ist
+ * Danach wird man auf die Warenkorbseite weitergeleitet
  */
 @WebServlet("/AddToCart")
 public class AddToCartServlet extends HttpServlet {

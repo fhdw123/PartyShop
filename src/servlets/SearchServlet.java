@@ -18,7 +18,9 @@ import classes.Kategorie;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class SearchServlet
+ * Implementation der Suchfunktion
+ * Anhand eines eingegebenen Suchtextes wird die Datenbank nach treffern durchsucht
+ * Die Treffer werden in einer ArrayList mit Artikeln zurückgeliefert und es wird zu dem JSP navigiert
  */
 @WebServlet("/Suche")
 public class SearchServlet extends HttpServlet {

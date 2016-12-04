@@ -18,12 +18,8 @@ import classes.SqlConnection;
 import classes.User;
 
 /**
- * Servlet implementation class IndexServlet
- */
-/**
- * 
- * @author Jannik Reiffer
- *
+ * Die benötigten Daten werden aus der Datenbank geholt, um die Startseite anzuzeigen. 
+ * Dazu gehören die Kategorien und die aktuellen Bestseller und Neuheiten der Artikel
  */
 @WebServlet("/index")
 public class IndexServlet extends HttpServlet {

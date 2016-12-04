@@ -15,7 +15,8 @@ import classes.Kategorie;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class CategoryServlet
+ * Hier werden die benötigten Daten aus der Datenbank geholt, um eine Produktsammlung aus einer Kategorie anzuzeigen
+ * Danach werden die Daten dem zugehörigen JSP übermittelt
  */
 @WebServlet("/Kategorie")
 public class CategoryServlet extends HttpServlet {

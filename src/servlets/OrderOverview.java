@@ -16,7 +16,7 @@ import classes.SqlConnection;
 import classes.User;
 
 /**
- * Servlet implementation class OrderOverview
+ * Die Bestelldaten eines bestimmten Users werden aus der Datenbank geholt, um hier angezeigt zu werden
  */
 @WebServlet("/MeineBestellungen")
 public class OrderOverview extends HttpServlet {

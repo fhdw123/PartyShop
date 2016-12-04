@@ -18,7 +18,8 @@ import classes.Position;
 import classes.SqlConnection;
 
 /**
- * Servlet implementation class CartServlet
+ * Dieses Servlet ist für die Darstellung und Änderungen innerhalb des Warenkorbs verantwortlich
+ *
  */
 @WebServlet("/Warenkorb")
 public class CartServlet extends HttpServlet {
@@ -33,7 +34,8 @@ public class CartServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Wenn der Warenkorb aufgerufen werden soll, wird diese Methode ausgeführt. Es wird anschließend
+	 * geprüft, ob bereits ein Warenkorb existiert und dieser wird dann dem JSP übergeben
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try
@@ -76,7 +78,9 @@ public class CartServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Hier können Artikel aus dem Warenkorb entfernt oder in der Menge angepasst werden
+	 * Dabei wird in der ArrayList in der Session der richtig Wert geändert oder der Eintrag entfernt.
+	 * Außerdem wird hier bestätigt, ob der User eingeloggt ist, falls er den bestellen Button drückt
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
